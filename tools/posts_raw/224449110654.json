@@ -2,21 +2,10 @@
  "logNo": "224449110654",
  "url": "https://blog.naver.com/middaynight109/224449110654",
  "title": "케이머스 까베르네 소비뇽｜나파밸리 와그너 가문의 레드 와인, 다들 왜 좋아할까?",
- "desc": "",
- "date": "2026-10-21",
- "category": "와인 이야기",
- "tags": [
-  "케이머스까베르네소비뇽",
-  "케이머스",
-  "나파밸리와인",
-  "나파밸리까베르네소비뇽",
-  "까베르네소비뇽추천",
-  "레드와인추천",
-  "미국와인",
-  "갈비와인페어링",
-  "가을와인",
-  "와인선물"
- ],
+ "desc": "나파밸리 레드 와인 이야기를 하다 보면 꼭 한 번은 나오는 이름이 있습니다. 바로 케이머스(Caymus)입니...",
+ "date": "",
+ "category": "멤버십 와인 커뮤니티 땡큐와인",
+ "tags": [],
  "blocks": [
   {
    "type": "p",
@@ -48,25 +37,53 @@
   },
   {
    "type": "p",
-   "text": "==나파밸리 까베르네 소비뇽이 어떤 맛인지 가장 선명하게 보여주는 한 병==이라는 것."
+   "text": "**나파밸리 까베르네 소비뇽이 어떤 맛인지 가장 선명하게 보여주는 한 병**이라는 것."
   },
   {
    "type": "hr"
   },
   {
-   "type": "h2",
-   "text": "한눈에 보는 케이머스 까베르네 소비뇽"
+   "type": "img",
+   "src": "https://mblogthumb-phinf.pstatic.net/MjAyNjEwMjFfMTg2/MDAxNzkyNTY3MzQ0OTQ5.DQKEbCXYmh_m3o_1K-oMwf1sm6mm9AxocZaqCF4LR7Ag.q2K8u0khXvCOlgImFYMSCNHB_rLybI39a4qASOdfchMg.JPEG/02.jpg?type=w800",
+   "alt": "",
+   "file": "img/224449110654_1.jpg"
   },
   {
    "type": "p",
-   "text": "• 생산자: 케이머스 빈야드(Caymus Vineyards), 1972년 설립\n• 산지: 미국 캘리포니아 나파밸리(Napa Valley)\n• 품종: 까베르네 소비뇽\n• 스타일: 풀바디 레드 와인, 진한 검은 과실과 부드러운 타닌\n• 이런 분께: 진하고 부드러운 나파밸리 레드 와인을 경험해 보고 싶은 분"
+   "text": "**한눈에 보는 케이머스 까베르네 소비뇽**"
+  },
+  {
+   "type": "p",
+   "text": "• 생산자: 케이머스 빈야드(Caymus Vineyards), 1972년 설립"
+  },
+  {
+   "type": "p",
+   "text": "• 산지: 미국 캘리포니아 나파밸리(Napa Valley)"
+  },
+  {
+   "type": "p",
+   "text": "• 품종: 까베르네 소비뇽"
+  },
+  {
+   "type": "p",
+   "text": "• 스타일: 풀바디 레드 와인, 진한 검은 과실과 부드러운 타닌"
+  },
+  {
+   "type": "p",
+   "text": "• 이런 분께: 진하고 부드러운 나파밸리 레드 와인을 경험해 보고 싶은 분"
+  },
+  {
+   "type": "img",
+   "src": "https://mblogthumb-phinf.pstatic.net/MjAyNjEwMjFfMTcw/MDAxNzkyNTY3MzUwMTk0.YLAILvuPQIE0z7rbqBq1kN8JYHVTmLmc4Qnkte12G4Ug.jGfaMOcIQpbrinr48kbM7HAxxDtFmtE5qTUhd5mORm4g.JPEG/03.jpg?type=w800",
+   "alt": "",
+   "file": "img/224449110654_2.jpg"
   },
   {
    "type": "hr"
   },
   {
-   "type": "h2",
-   "text": "케이머스는 어떤 와이너리일까?"
+   "type": "p",
+   "text": "**케이머스는 어떤 와이너리일까?**"
   },
   {
    "type": "p",
@@ -100,8 +117,8 @@
    "type": "hr"
   },
   {
-   "type": "h2",
-   "text": "케이머스라는 이름은 어디에서 왔을까?"
+   "type": "p",
+   "text": "**케이머스라는 이름은 어디에서 왔을까?**"
   },
   {
    "type": "p",
@@ -127,8 +144,8 @@
    "type": "hr"
   },
   {
-   "type": "h2",
-   "text": "스페셜 셀렉션(Special Selection)은 무엇일까?"
+   "type": "p",
+   "text": "**스페셜 셀렉션(Special Selection)은 무엇일까?**"
   },
   {
    "type": "p",
@@ -166,8 +183,8 @@
    "type": "hr"
   },
   {
-   "type": "h2",
-   "text": "케이머스 까베르네 소비뇽은 어떻게 만들어질까?"
+   "type": "p",
+   "text": "**케이머스 까베르네 소비뇽은 어떻게 만들어질까?**"
   },
   {
    "type": "p",
@@ -191,7 +208,7 @@
   },
   {
    "type": "p",
-   "text": "==짙은 색 + 농익은 과실 + 부드러운 타닌=="
+   "text": "**짙은 색 + 농익은 과실 + 부드러운 타닌**"
   },
   {
    "type": "p",
@@ -205,8 +222,8 @@
    "type": "hr"
   },
   {
-   "type": "h2",
-   "text": "케이머스 까베르네 소비뇽 테이스팅 노트"
+   "type": "p",
+   "text": "**케이머스 까베르네 소비뇽 테이스팅 노트**"
   },
   {
    "type": "p",
@@ -234,14 +251,40 @@
   },
   {
    "type": "p",
-   "text": "CAYMUS VINEYARDS NAPA VALLEY CABERNET SAUVIGNON\n• 산지: 미국 · 캘리포니아 · 나파밸리\n• 품종: 까베르네 소비뇽\n• 빈티지: 2023\n• 스타일: 풀바디 레드\n• 주요 풍미: 다크 체리, 블랙베리, 바닐라, 코코아, 다크 초콜릿, 스위트 토바코"
+   "text": "CAYMUS VINEYARDS NAPA VALLEY CABERNET SAUVIGNON"
+  },
+  {
+   "type": "p",
+   "text": "• 산지: 미국 · 캘리포니아 · 나파밸리"
+  },
+  {
+   "type": "p",
+   "text": "• 품종: 까베르네 소비뇽"
+  },
+  {
+   "type": "p",
+   "text": "• 빈티지: 2023"
+  },
+  {
+   "type": "p",
+   "text": "• 스타일: 풀바디 레드"
+  },
+  {
+   "type": "p",
+   "text": "• 주요 풍미: 다크 체리, 블랙베리, 바닐라, 코코아, 다크 초콜릿, 스위트 토바코"
+  },
+  {
+   "type": "img",
+   "src": "https://mblogthumb-phinf.pstatic.net/MjAyNjEwMjFfMjEz/MDAxNzkyNTY3MzY4NjMz.XA94UgCUjiVYKS2guJBfQRUXdZFbFVs7vfYocfoUEpUg.9ZqktKMqUKbVSpe_xjWkmLUPB15BzRe9wXfSBz0GtQ0g.JPEG/04.jpg?type=w800",
+   "alt": "",
+   "file": "img/224449110654_3.jpg"
   },
   {
    "type": "hr"
   },
   {
-   "type": "h2",
-   "text": "케이머스 까베르네 소비뇽은 몇 도로 마시면 좋을까?"
+   "type": "p",
+   "text": "**케이머스 까베르네 소비뇽은 몇 도로 마시면 좋을까?**"
   },
   {
    "type": "p",
@@ -249,7 +292,21 @@
   },
   {
    "type": "p",
-   "text": "• 실온에 오래 둔 병이라면 냉장고에 20~30분 넣었다가 따르기\n• 볼이 넓은 레드 와인 잔 사용\n• 오픈 후 30분 정도 두면 향이 한층 부드럽게 열림"
+   "text": "• 실온에 오래 둔 병이라면 냉장고에 20~30분 넣었다가 따르기"
+  },
+  {
+   "type": "p",
+   "text": "• 볼이 넓은 레드 와인 잔 사용"
+  },
+  {
+   "type": "p",
+   "text": "• 오픈 후 30분 정도 두면 향이 한층 부드럽게 열림"
+  },
+  {
+   "type": "img",
+   "src": "https://mblogthumb-phinf.pstatic.net/MjAyNjEwMjFfMjEz/MDAxNzkyNTY3Mzc2MjAz.WassZBYr_YY9ZujKkAlVI6TnS5fGXSM7VAVzgwGYDegg.Zuldtjv5_RQzA99WEd4s6oGaej7IxwQH7Dxfn0ywBw0g.JPEG/05.jpg?type=w800",
+   "alt": "",
+   "file": "img/224449110654_4.jpg"
   },
   {
    "type": "p",
@@ -259,8 +316,8 @@
    "type": "hr"
   },
   {
-   "type": "h2",
-   "text": "케이머스 까베르네 소비뇽과 어울리는 음식은?"
+   "type": "p",
+   "text": "**케이머스 까베르네 소비뇽과 어울리는 음식은?**"
   },
   {
    "type": "p",
@@ -276,7 +333,25 @@
   },
   {
    "type": "p",
-   "text": "• 고기 요리: 한우 등심 스테이크, 숯불 양념갈비, 양갈비 구이\n• 가을 버섯: 송이·표고 버섯구이, 버섯을 듬뿍 올린 불고기\n• 가을 곁들임: 군밤, 단호박 구이, 고구마 버터구이\n• 치즈와 디저트: 숙성 체다·고다 치즈, 다크 초콜릿"
+   "text": "• 고기 요리: 한우 등심 스테이크, 숯불 양념갈비, 양갈비 구이"
+  },
+  {
+   "type": "p",
+   "text": "• 가을 버섯: 송이·표고 버섯구이, 버섯을 듬뿍 올린 불고기"
+  },
+  {
+   "type": "p",
+   "text": "• 가을 곁들임: 군밤, 단호박 구이, 고구마 버터구이"
+  },
+  {
+   "type": "p",
+   "text": "• 치즈와 디저트: 숙성 체다·고다 치즈, 다크 초콜릿"
+  },
+  {
+   "type": "img",
+   "src": "https://mblogthumb-phinf.pstatic.net/MjAyNjEwMjFfMjc0/MDAxNzkyNTY3MzgzOTQ4.y0RxqiVTFbHHCxEBExRR-mS4Lvu6TBz0gCCJQYrFk7Mg.BXC3gviV824wvyFXoddIChjzXbBpZfkEgwlWvHTuUisg.JPEG/06.jpg?type=w800",
+   "alt": "",
+   "file": "img/224449110654_5.jpg"
   },
   {
    "type": "p",
@@ -294,12 +369,38 @@
    "type": "hr"
   },
   {
-   "type": "h2",
-   "text": "케이머스 까베르네 소비뇽, 이런 분께 추천합니다"
+   "type": "p",
+   "text": "**케이머스 까베르네 소비뇽, 이런 분께 추천합니다**"
   },
   {
    "type": "p",
-   "text": "• 나파밸리 까베르네 소비뇽이 어떤 맛인지 제대로 경험해 보고 싶은 분\n• 떫은 레드보다 부드럽고 풍성한 레드 와인을 좋아하는 분\n• 스테이크나 갈비처럼 고기 요리와 함께할 와인을 찾는 분\n• 미국 와인, 캘리포니아 와인을 처음 시작해 보고 싶은 분\n• 이야기가 있는 와인 선물을 찾는 분\n• 연말 모임이나 기념일에 함께할 레드 와인을 찾는 분"
+   "text": "• 나파밸리 까베르네 소비뇽이 어떤 맛인지 제대로 경험해 보고 싶은 분"
+  },
+  {
+   "type": "p",
+   "text": "• 떫은 레드보다 부드럽고 풍성한 레드 와인을 좋아하는 분"
+  },
+  {
+   "type": "p",
+   "text": "• 스테이크나 갈비처럼 고기 요리와 함께할 와인을 찾는 분"
+  },
+  {
+   "type": "p",
+   "text": "• 미국 와인, 캘리포니아 와인을 처음 시작해 보고 싶은 분"
+  },
+  {
+   "type": "p",
+   "text": "• 이야기가 있는 와인 선물을 찾는 분"
+  },
+  {
+   "type": "p",
+   "text": "• 연말 모임이나 기념일에 함께할 레드 와인을 찾는 분"
+  },
+  {
+   "type": "img",
+   "src": "https://mblogthumb-phinf.pstatic.net/MjAyNjEwMjFfMTc5/MDAxNzkyNTY3MzkxNTI4.v8Lq9cZXp5MskQJOIf5V0LH8WQ-3ZACfqpGlyC4K0GMg.kx8_eNAgE7bdmZ84v2odPXCRjd4cd1FT4gMdeghL7Fog.JPEG/07.jpg?type=w800",
+   "alt": "",
+   "file": "img/224449110654_6.jpg"
   },
   {
    "type": "p",
@@ -313,27 +414,45 @@
    "type": "hr"
   },
   {
-   "type": "h2",
-   "text": "자주 묻는 질문"
+   "type": "img",
+   "src": "https://mblogthumb-phinf.pstatic.net/MjAyNjEwMjFfMTky/MDAxNzkyNTY3NDAxNzcz._LMuSN7M97r-X97sPA6kwQsyZviJaEle92ah3OZTPkgg.yURTUJQ0CCgDN8E59pvaUkS1aD7pdBs0uFkRE6EpZr0g.JPEG/01.jpg?type=w800",
+   "alt": "",
+   "file": "img/224449110654_7.jpg"
   },
   {
    "type": "p",
-   "text": "**케이머스 까베르네 소비뇽과 스페셜 셀렉션은 같은 와인인가요?**\n아닙니다. 스페셜 셀렉션은 그해 가장 좋은 배럴만 골라 좋은 해에만 만드는 최상위 와인이고, 나파밸리 까베르네 소비뇽은 케이머스의 대표 와인입니다."
+   "text": "**자주 묻는 질문**"
   },
   {
    "type": "p",
-   "text": "**단맛이 있는 와인인가요?**\n드라이 레드 와인입니다. 다만 농익은 과실과 바닐라, 초콜릿 향 덕분에 입안에서 풍성하고 부드럽게 느껴지는 편입니다."
+   "text": "**케이머스 까베르네 소비뇽과 스페셜 셀렉션은 같은 와인인가요?**"
   },
   {
    "type": "p",
-   "text": "**바로 마셔도 괜찮을까요?**\n부드러운 타닌 덕분에 지금 마셔도 충분히 즐길 수 있습니다. 오픈 후 30분 정도 두거나 디캔팅하면 향이 더 풍성하게 열립니다."
+   "text": "아닙니다. 스페셜 셀렉션은 그해 가장 좋은 배럴만 골라 좋은 해에만 만드는 최상위 와인이고, 나파밸리 까베르네 소비뇽은 케이머스의 대표 와인입니다."
+  },
+  {
+   "type": "p",
+   "text": "**단맛이 있는 와인인가요?**"
+  },
+  {
+   "type": "p",
+   "text": "드라이 레드 와인입니다. 다만 농익은 과실과 바닐라, 초콜릿 향 덕분에 입안에서 풍성하고 부드럽게 느껴지는 편입니다."
+  },
+  {
+   "type": "p",
+   "text": "**바로 마셔도 괜찮을까요?**"
+  },
+  {
+   "type": "p",
+   "text": "부드러운 타닌 덕분에 지금 마셔도 충분히 즐길 수 있습니다. 오픈 후 30분 정도 두거나 디캔팅하면 향이 더 풍성하게 열립니다."
   },
   {
    "type": "hr"
   },
   {
-   "type": "h2",
-   "text": "결국 케이머스의 매력은 ‘한결같은 부드러움’입니다"
+   "type": "p",
+   "text": "**결국 케이머스의 매력은 ‘한결같은 부드러움’입니다**"
   },
   {
    "type": "p",
@@ -362,7 +481,88 @@
   {
    "type": "p",
    "text": "선선한 가을 저녁, 케이머스 까베르네 소비뇽 한 잔으로 나파밸리의 깊은 맛을 직접 만나보세요."
+  },
+  {
+   "type": "p",
+   "text": "#케이머스까베르네소비뇽 #케이머스 #나파밸리와인 #나파밸리까베르네소비뇽 #까베르네소비뇽추천 #레드와인추천 #미국와인 #갈비와인페어링 #가을와인 #와인선물"
+  },
+  {
+   "type": "h2",
+   "text": "**🥂 와인으로 연결되는 사람과 경험**"
+  },
+  {
+   "type": "p",
+   "text": "**좋은 와인에는 늘 좋은 이야기가 있습니다.**"
+  },
+  {
+   "type": "p",
+   "text": "**땡큐와인은 와인을 통해 사람을 만나고,**"
+  },
+  {
+   "type": "p",
+   "text": "**경험을 나누는 커뮤니티를 만들어 갑니다.**"
+  },
+  {
+   "type": "p",
+   "text": "**📩 상담 · 문의 010-8078-7493**"
+  },
+  {
+   "type": "p",
+   "text": "**www.instagram.com/thankyouwine**"
+  },
+  {
+   "type": "link",
+   "href": "http://www.instagram.com/thankyouwine"
+  },
+  {
+   "type": "p",
+   "text": "**🍷땡큐와인 멤버십 가입🍷**"
+  },
+  {
+   "type": "p",
+   "text": "https://litt.ly/thankyouwine"
+  },
+  {
+   "type": "link",
+   "href": "https://litt.ly/thankyouwine"
+  },
+  {
+   "type": "hr"
+  },
+  {
+   "type": "h2",
+   "text": "**방문 픽업 및 배송 방법 안내**"
+  },
+  {
+   "type": "p",
+   "text": "✔ 업장 방문하여 결제 또는 픽업 필수"
+  },
+  {
+   "type": "p",
+   "text": "주류 배송은 국세청 고시(제2005-5호)에 따라 **업장 방문, 성인 인증된 고객에게만** 가능합니다."
+  },
+  {
+   "type": "p",
+   "text": "비대면 택배 발송은 불가능합니다. 문의 전 방문 가능한 거리인지 꼭 확인해주세요."
+  },
+  {
+   "type": "p",
+   "text": "땡큐와인 픽업장소: 서울시 성동구 성덕정길 109 2층 와인샵 땡큐와인 (구 한낮의밤)"
+  },
+  {
+   "type": "h2",
+   "text": "**방문 픽업 및 택배·퀵 배송 안내 (자주 묻는 질문 FAQ)**"
+  },
+  {
+   "type": "p",
+   "text": "https://blog.naver.com/middaynight109/224360770300"
+  },
+  {
+   "type": "link",
+   "href": "https://blog.naver.com/middaynight109/224360770300"
   }
  ],
- "standin": true
+ "listTitle": "케이머스 까베르네 소비뇽｜나파밸리 와그너 가문의 레드 와인, 다들 왜 좋아할까?",
+ "addDate": "2026. 10. 21.",
+ "categoryNo": "7"
 }

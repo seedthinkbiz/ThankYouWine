@@ -2,21 +2,10 @@
  "logNo": "224448906541",
  "url": "https://blog.naver.com/middaynight109/224448906541",
  "title": "타닌감 묵직한 스페인 레드와인｜꼬또 데 이마스 그란 레세르바 2020 입고",
- "desc": "",
- "date": "2026-10-23",
- "category": "와인 소개",
- "tags": [
-  "꼬또데이마스그란레세르바",
-  "꼬또데이마스",
-  "리오하와인",
-  "그란레세르바",
-  "스페인레드와인",
-  "템프라니요",
-  "묵직한레드와인",
-  "스테이크와인",
-  "성수동와인샵",
-  "땡큐와인"
- ],
+ "desc": "요즘 와인샵에서 손님들께 가장 많이 듣는 말이 있습니다. “너무 무겁지 않고, 부드럽고, 살짝 달큰한 거 ...",
+ "date": "",
+ "category": "멤버십 와인 커뮤니티 땡큐와인",
+ "tags": [],
  "blocks": [
   {
    "type": "p",
@@ -52,7 +41,7 @@
   },
   {
    "type": "p",
-   "text": "==묵직한 타닌 + 오랜 숙성에서 오는 깊은 향 + 길게 이어지는 여운=="
+   "text": "**묵직한 타닌 + 오랜 숙성에서 오는 깊은 향 + 길게 이어지는 여운**"
   },
   {
    "type": "p",
@@ -62,19 +51,47 @@
    "type": "hr"
   },
   {
-   "type": "h2",
-   "text": "한눈에 보는 꼬또 데 이마스 그란 레세르바"
+   "type": "img",
+   "src": "https://mblogthumb-phinf.pstatic.net/MjAyNjEwMjFfMjc3/MDAxNzkyNTUxOTI0MjAy.m5Ci19gofummuRvH4uANQnEE86hwSMKK8xm5iv6WFPUg.PgVYEIPHkAOCuh9Ze4Y1a7CgURkN00_e8WwMfpHKKEYg.JPEG/01.jpg?type=w800",
+   "alt": "",
+   "file": "img/224448906541_1.jpg"
   },
   {
    "type": "p",
-   "text": "• 생산자: 엘 꼬또 데 리오하(El Coto de Rioja)\n• 산지: 스페인 · 리오하 DOCa\n• 품종: 템프라니요 중심, 그라시아노 소량 블렌딩\n• 스타일: 풀바디 드라이 레드, 장기 숙성형\n• 이런 분께: 달큰한 레드보다 단단하고 구조감 있는 레드를 찾는 분"
+   "text": "**한눈에 보는 꼬또 데 이마스 그란 레세르바**"
+  },
+  {
+   "type": "p",
+   "text": "• 생산자: 엘 꼬또 데 리오하(El Coto de Rioja)"
+  },
+  {
+   "type": "p",
+   "text": "• 산지: 스페인 · 리오하 DOCa"
+  },
+  {
+   "type": "p",
+   "text": "• 품종: 템프라니요 중심, 그라시아노 소량 블렌딩"
+  },
+  {
+   "type": "p",
+   "text": "• 스타일: 풀바디 드라이 레드, 장기 숙성형"
+  },
+  {
+   "type": "p",
+   "text": "• 이런 분께: 달큰한 레드보다 단단하고 구조감 있는 레드를 찾는 분"
+  },
+  {
+   "type": "img",
+   "src": "https://mblogthumb-phinf.pstatic.net/MjAyNjEwMjFfMTQy/MDAxNzkyNTUxOTI5NTY1.xOkWEIVZ9naT-qsuhLA9PqluaMVO9pVC-PTpq8FwSqMg.A_fCW0U_MvpqQV-K5KmNDEN9BlwOUPMe_tL-CL7N2eIg.JPEG/02.jpg?type=w800",
+   "alt": "",
+   "file": "img/224448906541_2.jpg"
   },
   {
    "type": "hr"
   },
   {
-   "type": "h2",
-   "text": "엘 꼬또 데 리오하는 어떤 와이너리일까?"
+   "type": "p",
+   "text": "**엘 꼬또 데 리오하는 어떤 와이너리일까?**"
   },
   {
    "type": "p",
@@ -108,8 +125,8 @@
    "type": "hr"
   },
   {
-   "type": "h2",
-   "text": "그란 레세르바(Gran Reserva)는 무슨 뜻일까?"
+   "type": "p",
+   "text": "**그란 레세르바(Gran Reserva)는 무슨 뜻일까?**"
   },
   {
    "type": "p",
@@ -121,7 +138,11 @@
   },
   {
    "type": "quote",
-   "text": "크리안사 → 레세르바 → 그란 레세르바\n뒤로 갈수록 더 오래, 더 천천히 숙성된 와인입니다."
+   "text": "크리안사 → 레세르바 → 그란 레세르바"
+  },
+  {
+   "type": "quote",
+   "text": "뒤로 갈수록 더 오래, 더 천천히 숙성된 와인입니다."
   },
   {
    "type": "p",
@@ -129,7 +150,21 @@
   },
   {
    "type": "p",
-   "text": "• 크리안사(Crianza): 총 2년 이상, 그중 오크 1년 이상\n• 레세르바(Reserva): 총 3년 이상, 그중 오크 1년 이상\n• 그란 레세르바(Gran Reserva): 총 5년 이상, 그중 오크 2년 + 병 2년 이상"
+   "text": "• 크리안사(Crianza): 총 2년 이상, 그중 오크 1년 이상"
+  },
+  {
+   "type": "p",
+   "text": "• 레세르바(Reserva): 총 3년 이상, 그중 오크 1년 이상"
+  },
+  {
+   "type": "p",
+   "text": "• 그란 레세르바(Gran Reserva): 총 5년 이상, 그중 오크 2년 + 병 2년 이상"
+  },
+  {
+   "type": "img",
+   "src": "https://mblogthumb-phinf.pstatic.net/MjAyNjEwMjFfMTg5/MDAxNzkyNTUxOTQxMzQ3.aHeNYthw8Ckx_pqUxN1MHIxfqnYB0GK8WaYzslX-KCEg.xQHEIWMCXJEaPWkcrOuennm29Bw6L5YI-cLd5hkOEJEg.JPEG/03.jpg?type=w800",
+   "alt": "",
+   "file": "img/224448906541_3.jpg"
   },
   {
    "type": "p",
@@ -143,8 +178,8 @@
    "type": "hr"
   },
   {
-   "type": "h2",
-   "text": "꼬또 데 이마스 그란 레세르바는 어떻게 만들까?"
+   "type": "p",
+   "text": "**꼬또 데 이마스 그란 레세르바는 어떻게 만들까?**"
   },
   {
    "type": "p",
@@ -152,7 +187,29 @@
   },
   {
    "type": "p",
-   "text": "• 리오하 알타의 배수가 잘 되는 점토·석회질 토양의 포도\n• 완숙 시기에 손으로 수확\n• 긴 침용 후 온도를 조절하며 발효\n• 프렌치·아메리칸 오크통에서 **24개월** 숙성\n• 이후 병에서 최소 **36개월** 추가 숙성"
+   "text": "• 리오하 알타의 배수가 잘 되는 점토·석회질 토양의 포도"
+  },
+  {
+   "type": "p",
+   "text": "• 완숙 시기에 손으로 수확"
+  },
+  {
+   "type": "p",
+   "text": "• 긴 침용 후 온도를 조절하며 발효"
+  },
+  {
+   "type": "p",
+   "text": "• 프렌치·아메리칸 오크통에서 **24개월** 숙성"
+  },
+  {
+   "type": "p",
+   "text": "• 이후 병에서 최소 **36개월** 추가 숙성"
+  },
+  {
+   "type": "img",
+   "src": "https://mblogthumb-phinf.pstatic.net/MjAyNjEwMjFfMjA4/MDAxNzkyNTUxOTQ5MDMw.YUrDsXXt-Z4DuDPVQrvYfJEa2KKfHWAuy-nk-gTvXG8g.WZUAIceSiCxxIzPDEo_RuX-S7zoyAEB6PWmKWPtR16og.JPEG/04.jpg?type=w800",
+   "alt": "",
+   "file": "img/224448906541_4.jpg"
   },
   {
    "type": "p",
@@ -162,8 +219,8 @@
    "type": "hr"
   },
   {
-   "type": "h2",
-   "text": "꼬또 데 이마스 그란 레세르바 테이스팅 노트"
+   "type": "p",
+   "text": "**꼬또 데 이마스 그란 레세르바 테이스팅 노트**"
   },
   {
    "type": "p",
@@ -175,7 +232,21 @@
   },
   {
    "type": "p",
-   "text": "• 1차 향(포도에서 오는 향): **블랙베리, 말린 자두**, 졸인 체리 같은 농축된 검붉은 과실\n• 2차 향(오크 숙성에서 오는 향): 바닐라, 삼나무, 정향, 토스트한 코코넛, 은은한 훈연 향\n• 3차 향(오랜 숙성에서 오는 향): **가죽, 젖은 흙, 감초, 담뱃잎**, 마른 잎"
+   "text": "• 1차 향(포도에서 오는 향): **블랙베리, 말린 자두**, 졸인 체리 같은 농축된 검붉은 과실"
+  },
+  {
+   "type": "p",
+   "text": "• 2차 향(오크 숙성에서 오는 향): 바닐라, 삼나무, 정향, 토스트한 코코넛, 은은한 훈연 향"
+  },
+  {
+   "type": "p",
+   "text": "• 3차 향(오랜 숙성에서 오는 향): **가죽, 젖은 흙, 감초, 담뱃잎**, 마른 잎"
+  },
+  {
+   "type": "img",
+   "src": "https://mblogthumb-phinf.pstatic.net/MjAyNjEwMjFfMjcy/MDAxNzkyNTUxOTU2NDU1.wFm0DyuE2P8YkScaNhIow8KN4iSqyii-uUrQWeIQ_kkg.7LdAhBY9IlhN2nNZqzGX_3b7scxkHSjF6bS7uUHQgxMg.JPEG/05.jpg?type=w800",
+   "alt": "",
+   "file": "img/224448906541_5.jpg"
   },
   {
    "type": "p",
@@ -191,7 +262,7 @@
   },
   {
    "type": "p",
-   "text": "==타닌감이 묵직하게 자리를 잡아 주는 와인=="
+   "text": "**타닌감이 묵직하게 자리를 잡아 주는 와인**"
   },
   {
    "type": "p",
@@ -219,14 +290,48 @@
   },
   {
    "type": "p",
-   "text": "COTO DE IMAZ GRAN RESERVA 2020\n• 산지: 스페인 · 리오하 DOCa\n• 품종: 템프라니요 중심, 그라시아노 소량 (Wine21 기준 템프라니요 90%, 그라시아노 10%)\n• 스타일: 풀바디 드라이 레드\n• 숙성: 오크 24개월 + 병 36개월 이상\n• 알코올: 13.5~14% 내외 (빈티지별 차이)\n• 바디 4.5/5 · 타닌 4.5/5 · 산도 3.5/5 · 당도 드라이 · 복합미 4.5/5\n• 주요 풍미: 졸인 체리, 자두, 가죽, 담배, 코코넛, 바닐라, 향신료"
+   "text": "COTO DE IMAZ GRAN RESERVA 2020"
+  },
+  {
+   "type": "p",
+   "text": "• 산지: 스페인 · 리오하 DOCa"
+  },
+  {
+   "type": "p",
+   "text": "• 품종: 템프라니요 중심, 그라시아노 소량 (Wine21 기준 템프라니요 90%, 그라시아노 10%)"
+  },
+  {
+   "type": "p",
+   "text": "• 스타일: 풀바디 드라이 레드"
+  },
+  {
+   "type": "p",
+   "text": "• 숙성: 오크 24개월 + 병 36개월 이상"
+  },
+  {
+   "type": "p",
+   "text": "• 알코올: 13.5~14% 내외 (빈티지별 차이)"
+  },
+  {
+   "type": "p",
+   "text": "• 바디 4.5/5 · 타닌 4.5/5 · 산도 3.5/5 · 당도 드라이 · 복합미 4.5/5"
+  },
+  {
+   "type": "p",
+   "text": "• 주요 풍미: 졸인 체리, 자두, 가죽, 담배, 코코넛, 바닐라, 향신료"
+  },
+  {
+   "type": "img",
+   "src": "https://mblogthumb-phinf.pstatic.net/MjAyNjEwMjFfMjYw/MDAxNzkyNTUxOTYyMDMw.Qg606tagisWXAV4Hj0Ate7JPu3TIqiwlh-YSPckXA1Yg.OAXGgTPc7laraR3Ykiqpa7lom1-4C2psc9xoPHvH-Kgg.JPEG/06.jpg?type=w800",
+   "alt": "",
+   "file": "img/224448906541_6.jpg"
   },
   {
    "type": "hr"
   },
   {
-   "type": "h2",
-   "text": "꼬또 데 이마스 그란 레세르바는 어떤 평가를 받았을까?"
+   "type": "p",
+   "text": "**꼬또 데 이마스 그란 레세르바는 어떤 평가를 받았을까?**"
   },
   {
    "type": "p",
@@ -244,8 +349,8 @@
    "type": "hr"
   },
   {
-   "type": "h2",
-   "text": "꼬또 데 이마스 그란 레세르바와 어울리는 음식은?"
+   "type": "p",
+   "text": "**꼬또 데 이마스 그란 레세르바와 어울리는 음식은?**"
   },
   {
    "type": "p",
@@ -257,7 +362,25 @@
   },
   {
    "type": "p",
-   "text": "• 육류: 양갈비, 등심·채끝 스테이크, 소갈비구이\n• 한식: 갈비찜, 불고기, 차돌 된장찌개처럼 감칠맛 있는 고기 요리\n• 치즈: 만체고, 숙성 콩테, 파르미지아노 레지아노\n• 가을 메뉴: 송이 불고기, 버섯 전골"
+   "text": "• 육류: 양갈비, 등심·채끝 스테이크, 소갈비구이"
+  },
+  {
+   "type": "p",
+   "text": "• 한식: 갈비찜, 불고기, 차돌 된장찌개처럼 감칠맛 있는 고기 요리"
+  },
+  {
+   "type": "p",
+   "text": "• 치즈: 만체고, 숙성 콩테, 파르미지아노 레지아노"
+  },
+  {
+   "type": "p",
+   "text": "• 가을 메뉴: 송이 불고기, 버섯 전골"
+  },
+  {
+   "type": "img",
+   "src": "https://mblogthumb-phinf.pstatic.net/MjAyNjEwMjFfODYg/MDAxNzkyNTUxOTcxNjEx.o-_45PY4ybZKoWT0-_4uCojukAnUD-Y4bTGN1RVVsyMg.SwuzVgPz0zo4dP8dmUTe7sxh1ofWCaYM52PIpIPjNMog.JPEG/07.jpg?type=w800",
+   "alt": "",
+   "file": "img/224448906541_7.jpg"
   },
   {
    "type": "p",
@@ -271,12 +394,38 @@
    "type": "hr"
   },
   {
-   "type": "h2",
-   "text": "꼬또 데 이마스 그란 레세르바, 이런 분께 추천합니다"
+   "type": "p",
+   "text": "**꼬또 데 이마스 그란 레세르바, 이런 분께 추천합니다**"
   },
   {
    "type": "p",
-   "text": "• 요즘 레드와인이 다 달큰하게 느껴져서 아쉬웠던 분\n• 타닌감 있는 묵직한 레드를 좋아하는 분\n• 보르도나 바롤로처럼 구조감 있는 와인을 즐기는 분\n• 스페인 템프라니요, 리오하 와인을 제대로 경험해 보고 싶은 분\n• 고기 모임·연말 모임에 든든하게 가져갈 레드를 찾는 분\n• 숙성된 와인 특유의 향을 좋아하는 분"
+   "text": "• 요즘 레드와인이 다 달큰하게 느껴져서 아쉬웠던 분"
+  },
+  {
+   "type": "p",
+   "text": "• 타닌감 있는 묵직한 레드를 좋아하는 분"
+  },
+  {
+   "type": "p",
+   "text": "• 보르도나 바롤로처럼 구조감 있는 와인을 즐기는 분"
+  },
+  {
+   "type": "p",
+   "text": "• 스페인 템프라니요, 리오하 와인을 제대로 경험해 보고 싶은 분"
+  },
+  {
+   "type": "p",
+   "text": "• 고기 모임·연말 모임에 든든하게 가져갈 레드를 찾는 분"
+  },
+  {
+   "type": "p",
+   "text": "• 숙성된 와인 특유의 향을 좋아하는 분"
+  },
+  {
+   "type": "img",
+   "src": "https://mblogthumb-phinf.pstatic.net/MjAyNjEwMjFfMjAx/MDAxNzkyNTUxOTc5MTg2.m3aK7wDM7DQq9Vfd2g90K5ASrfk2HCvRAYjmf0YRK4kg.y7yvIjBW7aojDqj1KipCVFpw-dyfnOSm1iqk7GFnkqkg.JPEG/08.jpg?type=w800",
+   "alt": "",
+   "file": "img/224448906541_8.jpg"
   },
   {
    "type": "p",
@@ -286,27 +435,39 @@
    "type": "hr"
   },
   {
-   "type": "h2",
-   "text": "자주 묻는 질문"
+   "type": "p",
+   "text": "**자주 묻는 질문**"
   },
   {
    "type": "p",
-   "text": "“그란 레세르바는 바로 마셔도 되나요?”\n네, 이미 5년 넘게 숙성을 마치고 출시된 와인이라 지금 바로 즐기기 좋습니다. 다만 1시간 정도 공기와 만나게 해 주면 향이 훨씬 잘 열립니다."
+   "text": "Q. “그란 레세르바는 바로 마셔도 되나요?”"
   },
   {
    "type": "p",
-   "text": "“레세르바와 그란 레세르바는 무엇이 다른가요?”\n리오하 기준으로 레세르바는 최소 3년, 그란 레세르바는 최소 5년 숙성해야 합니다. 그만큼 숙성 향과 복합미가 더 깊습니다."
+   "text": "A. 네, 이미 5년 넘게 숙성을 마치고 출시된 와인이라 지금 바로 즐기기 좋습니다. 다만 1시간 정도 공기와 만나게 해 주면 향이 훨씬 잘 열립니다."
   },
   {
    "type": "p",
-   "text": "“몇 도로 마시면 좋을까요?”\n16~18도 정도가 좋습니다. 너무 따뜻하면 알코올이 도드라지니 실온보다 살짝 서늘하게 드셔 보세요."
+   "text": "Q. “레세르바와 그란 레세르바는 무엇이 다른가요?”"
+  },
+  {
+   "type": "p",
+   "text": "A. 리오하 기준으로 레세르바는 최소 3년, 그란 레세르바는 최소 5년 숙성해야 합니다. 그만큼 숙성 향과 복합미가 더 깊습니다."
+  },
+  {
+   "type": "p",
+   "text": "Q. “몇 도로 마시면 좋을까요?”"
+  },
+  {
+   "type": "p",
+   "text": "A. 16~18도 정도가 좋습니다. 너무 따뜻하면 알코올이 도드라지니 실온보다 살짝 서늘하게 드셔 보세요."
   },
   {
    "type": "hr"
   },
   {
-   "type": "h2",
-   "text": "묵직한 레드가 반가운 이유"
+   "type": "p",
+   "text": "**묵직한 레드가 반가운 이유**"
   },
   {
    "type": "p",
@@ -339,7 +500,88 @@
   {
    "type": "p",
    "text": "오랜만에 레드와인의 뼈대를 제대로 느껴보시길 추천합니다."
+  },
+  {
+   "type": "p",
+   "text": "#꼬또데이마스그란레세르바 #꼬또데이마스 #리오하와인 #그란레세르바 #스페인레드와인 #템프라니요 #묵직한레드와인 #스테이크와인 #성수동와인샵 #땡큐와인"
+  },
+  {
+   "type": "h2",
+   "text": "**🥂 와인으로 연결되는 사람과 경험**"
+  },
+  {
+   "type": "p",
+   "text": "**좋은 와인에는 늘 좋은 이야기가 있습니다.**"
+  },
+  {
+   "type": "p",
+   "text": "**땡큐와인은 와인을 통해 사람을 만나고,**"
+  },
+  {
+   "type": "p",
+   "text": "**경험을 나누는 커뮤니티를 만들어 갑니다.**"
+  },
+  {
+   "type": "p",
+   "text": "**📩 상담 · 문의 010-8078-7493**"
+  },
+  {
+   "type": "p",
+   "text": "**www.instagram.com/thankyouwine**"
+  },
+  {
+   "type": "link",
+   "href": "http://www.instagram.com/thankyouwine"
+  },
+  {
+   "type": "p",
+   "text": "**🍷땡큐와인 멤버십 가입🍷**"
+  },
+  {
+   "type": "p",
+   "text": "https://litt.ly/thankyouwine"
+  },
+  {
+   "type": "link",
+   "href": "https://litt.ly/thankyouwine"
+  },
+  {
+   "type": "hr"
+  },
+  {
+   "type": "h2",
+   "text": "**방문 픽업 및 배송 방법 안내**"
+  },
+  {
+   "type": "p",
+   "text": "✔ 업장 방문하여 결제 또는 픽업 필수"
+  },
+  {
+   "type": "p",
+   "text": "주류 배송은 국세청 고시(제2005-5호)에 따라 **업장 방문, 성인 인증된 고객에게만** 가능합니다."
+  },
+  {
+   "type": "p",
+   "text": "비대면 택배 발송은 불가능합니다. 문의 전 방문 가능한 거리인지 꼭 확인해주세요."
+  },
+  {
+   "type": "p",
+   "text": "땡큐와인 픽업장소: 서울시 성동구 성덕정길 109 2층 와인샵 땡큐와인 (구 한낮의밤)"
+  },
+  {
+   "type": "h2",
+   "text": "**방문 픽업 및 택배·퀵 배송 안내 (자주 묻는 질문 FAQ)**"
+  },
+  {
+   "type": "p",
+   "text": "https://blog.naver.com/middaynight109/224360770300"
+  },
+  {
+   "type": "link",
+   "href": "https://blog.naver.com/middaynight109/224360770300"
   }
  ],
- "standin": true
+ "listTitle": "타닌감 묵직한 스페인 레드와인｜꼬또 데 이마스 그란 레세르바 2020 입고",
+ "addDate": "2026. 10. 21.",
+ "categoryNo": "7"
 }

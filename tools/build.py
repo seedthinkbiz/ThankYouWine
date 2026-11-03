@@ -617,6 +617,56 @@ SERVICE={'gathering':('모임 와인 견적 받기','gathering/','모임에 이 
 PRICE_RE=_re.compile(r'\d{1,3}(?:,\d{3})+\s*원|\d+\s*만\s*\d*\s*천?\s*원(?!대)')
 WARNINGS=[]
 
+# ── 글 속 금액 정리 (사이트 원칙: 가격은 가격대만, 택배 안내 없음) ──
+# PRICE_MODE  'band' = 1만원 이상 금액을 '8만원대'처럼 가격대로 바꾸고 택배 문장은 삭제 (기본)
+#             'wine' = 1만5천원 이상(와인값으로 보이는 금액)만 가격대로, 택배비·콜키지는 그대로
+#             'keep' = 네이버 글 그대로
+PRICE_MODE='band'
+SANITIZE_STATS={'amounts':0,'parcel':0}
+_AMT=r'(\d{1,3}(?:,\d{3})+|\d{4,})'
+_MAN=r'(\d+)\s*만\s*(\d)?\s*천?'
+_KEEP=r'(?!\s*(?:대|이상|이하|미만|이내|초과|안팎|내외|정도|선에|선으로|부터|까지|쯤|가량|넘))'   # 이미 범위 표현이면 그대로
+def _won(s): return int(s.replace(',',''))
+def _band(won): return f'{won//10000}만원대'
+def sanitize_text(t,mode=None):
+    mode=mode or PRICE_MODE
+    if mode=='keep' or not t: return t
+    thr=10000 if mode=='band' else 15000
+    out=[]
+    for ln in t.split('\n'):
+        if mode=='band' and '택배' in ln:
+            sents=_re.split(r'(?<=[.!?。])\s+',ln)
+            kept=[x for x in sents if '택배' not in x]
+            SANITIZE_STATS['parcel']+=len(sents)-len(kept)
+            ln=' '.join(kept).strip()
+            if not ln: continue
+        def rng(m):
+            a,b=_won(m.group(1)),_won(m.group(2))
+            if a<thr or b<thr: return m.group(0)
+            SANITIZE_STATS['amounts']+=1; return f'{a//10000}만~{b//10000}만원대'
+        ln=_re.sub(_AMT+r'\s*[~∼〜\-–]\s*'+_AMT+r'\s*원'+_KEEP,rng,ln)
+        def one(m):
+            w=_won(m.group(1))
+            if w<thr: return m.group(0)
+            SANITIZE_STATS['amounts']+=1; return _band(w)
+        ln=_re.sub(_AMT+r'\s*원'+_KEEP,one,ln)
+        def man(m):
+            w=int(m.group(1))*10000+(int(m.group(2))*1000 if m.group(2) else 0)
+            if w<thr: return m.group(0)
+            SANITIZE_STATS['amounts']+=1; return _band(w)
+        ln=_re.sub(_MAN+r'\s*원'+_KEEP,man,ln)
+        out.append(ln)
+    return '\n'.join(out)
+def sanitize_blocks(blocks):
+    res=[]
+    for b in blocks:
+        b=dict(b)
+        for k in ('text','caption','alt'):
+            if isinstance(b.get(k),str): b[k]=sanitize_text(b[k])
+        if b.get('type') in ('p','quote','h2') and not (b.get('text') or '').strip(): continue   # 택배 문장만 있던 문단은 통째로 제거
+        res.append(b)
+    return res
+
 def esc(s): return _html.escape(str(s if s is not None else ''),quote=True)
 def short(t,n=150):
     t=(t or '').strip()
@@ -677,6 +727,60 @@ def faq_from(texts):
     if q and a: pairs.append((q,' '.join(a)))
     return pairs
 
+# ── 네이버 글 정리: 공통 꼬리말(연락처·배송 안내) 제거, 해시태그 → 태그, 관련 글 링크 정리 ──
+FOOTER_MARKS=('🥂 와인으로 연결되는 사람과 경험','와인으로 연결되는 사람과 경험','방문 픽업 및 배송 방법 안내','방문 픽업 및 택배·퀵 배송 안내','✔ 택배& 퀵 배송 안내','✔ 업장 방문하여 결제 또는 픽업 필수','📩 상담 · 문의','🍷땡큐와인 멤버십 가입','땡큐와인 멤버십 가입')
+BAN_TAG=('택배','배송','답례품','웨딩','결혼','배달')          # 사이트 원칙: 택배·배달 안내 없음, 웨딩 답례품 언급 없음
+EXCLUDE_TITLE=_re.compile(r'택배|배송 안내|배송 방법')
+HASHTAG_LINE=_re.compile(r'^(#\S+\s*)+$')
+URL_ONLY=_re.compile(r'^https?://\S+$')
+NAVER_CATS={'멤버십 와인 커뮤니티 땡큐와인'}
+def clean_blocks(blocks):
+    cut=len(blocks)
+    for i,b in enumerate(blocks):
+        t=strip_md(b.get('text') or '').strip()
+        if b.get('type') in ('h2','p') and t and any(t.startswith(m) or m in t[:40] for m in FOOTER_MARKS): cut=i; break
+    blocks=list(blocks[:cut])
+    while blocks and blocks[-1].get('type')=='hr': blocks.pop()
+    out=[]; tags=[]
+    for i,b in enumerate(blocks):
+        if b.get('type')=='p':
+            sline=strip_md(b.get('text') or '').strip()
+            if HASHTAG_LINE.match(sline):
+                tags+=[w.lstrip('#') for w in sline.split()]; continue
+            if URL_ONLY.match(sline):
+                nxt=blocks[i+1] if i+1<len(blocks) else None
+                if not (nxt and nxt.get('type')=='link' and nxt.get('href')): out.append({'type':'link','href':sline})
+                continue
+            if sline.startswith('▲ 관련 글') and any(x.get('type')=='link' or URL_ONLY.match(strip_md(x.get('text') or '').strip()) for x in blocks[i+1:i+3]): continue
+            raw=(b.get('text') or '').strip()
+            if raw.startswith('**') and raw.endswith('**') and raw.count('**')==2 and 2<len(sline)<=60 and not sline.endswith('?') and '\n' not in raw:
+                b=dict(b); b['type']='h2'; b['text']=sline
+        out.append(b)
+    tags=[x for x in dict.fromkeys(tags) if x and not any(bw in x for bw in BAN_TAG)]
+    return out,tags
+def _has_batchim(ch):
+    o=ord(ch)
+    if 0xAC00<=o<=0xD7A3: return (o-0xAC00)%28!=0
+    if ch.isdigit(): return ch in '013678'
+    return False
+def eun_neun(w): return '은' if w and _has_batchim(w[-1]) else '는'
+def ieyo(w): return '이에요' if w and _has_batchim(w[-1]) else '예요'
+def point_summary(main,blocks):
+    for i,b in enumerate(blocks[:-1]):
+        t=strip_md(b.get('text') or '').strip()
+        if t.startswith('무엇보다 중요한 포인트는 바로') and blocks[i+1].get('type') in ('p','h2'):
+            pt=strip_md(blocks[i+1].get('text') or '').strip().rstrip('.')
+            pt=_re.sub(r'(이)?라는\s*(것|점)$','',pt).strip()
+            if not pt: return ''
+            if _re.search(r'(다|요)$',pt): return f'{main}{eun_neun(main)} {pt}.'
+            return f'{main}{eun_neun(main)} {pt}{ieyo(pt)}.'
+    return ''
+def guess_category(main,title):
+    t=title
+    if any(k in t for k in ('선물','답례품','기업','행사','모임','송년회','명절','연말','납품','특판','단체','파티','시음회')): return '모임·선물'
+    if '｜' not in title and '|' not in title and any(k in main for k in ('이야기','방법','차이','뜻','기초','용어','고르','읽는','보관','온도','디캔팅','페어링','추천','이유','역사')): return '와인 이야기'
+    return '와인 소개'
+
 def _meta_all():
     fn=os.path.join(HERE,'posts_meta.json')
     if not os.path.exists(fn): return {}
@@ -695,25 +799,36 @@ def load_posts():
         fn=os.path.join(POSTS_RAW,it['logNo']+'.json')
         if not os.path.exists(fn): continue
         d=json.load(open(fn,encoding='utf-8'))
-        title=(d.get('title') or it.get('title') or '').strip()
+        title=sanitize_text((d.get('title') or it.get('title') or '').strip())
         main,sub=split_title(title)
         m=_find_meta(meta,d['logNo'],title)
-        blocks=d.get('blocks') or []
+        raw,htags=clean_blocks(d.get('blocks') or [])
+        blocks=sanitize_blocks(raw)
         first=next((strip_md(b['text']).split('\n')[0] for b in blocks if b['type']=='p' and len(strip_md(b['text']))>20),'')
+        desc=sanitize_text((d.get('desc') or '').strip())
+        if len(desc)<30 or desc.endswith(('...','…')) or any(bw in desc for bw in BAN_TAG): desc=''
+        pointsum=point_summary(main,blocks)
         slug=m.get('slug') or 'n'+d['logNo']
         if slug in seen_slug: slug=slug+'-'+d['logNo']
         seen_slug.add(slug)
         words=sum(len(strip_md(b.get('text','')).split()) for b in blocks)
+        if EXCLUDE_TITLE.search(title) or words<40:
+            WARNINGS.append(f"제외(안내 글이거나 너무 짧음): {title[:40]} · {words}단어"); continue
+        ncat=d.get('category') or it.get('category') or ''
+        if ncat in NAVER_CATS: ncat=''
+        ntags=[t for t in (d.get('tags') or []) if t and not any(bw in t for bw in BAN_TAG)]
         p=dict(logNo=d['logNo'],naver=d.get('url') or f"{SITE['blog']}/{d['logNo']}",title=main+(' | '+sub if sub else ''),main=main,sub=sub,
                date=parse_date(d.get('date') or it.get('date') or d.get('addDate')) or TODAY.isoformat(),
-               category=m.get('category') or d.get('category') or it.get('category') or '와인 이야기',
-               tags=[t for t in (d.get('tags') or []) if t][:12],blocks=blocks,slug=slug,path='posts/'+slug+'/',
-               summary=m.get('summary') or first,service=m.get('service') or 'shop',standin=bool(d.get('standin')),words=words)
+               category=m.get('category') or ncat or guess_category(main,title),
+               tags=(ntags or htags)[:12],blocks=blocks,slug=slug,path='posts/'+slug+'/',
+               summary=m.get('summary') or pointsum or desc or first,service=m.get('service') or 'shop',standin=bool(d.get('standin')),words=words)
         for b in blocks:
             if b['type'] in ('p','quote'):
                 for hit in PRICE_RE.findall(strip_md(b['text'])): WARNINGS.append(f"가격 표현 확인: {p['slug']} → '{hit}'")
         posts.append(p)
     posts.sort(key=lambda x:(x['date'],x['logNo']),reverse=True)
+    if PRICE_MODE!='keep' and (SANITIZE_STATS['amounts'] or SANITIZE_STATS['parcel']):
+        print(f"금액 정리({PRICE_MODE}): 금액 {SANITIZE_STATS['amounts']}곳 → 가격대, 택배 문장 {SANITIZE_STATS['parcel']}개 삭제")
     return posts
 
 def prepare_images(posts):
@@ -724,10 +839,16 @@ def prepare_images(posts):
         for b in p['blocks']:
             if b['type']!='img' or not b.get('file'): continue
             src=os.path.join(POSTS_RAW,*b['file'].split('/'))
-            if not os.path.exists(src): continue
             stem,ext=os.path.splitext(os.path.basename(src)); ext=ext.lower()
             out_ext='.gif' if ext=='.gif' else '.jpg'
             dst=os.path.join(dst_dir,stem+out_ext); w=h=None
+            if not os.path.exists(src):
+                if not os.path.exists(dst): continue          # 원본도 변환본도 없으면 사진 없이
+                try:
+                    if Image and out_ext=='.jpg':
+                        with Image.open(dst) as im: w,h=im.size
+                except Exception: pass
+                b['web']='assets/posts/'+stem+out_ext; b['w']=w; b['h']=h; continue
             try:
                 if not os.path.exists(dst) or os.path.getmtime(dst)<os.path.getmtime(src):
                     if Image and out_ext=='.jpg':

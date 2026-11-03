@@ -1,128 +1,1726 @@
 {
  "blogId": "middaynight109",
- "count": 15,
+ "count": 191,
  "fails": [],
  "posts": [
   {
-   "logNo": "224390795553",
-   "title": "그랜드 바로사 카베르네 소비뇽 2020｜1890년 샤토 타눈다가 만든 바로사 카베르네",
-   "date": "2026-10-21",
-   "category": "와인 소개",
-   "blocks": 80,
-   "images": 0
+   "logNo": "224461922801",
+   "title": "오퍼스원 오버추어 2021｜오퍼스원의 ‘서곡’, 처음으로 빈티지를 단 오버추어",
+   "date": "2026. 11. 2.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 143,
+   "images": 6
   },
   {
-   "logNo": "224341675864",
-   "title": "세븐 데들리 레드 추천｜핼러윈·바비큐 와인, ‘일곱 가지 대죄’에서 온 이름의 비밀",
-   "date": "2026-10-21",
-   "category": "와인 소개",
-   "blocks": 73,
-   "images": 0
+   "logNo": "224460009307",
+   "title": "샤또 페이라솔 레드 2020｜템플 기사단 영지의 오래된 포도나무로 만든 프로방스 레드",
+   "date": "2026. 10. 31.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 99,
+   "images": 7
   },
   {
-   "logNo": "224361003057",
-   "title": "조나단 세갱 부르고뉴 피노누아 VV 2024｜숨은 산지 꾸슈아에서 온 오래된 나무의 피노 누아",
-   "date": "2026-10-21",
-   "category": "와인 소개",
-   "blocks": 80,
-   "images": 0
+   "logNo": "224460008014",
+   "title": "샤또 보빌라쥬 메독 크뤼 부르주아 2022｜보르도 레드 와인 추천, 메독이 인정한 ‘크뤼 부르주아’란?",
+   "date": "2026. 10. 31.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 138,
+   "images": 9
   },
   {
-   "logNo": "224375310246",
-   "title": "일 코르노 미나에모로 2017｜산지오베제와 콜로리노가 반반, 사랑에 빠지는 토스카나 레드",
-   "date": "2026-10-21",
-   "category": "와인 소개",
-   "blocks": 76,
-   "images": 0
+   "logNo": "224460005174",
+   "title": "첸토리 모스카토 디 파비아 2025｜달콤한 화이트 와인 추천, ‘백 개의 탑’ 도시에서 온 모스카토",
+   "date": "2026. 10. 31.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 151,
+   "images": 8
   },
   {
-   "logNo": "224398686918",
-   "title": "바론 도베른 핀 플레르｜부지 그랑 크뤼 블랑 드 누아, 어머니의 데이지가 담긴 샴페인",
-   "date": "2026-10-21",
-   "category": "와인 소개",
-   "blocks": 85,
-   "images": 0
+   "logNo": "224460003585",
+   "title": "와이너리 여행 가 볼 만한 곳｜해외 와인 관광 명소부터 영동·대부도 국내 와이너리 체험까지",
+   "date": "2026. 10. 31.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 68,
+   "images": 4
+  },
+  {
+   "logNo": "224457041061",
+   "title": "와인으로 배우는 스페인어｜크리안사·레세르바·그란 레세르바, 스페인 와인 라벨 읽는 법",
+   "date": "2026. 10. 28.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 117,
+   "images": 8
+  },
+  {
+   "logNo": "224456701088",
+   "title": "도멘 그노 말벡 추천｜아르헨티나 말고 프랑스 말벡, 왜 이름이 '르 꼬뜨'일까?",
+   "date": "2026. 10. 28.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 157,
+   "images": 7
+  },
+  {
+   "logNo": "224456564805",
+   "title": "라 클로저리 드 말에스까스 2019｜마고와 생쥘리앙 사이, 오메독 샤또의 부담 없는 보르도 레드",
+   "date": "2026. 10. 28.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 108,
+   "images": 7
+  },
+  {
+   "logNo": "224456542517",
+   "title": "장 페리에 사부아 샤르도네 2024｜알프스 산자락에서 온 맑고 달지 않은 화이트",
+   "date": "2026. 10. 28.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 103,
+   "images": 6
+  },
+  {
+   "logNo": "224454229745",
+   "title": "요즘 레드와인이 가벼워진 이유｜조기 수확, 칠링 레드, 그리고 묵직한 레드가 반가운 요즘",
+   "date": "2026. 10. 26.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 110,
+   "images": 6
+  },
+  {
+   "logNo": "224453880703",
+   "title": "와인으로 배우는 이탈리아어｜끼안띠·바롤로·아마로네, 라벨이 술술 읽히는 와인 이탈리아어",
+   "date": "2026. 10. 26.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 115,
+   "images": 8
+  },
+  {
+   "logNo": "224453586665",
+   "title": "토카이 와인｜'왕들의 와인' 헝가리 귀부 와인, 푸토뇨스 뜻까지 총정리",
+   "date": "2026. 10. 26.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 139,
+   "images": 9
+  },
+  {
+   "logNo": "224453393740",
+   "title": "클라우디베이 소비뇽 블랑 2025｜뉴질랜드 소비뇽 블랑의 기준, 다들 왜 좋아할까?",
+   "date": "2026. 10. 25.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 126,
+   "images": 7
+  },
+  {
+   "logNo": "224450325523",
+   "title": "토마스 슈미트 아우스레제 2022｜은은한 단맛과 산미가 만드는 모젤 리슬링의 매력",
+   "date": "2026. 10. 22.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 112,
+   "images": 5
+  },
+  {
+   "logNo": "224450309131",
+   "title": "도멘 그노 쇼비뇽 블랑 추천｜굴 제철에 꺼내는 루아르 쇼비뇽 블랑, 뉴질랜드와 뭐가 다를까?",
+   "date": "2026. 10. 22.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 134,
+   "images": 6
   },
   {
    "logNo": "224449110654",
    "title": "케이머스 까베르네 소비뇽｜나파밸리 와그너 가문의 레드 와인, 다들 왜 좋아할까?",
-   "date": "2026-10-21",
-   "category": "와인 이야기",
-   "blocks": 89,
-   "images": 0
-  },
-  {
-   "logNo": "224333195937",
-   "title": "오퍼스원 2022｜보르도와 나파 밸리가 함께 만든 작품, 왜 특별할까?",
-   "date": "2026-10-21",
-   "category": "와인 이야기",
-   "blocks": 61,
-   "images": 0
-  },
-  {
-   "logNo": "224432478401",
-   "title": "2008년생 생빈 샴페인｜프레스티지 찰스 가데 밀레짐 2008",
-   "date": "2026-10-12",
-   "category": "와인 소개",
-   "blocks": 64,
-   "images": 0
-  },
-  {
-   "logNo": "224433285601",
-   "title": "스위트 와인 종류 총정리｜아이스와인, 귀부 와인, 포트까지 달콤한 와인 고르는 법",
-   "date": "2026-10-14",
-   "category": "와인 이야기",
-   "blocks": 72,
-   "images": 0
-  },
-  {
-   "logNo": "224433281563",
-   "title": "와인으로 배우는 프랑스어｜라벨이 술술 읽히는 와인 프랑스어 단어 총정리",
-   "date": "2026-10-14",
-   "category": "와인 이야기",
-   "blocks": 46,
-   "images": 0
-  },
-  {
-   "logNo": "224433298538",
-   "title": "킴 크로포드 소비뇽 블랑｜와이너리 없이 시작해 미국 판매 1위가 된 뉴질랜드 화이트",
-   "date": "2026-10-12",
-   "category": "와인 소개",
-   "blocks": 56,
-   "images": 0
-  },
-  {
-   "logNo": "224441248981",
-   "title": "텍스트북 까베르네 소비뇽｜소리 지르지 않는 나파밸리 와인은 어떻게 만들어질까",
-   "date": "2026-10-21",
-   "category": "와인 이야기",
-   "blocks": 67,
-   "images": 0
-  },
-  {
-   "logNo": "224448906541",
-   "title": "타닌감 묵직한 스페인 레드와인｜꼬또 데 이마스 그란 레세르바 2020 입고",
-   "date": "2026-10-23",
-   "category": "와인 소개",
-   "blocks": 83,
-   "images": 0
+   "date": "2026. 10. 21.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 138,
+   "images": 7
   },
   {
    "logNo": "224449109752",
    "title": "데일리 부르고뉴 화이트 추천｜피에르 아르망 마콩 빌라쥬 2024, 오크 없이 맑은 샤르도네",
-   "date": "2026-10-21",
-   "category": "와인 소개",
-   "blocks": 1,
-   "images": 0
+   "date": "2026. 10. 21.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 120,
+   "images": 8
+  },
+  {
+   "logNo": "224448906541",
+   "title": "타닌감 묵직한 스페인 레드와인｜꼬또 데 이마스 그란 레세르바 2020 입고",
+   "date": "2026. 10. 21.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 142,
+   "images": 8
   },
   {
    "logNo": "224448407716",
    "title": "연말 모임 와인 준비｜호텔 납품 와인부터 가성비 모임 와인, 와인잔까지 한 번에",
-   "date": "2026-10-20",
-   "category": "모임·선물",
-   "blocks": 50,
+   "date": "2026. 10. 21.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 96,
+   "images": 4
+  },
+  {
+   "logNo": "224441248981",
+   "title": "텍스트북 까베르네 소비뇽｜소리 지르지 않는 나파밸리 와인은 어떻게 만들어질까",
+   "date": "2026. 10. 14.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 110,
+   "images": 5
+  },
+  {
+   "logNo": "224432488982",
+   "title": "와인 빈티지 보는 법｜선물용 와인, 좋은 해 고르는 그레이트 빈티지 총정리",
+   "date": "2026. 10. 14.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 111,
+   "images": 3
+  },
+  {
+   "logNo": "224433298538",
+   "title": "킴 크로포드 소비뇽 블랑｜와이너리 없이 시작해 미국 판매 1위가 된 뉴질랜드 화이트",
+   "date": "2026. 10. 10.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 104,
+   "images": 7
+  },
+  {
+   "logNo": "224433285601",
+   "title": "스위트 와인 종류 총정리｜아이스와인, 귀부 와인, 포트까지 달콤한 와인 고르는 법",
+   "date": "2026. 10. 9.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 131,
+   "images": 8
+  },
+  {
+   "logNo": "224433281563",
+   "title": "와인으로 배우는 프랑스어｜라벨이 술술 읽히는 와인 프랑스어 단어 총정리",
+   "date": "2026. 10. 8.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 105,
+   "images": 7
+  },
+  {
+   "logNo": "224432478401",
+   "title": "2008년생 생빈 샴페인｜프레스티지 찰스 가데 밀레짐 2008",
+   "date": "2026. 10. 7.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 121,
+   "images": 6
+  },
+  {
+   "logNo": "224432491515",
+   "title": "모임 와인 고르는 법｜몇 병? 어떤 순서로? 송년회·홈파티 와인 실패 없이 고르기",
+   "date": "2026. 10. 6.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 115,
+   "images": 6
+  },
+  {
+   "logNo": "224432057901",
+   "title": "보르도 데일리 레드와인 추천｜도멘 오뜨 브랑드 메를로 2022",
+   "date": "2026. 10. 5.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 99,
+   "images": 6
+  },
+  {
+   "logNo": "224432011929",
+   "title": "가성비 데일리 화이트와인 추천｜바롱 드 보삭 콜롬바드 소비뇽 2023",
+   "date": "2026. 10. 5.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 85,
+   "images": 6
+  },
+  {
+   "logNo": "224421769274",
+   "title": "추석 음식과 와인 페어링｜전·갈비찜·잡채에 어울리는 와인 추천",
+   "date": "2026. 9. 24.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 126,
+   "images": 8
+  },
+  {
+   "logNo": "224413680137",
+   "title": "추석 와인 선물세트 택배 주문이 마감되었습니다 🍷",
+   "date": "2026. 9. 16.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 41,
+   "images": 9
+  },
+  {
+   "logNo": "224405140553",
+   "title": "파일라 샤도네이 & 피노 누아 2병 세트｜소노마 코스트의 우아함을 담은 미국 와인 추천",
+   "date": "2026. 9. 8.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 145,
+   "images": 10
+  },
+  {
+   "logNo": "224403254134",
+   "title": "와인 보관법｜오픈 후 보관 기간과 에어링 제대로 알아보기",
+   "date": "2026. 9. 7.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 174,
+   "images": 7
+  },
+  {
+   "logNo": "224398686918",
+   "title": "바론 도베른 핀 플레르 그랑 크뤼 블랑 드 누아｜부지 그랑 크뤼의 깊이를 담은 100% 피노 누아 샴페인",
+   "date": "2026. 9. 2.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 151,
+   "images": 7
+  },
+  {
+   "logNo": "224390870120",
+   "title": "호주 가성비 레드와인 추천｜말리 에스테이트 까베르네 소비뇽 & 쉬라즈 비교",
+   "date": "2026. 8. 26.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 118,
+   "images": 8
+  },
+  {
+   "logNo": "224390844430",
+   "title": "추석 와인 선물세트 추천｜한식과 잘 어울리는 2~3만원대 와인 9종 시음회 후기",
+   "date": "2026. 8. 26.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 115,
+   "images": 15
+  },
+  {
+   "logNo": "224390812828",
+   "title": "스파클링 와인 시음회 후기｜까바·스푸만테·크레망부터 변리사님과 함께한 Q&A까지",
+   "date": "2026. 8. 26.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 135,
+   "images": 13
+  },
+  {
+   "logNo": "224390795553",
+   "title": "다른 가능성을 보여주는 와인 | 샤토 타눈다 그랜드 바로사 까베르네 소비뇽 2020",
+   "date": "2026. 8. 26.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 76,
+   "images": 4
+  },
+  {
+   "logNo": "224387865002",
+   "title": "바서만 요르단 다이데스하임 리슬링 파인헤르프｜은은한 단맛과 산미가 만드는 독일 리슬링의 매력",
+   "date": "2026. 8. 23.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 71,
+   "images": 3
+  },
+  {
+   "logNo": "224387843905",
+   "title": "마담 드 레인 소테른 와인 추천｜샤토 드 레인 비뇨의 우아한 세컨드 와인",
+   "date": "2026. 8. 23.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 137,
+   "images": 7
+  },
+  {
+   "logNo": "224387796729",
+   "title": "대통령의 선물로 선택된 칠레 와인｜타라파카 그란 레세르바 까베르네 소비뇽",
+   "date": "2026. 8. 23.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 99,
+   "images": 5
+  },
+  {
+   "logNo": "224383785979",
+   "title": "땡큐와인 × 치유플라워 | 와인에 꽃을 더하는 가장 특별한 방법 🌷🍾",
+   "date": "2026. 8. 19.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 57,
+   "images": 9
+  },
+  {
+   "logNo": "224375310246",
+   "title": "테누타 일 코르노 미나에모로｜토스카나의 특별한 러브 스토리를 담은 레드와인",
+   "date": "2026. 8. 11.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 123,
+   "images": 6
+  },
+  {
+   "logNo": "224375227616",
+   "title": "화덕피자 와인 추천｜피자와 잘 어울리는 레드와인, 엘 꼬또 이마스 그란 레세르바",
+   "date": "2026. 8. 11.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 92,
+   "images": 6
+  },
+  {
+   "logNo": "224375198392",
+   "title": "프렌치 블룸 르 블랑｜샴페인 대신 즐기는 프리미엄 논알코올 스파클링",
+   "date": "2026. 8. 11.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 165,
+   "images": 7
+  },
+  {
+   "logNo": "224375011552",
+   "title": "프렌치 블룸 르 로제｜샴페인 대신 즐기는 우아한 논알코올 와인",
+   "date": "2026. 8. 11.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 151,
+   "images": 4
+  },
+  {
+   "logNo": "224367241096",
+   "title": "2026 추석 와인 선물세트 추천｜기업·거래처·임직원 명절 선물 맞춤 구성",
+   "date": "2026. 8. 4.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 90,
+   "images": 7
+  },
+  {
+   "logNo": "224367213459",
+   "title": "파이퍼 하이직 & 마리 드메 샴페인 특별 세트",
+   "date": "2026. 8. 3.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 137,
+   "images": 3
+  },
+  {
+   "logNo": "224366558278",
+   "title": "부르고뉴 핵심 생산자 리스트 | 한정 수량 선착순 마감",
+   "date": "2026. 8. 3.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 137,
+   "images": 1
+  },
+  {
+   "logNo": "224366556817",
+   "title": "장테팡시오 와인 추천 BEST｜예산별로 고르는 부르고뉴",
+   "date": "2026. 8. 3.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 118,
+   "images": 7
+  },
+  {
+   "logNo": "224366506408",
+   "title": "벨레 그로스 클락 앤 텔레폰 피노 누아",
+   "date": "2026. 8. 3.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 75,
+   "images": 4
+  },
+  {
+   "logNo": "224363990732",
+   "title": "19세기 샴페인의 황금기를 담은 부티크 샴페인 | 마리 드메 뀌베 19세기 시에클",
+   "date": "2026. 7. 31.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 79,
+   "images": 8
+  },
+  {
+   "logNo": "224363978133",
+   "title": "마요르카의 와인 역사를 바꾼 와이너리, 아니마 네그라",
+   "date": "2026. 7. 31.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 74,
+   "images": 7
+  },
+  {
+   "logNo": "224361003057",
+   "title": "오래된 포도나무가 만드는 특별한 차이, 도멘 조나단 세갱 꼬뜨 드 쇼슈아 피노누아 VV 2024",
+   "date": "2026. 7. 28.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 69,
+   "images": 2
+  },
+  {
+   "logNo": "224360770300",
+   "title": "방문 픽업 및 택배·퀵 배송 안내 (자주 묻는 질문 FAQ)",
+   "date": "2026. 7. 28.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 43,
    "images": 0
+  },
+  {
+   "logNo": "224360763468",
+   "title": "스파클링 와인 시음회 & 16년 차 변리사와의 Q&A",
+   "date": "2026. 7. 28.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 46,
+   "images": 2
+  },
+  {
+   "logNo": "224357496550",
+   "title": "몰도바를 마시며 세계 와인을 배우다🍷",
+   "date": "2026. 7. 25.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 98,
+   "images": 38
+  },
+  {
+   "logNo": "224348454314",
+   "title": "데일리부터 특별한 날까지! 꽉 채운 홈바 패키지 추천",
+   "date": "2026. 7. 16.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 50,
+   "images": 7
+  },
+  {
+   "logNo": "224345429481",
+   "title": "땡큐와인 멤버를 위한 와인 모임 대관 오픈 안내",
+   "date": "2026. 7. 13.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 56,
+   "images": 7
+  },
+  {
+   "logNo": "224344214326",
+   "title": "당신 곁에 가장 가까운 와인 전문가 THANK YOU WINE Membership",
+   "date": "2026. 7. 12.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 51,
+   "images": 2
+  },
+  {
+   "logNo": "224344147373",
+   "title": "와인 선물, 가격보다 중요한 3가지",
+   "date": "2026. 7. 12.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 67,
+   "images": 2
+  },
+  {
+   "logNo": "224343180730",
+   "title": "프랑스 남부의 화사한 햇살을 머금은 한 잔, 부 샤르무아 소비뇽블랑-비오니에",
+   "date": "2026. 7. 11.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 47,
+   "images": 3
+  },
+  {
+   "logNo": "224343174711",
+   "title": "이탈리아 품종 탐구 캄피 데안테라 아레 피아노",
+   "date": "2026. 7. 11.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 49,
+   "images": 6
+  },
+  {
+   "logNo": "224341675864",
+   "title": "미국 와인 추천 세븐 데들리 레드 2018",
+   "date": "2026. 7. 9.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 45,
+   "images": 2
+  },
+  {
+   "logNo": "224339431015",
+   "title": "세계 평론가들이 극찬한 명품 샴페인의 정석, 앙리 지로 에스쁘리 나뚜르 브뤼",
+   "date": "2026. 7. 7.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 50,
+   "images": 5
+  },
+  {
+   "logNo": "224338616157",
+   "title": "테이블 위의 압도적인 존재감, 매그넘 와인을 선택해야 하는 특별한 이유",
+   "date": "2026. 7. 7.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 43,
+   "images": 7
+  },
+  {
+   "logNo": "224338607257",
+   "title": "이탈리아 토스카나의 붉은 열정, 발레피치올라 끼안티 클라시코 매그넘",
+   "date": "2026. 7. 7.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 65,
+   "images": 5
+  },
+  {
+   "logNo": "224335395716",
+   "title": "몰도바 와인 시음회 상세 리스트",
+   "date": "2026. 7. 3.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 158,
+   "images": 8
+  },
+  {
+   "logNo": "224335350804",
+   "title": "박찬준 대표님과 함께하는 몰도바 와인 멤버십 Only 시음회",
+   "date": "2026. 7. 3.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 81,
+   "images": 9
+  },
+  {
+   "logNo": "224335300109",
+   "title": "데일리와인 블라인드 테이스팅 멤버십 Only 시음회 후기",
+   "date": "2026. 7. 3.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 67,
+   "images": 21
+  },
+  {
+   "logNo": "224333195937",
+   "title": "오퍼스 원(Opus One), 왜 모두가 한 번쯤 마셔보고 싶어 할까?",
+   "date": "2026. 7. 1.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 64,
+   "images": 3
+  },
+  {
+   "logNo": "224325128162",
+   "title": "생테밀리옹 그랑 크뤼, 왜 와인을 좋아하는 사람들이 찾을까?",
+   "date": "2026. 6. 24.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 54,
+   "images": 2
+  },
+  {
+   "logNo": "224323124904",
+   "title": "와인 역사를 바꾼 한 잔의 기적: 샤또 몬탈레나와 파리의 심판",
+   "date": "2026. 6. 22.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 62,
+   "images": 4
+  },
+  {
+   "logNo": "224320071132",
+   "title": "건배사를 위한 와인 추천 콜레프리시오 인앤아웃'20",
+   "date": "2026. 6. 18.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 35,
+   "images": 3
+  },
+  {
+   "logNo": "224319258415",
+   "title": "제로페이 서울사랑상품권 땡큐와인 이용 안내",
+   "date": "2026. 6. 17.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 26,
+   "images": 0
+  },
+  {
+   "logNo": "224309894749",
+   "title": "와인잔 추천 하이엔드 퀄리티의 수제 핸드블로우 크리스탈 글라스",
+   "date": "2026. 6. 8.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 89,
+   "images": 14
+  },
+  {
+   "logNo": "224307400214",
+   "title": "이탈리아 스파클링 추천 세디치 브륏 스푸만테",
+   "date": "2026. 6. 6.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 49,
+   "images": 1
+  },
+  {
+   "logNo": "224303649762",
+   "title": "독일 스파클링 젝트 추천 크랙 블랑 드 블랑 브뤼 나뛰르 2022",
+   "date": "2026. 6. 2.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 46,
+   "images": 2
+  },
+  {
+   "logNo": "224300043672",
+   "title": "뉴질랜드 와인 추천 티키 소비뇽블랑, 샤도네이, 리슬링",
+   "date": "2026. 5. 29.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 68,
+   "images": 4
+  },
+  {
+   "logNo": "224295843335",
+   "title": "반전의 우아함을 보여준 미국 피노 누아, 월터 한셀 노스 슬로프 피노 누아 2023",
+   "date": "2026. 5. 25.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 42,
+   "images": 3
+  },
+  {
+   "logNo": "224295797954",
+   "title": "입문용 부르고뉴 추천 도멘 데 테레 정띠에 부르고뉴 레드 & 화이트",
+   "date": "2026. 5. 25.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 50,
+   "images": 3
+  },
+  {
+   "logNo": "224293634932",
+   "title": "오린 스위프트 파피용 나파밸리 와인 선물 추천",
+   "date": "2026. 5. 22.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 49,
+   "images": 1
+  },
+  {
+   "logNo": "224289579359",
+   "title": "조지아와인 입문 추천 베도바 사페라비",
+   "date": "2026. 5. 18.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 48,
+   "images": 1
+  },
+  {
+   "logNo": "224289467374",
+   "title": "미국 와인 추천 보비뉴 히어로 2023",
+   "date": "2026. 5. 18.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 49,
+   "images": 1
+  },
+  {
+   "logNo": "224285780978",
+   "title": "샴페인 대용 추천 루아르 샤또 드 꼬쎄 크레망",
+   "date": "2026. 5. 14.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 46,
+   "images": 1
+  },
+  {
+   "logNo": "224285094923",
+   "title": "칠레 와인 추천 부숑 블락 리제르바 까르미네르",
+   "date": "2026. 5. 14.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 39,
+   "images": 1
+  },
+  {
+   "logNo": "224276402778",
+   "title": "[가정의 달 특선] 어버이날 선물 추천 칠레 와인 도나 베르나다",
+   "date": "2026. 5. 6.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 63,
+   "images": 1
+  },
+  {
+   "logNo": "224276297579",
+   "title": "골프모임 선물 추천 1865 슈퍼픽션 콜라보 에디션",
+   "date": "2026. 5. 6.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 60,
+   "images": 11
+  },
+  {
+   "logNo": "224271054788",
+   "title": "선물하기 좋은 와인 추천 쉐 되브르 마스터피스 컬렉션",
+   "date": "2026. 5. 1.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 58,
+   "images": 3
+  },
+  {
+   "logNo": "224267328226",
+   "title": "사러스 쉬라즈 | Sarus Shiraz",
+   "date": "2026. 4. 27.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 46,
+   "images": 1
+  },
+  {
+   "logNo": "224258732417",
+   "title": "시간의 가치를 담은 레드와인 | 와인 명상 큐레이션 2종",
+   "date": "2026. 4. 20.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 80,
+   "images": 2
+  },
+  {
+   "logNo": "224258721975",
+   "title": "세월이 빚어낸 50년 고목의 깊은 울림 | 이그나시오 마린, 올드 바인 가르나차 | Ignacio Marín, Old Vine Garnacha",
+   "date": "2026. 4. 20.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 44,
+   "images": 1
+  },
+  {
+   "logNo": "224253328591",
+   "title": "프라이빗 행사 전용: 고품격 케이터링 와인과 프리미엄 기프트 구성 안내",
+   "date": "2026. 4. 15.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 40,
+   "images": 7
+  },
+  {
+   "logNo": "224249935171",
+   "title": "소셜링 파티 모임장을 위한 [매치메이커 박스] | 소셜링 와인 큐레이션 1",
+   "date": "2026. 4. 13.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 55,
+   "images": 4
+  },
+  {
+   "logNo": "224250027067",
+   "title": "잘레오 로사도 2021 | Zaleo Rosado 2021",
+   "date": "2026. 4. 13.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 42,
+   "images": 1
+  },
+  {
+   "logNo": "224250072095",
+   "title": "페카비, 샤도네이 2023 | Peccavi Chardonnay 2023",
+   "date": "2026. 4. 13.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 46,
+   "images": 1
+  },
+  {
+   "logNo": "224242723515",
+   "title": "레드와인 러버를 위한 프리미엄 레드 박스 | 가족 행사를 빛내줄 완벽한 와인 라인업🍷",
+   "date": "2026. 4. 6.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 61,
+   "images": 7
+  },
+  {
+   "logNo": "224240112168",
+   "title": "주소를 몰라도 편리하게, 땡큐와인 '스마트 주소 확인' 서비스 💌",
+   "date": "2026. 4. 6.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 40,
+   "images": 0
+  },
+  {
+   "logNo": "224240943292",
+   "title": "어머니, 아내를 위한 와인 선물 | 루이스 펠리페 에드워드(LFE), 도나 베르나다 2020 (Dona Bernarda 2020",
+   "date": "2026. 4. 4.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 51,
+   "images": 3
+  },
+  {
+   "logNo": "224240792763",
+   "title": "설레는 봄 나들이 필수템 🌸 봄소풍 6병 박스 한정 특가",
+   "date": "2026. 4. 4.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 46,
+   "images": 7
+  },
+  {
+   "logNo": "224240125992",
+   "title": "봄을 마시다! 🌸 봄맞이 데일리 와인 12병 풀박스 특가",
+   "date": "2026. 4. 4.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 55,
+   "images": 13
+  },
+  {
+   "logNo": "224240070422",
+   "title": "사람과 공간, 목적에 어울리는 와인을 제안합니다 | 땡큐와인 (Thank You Wine) 소개",
+   "date": "2026. 4. 4.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 48,
+   "images": 1
+  },
+  {
+   "logNo": "224240050216",
+   "title": "[스페인 와인 추천] 100년의 헤리티지, 엘 아부엘로(El Abuelo) 6종 풀패키지 | 데일리와인 세트",
+   "date": "2026. 4. 3.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 42,
+   "images": 8
+  },
+  {
+   "logNo": "224239431820",
+   "title": "크룹 브라더스 '더 체어맨' 까베르네 소비뇽 | Krupp Brothers The Chairman Cabernet Sauvignon",
+   "date": "2026. 4. 3.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 47,
+   "images": 2
+  },
+  {
+   "logNo": "224239096771",
+   "title": "미니 샴페인 꽃바구니 | 기념일·졸업식·전시회 선물 추천 | 부담 없는 가격에 고급스러움까지",
+   "date": "2026. 4. 3.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 43,
+   "images": 4
+  },
+  {
+   "logNo": "224232788227",
+   "title": "페어히즈, 앵커 리제르바 | Feuerheerd's Anchor Reserva",
+   "date": "2026. 3. 28.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 43,
+   "images": 1
+  },
+  {
+   "logNo": "224232732223",
+   "title": "샤또 라 포리 메종 누보 2019 | Chateau La Faurie Maison Neuve 2019",
+   "date": "2026. 3. 28.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 42,
+   "images": 1
+  },
+  {
+   "logNo": "224224815779",
+   "title": "바롱 드 보삭, 비오니에 2022 | Baron de Voussac, Viognier 2022",
+   "date": "2026. 3. 21.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 44,
+   "images": 1
+  },
+  {
+   "logNo": "224224809948",
+   "title": "오베하 네그라, 카베르네 소비뇽 그랑 리제르바 2021 | Oveja Negra, Cabernet Sauvignon Gran Reserva 2021",
+   "date": "2026. 3. 21.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 47,
+   "images": 2
+  },
+  {
+   "logNo": "224224796620",
+   "title": "테누타 카제 누오베, 키안티 클라시코 리제르바 2018 | Tenuta Casenuove, Chianti Classico Riserva 2018",
+   "date": "2026. 3. 21.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 44,
+   "images": 1
+  },
+  {
+   "logNo": "224215635017",
+   "title": "와인 정보쿠수마노, 샤도네이 | Cusumano, Chardonnay",
+   "date": "2026. 3. 13.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 42,
+   "images": 1
+  },
+  {
+   "logNo": "224215312664",
+   "title": "쉐 되브르, 까베르네 소비뇽 2024 |Chai d'Oeuvre, Cabernet Sauvignon 2024",
+   "date": "2026. 3. 13.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 68,
+   "images": 15
+  },
+  {
+   "logNo": "224215301048",
+   "title": "메드라노 이라주 크리안자 2018 | Medrano Irazu, Crianza 2018",
+   "date": "2026. 3. 13.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 44,
+   "images": 1
+  },
+  {
+   "logNo": "224204592325",
+   "title": "루피노, 리제르바 두칼레 끼안티 클라시코 리제르바 2021 | Ruffino, Riserva Ducale Chianti Classico Riserva 2021",
+   "date": "2026. 3. 4.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 48,
+   "images": 3
+  },
+  {
+   "logNo": "224204583702",
+   "title": "탈보트, 칼리 하트 피노 누아 2021 | Talbott, Kali Hart Pinot Noir 2021",
+   "date": "2026. 3. 4.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 45,
+   "images": 2
+  },
+  {
+   "logNo": "224204575158",
+   "title": "고기, 피노 누아 '라 메르' 2018 | GoGi, Pinot Noir 'La Mer' 2018",
+   "date": "2026. 3. 4.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 44,
+   "images": 4
+  },
+  {
+   "logNo": "224204565161",
+   "title": "이든 리프트, 에스테이트 피노 누아 2022 | Eden Rift, Estate Pinot Noir 2022",
+   "date": "2026. 3. 4.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 45,
+   "images": 2
+  },
+  {
+   "logNo": "224204557040",
+   "title": "이든 리프트, 발리언트 피노 누아 2022 | Eden Rift, Valliant Pinot Noir 2022",
+   "date": "2026. 3. 4.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 45,
+   "images": 2
+  },
+  {
+   "logNo": "224204536630",
+   "title": "본 위닝 윈윈 리슬링 | Von Winning Win Win Riesling",
+   "date": "2026. 3. 4.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 48,
+   "images": 2
+  },
+  {
+   "logNo": "224204498337",
+   "title": "티키, 싱글 빈야드 리슬링 | Tiki, Single Vineyard Riesling",
+   "date": "2026. 3. 4.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 45,
+   "images": 2
+  },
+  {
+   "logNo": "224204492540",
+   "title": "티키, 싱글 빈야드 샤도네이 | Tiki, Single Vineyard Chardonnay",
+   "date": "2026. 3. 4.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 44,
+   "images": 2
+  },
+  {
+   "logNo": "224204484729",
+   "title": "티키, 소비뇽 블랑 싱글 빈야드 | Tiki, Single Vineyard Sauvignon Blanc",
+   "date": "2026. 3. 4.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 44,
+   "images": 1
+  },
+  {
+   "logNo": "224204475836",
+   "title": "러시안 잭, 소비뇽 블랑 | Russian Jack, Sauvignon Blanc",
+   "date": "2026. 3. 4.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 46,
+   "images": 3
+  },
+  {
+   "logNo": "224204465880",
+   "title": "도멘 루 후레조, 샤토네프 뒤 파프 블랑 | Domaine Lou Fréjau, Châteauneuf-du-Pape Blanc",
+   "date": "2026. 3. 4.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 40,
+   "images": 1
+  },
+  {
+   "logNo": "224204461448",
+   "title": "도멘 루 후레조 샤토네프 뒤 파프 레드 | Domaine Lou Fréjau, Châteauneuf-du-Pape Red",
+   "date": "2026. 3. 4.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 41,
+   "images": 3
+  },
+  {
+   "logNo": "224204422819",
+   "title": "콘다도 데 오리자, 그랑 리제르바 2014 | Condado de Oriza, Gran Reserva 2014",
+   "date": "2026. 3. 4.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 43,
+   "images": 2
+  },
+  {
+   "logNo": "224204003776",
+   "title": "보 비뉴, 히어로 프로프라이어터리 레드 2021 | Beau Vigne, Hero Proprietary Red 2021",
+   "date": "2026. 3. 4.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 46,
+   "images": 4
+  },
+  {
+   "logNo": "224201841096",
+   "title": "도멘 귀노, 투렌 소비뇽 블랑 AOP | Domaine Guenault, Touraine Sauvignon Blanc AOP",
+   "date": "2026. 3. 2.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 40,
+   "images": 1
+  },
+  {
+   "logNo": "224201833480",
+   "title": "도멘 데 까트흐 세종, 부르고뉴 에피너일 로제 2023 | Domaine des Quatre Saisons, Bourgogne Epineuil Rosé 2023",
+   "date": "2026. 3. 2.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 38,
+   "images": 1
+  },
+  {
+   "logNo": "224201425294",
+   "title": "트레드 소프틀리 논알 피노 그리지오| Tread Softly Everything Except Pinot Grigio",
+   "date": "2026. 3. 2.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 38,
+   "images": 1
+  },
+  {
+   "logNo": "224201417558",
+   "title": "르 쁘띠 베레, 모스카토 스위트 뮈스까 두 스파클링 | Le Petit Béret, Muscat Doux Sparkling",
+   "date": "2026. 3. 2.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 40,
+   "images": 1
+  },
+  {
+   "logNo": "224201411823",
+   "title": "르 쁘띠 베레, 까베르네 소비뇽 | Le Petit Béret, Cabernet Sauvignon",
+   "date": "2026. 3. 2.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 40,
+   "images": 1
+  },
+  {
+   "logNo": "224201381948",
+   "title": "펫 바론, 레드 블렌드 2022 | Fat Baron, Red Blend 2022",
+   "date": "2026. 3. 2.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 41,
+   "images": 1
+  },
+  {
+   "logNo": "224201374901",
+   "title": "G.H. 멈, 그랑 꼬르동 | G.H. Mumm, Grand Cordon",
+   "date": "2026. 3. 2.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 40,
+   "images": 1
+  },
+  {
+   "logNo": "224201371384",
+   "title": "뵈브 클리코 옐로우 라벨 | Verve Clicquot Yellow Label",
+   "date": "2026. 3. 2.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 40,
+   "images": 1
+  },
+  {
+   "logNo": "224201363630",
+   "title": "모엣 & 샹동 임페리얼 | Moët & Chandon Impérial",
+   "date": "2026. 3. 2.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 39,
+   "images": 1
+  },
+  {
+   "logNo": "224200419961",
+   "title": "도멘 세겡 마뉴엘, 샤샤뉴 몽라셰 비에이 비뉴 2022 | Domaine Seguin-Manuel, Chassagne-Montrachet Vieilles Vignes 2022",
+   "date": "2026. 3. 1.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 41,
+   "images": 1
+  },
+  {
+   "logNo": "224200416502",
+   "title": "도멘 세겡 마뉴엘, 뫼르소 레 끌루 2022 | Domaine Seguin-Manuel, Meursault 'Les Clous' 2022",
+   "date": "2026. 3. 1.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 39,
+   "images": 1
+  },
+  {
+   "logNo": "224200414184",
+   "title": "소피 스프리츠 벨리니 | SOFI Spritz Bellini",
+   "date": "2026. 3. 1.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 40,
+   "images": 2
+  },
+  {
+   "logNo": "224200409963",
+   "title": "부르고뉴 앙 몽트르 퀴 2019 | Bourgogne En Montre Cul 2019",
+   "date": "2026. 3. 1.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 42,
+   "images": 2
+  },
+  {
+   "logNo": "224200399884",
+   "title": "페냐롤렌 까베르네 소비뇽 | Penalolen Cabernet Sauvignon",
+   "date": "2026. 3. 1.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 34,
+   "images": 1
+  },
+  {
+   "logNo": "224200151442",
+   "title": "보데가스 비가르도, 새틀라이트 | Bodegas Bigardo, Satélite",
+   "date": "2026. 3. 1.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 42,
+   "images": 1
+  },
+  {
+   "logNo": "224200148399",
+   "title": "북극곰의 눈물 준마이 벚꽃 에디션 2026년 한정판",
+   "date": "2026. 3. 1.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 40,
+   "images": 1
+  },
+  {
+   "logNo": "224200143851",
+   "title": "도시오 바롤로 부시아 2021 | Dosio Barolo Bussia 2021",
+   "date": "2026. 3. 1.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 37,
+   "images": 1
+  },
+  {
+   "logNo": "224200140864",
+   "title": "도멘 드레 프레르, 픽상 '레 끌로' 2018 | Domaine Derey Frères, Fixin 'Les Clos' 2018",
+   "date": "2026. 3. 1.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 41,
+   "images": 1
+  },
+  {
+   "logNo": "224200139101",
+   "title": "도멘 드레 프레르, 마르사네 '레 샴 빼르드리' 2017 | Domaine Derey Frères, Marsannay 'Les Champs Perdrix' 2017",
+   "date": "2026. 3. 1.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 40,
+   "images": 1
+  },
+  {
+   "logNo": "224200136834",
+   "title": "쿠수마노, 인졸리아 2023 | Cusumano, Insolia 2023",
+   "date": "2026. 3. 1.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 40,
+   "images": 1
+  },
+  {
+   "logNo": "224200134277",
+   "title": "샤토 타눈다, 그랜드 바로사 까베르네 소비뇽 2020 | Château Tanunda, Grand Barossa Cabernet Sauvignon 2020",
+   "date": "2026. 3. 1.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 41,
+   "images": 1
+  },
+  {
+   "logNo": "224200096724",
+   "title": "도멘 생 뱅상, 꼬뜨 뒤 론 빌라쥐 블랑 | Domaine Saint Vincent, Côtes du Rhône Villages Blanc",
+   "date": "2026. 3. 1.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 43,
+   "images": 1
+  },
+  {
+   "logNo": "224185765475",
+   "title": "[2월 이달의 와인] 새로운 도약을 응원하는 리더의 와인 | 마르사네 레 샴 뻬르드리 2017",
+   "date": "2026. 2. 17.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 41,
+   "images": 2
+  },
+  {
+   "logNo": "224185734490",
+   "title": "[2월 이달의 와인] 64년 고목의 생명력을 담다, 도멘 드레 픽상 레 끌로 2018 | 은퇴 후의 더 깊어질 삶을 응원하는 선물",
+   "date": "2026. 2. 16.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 36,
+   "images": 2
+  },
+  {
+   "logNo": "224179001496",
+   "title": "고운달 백자, 오크 배송 예약 | 설 선물 접수",
+   "date": "2026. 2. 10.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 32,
+   "images": 6
+  },
+  {
+   "logNo": "224178995035",
+   "title": "와인 보자기 포장 | 설 선물 추천 | 와인 선물",
+   "date": "2026. 2. 10.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 34,
+   "images": 4
+  },
+  {
+   "logNo": "224169118269",
+   "title": "택배 발송 가능 설 선물세트 리스트 | 와인 소개",
+   "date": "2026. 2. 2.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 36,
+   "images": 11
+  },
+  {
+   "logNo": "224158554046",
+   "title": "토마스 슈미트 프라이빗 컬렉션, 아우스레제 2022",
+   "date": "2026. 1. 25.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 39,
+   "images": 2
+  },
+  {
+   "logNo": "224149141056",
+   "title": "콥케 디켄터 에디션 | 19일 월요일 3병 입고",
+   "date": "2026. 1. 16.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 24,
+   "images": 0
+  },
+  {
+   "logNo": "224136487142",
+   "title": "콥케 10년 디켄터 에디션 출시 | 예약, 픽업 일정 안내",
+   "date": "2026. 1. 6.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 34,
+   "images": 1
+  },
+  {
+   "logNo": "224125888492",
+   "title": "네로페르소 아파시멘토 2021",
+   "date": "2025. 12. 31.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 46,
+   "images": 1
+  },
+  {
+   "logNo": "224125882556",
+   "title": "샤또 드 말리니, 샤블리 2023",
+   "date": "2025. 12. 31.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 46,
+   "images": 1
+  },
+  {
+   "logNo": "224125874517",
+   "title": "샤또 데레즐라, 아쑤 5 푸토뇨스 2019",
+   "date": "2025. 12. 30.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 46,
+   "images": 1
+  },
+  {
+   "logNo": "224126311280",
+   "title": "쉐 되브르 소비뇽 블랑 2024",
+   "date": "2025. 12. 30.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 57,
+   "images": 9
+  },
+  {
+   "logNo": "224126266650",
+   "title": "돔 페리뇽 2015 Dom Pérignon Brut Champagne",
+   "date": "2025. 12. 30.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 37,
+   "images": 2
+  },
+  {
+   "logNo": "224125862520",
+   "title": "아케르만, 크레망 드 루아르 \"뷸 로얄\"",
+   "date": "2025. 12. 30.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 55,
+   "images": 1
+  },
+  {
+   "logNo": "224125902539",
+   "title": "홀라쇼 쇼비뇽 블랑 2024",
+   "date": "2025. 12. 29.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 35,
+   "images": 1
+  },
+  {
+   "logNo": "224125898715",
+   "title": "앙리 르블랑 블랑드블랑 NV",
+   "date": "2025. 12. 29.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 34,
+   "images": 1
+  },
+  {
+   "logNo": "224125854965",
+   "title": "도멘 오헬리엉 베르데, 오뜨 꼬뜨 드 뉘 \"르 프히외흐\" 루즈 2021",
+   "date": "2025. 12. 29.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 37,
+   "images": 1
+  },
+  {
+   "logNo": "224125915464",
+   "title": "캄피 아레 피아노",
+   "date": "2025. 12. 29.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 35,
+   "images": 1
+  },
+  {
+   "logNo": "224125850818",
+   "title": "내니 고트 빈야드, 피노누아 2023",
+   "date": "2025. 12. 29.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 50,
+   "images": 1
+  },
+  {
+   "logNo": "224125909298",
+   "title": "트레드 소프틀리 논알콜 피노 그리지오",
+   "date": "2025. 12. 29.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 35,
+   "images": 1
+  },
+  {
+   "logNo": "224107308228",
+   "title": "기업행사와인 견적 실제 사례 | 송년회 와인 추천",
+   "date": "2025. 12. 12.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 54,
+   "images": 4
+  },
+  {
+   "logNo": "224104950913",
+   "title": "🐎 조니워커 블루 2026 말띠 에디션 | 발도장 세트 | 한정판 실물 사진 有",
+   "date": "2025. 12. 10.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 30,
+   "images": 7
+  },
+  {
+   "logNo": "224104943982",
+   "title": "글렌알라키 13년 말띠에디션 한정판 | 붉은 말의 해 | 2026년 한정판",
+   "date": "2025. 12. 10.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 38,
+   "images": 1
+  },
+  {
+   "logNo": "224101089509",
+   "title": "뵈브클리코 옐로우 레이블 NV",
+   "date": "2025. 12. 7.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 43,
+   "images": 1
+  },
+  {
+   "logNo": "224100251200",
+   "title": "기업특판 / 선물세트 / 웨딩 와인 전문 [땡큐와인💝]",
+   "date": "2025. 12. 6.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 45,
+   "images": 1
+  },
+  {
+   "logNo": "224096849229",
+   "title": "🐎 조니워커 블루 2026 말띠 에디션 | 한정판 예약 오픈 안내",
+   "date": "2025. 12. 3.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 82,
+   "images": 1
+  },
+  {
+   "logNo": "224091546519",
+   "title": "도멘 생 뱅상 꼬뜨 뒤론 빌라쥐 화이트 2020 Domaine Saint Vincent Côtes-du-Rhône Villages Blanc",
+   "date": "2025. 11. 28.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 29,
+   "images": 1
+  },
+  {
+   "logNo": "224091537763",
+   "title": "프로두토리 델 바르바레스코 2020 P.d.B Barbaresco",
+   "date": "2025. 11. 28.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 36,
+   "images": 6
+  },
+  {
+   "logNo": "224091527745",
+   "title": "캄피 데안테라 아레 피아노 2024 Campi Deantera Are Fiano Salento",
+   "date": "2025. 11. 28.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 60,
+   "images": 1
+  },
+  {
+   "logNo": "224091515325",
+   "title": "레 플랑쉐 피노누아 2023 Les Planches Pinot Noir 2023",
+   "date": "2025. 11. 28.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 32,
+   "images": 2
+  },
+  {
+   "logNo": "224074809696",
+   "title": "모엣샹동 EOY | Moët & Chandon – End of Year Special Edition",
+   "date": "2025. 11. 13.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 36,
+   "images": 1
+  },
+  {
+   "logNo": "224060499298",
+   "title": "🍋 암 드 라 메르 (Âme de la Mer)",
+   "date": "2025. 10. 31.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 36,
+   "images": 1
+  },
+  {
+   "logNo": "224058170212",
+   "title": "하셀그로브 디 올드 넛 재입고",
+   "date": "2025. 10. 30.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 38,
+   "images": 1
+  },
+  {
+   "logNo": "224015785846",
+   "title": "성수동 와인샵 | 와인바 한낮의밤 | 추석 선물 | 명절 와인 선물 세트 추천",
+   "date": "2025. 9. 21.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 83,
+   "images": 22
+  },
+  {
+   "logNo": "224003338548",
+   "title": "성수동 와인 맛집, 소피 스프리츠로 특별한 순간 만드세요",
+   "date": "2025. 9. 11.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 153,
+   "images": 10
+  },
+  {
+   "logNo": "223967302296",
+   "title": "와인 개봉 후 보관 어떻게 해야 할까? (ft. 와인바 사장 꿀팁)",
+   "date": "2025. 8. 15.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 156,
+   "images": 10
+  },
+  {
+   "logNo": "223493718694",
+   "title": "시원짭짤💦💕 플로리앙 몰레 소비뇽블랑",
+   "date": "2024. 7. 2.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 14,
+   "images": 1
+  },
+  {
+   "logNo": "223493705775",
+   "title": "포도 안들어간 와인!?🍊따론지노 오렌지 🍊",
+   "date": "2024. 7. 1.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 18,
+   "images": 1
+  },
+  {
+   "logNo": "223493684545",
+   "title": "여름날의 로제💕 레 프레 베 피노누아 로제",
+   "date": "2024. 6. 30.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 17,
+   "images": 2
+  },
+  {
+   "logNo": "223493665767",
+   "title": "한낮의밤에서 즐기는 그리뇽 레 아드마르 르 뷔우 트루폴리에 🍷",
+   "date": "2024. 6. 29.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 19,
+   "images": 2
+  },
+  {
+   "logNo": "223493644023",
+   "title": "한낮의밤에서 만나는 달콤한 유혹, 리코사 모스카토 다스티💕",
+   "date": "2024. 6. 28.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 21,
+   "images": 2
+  },
+  {
+   "logNo": "223285094761",
+   "title": "제라 무알콜 와인 / 임산부도 마실 수 있는 와인 / 논알콜 와인 추천",
+   "date": "2023. 12. 7.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 18,
+   "images": 6
+  },
+  {
+   "logNo": "223253921184",
+   "title": "코스티에르 드 님, 제로 술휘뜨 블랑",
+   "date": "2023. 11. 2.",
+   "category": "멤버십 와인 커뮤니티 땡큐와인",
+   "categoryNo": "7",
+   "blocks": 23,
+   "images": 1
   }
- ],
- "standin": true
+ ]
 }
