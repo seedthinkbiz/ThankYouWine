@@ -1,4 +1,5 @@
 tools/preview/
+tools/posts_raw/img/
 __pycache__/
 .DS_Store
 .vercel
