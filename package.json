@@ -1,0 +1,6 @@
+{
+  "name": "thankyouwine-site",
+  "private": true,
+  "description": "땡큐와인 — 성수동 와인샵 웹사이트 (정적 페이지 + Vercel 접수·블로그 API)",
+  "engines": { "node": ">=18" }
+}

@@ -1,0 +1,171 @@
+{
+ "updated": "2026-11-03",
+ "note": "사이트에 올린 블로그 글 목록(build.py가 만들어요). 사이트는 이 목록을 HTML에 미리 넣고, /api/posts(네이버 RSS)로 아직 사이트에 없는 새 글만 덧붙여요.",
+ "posts": [
+  {
+   "logNo": "224448906541",
+   "title": "타닌감 묵직한 스페인 레드와인 | 꼬또 데 이마스 그란 레세르바 2020 입고",
+   "path": "posts/coto-de-imaz-gran-reserva-2020/",
+   "url": "https://thankyouwine.vercel.app/posts/coto-de-imaz-gran-reserva-2020/",
+   "naver": "https://blog.naver.com/middaynight109/224448906541",
+   "date": "2026-10-23",
+   "category": "와인 소개",
+   "lead": "꼬또 데 이마스 그란 레세르바 2020은 스페인 리오하의 엘 꼬또 데 리오하가 템프라니요 중심에 그라시아노를 소량 섞어 만든 장기 숙성형 풀바디 드라이 레드예요. 달큰한 레드보다 단단하고 구조감 있는 레드를 찾는 분께 맞아요.",
+   "image": ""
+  },
+  {
+   "logNo": "224449110654",
+   "title": "케이머스 까베르네 소비뇽 | 나파밸리 와그너 가문의 레드 와인, 다들 왜 좋아할까?",
+   "path": "posts/caymus-napa-cabernet-sauvignon/",
+   "url": "https://thankyouwine.vercel.app/posts/caymus-napa-cabernet-sauvignon/",
+   "naver": "https://blog.naver.com/middaynight109/224449110654",
+   "date": "2026-10-21",
+   "category": "와인 이야기",
+   "lead": "케이머스 까베르네 소비뇽은 와그너 가문이 1972년 세운 나파밸리 가족 와이너리 케이머스 빈야드의 풀바디 레드로, 진한 검은 과실과 부드러운 타닌이 특징이에요. 나파밸리 까베르네 소비뇽이 어떤 맛인지 가장 선명하게 보여 주는 한 병이라, 진하고 부드러",
+   "image": ""
+  },
+  {
+   "logNo": "224449109752",
+   "title": "데일리 부르고뉴 화이트 추천 | 피에르 아르망 마콩 빌라쥬 2024, 오크 없이 맑은 샤르도네",
+   "path": "posts/pierre-armand-macon-villages-2024/",
+   "url": "https://thankyouwine.vercel.app/posts/pierre-armand-macon-villages-2024/",
+   "naver": "https://blog.naver.com/middaynight109/224449109752",
+   "date": "2026-10-21",
+   "category": "와인 소개",
+   "lead": "피에르 아르망 마콩 빌라쥬 2024는 부르고뉴 마코네의 샤르도네 100% 화이트로, 오크 없이 산뜻하고 미네랄이 살아 있는 드라이 스타일이에요. 부르고뉴 화이트 입문이나 데일리 화이트, 해산물 페어링에 맞아요.",
+   "image": ""
+  },
+  {
+   "logNo": "224441248981",
+   "title": "텍스트북 까베르네 소비뇽 | 소리 지르지 않는 나파밸리 와인은 어떻게 만들어질까",
+   "path": "posts/textbook-napa-cabernet-sauvignon/",
+   "url": "https://thankyouwine.vercel.app/posts/textbook-napa-cabernet-sauvignon/",
+   "naver": "https://blog.naver.com/middaynight109/224441248981",
+   "date": "2026-10-21",
+   "category": "와인 이야기",
+   "lead": "텍스트북 까베르네 소비뇽은 2004년 조나단 페이와 수잔 페이 부부가 세운 나파밸리 와이너리의 레드로, 나파 평균보다 낮은 알코올과 과하지 않은 오크로 음식과 잘 어울리게 만들어요. 진한 나파 와인이 부담스러웠던 분, 식사와 함께 마실 레드를 찾는 분",
+   "image": ""
+  },
+  {
+   "logNo": "224398686918",
+   "title": "바론 도베른 핀 플레르 | 부지 그랑 크뤼 블랑 드 누아, 어머니의 데이지가 담긴 샴페인",
+   "path": "posts/baron-dauvergne-fine-fleur-champagne/",
+   "url": "https://thankyouwine.vercel.app/posts/baron-dauvergne-fine-fleur-champagne/",
+   "naver": "https://blog.naver.com/middaynight109/224398686918",
+   "date": "2026-10-21",
+   "category": "와인 소개",
+   "lead": "바론 도베른 핀 플레르는 1923년 부지(Bouzy)에서 시작한 가족 샴페인 하우스가 피노 누아 100%로 만든 그랑 크뤼 블랑 드 누아 브뤼 샴페인이에요. 과실감과 구조감이 함께 느껴져 피노 누아 샴페인의 깊이를 경험해 보고 싶은 분께 추천해요.",
+   "image": ""
+  },
+  {
+   "logNo": "224390795553",
+   "title": "그랜드 바로사 카베르네 소비뇽 2020 | 1890년 샤토 타눈다가 만든 바로사 카베르네",
+   "path": "posts/grand-barossa-cabernet-sauvignon-2020/",
+   "url": "https://thankyouwine.vercel.app/posts/grand-barossa-cabernet-sauvignon-2020/",
+   "naver": "https://blog.naver.com/middaynight109/224390795553",
+   "date": "2026-10-21",
+   "category": "와인 소개",
+   "lead": "그랜드 바로사 카베르네 소비뇽 2020은 1890년에 세워진 호주 바로사의 샤토 타눈다가 만드는 드라이 레드 와인이에요. 진한 검은 과실 향과 촘촘한 타닌이 있어 가을 고기 요리와 함께할 든든한 레드를 찾는 분께 맞아요.",
+   "image": ""
+  },
+  {
+   "logNo": "224375310246",
+   "title": "일 코르노 미나에모로 2017 | 산지오베제와 콜로리노가 반반, 사랑에 빠지는 토스카나 레드",
+   "path": "posts/il-corno-minaemoro-2017/",
+   "url": "https://thankyouwine.vercel.app/posts/il-corno-minaemoro-2017/",
+   "naver": "https://blog.naver.com/middaynight109/224375310246",
+   "date": "2026-10-21",
+   "category": "와인 소개",
+   "lead": "일 코르노 미나에모로 2017은 피렌체 남쪽 테누타 일 코르노가 산지오베제 50%와 콜로리노 50%로 만든 토스카나 IGT 레드예요. 짙은 루비색에 부드럽고 촘촘한 타닌이라 키안티와는 조금 다른 토스카나 레드를 경험해 보고 싶은 분께 맞아요.",
+   "image": ""
+  },
+  {
+   "logNo": "224361003057",
+   "title": "조나단 세갱 부르고뉴 피노누아 VV 2024 | 숨은 산지 꾸슈아에서 온 오래된 나무의 피노 누아",
+   "path": "posts/jonathan-seguin-bourgogne-pinot-noir-vv-2024/",
+   "url": "https://thankyouwine.vercel.app/posts/jonathan-seguin-bourgogne-pinot-noir-vv-2024/",
+   "naver": "https://blog.naver.com/middaynight109/224361003057",
+   "date": "2026-10-21",
+   "category": "와인 소개",
+   "lead": "조나단 세갱 부르고뉴 피노누아 VV 2024는 부르고뉴의 숨은 산지 꾸슈아(Couchois)에서 오래된 포도나무(비에유 비뉴)로 만든 드라이 레드예요. 부르고뉴 피노 누아를 부담 없이 데일리로 즐기고 싶은 분께 추천해요.",
+   "image": ""
+  },
+  {
+   "logNo": "224341675864",
+   "title": "세븐 데들리 레드 추천 | 핼러윈·바비큐 와인, ‘일곱 가지 대죄’에서 온 이름의 비밀",
+   "path": "posts/7-deadly-red/",
+   "url": "https://thankyouwine.vercel.app/posts/7-deadly-red/",
+   "naver": "https://blog.naver.com/middaynight109/224341675864",
+   "date": "2026-10-21",
+   "category": "와인 소개",
+   "lead": "세븐 데들리 레드는 미국 캘리포니아 로다이의 필립스 형제가 시작한 브랜드의 레드 블렌드로, 진판델·쁘띠 시라·까베르네 소비뇽·메를로를 섞어 과실감이 풍성한 미디엄~풀바디예요. 핼러윈이나 바비큐처럼 편하게 진한 미국 레드를 마시고 싶은 자리에 어울려요.",
+   "image": ""
+  },
+  {
+   "logNo": "224333195937",
+   "title": "오퍼스원 2022 | 보르도와 나파 밸리가 함께 만든 작품, 왜 특별할까?",
+   "path": "posts/opus-one-2022/",
+   "url": "https://thankyouwine.vercel.app/posts/opus-one-2022/",
+   "naver": "https://blog.naver.com/middaynight109/224333195937",
+   "date": "2026-10-21",
+   "category": "와인 이야기",
+   "lead": "오퍼스원 2022는 보르도와 나파 밸리가 함께 만든 나파 밸리 오크빌의 까베르네 소비뇽 중심 보르도 스타일 블렌드예요. 프렌치 오크에서 숙성한 풀바디 레드로, 인생의 특별한 순간에 여는 와인으로 많이 선택돼요.",
+   "image": ""
+  },
+  {
+   "logNo": "224448407716",
+   "title": "연말 모임 와인 준비 | 호텔 납품 와인부터 가성비 모임 와인, 와인잔까지 한 번에",
+   "path": "posts/year-end-party-wine/",
+   "url": "https://thankyouwine.vercel.app/posts/year-end-party-wine/",
+   "naver": "https://blog.naver.com/middaynight109/224448407716",
+   "date": "2026-10-20",
+   "category": "모임·선물",
+   "lead": "땡큐와인은 송년회·회사 모임·동호회 정모·홈파티에 인원과 예산에 맞춘 와인 구성과 와인잔 대여를 준비해 드려요. 호텔 납품 와인과 가성비 좋은 모임용 와인으로 스파클링·화이트·레드를 짜고, 1인 1병과 2인 1병, 잔 포함과 잔 미포함을 나란히 비교해",
+   "image": ""
+  },
+  {
+   "logNo": "224433285601",
+   "title": "스위트 와인 종류 총정리 | 아이스와인, 귀부 와인, 포트까지 달콤한 와인 고르는 법",
+   "path": "posts/sweet-wine-types/",
+   "url": "https://thankyouwine.vercel.app/posts/sweet-wine-types/",
+   "naver": "https://blog.naver.com/middaynight109/224433285601",
+   "date": "2026-10-14",
+   "category": "와인 이야기",
+   "lead": "스위트 와인은 만드는 방법에 따라 늦수확 와인, 귀부 와인, 아이스와인, 건조 포도 와인, 주정강화 와인(포트 등)으로 나뉘어요. 포도를 늦게 익히거나, 귀한 곰팡이로 당분을 농축하거나, 언 포도를 쓰거나, 말린 포도를 쓰거나, 발효 중에 증류주를 넣",
+   "image": ""
+  },
+  {
+   "logNo": "224433281563",
+   "title": "와인으로 배우는 프랑스어 | 라벨이 술술 읽히는 와인 프랑스어 단어 총정리",
+   "path": "posts/wine-french-words/",
+   "url": "https://thankyouwine.vercel.app/posts/wine-french-words/",
+   "naver": "https://blog.naver.com/middaynight109/224433281563",
+   "date": "2026-10-14",
+   "category": "와인 이야기",
+   "lead": "와인 라벨의 프랑스어 단어 몇 개만 알아도 라벨이 읽혀요. Château(샤또)는 양조장, Cru(크뤼)는 등급이 매겨진 포도밭, Millésime(밀레짐)은 빈티지, Cuvée(뀌베)는 특별히 골라 만든 와인, Santé(상떼)는 건배라는 뜻이에요.",
+   "image": ""
+  },
+  {
+   "logNo": "224433298538",
+   "title": "킴 크로포드 소비뇽 블랑 | 와이너리 없이 시작해 미국 판매 1위가 된 뉴질랜드 화이트",
+   "path": "posts/kim-crawford-sauvignon-blanc/",
+   "url": "https://thankyouwine.vercel.app/posts/kim-crawford-sauvignon-blanc/",
+   "naver": "https://blog.naver.com/middaynight109/224433298538",
+   "date": "2026-10-12",
+   "category": "와인 소개",
+   "lead": "킴 크로포드 소비뇽 블랑은 1996년 뉴질랜드 말보로에서 와이너리 없이 시작해 미국 판매 1위 뉴질랜드 와인이 된 소비뇽 블랑 100% 화이트예요. 오크 숙성 없이 신선하고 과실 향이 풍부해 상큼한 화이트와 해산물 안주를 좋아하는 분께 맞아요.",
+   "image": ""
+  },
+  {
+   "logNo": "224432478401",
+   "title": "2008년생 생빈 샴페인 | 프레스티지 찰스 가데 밀레짐 2008",
+   "path": "posts/charles-gardet-millesime-2008/",
+   "url": "https://thankyouwine.vercel.app/posts/charles-gardet-millesime-2008/",
+   "naver": "https://blog.naver.com/middaynight109/224432478401",
+   "date": "2026-10-12",
+   "category": "와인 소개",
+   "lead": "프레스티지 찰스 가데 밀레짐 2008은 1895년 설립된 샴페인 가데가 몽타뉴 드 랭스 프르미에 크뤼 포도로 만든 빈티지 샴페인이에요(샤르도네 70%, 피노 누아 30%, 도사주 5g/L). 2024 샴페인 마스터즈 금메달을 받았고, 2008년생 자녀",
+   "image": ""
+  }
+ ]
+}

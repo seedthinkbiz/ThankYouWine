@@ -1,0 +1,6 @@
+tools/preview/
+__pycache__/
+.DS_Store
+.vercel
+build_backup_*.py
+*.zip

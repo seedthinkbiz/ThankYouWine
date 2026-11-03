@@ -1,0 +1,123 @@
+# 땡큐와인 — 검색엔진과 AI 어시스턴트 크롤러 모두 환영해요. 가격은 사이트에 없고 카카오톡으로 1:1 안내해요.
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /tools/
+Disallow: /docs/
+
+User-agent: GPTBot
+Allow: /
+Disallow: /api/
+Disallow: /tools/
+Disallow: /docs/
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /api/
+Disallow: /tools/
+Disallow: /docs/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /api/
+Disallow: /tools/
+Disallow: /docs/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /api/
+Disallow: /tools/
+Disallow: /docs/
+
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /api/
+Disallow: /tools/
+Disallow: /docs/
+
+User-agent: Claude-User
+Allow: /
+Disallow: /api/
+Disallow: /tools/
+Disallow: /docs/
+
+User-agent: anthropic-ai
+Allow: /
+Disallow: /api/
+Disallow: /tools/
+Disallow: /docs/
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /api/
+Disallow: /tools/
+Disallow: /docs/
+
+User-agent: Googlebot
+Allow: /
+Disallow: /api/
+Disallow: /tools/
+Disallow: /docs/
+
+User-agent: Bingbot
+Allow: /
+Disallow: /api/
+Disallow: /tools/
+Disallow: /docs/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /api/
+Disallow: /tools/
+Disallow: /docs/
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /api/
+Disallow: /tools/
+Disallow: /docs/
+
+User-agent: Yeti
+Allow: /
+Disallow: /api/
+Disallow: /tools/
+Disallow: /docs/
+
+User-agent: Applebot
+Allow: /
+Disallow: /api/
+Disallow: /tools/
+Disallow: /docs/
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /api/
+Disallow: /tools/
+Disallow: /docs/
+
+User-agent: DuckAssistBot
+Allow: /
+Disallow: /api/
+Disallow: /tools/
+Disallow: /docs/
+
+User-agent: meta-externalagent
+Allow: /
+Disallow: /api/
+Disallow: /tools/
+Disallow: /docs/
+
+User-agent: Amazonbot
+Allow: /
+Disallow: /api/
+Disallow: /tools/
+Disallow: /docs/
+
+User-agent: CCBot
+Allow: /
+Disallow: /api/
+Disallow: /tools/
+Disallow: /docs/
+
+Sitemap: https://thankyouwine.vercel.app/sitemap.xml
