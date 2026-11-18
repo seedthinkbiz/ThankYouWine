@@ -618,10 +618,18 @@ PRICE_RE=_re.compile(r'\d{1,3}(?:,\d{3})+\s*원|\d+\s*만\s*\d*\s*천?\s*원(?!�
 WARNINGS=[]
 
 # ── 글 속 금액 정리 (사이트 원칙: 가격은 가격대만, 택배 안내 없음) ──
-# PRICE_MODE  'band' = 1만원 이상 금액을 '8만원대'처럼 가격대로 바꾸고 택배 문장은 삭제 (기본)
+# PRICE_MODE  'none' = 금액·가격대가 든 문장을 통째로 삭제, 택배 문장도 삭제 (기본. 2026-11-15 도하: 블로그·인스타엔
+#                      와인 가격도 '몇만원대' 같은 가격대도 쓰지 않음. 시음회·강의 참가비, 멤버 등록 기준 문장은 남김)
+#             'band' = 1만원 이상 금액을 '8만원대'처럼 가격대로 바꾸고 택배 문장은 삭제 (11/3~11/15 방식)
 #             'wine' = 1만5천원 이상(와인값으로 보이는 금액)만 가격대로, 택배비·콜키지는 그대로
 #             'keep' = 네이버 글 그대로
-PRICE_MODE='band'
+PRICE_MODE='none'
+_ANY_AMT=_re.compile(r'\d{1,3}(?:,\d{3})+\s*원|\d{4,}\s*원|\d+\s*만\s*\d*\s*천?\s*원|\d+\s*천\s*원|만원대|천원대|원대')
+_FEE_KEEP=_re.compile(r'참가비|회비|수강료|강의료|강의|클래스|세미나|워크숍|멤버')
+def sanitize_title(t):
+    if PRICE_MODE!='none' or not t: return sanitize_text(t)
+    t=_re.sub(r'(?:\d[\d,]*\s*[~∼〜\-–]\s*)?\d[\d,]*\s*(?:만\s*\d*\s*천?\s*|천\s*)?원대?\s*(?:이하|이상|미만|이내|안팎|내외|정도|선|대)?\s*(?:의|짜리|에)?','',t)
+    return _re.sub(r'\s{2,}',' ',t).strip(' ,·|-~')
 SANITIZE_STATS={'amounts':0,'parcel':0}
 _AMT=r'(\d{1,3}(?:,\d{3})+|\d{4,})'
 _MAN=r'(\d+)\s*만\s*(\d)?\s*천?'
@@ -633,6 +641,16 @@ def sanitize_text(t,mode=None):
     if mode=='keep' or not t: return t
     thr=10000 if mode=='band' else 15000
     out=[]
+    if mode=='none':
+        for ln in t.split('\n'):
+            kept=[]
+            for x in _re.split(r'(?<=[.!?。])\s+',ln):
+                if '택배' in x: SANITIZE_STATS['parcel']+=1; continue
+                if _ANY_AMT.search(x) and (not _FEE_KEEP.search(x) or '가입비' in x): SANITIZE_STATS['amounts']+=1; continue
+                kept.append(x)
+            ln=' '.join(kept).strip()
+            if ln: out.append(ln)
+        return '\n'.join(out)
     for ln in t.split('\n'):
         if mode=='band' and '택배' in ln:
             sents=_re.split(r'(?<=[.!?。])\s+',ln)
@@ -729,7 +747,7 @@ def faq_from(texts):
 
 # ── 네이버 글 정리: 공통 꼬리말(연락처·배송 안내) 제거, 해시태그 → 태그, 관련 글 링크 정리 ──
 FOOTER_MARKS=('🥂 와인으로 연결되는 사람과 경험','와인으로 연결되는 사람과 경험','방문 픽업 및 배송 방법 안내','방문 픽업 및 택배·퀵 배송 안내','✔ 택배& 퀵 배송 안내','✔ 업장 방문하여 결제 또는 픽업 필수','📩 상담 · 문의','🍷땡큐와인 멤버십 가입','땡큐와인 멤버십 가입')
-BAN_TAG=('택배','배송','답례품','웨딩','결혼','배달')          # 사이트 원칙: 택배·배달 안내 없음, 웨딩 답례품 언급 없음
+BAN_TAG=('택배','배송','답례품','웨딩','결혼','배달','원대','만원','가격')          # 사이트 원칙: 택배·배달 안내 없음, 웨딩 답례품 언급 없음
 EXCLUDE_TITLE=_re.compile(r'택배|배송 안내|배송 방법')
 HASHTAG_LINE=_re.compile(r'^(#\S+\s*)+$')
 URL_ONLY=_re.compile(r'^https?://\S+$')
@@ -799,7 +817,7 @@ def load_posts():
         fn=os.path.join(POSTS_RAW,it['logNo']+'.json')
         if not os.path.exists(fn): continue
         d=json.load(open(fn,encoding='utf-8'))
-        title=sanitize_text((d.get('title') or it.get('title') or '').strip())
+        title=sanitize_title((d.get('title') or it.get('title') or '').strip())
         main,sub=split_title(title)
         m=_find_meta(meta,d['logNo'],title)
         raw,htags=clean_blocks(d.get('blocks') or [])
@@ -821,14 +839,14 @@ def load_posts():
                date=parse_date(d.get('date') or it.get('date') or d.get('addDate')) or TODAY.isoformat(),
                category=m.get('category') or ncat or guess_category(main,title),
                tags=(ntags or htags)[:12],blocks=blocks,slug=slug,path='posts/'+slug+'/',
-               summary=m.get('summary') or pointsum or desc or first,service=m.get('service') or 'shop',standin=bool(d.get('standin')),words=words)
+               summary=sanitize_text(m.get('summary') or '') or pointsum or desc or first,service=m.get('service') or 'shop',standin=bool(d.get('standin')),words=words)
         for b in blocks:
             if b['type'] in ('p','quote'):
                 for hit in PRICE_RE.findall(strip_md(b['text'])): WARNINGS.append(f"가격 표현 확인: {p['slug']} → '{hit}'")
         posts.append(p)
     posts.sort(key=lambda x:(x['date'],x['logNo']),reverse=True)
     if PRICE_MODE!='keep' and (SANITIZE_STATS['amounts'] or SANITIZE_STATS['parcel']):
-        print(f"금액 정리({PRICE_MODE}): 금액 {SANITIZE_STATS['amounts']}곳 → 가격대, 택배 문장 {SANITIZE_STATS['parcel']}개 삭제")
+        print(f"금액 정리({PRICE_MODE}): 금액 문장 {SANITIZE_STATS['amounts']}곳 {'삭제' if PRICE_MODE=='none' else '→ 가격대'}, 택배 문장 {SANITIZE_STATS['parcel']}개 삭제")
     return posts
 
 def prepare_images(posts):
