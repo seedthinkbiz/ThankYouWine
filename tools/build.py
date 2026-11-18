@@ -43,6 +43,16 @@ def _asset_v():
     return h.hexdigest()[:8]
 ASSET_V=_asset_v()   # 캐시 무효화용(css/js 바뀌면 값이 바뀜)
 GLASS_SVG='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 2.5h10.8l-.7 6.6a4.7 4.7 0 0 1-9.4 0L6.6 2.5z" fill="#7a1f33"/><path d="M12 13.8v5.6M8.2 20.6h7.6" stroke="#7a1f33" stroke-width="1.9" stroke-linecap="round"/></svg>'
+# 하트 와인잔 마크(로고_1116/AC세트/ac.html의 #heart 심볼과 동일)
+HEART_PATHS=('<path d="M75 118 C 30 88 14 62 22 38 C 30 14 62 12 75 36 C 88 12 120 14 128 38 C 136 62 120 88 75 118 Z" fill="none" stroke="#7A1F33" stroke-width="7" stroke-linejoin="round"/>'
+             '<path d="M30 64 C 50 70 100 70 120 64 C 112 82 96 98 75 112 C 54 98 38 82 30 64 Z" fill="#7A1F33"/>'
+             '<line x1="75" y1="118" x2="75" y2="170" stroke="#1a1a1a" stroke-width="6"/>'
+             '<line x1="48" y1="174" x2="102" y2="174" stroke="#1a1a1a" stroke-width="6" stroke-linecap="round"/>')
+HEART_SVG='<svg class="mark" viewBox="10 8 130 172" aria-hidden="true">'+HEART_PATHS+'</svg>'
+WORDMARK='<span class="wordmark"><span class="en">THANK YOU WINE</span><span class="ko">땡큐와인</span></span>'
+# 검색엔진 소유 확인 태그 (구글 서치콘솔 2026-11-19; 네이버 서치어드바이저는 등록 시 추가)
+VERIFY_META=['<meta name="google-site-verification" content="AcdmXdyKv493Pcbqy103hmzLdd3vwIC6El_rb6pzydE">']
+GOOGLE_VERIFY_FILE='google14be0bc5848b85b8.html'
 MENU_SVG='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>'
 
 PAGES={
@@ -121,6 +131,7 @@ def head(key, rel, page=None, ld=None, og=None):
 <meta property="og:locale" content="ko_KR">
 {extra}<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#ffffff">
+{"".join(VERIFY_META)}
 <link rel="icon" href="{rel}favicon.svg" type="image/svg+xml">
 <link rel="alternate" type="application/rss+xml" title="땡큐와인 블로그" href="{BASE}/feed.xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -139,7 +150,7 @@ def header(rel, current):
     home=rel if rel else './'
     return f'''<header class="top">
   <div class="wrap wide">
-    <a class="logo wordmark" href="{home}" aria-label="땡큐와인 홈"><span class="en">THANK YOU WINE</span><span class="ko">땡큐와인</span></a>
+    <a class="logo" href="{home}" aria-label="땡큐와인 홈">{HEART_SVG}{WORDMARK}</a>
     <button class="navbtn" type="button" aria-expanded="false" aria-controls="nav" aria-label="메뉴">{MENU_SVG}</button>
     <nav class="nav" id="nav" aria-label="주요 메뉴">
       {a(rel+'gathering/','모임·행사 와인','gathering')}
@@ -172,7 +183,7 @@ def contact_dialog():
 def footer(rel):
     return f'''<footer>
   <div class="wrap">
-    <p class="fname"><span class="wordmark"><span class="en">THANK YOU WINE</span><span class="ko">땡큐와인</span></span></p>
+    <p class="fname"><span class="logo">{HEART_SVG}{WORDMARK}</span></p>
     <p class="warn">지나친 음주는 뇌졸중, 기억력 손상이나 치매를 유발합니다. 임신 중 음주는 기형아 출생 위험을 높입니다.</p>
     <p>땡큐와인은 만 19세 이상만 이용할 수 있어요. 가격은 사이트에 적지 않고 카카오톡으로 1:1 안내해 드려요.</p>
     <p>상호 {SITE['owner']} · 대표 {SITE['ceo']} · 사업자등록번호 {SITE['regno']} · 통신판매업 신고번호 {SITE['mailorder']}<br>{SITE['address']} · {PHONE} · {SITE['email']}</p>
@@ -282,15 +293,15 @@ def page_index(rel):
 <section class="sec" id="price">
   <div class="wrap">
     <div class="head">
-      <span class="kicker">가격대</span>
-      <h2>정확한 가격은 카톡으로,<br>여기서는 가격대만 보여 드려요</h2>
-      <p>수입사 행사와 입고 시기에 따라 가격이 자주 바뀌어요. 그래서 사이트에는 가격대만 적고, 정확한 가격은 1:1 카카오톡으로 안내드려요.</p>
+      <span class="kicker">가격</span>
+      <h2>예산을 말씀해 주시면<br>그 안에서 가장 좋은 구성을 찾아요</h2>
+      <p>수입사 행사와 입고 시기에 따라 가격이 자주 바뀌어요. 그래서 사이트에는 가격을 적지 않고, 1:1 카카오톡으로 안내드려요.</p>
     </div>
     <dl class="ranges">
-      <div><dt>2~3만원대</dt><dd><b>데일리</b><span>집에서 편하게, 모임에서 여러 병 쓰기 좋은 와인</span></dd></div>
-      <div><dt>5만원대</dt><dd><b>모임 · 선물</b><span>호텔에 납품되는 와인, 선물로 건네도 손색없는 한 병</span></dd></div>
-      <div><dt>10만원대</dt><dd><b>특별한 날</b><span>샴페인, 부르고뉴, 나파밸리</span></dd></div>
-      <div><dt>20만원대 이상</dt><dd><b>프리미엄</b><span>보르도 5대 샤토, 빈티지 샴페인</span></dd></div>
+      <div><dt>데일리</dt><dd><b>여러 병 쓰는 모임</b><span>집에서 편하게, 모임에서 여러 병 쓰기 좋은 와인</span></dd></div>
+      <div><dt>모임 · 선물</dt><dd><b>한 병도 손색없는 와인</b><span>호텔에 납품되는 와인, 선물로 건네도 좋은 한 병</span></dd></div>
+      <div><dt>특별한 날</dt><dd><b>샴페인 · 부르고뉴 · 나파밸리</b><span>기념일, 특별한 손님이 오는 자리</span></dd></div>
+      <div><dt>프리미엄</dt><dd><b>보르도 5대 샤토 · 빈티지 샴페인</b><span>VIP 선물, 이야기가 있는 한 병</span></dd></div>
     </dl>
     <div class="ctas"><a class="btn wine" href="#contact" data-contact>카톡으로 가격 물어보기</a></div>
   </div>
@@ -389,13 +400,13 @@ def page_gathering(rel):
     <div class="head">
       <span class="kicker">구성 예시</span>
       <h2>인원별로 이렇게 짜 드려요</h2>
-      <p>모임에서 가장 많이 찾으시는 네 가지로 짠 예시예요. 가격대는 와인 기준이고, 잔 대여는 따로 안내드려요. 취향과 음식에 따라 구성은 바꿔 드려요.</p>
+      <p>모임에서 가장 많이 찾으시는 네 가지로 짠 예시예요. 가격은 카톡으로 안내드리고, 잔 대여는 따로 안내드려요. 취향과 음식에 따라 구성은 바꿔 드려요.</p>
     </div>
     <div class="sets">
-      <div class="set"><span class="who">10명 홈파티</span><span class="range">6병 · 10만원대</span><ul><li>세디치 스푸만테<b>1</b></li><li>아이렌<b>2</b></li><li>콜롱바르 소비뇽<b>1</b></li><li>보빌라쥬 메독<b>2</b></li></ul></div>
-      <div class="set"><span class="who">25명 송년회</span><span class="range">10병 · 20만원대</span><ul><li>세디치 스푸만테<b>2</b></li><li>아이렌<b>3</b></li><li>콜롱바르 소비뇽<b>2</b></li><li>보빌라쥬 메독<b>3</b></li></ul></div>
-      <div class="set"><span class="who">30명 송년회</span><span class="range">12병 · 20만원대</span><ul><li>세디치 스푸만테<b>3</b></li><li>아이렌<b>3</b></li><li>콜롱바르 소비뇽<b>3</b></li><li>보빌라쥬 메독<b>3</b></li></ul></div>
-      <div class="set"><span class="who">40명 송년회</span><span class="range">16병 · 30만원대</span><ul><li>세디치 스푸만테<b>4</b></li><li>아이렌<b>4</b></li><li>콜롱바르 소비뇽<b>4</b></li><li>보빌라쥬 메독<b>4</b></li></ul></div>
+      <div class="set"><span class="who">10명 홈파티</span><span class="range">6병</span><ul><li>세디치 스푸만테<b>1</b></li><li>아이렌<b>2</b></li><li>콜롱바르 소비뇽<b>1</b></li><li>보빌라쥬 메독<b>2</b></li></ul></div>
+      <div class="set"><span class="who">25명 송년회</span><span class="range">10병</span><ul><li>세디치 스푸만테<b>2</b></li><li>아이렌<b>3</b></li><li>콜롱바르 소비뇽<b>2</b></li><li>보빌라쥬 메독<b>3</b></li></ul></div>
+      <div class="set"><span class="who">30명 송년회</span><span class="range">12병</span><ul><li>세디치 스푸만테<b>3</b></li><li>아이렌<b>3</b></li><li>콜롱바르 소비뇽<b>3</b></li><li>보빌라쥬 메독<b>3</b></li></ul></div>
+      <div class="set"><span class="who">40명 송년회</span><span class="range">16병</span><ul><li>세디치 스푸만테<b>4</b></li><li>아이렌<b>4</b></li><li>콜롱바르 소비뇽<b>4</b></li><li>보빌라쥬 메독<b>4</b></li></ul></div>
     </div>
     <div class="setbottles">{''.join(bottle(rel,k,c) for k,c in SET_BOTTLES)}</div>
     <p class="postsnote">호텔에 납품되는 와인으로 올리거나, 샴페인과 부르고뉴로 특별하게 짜는 것도 물론 돼요. 예산만 알려 주세요.</p>
@@ -493,10 +504,10 @@ def page_gift(rel):
       <p>정확한 가격은 카카오톡으로 안내드려요. 수량이 많으면 수량에 맞춰 다시 맞춰 드려요.</p>
     </div>
     <dl class="ranges">
-      <div><dt>3만원대</dt><dd><b>부담 없는 선물</b><span>여러 분께 드리는 명절 선물, 데일리로 즐기기 좋은 와인</span></dd></div>
-      <div><dt>5만원대</dt><dd><b>기본 선물</b><span>호텔에 납품되는 와인, 선물로 건네도 손색없는 한 병</span></dd></div>
-      <div><dt>10만원대</dt><dd><b>특별한 분께</b><span>그랑 크뤼 샴페인, 부르고뉴, 나파밸리</span></dd></div>
-      <div><dt>20만원대 이상</dt><dd><b>프리미엄</b><span>보르도 5대 샤토, 빈티지 샴페인</span></dd></div>
+      <div><dt>부담 없는 선물</dt><dd><b>여러 분께 드리는 명절 선물</b><span>데일리로 즐기기 좋은 와인</span></dd></div>
+      <div><dt>기본 선물</dt><dd><b>호텔에 납품되는 와인</b><span>선물로 건네도 손색없는 한 병</span></dd></div>
+      <div><dt>특별한 분께</dt><dd><b>그랑 크뤼 샴페인 · 부르고뉴 · 나파밸리</b><span>이름만 들어도 아는 산지</span></dd></div>
+      <div><dt>프리미엄</dt><dd><b>보르도 5대 샤토 · 빈티지 샴페인</b><span>VIP·대표님께 드리는 한 병</span></dd></div>
     </dl>
     <div class="setbottles">{''.join(bottle(rel,k,c) for k,c in GIFT_BOTTLES)}</div>
   </div>
@@ -530,7 +541,7 @@ def page_gift(rel):
           <label>수량<input id="g-qty" type="text" placeholder="예: 12병, 30세트" required></label>
         </div>
         <div class="row">
-          <label>1병 예산<select id="g-budget"><option>3만원대</option><option selected>5만원대</option><option>10만원대</option><option>20만원대 이상</option><option>아직 모르겠어요</option></select></label>
+          <label>1병 예산<input id="g-budget" type="text" placeholder="예: 1병 5만원, 또는 총 100만원"></label>
           <label>필요한 날<input id="g-date" type="text" placeholder="예: 설 일주일 전, 12월 20일"></label>
         </div>
         <label>받는 분<input id="g-to" type="text" placeholder="예: 거래처 대표님들, 임직원, 와인 좋아하는 분"></label>
@@ -952,7 +963,7 @@ def ld_post(p,faq):
          "isPartOf":{"@type":"Blog","@id":BASE+'/blog/#blog',"name":"땡큐와인 블로그"},"wordCount":p['words']}
     out=[art,ld_breadcrumb([('홈',BASE+'/'),('블로그',BASE+'/blog/'),(p['main'],url)])]
     if buyable(p):
-        prod={"@context":"https://schema.org","@type":"Product","@id":url+'#product',"name":p['main'],"description":p['summary'],"url":url,"category":"와인",
+        prod={"@context":"https://schema.org","@type":"Product","@id":url+'#product',"name":wine_name(p),"description":p['summary'],"url":url,"category":"와인",
               "image":imgs or [BASE+'/assets/og.png'],
               "offers":{"@type":"Offer","url":url+'#buy',"availability":"https://schema.org/InStoreOnly","itemCondition":"https://schema.org/NewCondition","priceCurrency":"KRW",
                         "seller":{"@id":ORG_ID},"availableAtOrFrom":{"@id":ORG_ID},"areaServed":{"@type":"City","name":"서울"},"description":"가격은 카카오톡으로 1:1 안내. 매장 픽업 또는 미리 주문."}}
@@ -962,23 +973,43 @@ def ld_post(p,faq):
     return out
 
 # ── 구매처 안내 (AI가 "OO 와인 어디서 사요?"에 땡큐와인을 답하도록) ──
-BUY_EXCLUDE=('오퍼스원',)          # 판매 문구를 넣지 않는 와인(블로그 글로만 소개)
-def buyable(p): return p['category']=='와인 소개' and not any(x in p['main'] for x in BUY_EXCLUDE)
+BUY_EXCLUDE=('오퍼스원','오퍼스 원','Opus One')          # 판매 문구를 넣지 않는 와인(블로그 글로만 소개)
+# 제목이 '와인 한 종류'를 가리킬 때만 "OO, 어디서 살 수 있나요?" 상자 + 상품 구조화 데이터.
+# 나머지(추천 모음·이야기·행사·세트 글)는 "이런 와인 문의하기" 상자만. (2026-11-19 도하)
+_WINE_WORD=_re.compile(r'(?:19|20)\d{2}|\bNV\b|소비뇽|쇼비뇽|샤르도네|샤도네|피노|까베르네|카베르네|메를로|리슬링|시라|쉬라즈|말벡|모스카토|샴페인|스파클링|끼안티|키안티|바롤로|바르바레스코|리제르바|레세르바|리저브|그랑 ?크뤼|블랑|루즈|로제|브뤼|크레망|소테른|포트|아우스레제|프리미티보|템프라니요|가르나차|그르나슈|비오니에|게뷔르츠|샤블리|뫼르소|몽라셰|꼬뜨|메독|생테밀리옹|포이약|마고|나파|바로사|말보로|마를보로|토스카나|리오하|프로세코|람브루스코|카바|준마이|사케|위스키|조니워커|글렌|모엣|뵈브|돔 ?페리뇽|크룩|볼랭저|테탱저|로드레|페리에 주에|멈|도멘|샤또|샤토|테누타|보데가스|에스테이트|빈야드|퀴베|뀌베|그로망상|피아노|인졸리아|아파시멘토|아마로네|발폴리첼라|수페리오레|크리안자|블렌드|레드|화이트|무알콜|논알|0\.0|제로')
+_GENERIC=_re.compile(r'[?!]|추천|가지|비교|리스트|방법|보관|정리|뭐|어떻게|왜|이야기|차이|입문|기초|역사|믿어도|세트|박스|패키지|특가|할인|행사|모임|송년회|강의|시음회|여행|콜키지|대관|후기|용어|상식|배우|페어링|안내|서비스|이용|이달의|출시|재입고|맛집|멤버십|Membership|제안|담은|빚어낸|보여주|마시며|응원|어울리는|가까운|편리|필수템|헤리티지|즐기|만드세요|유혹|여름날|시원|년생|정보|×|BEST|TOP|타닌감|묵직|화사한|탐구|극찬|열정|우아함|울림|\[')
+_EMOJI=_re.compile('[\U0001F000-\U0001FAFF\u2600-\u27BF\u2B50\u2B55\uFE0F]')
+def wine_name(p):
+    n=_EMOJI.sub('',p['main']); n=_re.sub(r'^\s*[\[(][^\])]*[\])]\s*','',n); n=_re.sub(r'\s{2,}',' ',n).strip(' ,·|')
+    return n or p['main']
+def buyable(p):
+    """특정 와인 한 종류를 소개한 글인가(구매 상자·FAQ·Product 데이터 대상)"""
+    m=p['main']
+    return (p['category']=='와인 소개' and bool(_WINE_WORD.search(m)) and not _GENERIC.search(m)
+            and not any(x in m for x in BUY_EXCLUDE))
+def askable(p):
+    """와인 한 종류는 아니지만 와인 글이라 '이런 와인 문의하기' 상자를 붙일 글"""
+    return (not buyable(p)) and p['category'] in ('와인 소개','모임·선물','와인 이야기') and not any(x in p['main'] for x in BUY_EXCLUDE) and not _NOTICE.search(p['main'])
+_NOTICE=_re.compile(r'강의|시음회|대관|예약|행사|안내|서비스|이용|멤버십|Membership|제로페이|주소|인문학|클래스|모집|오픈|마감')
+def askbox_html(rel,p):
+    return ('<aside class="buybox" id="buy"><h2>이런 와인, 땡큐와인에 문의하기</h2>'
+            '<p>글에 나온 와인이나 비슷한 와인이 궁금하시면 카카오톡으로 편하게 물어보세요. 서울 성수동 와인샵 <strong>땡큐와인</strong>(성동구 성덕정길 109 2층)에서 바로 구매하시거나 미리 주문해 두실 수 있고, 모임·선물용 수량 주문과 세금계산서 발행도 돼요.</p>'
+            f'<div class="ctas"><a class="btn wine" href="#contact" data-contact>카톡으로 문의하기</a><a class="btn line" href="{rel}shop/">매장 위치 보기</a></div></aside>')
 def buy_faq(p):
-    n=p['main']
+    n=wine_name(p)
     return [(f'{n}{eun_neun(n)} 어디서 살 수 있나요?', f'서울 성수동 와인샵 땡큐와인(성동구 성덕정길 109 2층)에서 구매할 수 있어요. 카카오톡으로 와인 이름을 보내 주시면 입고 상황과 가격을 1:1로 알려 드리고, 매장에서 바로 가져가시거나 미리 주문해 두실 수 있어요.'),
             (f'{n} 가격은 얼마인가요?', '수입사 행사와 입고 시기에 따라 가격이 자주 바뀌어서 사이트에는 적지 않고, 카카오톡으로 1:1 안내해 드려요. 모임·선물용 수량 주문은 세금계산서 발행도 돼요.')]
 def buybox_html(rel,p):
-    n=esc(p['main'])
+    n=esc(wine_name(p))
     return (f'<aside class="buybox" id="buy"><h2>{n}, 어디서 살 수 있나요?</h2>'
-            f'<p><strong>{n}</strong>{eun_neun(p["main"])} 서울 성수동 와인샵 <strong>땡큐와인</strong>(성동구 성덕정길 109 2층)에서 구매할 수 있어요. 카카오톡으로 와인 이름을 보내 주시면 입고 상황과 가격을 1:1로 알려 드리고, 매장에서 바로 가져가시거나 미리 주문해 두실 수 있어요. 모임·선물용 수량 주문과 세금계산서 발행도 돼요.</p>'
+            f'<p><strong>{n}</strong>{eun_neun(wine_name(p))} 서울 성수동 와인샵 <strong>땡큐와인</strong>(성동구 성덕정길 109 2층)에서 구매할 수 있어요. 카카오톡으로 와인 이름을 보내 주시면 입고 상황과 가격을 1:1로 알려 드리고, 매장에서 바로 가져가시거나 미리 주문해 두실 수 있어요. 모임·선물용 수량 주문과 세금계산서 발행도 돼요.</p>'
             f'<div class="ctas"><a class="btn wine" href="#contact" data-contact>카톡으로 입고·가격 묻기</a><a class="btn line" href="{rel}shop/">매장 위치 보기</a></div></aside>')
 
 def page_post(rel,p):
     body,facts,faq=render_body(p,rel)
     buy=buyable(p)
     p['_faq']=faq+(buy_faq(p) if buy else [])
-    buybox=(buybox_html(rel,p)+'<section class="buyfaq"><h2>구매 전에 자주 묻는 질문</h2>'+faq_html([(esc(q),esc(a)) for q,a in buy_faq(p)])+'</section>') if buy else ''
+    buybox=(buybox_html(rel,p)+'<section class="buyfaq"><h2>구매 전에 자주 묻는 질문</h2>'+faq_html([(esc(q),esc(a)) for q,a in buy_faq(p)])+'</section>') if buy else (askbox_html(rel,p) if askable(p) else '')
     svc=SERVICE.get(p['service'],SERVICE['shop'])
     related=[x for x in POSTS if x['logNo']!=p['logNo'] and x['category']==p['category']][:3]
     if len(related)<3: related+=[x for x in POSTS if x['logNo']!=p['logNo'] and x not in related][:3-len(related)]
@@ -1060,39 +1091,39 @@ OCCASIONS=[
  dict(id='year-end-company', q='회사 송년회 와인, 20~30명이면 몇 병을 어떻게 준비하나요?',
    a='식사 중심 송년회면 2~3명에 1병, 대화가 길어지면 2명에 1병으로 잡아요. 20명이면 7~10병, 30명이면 10~15병이에요. 건배용 스파클링 → 가벼운 화이트 → 메인 요리와 레드 순서로 구성하고, 와인잔 대여와 행사장 배송·수거까지 한 번에 준비해 드려요. 회사 주문은 세금계산서를 발행해요.',
    rows=[('인원','2~3명에 1병(식사 중심) / 2명에 1병(긴 자리)'),('구성','스파클링·화이트·레드를 1:1:2 정도'),('잔','인원만큼 대여, 끝나면 수거'),('서류','세금계산서 발행')],
-   price='한 병 2~3만원대~5만원대', service='gathering', posts=['year-end-party-wine','how-to-choose-party-wine']),
+   service='gathering', posts=['year-end-party-wine','how-to-choose-party-wine']),
  dict(id='club-meetup', q='동호회 정모나 소모임에 가져갈 와인, 와인 모르는 사람이 많으면 뭘 고르나요?',
    a='처음 마시는 분이 많으면 산뜻한 스파클링과 살짝 달콤하거나 상큼한 화이트를 먼저 두고, 레드는 타닌이 부드러운 메를로나 과실감 있는 레드로 고르면 실패가 적어요. 1인 1병과 2인 1병 견적을 나란히 드려서 회비에 맞춰 고를 수 있어요.',
    rows=[('입문자 많을 때','스파클링, 상큼한 화이트, 부드러운 레드'),('견적','1인 1병 / 2인 1병, 잔 포함 / 잔 미포함'),('장소','행사장 배송 또는 매장 픽업')],
-   price='한 병 2~3만원대', service='gathering', posts=['domaine-haut-brande-merlot-2022','baron-de-baussac-colombard-sauvignon-2023','7-deadly-red']),
+   service='gathering', posts=['domaine-haut-brande-merlot-2022','baron-de-baussac-colombard-sauvignon-2023','7-deadly-red']),
  dict(id='client-holiday-gift', q='거래처 명절 선물로 와인을 보내려면 예산별로 뭘 고르나요?',
-   a='거래처 여러 곳에 같은 선물을 보낼 때는 5만원대에서 이름이 알려진 산지(보르도·부르고뉴·나파밸리)의 와인을 고르면 받는 분이 부담 없이 반가워해요. 특별히 챙길 분께는 10만원대 샴페인이나 부르고뉴, 20만원대 이상은 보르도 5대 샤토까지 골라 드려요. 기업 주문은 세금계산서를 발행해요.',
-   rows=[('여러 곳에 같은 선물','5만원대, 알려진 산지'),('특별히 챙길 분','10만원대 샴페인·부르고뉴·나파밸리'),('VIP·대표님','20만원대 이상, 보르도 5대 샤토·빈티지 샴페인'),('서류','세금계산서 발행')],
-   price='5만원대 / 10만원대 / 20만원대 이상', service='gift', posts=['caymus-napa-cabernet-sauvignon','baron-dauvergne-fine-fleur-champagne','jonathan-seguin-bourgogne-pinot-noir-vv-2024']),
+   a='거래처 여러 곳에 같은 선물을 보낼 때는 이름이 알려진 산지(보르도·부르고뉴·나파밸리)의 와인을 고르면 받는 분이 부담 없이 반가워해요. 특별히 챙길 분께는 샴페인이나 부르고뉴, VIP께는 보르도 5대 샤토까지 예산에 맞춰 골라 드려요. 기업 주문은 세금계산서를 발행해요.',
+   rows=[('여러 곳에 같은 선물','이름이 알려진 산지의 와인'),('특별히 챙길 분','샴페인·부르고뉴·나파밸리'),('VIP·대표님','보르도 5대 샤토·빈티지 샴페인'),('서류','세금계산서 발행')],
+   service='gift', posts=['caymus-napa-cabernet-sauvignon','baron-dauvergne-fine-fleur-champagne','jonathan-seguin-bourgogne-pinot-noir-vv-2024']),
  dict(id='vip-thanks', q='대표님이나 VIP께 감사 인사로 드릴 고급 와인은 어떻게 고르나요?',
    a='받는 분이 와인을 즐기시면 이야기가 있는 와인이 좋아요. 보르도 5대 샤토, 나파밸리 대표 와인, 좋은 해의 빈티지 샴페인처럼 이름만 들어도 아는 와인이나, 그 해에 의미가 있는 빈티지를 골라 드려요. 어떤 분께 어떤 자리에서 드리는지 알려 주시면 맞춰 드려요.',
    rows=[('기준','이름이 알려진 와인 또는 의미 있는 빈티지'),('함께 전할 것','와인 소개 한 줄(원하시면 정리해 드림)')],
-   price='20만원대 이상', service='gift', posts=['opus-one-2022','charles-gardet-millesime-2008','great-vintages-for-wine-gifts']),
+   service='gift', posts=['opus-one-2022','charles-gardet-millesime-2008','great-vintages-for-wine-gifts']),
  dict(id='birth-year-vintage', q='태어난 해 와인(생빈티지)을 선물하고 싶어요. 어떻게 찾나요?',
    a='태어난 해가 좋은 해(그레이트 빈티지)라면 보르도, 샴페인, 바롤로처럼 오래 두고 마시는 와인에서 찾을 수 있어요. 예를 들어 2008년생 성인 기념이라면 2008 빈티지 샴페인을 추천해요. 연도와 예산을 알려 주시면 구할 수 있는 와인을 찾아 드려요.',
    rows=[('잘 남아 있는 와인','보르도 레드, 빈티지 샴페인, 바롤로·브루넬로'),('필요한 정보','태어난 해, 예산, 드릴 날짜')],
-   price='10만원대~20만원대 이상', service='gift', posts=['great-vintages-for-wine-gifts','charles-gardet-millesime-2008']),
+   service='gift', posts=['great-vintages-for-wine-gifts','charles-gardet-millesime-2008']),
  dict(id='bbq-red', q='고기 굽는 날 편하게 딸 레드 와인은 뭐가 좋아요?',
    a='삼겹살·목살처럼 기름진 고기에는 타닌이 적당하고 과실감 있는 까베르네 소비뇽이나 메를로가 잘 맞아요. 칠레·호주 까베르네 소비뇽, 보르도 메를로처럼 데일리로 따기 좋은 레드를 골라 드려요.',
    rows=[('기름진 고기','칠레·호주 까베르네 소비뇽'),('부드럽게','보르도 메를로'),('여럿이 편하게','과실감 있는 미국 레드 블렌드')],
-   price='한 병 2~3만원대', service='gathering', posts=['tarapaca-gran-reserva-cabernet-sauvignon-2023','grand-barossa-cabernet-sauvignon-2020','7-deadly-red']),
+   service='gathering', posts=['tarapaca-gran-reserva-cabernet-sauvignon-2023','grand-barossa-cabernet-sauvignon-2020','7-deadly-red']),
  dict(id='seafood-white', q='굴이나 회, 해산물과 같이 마실 화이트 와인은요?',
    a='해산물에는 오크 없이 산뜻하고 산도가 살아 있는 화이트가 잘 맞아요. 상큼한 뉴질랜드 소비뇽 블랑, 미네랄이 느껴지는 부르고뉴 마콩 샤르도네, 가볍게 마시는 남프랑스 화이트를 상황에 따라 골라 드려요.',
    rows=[('굴·회','소비뇽 블랑, 오크 없는 샤르도네'),('가볍게 여럿이','남프랑스 데일리 화이트'),('온도','차갑게(8~10도)')],
-   price='한 병 2~3만원대~5만원대', service='gathering', posts=['kim-crawford-sauvignon-blanc','pierre-armand-macon-villages-2024','baron-de-baussac-colombard-sauvignon-2023']),
+   service='gathering', posts=['kim-crawford-sauvignon-blanc','pierre-armand-macon-villages-2024','baron-de-baussac-colombard-sauvignon-2023']),
  dict(id='special-day-champagne', q='기념일·특별한 날 열 샴페인은 어떻게 고르나요?',
    a='샴페인은 포도 품종과 마을로 맛이 달라져요. 과실감과 구조감을 원하면 피노 누아로 만든 블랑 드 누아, 섬세하고 산뜻한 맛을 원하면 샤르도네 중심을 골라요. 의미를 더하고 싶으면 기념하는 해의 빈티지 샴페인도 있어요.',
    rows=[('깊고 과실감 있게','블랑 드 누아(피노 누아)'),('섬세하게','샤르도네 중심'),('의미 있게','빈티지 샴페인')],
-   price='10만원대~20만원대 이상', service='gift', posts=['baron-dauvergne-fine-fleur-champagne','charles-gardet-millesime-2008']),
+   service='gift', posts=['baron-dauvergne-fine-fleur-champagne','charles-gardet-millesime-2008']),
  dict(id='sweet-beginner', q='와인을 처음 마시는 사람에게 단 와인을 주고 싶어요. 어떤 게 있나요?',
    a='단 와인은 만드는 방법에 따라 늦수확, 귀부, 아이스와인, 주정강화 와인으로 나뉘어요. 처음이라면 도수가 낮고 상큼하게 단 독일 리슬링이나 살짝 달콤한 화이트부터 권해요. 디저트와 함께라면 더 진한 스위트 와인도 좋아요.',
    rows=[('처음 마시는 분','살짝 달콤한 화이트, 독일 리슬링'),('디저트와','귀부·아이스와인'),('식후 한 잔','포트 같은 주정강화 와인')],
-   price='한 병 2~3만원대~5만원대', service='gift', posts=['sweet-wine-types']),
+   service='gift', posts=['sweet-wine-types']),
 ]
 
 def _occ_posts(rel,slugs):
@@ -1114,7 +1145,7 @@ def page_occasions(rel):
   <div class="wrap">
     <div class="head"><h2>{esc(o['q'])}</h2></div>
     <p><b>{esc(o['a'])}</b></p>
-    <div class="tablebox"><table><thead><tr><th>고르는 기준</th><th>추천</th></tr></thead><tbody>{rows}<tr><td>가격대</td><td>{esc(o['price'])} (정확한 가격은 카톡 1:1)</td></tr></tbody></table></div>
+    <div class="tablebox"><table><thead><tr><th>고르는 기준</th><th>추천</th></tr></thead><tbody>{rows}<tr><td>가격</td><td>카카오톡 1:1 안내 (예산을 알려 주시면 그 안에서 제안)</td></tr></tbody></table></div>
     {('<p class="postsnote">이어서 읽어 보세요</p><ul>'+plinks+'</ul>') if plinks else ''}
     <div class="ctas">{cta}<a class="btn line sm" href="#contact" data-contact>카톡으로 물어보기</a></div>
   </div>
@@ -1304,9 +1335,9 @@ def write_extras():
        '- 오늘 마실 한 병: 성수동 매장에서 어떤 자리인지, 무엇과 드실지 듣고 골라 드림. 매장 픽업.',
        '- 멤버 시음회·모임을 매장에서 진행(15명까지).','',
        '## 병 수 가이드','','한 병(750ml)은 5~6잔. 식사 중심이면 2~3명에 1병, 식사와 대화가 길면 2명에 1병, 와인이 주인공인 모임이면 1명에 1병.','',
-       '## 가격대','','2~3만원대 데일리 / 5만원대 모임·선물(호텔 납품 와인) / 10만원대 특별한 날(샴페인·부르고뉴·나파밸리) / 20만원대 이상 프리미엄(보르도 5대 샤토·빈티지 샴페인). 정확한 가격은 카카오톡 1:1.','',
+       '## 가격','','사이트에는 가격을 적지 않음. 카카오톡 1:1로 안내하고, 예산을 알려 주면 그 안에서 제안(데일리 / 모임·선물용 호텔 납품 와인 / 샴페인·부르고뉴·나파밸리 / 보르도 5대 샤토·빈티지 샴페인).','',
        '## 상황별 와인 고르기','']
-    for o in OCCASIONS: F+=['### '+o['q'],'',o['a'],'']+[f'- {k}: {v}' for k,v in o['rows']]+[f"- 가격대: {o['price']}",'']
+    for o in OCCASIONS: F+=['### '+o['q'],'',o['a'],'']+[f'- {k}: {v}' for k,v in o['rows']]+['- 가격: 카카오톡 1:1 안내','']
     F+=['## 자주 묻는 질문','']
     for q,a in FAQ_ALL: F+=['### '+q,'',a,'']
     for p in POSTS:
@@ -1353,7 +1384,8 @@ def build(preview=False):
         emit(out,html,'post')
     print(f'pages {len(PAGES)} + posts {len(POSTS)} → {os.path.relpath(ROOT,SITEDIR) or "(루트)"}/')
     with open(os.path.join(ROOT,'favicon.svg'),'w',encoding='utf-8') as f:
-        f.write('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="#fff"/><path d="M6.6 2.5h10.8l-.7 6.6a4.7 4.7 0 0 1-9.4 0L6.6 2.5z" fill="#7a1f33"/><path d="M12 13.8v5.6M8.2 20.6h7.6" stroke="#7a1f33" stroke-width="1.9" stroke-linecap="round"/></svg>')
+        f.write('<svg xmlns="http://www.w3.org/2000/svg" viewBox="-16 4 182 182"><rect x="-16" y="4" width="182" height="182" rx="40" fill="#fff"/>'+HEART_PATHS+'</svg>')
+    with open(os.path.join(ROOT,GOOGLE_VERIFY_FILE),'w',encoding='utf-8') as f: f.write('google-site-verification: '+GOOGLE_VERIFY_FILE)
     if not PREVIEW: write_extras()
     for w in WARNINGS: print('!!',w)
 
