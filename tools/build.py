@@ -56,13 +56,13 @@ GOOGLE_VERIFY_FILE='google14be0bc5848b85b8.html'
 MENU_SVG='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>'
 
 PAGES={
- 'index':     dict(path='',           title='땡큐와인 · 성수동 와인샵, 모임·행사 와인과 기업 선물', desc='성수동 와인샵 땡큐와인. 집에서 마실 한 병부터 송년회 와인, 거래처 명절 선물까지 인원과 예산에 맞춰 골라 드려요. 와인잔 대여, 세금계산서 발행.'),
+ 'index':     dict(path='',           title='땡큐와인 · 성수동 와인 토탈 서비스, 모임·행사 와인과 기업 선물', desc='성수동의 와인 토탈 서비스 땡큐와인. 집에서 마실 한 병부터 송년회 와인, 거래처 명절 선물까지 인원과 예산에 맞춰 골라 드려요. 와인잔 대여, 세금계산서 발행, 와인 강의·시음회.'),
  'gathering': dict(path='gathering/', title='모임·행사 와인 견적 · 땡큐와인', desc='송년회, 동호회, 회사 모임 와인. 인원과 예산에 맞춘 구성, 와인잔 대여와 배송·수거까지. 가입 없이 견적을 요청하세요.'),
  'gift':      dict(path='gift/',      title='기업·명절 선물 와인 · 땡큐와인', desc='거래처 명절 선물, 임직원 선물, 감사 인사 한 병. 보르도 5대 샤토부터 데일리 와인까지 예산에 맞춰 고르고 세금계산서를 발행해 드려요.'),
  'shop':      dict(path='shop/',      title='매장 안내 · 땡큐와인', desc='서울 성동구 성덕정길 109 2층. 매장 픽업, 멤버 시음회·모임 안내.'),
- 'about':     dict(path='about/',     title='소개 · 와인 컨설턴트 이도하', desc='성수동에서 땡큐와인을 운영하는 와인 컨설턴트 이도하. 모임과 회사, 대표님들의 와인을 담당해요.'),
+ 'about':     dict(path='about/',     title='소개 · 땡큐와인과 와인 컨설턴트 이도하', desc='땡큐와인은 모임·행사·기업 선물 와인부터 와인 강의·시음회까지 맡는 성수동의 와인 토탈 서비스예요. 운영하는 와인 컨설턴트 이도하 소개.'),
  'blog':      dict(path='blog/',      title='블로그 · 땡큐와인', desc='땡큐와인이 네이버 블로그에 올린 와인 소개·와인 이야기·모임·선물 글을 사이트에서 그대로 읽어요. 글마다 한 줄 요약부터.'),
- 'occasions': dict(path='occasions/', title='상황별 와인 고르기 · 송년회·거래처 선물·고기·해산물 와인 | 땡큐와인', desc='회사 송년회 몇 병, 거래처 명절 선물 예산, 고기 굽는 날 레드, 해산물 화이트, 생빈티지 선물까지. 성수동 와인샵 땡큐와인의 와인 컨설턴트가 상황별 고르는 기준과 가격대를 정리했어요.'),
+ 'occasions': dict(path='occasions/', title='상황별 와인 고르기 · 송년회·거래처 선물·고기·해산물 와인 | 땡큐와인', desc='회사 송년회 몇 병, 거래처 명절 선물 예산, 고기 굽는 날 레드, 해산물 화이트, 생빈티지 선물까지. 땡큐와인의 와인 컨설턴트가 상황별 고르는 기준을 정리했어요.'),
  'faq':       dict(path='faq/',       title='자주 묻는 질문 · 땡큐와인', desc='가격, 모임 와인 병 수, 와인잔 대여, 세금계산서, 멤버에 대해 자주 묻는 질문.'),
  'privacy':   dict(path='privacy/',   title='개인정보처리방침 · 땡큐와인', desc='땡큐와인 개인정보처리방침'),
  '404':       dict(path='404.html',   title='페이지를 찾을 수 없어요 · 땡큐와인', desc='땡큐와인'),
@@ -78,7 +78,7 @@ def ld_org():
     same=[SITE['blog'],SITE['insta']]+([SITE['naver_place']] if SITE['naver_place'] else [])
     return {"@context":"https://schema.org","@type":["LiquorStore","LocalBusiness"],"@id":ORG_ID,"name":"땡큐와인","alternateName":["Thank You Wine"],
       "url":BASE+'/',"logo":BASE+'/assets/logo.png',"image":[BASE+'/assets/og.png',BASE+'/assets/logo.png'],
-      "description":"서울 성수동 와인샵. 모임·행사 와인과 기업·명절 선물 와인을 인원과 예산에 맞춰 구성하고, 와인잔 대여와 세금계산서 발행까지 해 드려요. 와인 컨설턴트 이도하가 운영해요.",
+      "description":"서울 성수동의 와인 토탈 서비스. 모임·행사 와인과 기업·명절 선물 와인을 인원과 예산에 맞춰 구성하고, 와인잔 대여와 세금계산서 발행, 와인 강의·시음회까지 해 드려요. 와인 컨설턴트 이도하가 운영해요.",
       "telephone":"+82-"+PHONE[1:],"email":SITE['email'],"priceRange":"₩₩",
       "address":{"@type":"PostalAddress","streetAddress":"성덕정길 109 2층","addressLocality":"성동구","addressRegion":"서울","addressCountry":"KR"},
       "areaServed":{"@type":"City","name":"서울"},"founder":{"@id":PERSON_ID},"knowsAbout":KNOWS,"sameAs":same,
@@ -88,7 +88,7 @@ def ld_website():
     return {"@context":"https://schema.org","@type":"WebSite","@id":SITE_ID,"url":BASE+'/',"name":"땡큐와인","alternateName":"Thank You Wine","inLanguage":"ko-KR","publisher":{"@id":ORG_ID}}
 def ld_person():
     return {"@context":"https://schema.org","@type":"Person","@id":PERSON_ID,"name":"이도하","alternateName":"Doha Lee","jobTitle":"와인 컨설턴트","url":BASE+'/about/',"image":BASE+'/assets/img/doha.webp',
-      "description":"성수동 와인샵 땡큐와인을 운영하는 와인 컨설턴트. 모임·행사·기업 선물 와인 구성과 견적, 와인 매너·와인 인문학 강의와 시음회 진행, 와인 수입사 선샤인와인 운영.",
+      "description":"성수동의 와인 토탈 서비스 땡큐와인을 운영하는 와인 컨설턴트. 모임·행사·기업 선물 와인 구성과 견적, 와인 매너·와인 인문학 강의와 시음회 진행, 와인 수입사 선샤인와인 운영.",
       "worksFor":{"@id":ORG_ID},"knowsAbout":KNOWS,"sameAs":[SITE['blog'],SITE['insta'],SITE['corkmatch']]}
 def ld_faq(items):
     return {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":a}} for q,a in items]}
@@ -102,7 +102,7 @@ def head(key, rel, page=None, ld=None, og=None):
     canon=BASE+'/'+(p['path'] if p['path']!='404.html' else '')
     lds=list(ld or [])
     if key=='index': lds=[ld_org(),ld_website()]+lds
-    elif key=='about': lds=[ld_person()]+lds
+    elif key=='about': lds=[ld_org(),ld_person()]+lds
     elif key=='faq': lds=[ld_faq(FAQ_ALL)]+lds
     og=og or {}
     img=og.get('image') or BASE+'/assets/og.png'
@@ -198,7 +198,7 @@ def footer(rel):
 '''
 
 FAQ_ALL=[
- ('블로그에 소개한 와인을 사고 싶은데 어디서 살 수 있나요?','서울 성수동 와인샵 땡큐와인(성동구 성덕정길 109 2층)에서 살 수 있어요. 블로그에 소개한 와인은 대부분 매장에 있거나 주문할 수 있으니, 카카오톡으로 와인 이름을 보내 주시면 입고 상황과 가격을 바로 알려 드려요. 매장에서 바로 가져가시거나 미리 주문해 두실 수 있어요.'),
+ ('블로그에 소개한 와인을 사고 싶은데 어디서 살 수 있나요?','서울 성수동 땡큐와인 매장(성동구 성덕정길 109 2층)에서 살 수 있어요. 블로그에 소개한 와인은 대부분 매장에 있거나 주문할 수 있으니, 카카오톡으로 와인 이름을 보내 주시면 입고 상황과 가격을 바로 알려 드려요. 매장에서 바로 가져가시거나 미리 주문해 두실 수 있어요.'),
  ('가격은 왜 사이트에 없나요?','수입사 행사와 입고 시기에 따라 가격이 자주 바뀌어서예요. 그래서 사이트에는 가격대만 적고, 정확한 가격은 카카오톡으로 1:1 안내해 드려요. 어떤 자리인지, 무엇과 드실지, 편한 가격대만 알려 주시면 맞는 와인을 골라 가격과 함께 보내 드릴게요.'),
  ('모임 와인은 몇 병을 준비하면 될까요?','한 병(750ml)은 보통 5~6잔이 나와요. 식사 중심으로 건배와 한두 잔이면 2~3명에 1병, 식사와 대화가 길어지는 자리면 2명에 1병, 와인이 주인공인 모임이면 1명에 1병을 추천해요. 인원만 알려 주시면 1인 1병과 2인 1병 두 가지로 나란히 견적을 드려요.'),
  ('와인잔도 빌릴 수 있나요?','네. 인원만큼 와인잔을 준비해 드리고 행사가 끝나면 수거해요. 잔 포함과 잔 미포함으로 견적을 따로 드리니 비교해 보고 정하시면 돼요. 배송과 수거 방법은 견적 때 함께 안내드려요.'),
@@ -245,7 +245,6 @@ def page_index(rel):
   <div class="wrap wide">
     <div class="herogrid">
       <div>
-        <span class="kicker">성수동 와인샵 · 와인 컨설턴트 이도하</span>
         <h1>오늘 자리에 맞는 와인,<br>함께 골라 드려요</h1>
         <p class="lead">집에서 마실 한 병부터 30명 송년회, 거래처 명절 선물까지. <b>인원과 예산, 자리의 분위기</b>만 알려 주시면 와인 구성부터 잔 준비까지 땡큐와인이 맞춰 드려요.</p>
         <div class="ctas">
@@ -604,22 +603,39 @@ def page_about(rel):
     return f'''
 <section class="sec tight" id="about">
   <div class="wrap">
+    <div class="head">
+      <span class="kicker">땡큐와인 소개</span>
+      <h1>와인을 고르는 일부터<br>자리를 준비하는 일까지</h1>
+      <p>땡큐와인은 서울 성수동에서 와인을 파는 데서 그치지 않고, 모임과 행사에 맞는 와인 구성, 기업·명절 선물, 와인잔 대여와 세금계산서, 와인 강의와 시음회까지 한 사람이 끝까지 맡는 <b>와인 토탈 서비스</b>예요. 집에서 마실 한 병을 고르는 손님부터 30명 송년회, 거래처 여러 곳에 보내는 명절 선물까지 같은 방식으로 챙겨요.</p>
+    </div>
+    <ul class="checks">
+      <li>모임·행사 와인 구성과 견적, 와인잔 대여, 행사장 배송·수거</li>
+      <li>기업·명절 선물 와인 구성과 세금계산서 발행</li>
+      <li>매장 구매와 미리 주문(성동구 성덕정길 109 2층), 가격은 카카오톡 1:1 안내</li>
+      <li>와인 매너·와인 인문학 강의, 시음회 진행</li>
+      <li>멤버 시음회·모임(10만원 이상 구매하시면 멤버)</li>
+      <li><span>와인 수입사 <b>선샤인와인</b>, 와인 강사·인플루언서 매칭 <a class="textlink" href="{SITE['corkmatch']}" target="_blank" rel="noopener">코르크매치</a>와 함께</span></li>
+    </ul>
+    <div class="ctas"><a class="btn wine" href="{rel}gathering/">모임 와인 견적 받기</a><a class="btn line" href="{rel}gift/">기업·명절 선물 문의</a><a class="btn line" href="{rel}shop/">매장 안내</a></div>
+  </div>
+</section>
+<section class="sec" id="doha">
+  <div class="wrap">
     <div class="aboutgrid">
       <figure class="portrait"><img src="{rel}assets/img/doha.webp" alt="와인잔을 든 와인 컨설턴트 이도하" width="760" height="1168"><figcaption>와인 컨설턴트 이도하 · Wine Consultant</figcaption></figure>
       <div class="abouttext">
-        <span class="kicker">소개</span>
-        <h1>와인은 취하려고가 아니라<br>대화를 풍성하게 하려고<br>마시는 거예요</h1>
-        <p>안녕하세요, 성수동에서 땡큐와인을 운영하는 와인 컨설턴트 이도하입니다. 와인바로 시작했다가, 한자리에 머물기보다 사람들을 만나 그 자리에 맞는 와인을 골라 드리는 일이 더 맞는다는 걸 알고 와인샵으로 바꿨어요. 지금은 모임과 회사, 대표님들의 와인을 담당하고 있어요.</p>
-        <p>땡큐와인에서는 세 가지만 여쭤봐요. 어떤 자리인지, 무엇과 함께 드실지, 어느 가격대가 편하신지. 이 세 가지만 알면 만족도가 가장 높은 와인을 찾아 드릴 수 있거든요. 와인을 잘 몰라도 괜찮아요. 아는 척하지 않아도 되는 자리를 만드는 게 제 일이에요.</p>
-        <h2>하는 일</h2>
+        <span class="kicker">대표 소개</span>
+        <h2 class="big">와인은 취하려고가 아니라<br>대화를 풍성하게 하려고<br>마시는 거예요</h2>
+        <p>안녕하세요, 땡큐와인을 운영하는 와인 컨설턴트 이도하입니다. 와인바로 시작했다가, 한자리에 머물기보다 사람들을 만나 그 자리에 맞는 와인을 골라 드리는 일이 더 맞는다는 걸 알고 지금의 땡큐와인으로 바꿨어요. 지금은 모임과 회사, 대표님들의 와인을 담당하고 있어요.</p>
+        <p>땡큐와인에서는 세 가지만 여쭤봐요. 어떤 자리인지, 무엇과 함께 드실지, 어느 정도 예산이 편하신지. 이 세 가지만 알면 만족도가 가장 높은 와인을 찾아 드릴 수 있거든요. 와인을 잘 몰라도 괜찮아요. 아는 척하지 않아도 되는 자리를 만드는 게 제 일이에요.</p>
+        <h3>하는 일</h3>
         <ul class="checks one">
-          <li>성수동 와인샵 땡큐와인 운영</li>
-          <li>모임·행사·기업 선물 와인 구성과 견적</li>
+          <li>땡큐와인 운영, 모임·행사·기업 선물 와인 컨설팅</li>
           <li>와인 매너, 와인 인문학 강의와 시음회 진행</li>
           <li>와인 수입사 선샤인와인 운영</li>
-          <li>와인 강사·인플루언서 매칭 <a class="textlink" href="{SITE['corkmatch']}" target="_blank" rel="noopener">코르크매치</a></li>
+          <li><span>와인 강사·인플루언서 매칭 <a class="textlink" href="{SITE['corkmatch']}" target="_blank" rel="noopener">코르크매치</a> 운영</span></li>
         </ul>
-        <h2>2027년 6월, 와이너리 크루즈</h2>
+        <h3>2027년 6월, 와이너리 크루즈</h3>
         <p>땡큐와인 멤버들과 크루즈를 타고 와이너리를 둘러보는 여행을 준비하고 있어요. 각자 예약하고 같이 떠나는 모임이에요. 궁금하시면 카톡으로 물어봐 주세요.</p>
         <div class="ctas"><a class="btn wine" href="#contact" data-contact>문의하기</a><a class="btn line" href="{SITE['blog']}" target="_blank" rel="noopener">블로그</a><a class="btn line" href="{SITE['insta']}" target="_blank" rel="noopener">인스타그램</a></div>
       </div>
@@ -926,7 +942,7 @@ def render_body(p,rel):
         texts=[b['text'] for b in blocks if b['type']=='p']
         if title and title.startswith('한눈에') and facts_from(texts):
             facts=facts_from(texts)
-            if buyable(p): facts=facts+[('구매처','성수동 와인샵 땡큐와인 · 카톡으로 입고·가격 1:1 안내')]
+            if buyable(p): facts=facts+[('구매처','성수동 땡큐와인 매장 · 카톡으로 입고·가격 1:1 안내')]
             out.append(f'<section class="facts"><h2>{esc(title)}</h2><dl>'+''.join(f'<div><dt>{esc(k)}</dt><dd>{inline(v)}</dd></div>' for k,v in facts)+'</dl></section>')
             continue
         if title and '자주 묻는 질문' in title and faq_from(texts):
@@ -993,16 +1009,16 @@ def askable(p):
 _NOTICE=_re.compile(r'강의|시음회|대관|예약|행사|안내|서비스|이용|멤버십|Membership|제로페이|주소|인문학|클래스|모집|오픈|마감')
 def askbox_html(rel,p):
     return ('<aside class="buybox" id="buy"><h2>이런 와인, 땡큐와인에 문의하기</h2>'
-            '<p>글에 나온 와인이나 비슷한 와인이 궁금하시면 카카오톡으로 편하게 물어보세요. 서울 성수동 와인샵 <strong>땡큐와인</strong>(성동구 성덕정길 109 2층)에서 바로 구매하시거나 미리 주문해 두실 수 있고, 모임·선물용 수량 주문과 세금계산서 발행도 돼요.</p>'
+            '<p>글에 나온 와인이나 비슷한 와인이 궁금하시면 카카오톡으로 편하게 물어보세요. 서울 성수동 <strong>땡큐와인</strong> 매장(성동구 성덕정길 109 2층)에서 바로 구매하시거나 미리 주문해 두실 수 있고, 모임·선물용 수량 주문과 세금계산서 발행도 돼요.</p>'
             f'<div class="ctas"><a class="btn wine" href="#contact" data-contact>카톡으로 문의하기</a><a class="btn line" href="{rel}shop/">매장 위치 보기</a></div></aside>')
 def buy_faq(p):
     n=wine_name(p)
-    return [(f'{n}{eun_neun(n)} 어디서 살 수 있나요?', f'서울 성수동 와인샵 땡큐와인(성동구 성덕정길 109 2층)에서 구매할 수 있어요. 카카오톡으로 와인 이름을 보내 주시면 입고 상황과 가격을 1:1로 알려 드리고, 매장에서 바로 가져가시거나 미리 주문해 두실 수 있어요.'),
+    return [(f'{n}{eun_neun(n)} 어디서 살 수 있나요?', f'서울 성수동 땡큐와인 매장(성동구 성덕정길 109 2층)에서 구매할 수 있어요. 카카오톡으로 와인 이름을 보내 주시면 입고 상황과 가격을 1:1로 알려 드리고, 매장에서 바로 가져가시거나 미리 주문해 두실 수 있어요.'),
             (f'{n} 가격은 얼마인가요?', '수입사 행사와 입고 시기에 따라 가격이 자주 바뀌어서 사이트에는 적지 않고, 카카오톡으로 1:1 안내해 드려요. 모임·선물용 수량 주문은 세금계산서 발행도 돼요.')]
 def buybox_html(rel,p):
     n=esc(wine_name(p))
     return (f'<aside class="buybox" id="buy"><h2>{n}, 어디서 살 수 있나요?</h2>'
-            f'<p><strong>{n}</strong>{eun_neun(wine_name(p))} 서울 성수동 와인샵 <strong>땡큐와인</strong>(성동구 성덕정길 109 2층)에서 구매할 수 있어요. 카카오톡으로 와인 이름을 보내 주시면 입고 상황과 가격을 1:1로 알려 드리고, 매장에서 바로 가져가시거나 미리 주문해 두실 수 있어요. 모임·선물용 수량 주문과 세금계산서 발행도 돼요.</p>'
+            f'<p><strong>{n}</strong>{eun_neun(wine_name(p))} 서울 성수동 <strong>땡큐와인</strong> 매장(성동구 성덕정길 109 2층)에서 구매할 수 있어요. 카카오톡으로 와인 이름을 보내 주시면 입고 상황과 가격을 1:1로 알려 드리고, 매장에서 바로 가져가시거나 미리 주문해 두실 수 있어요. 모임·선물용 수량 주문과 세금계산서 발행도 돼요.</p>'
             f'<div class="ctas"><a class="btn wine" href="#contact" data-contact>카톡으로 입고·가격 묻기</a><a class="btn line" href="{rel}shop/">매장 위치 보기</a></div></aside>')
 
 def page_post(rel,p):
@@ -1313,7 +1329,7 @@ def write_extras():
     key=indexnow_key(); write_text(os.path.join(ROOT,key+'.txt'),key)
     # llms.txt (llmstxt.org 형식)
     L=['# 땡큐와인 (Thank You Wine)','',
-       '> 서울 성수동 와인샵. 와인 컨설턴트 이도하가 모임·행사 와인과 기업·명절 선물 와인을 인원과 예산에 맞춰 골라 드리고, 와인잔 대여와 세금계산서 발행까지 해 드려요. 가격은 사이트에 적지 않고 카카오톡으로 1:1 안내해요(가격대만 공개: 2~3만원대 / 5만원대 / 10만원대 / 20만원대 이상).','',
+       '> 서울 성수동의 와인 토탈 서비스. 와인 컨설턴트 이도하가 모임·행사 와인과 기업·명절 선물 와인을 인원과 예산에 맞춰 골라 드리고, 와인잔 대여·세금계산서 발행·와인 강의·시음회까지 해 드려요. 와인은 성수동 매장에서 구매하거나 미리 주문할 수 있고, 가격은 사이트에 적지 않고 카카오톡으로 1:1 안내해요.','',
        '## 기본 정보','',f"- 주소: {SITE['address']}",f"- 연락: {PHONE} (문자·전화·카카오톡 친구 추가), {SITE['email']}",
        f"- 네이버 블로그: {SITE['blog']}",f"- 인스타그램: {SITE['insta']}",
        '- 운영: 상호 한낮의밤, 대표 이도하(와인 컨설턴트).',
@@ -1341,10 +1357,10 @@ def write_extras():
     F+=['## 자주 묻는 질문','']
     for q,a in FAQ_ALL: F+=['### '+q,'',a,'']
     for p in POSTS:
-        F+=['','---','',f"# {p['title']}",'',f"- 주소: {BASE}/{p['path']}",f"- 날짜: {p['date']} · 분류: {p['category']} · 글쓴이: 이도하(와인 컨설턴트)",f"- 네이버 원문: {p['naver']}"]+([f"- 구매처: 서울 성수동 와인샵 땡큐와인(성덕정길 109 2층) 매장 구매·카톡 주문, 가격은 카톡 1:1 안내"] if buyable(p) else [])+['',f"**한 줄 요약:** {p['summary']}",'',blocks_markdown(p),'']
+        F+=['','---','',f"# {p['title']}",'',f"- 주소: {BASE}/{p['path']}",f"- 날짜: {p['date']} · 분류: {p['category']} · 글쓴이: 이도하(와인 컨설턴트)",f"- 네이버 원문: {p['naver']}"]+([f"- 구매처: 서울 성수동 땡큐와인 매장(성덕정길 109 2층) 구매·카톡 주문, 가격은 카톡 1:1 안내"] if buyable(p) else [])+['',f"**한 줄 요약:** {p['summary']}",'',blocks_markdown(p),'']
     write_text(os.path.join(ROOT,'llms-full.txt'),'\n'.join(F))
     items=''.join(f'  <item>\n    <title>{esc(p["title"])}</title>\n    <link>{BASE}/{p["path"]}</link>\n    <guid isPermaLink="true">{BASE}/{p["path"]}</guid>\n    <pubDate>{rfc822(p["date"])}</pubDate>\n    <category>{esc(p["category"])}</category>\n    <description>{esc(p["summary"])}</description>\n  </item>\n' for p in POSTS)
-    feed=f'<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n<channel>\n  <title>땡큐와인 블로그</title>\n  <link>{BASE}/blog/</link>\n  <atom:link href="{BASE}/feed.xml" rel="self" type="application/rss+xml"/>\n  <description>성수동 와인샵 땡큐와인의 와인 소개와 와인 이야기</description>\n  <language>ko-kr</language>\n{items}</channel>\n</rss>\n'
+    feed=f'<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n<channel>\n  <title>땡큐와인 블로그</title>\n  <link>{BASE}/blog/</link>\n  <atom:link href="{BASE}/feed.xml" rel="self" type="application/rss+xml"/>\n  <description>성수동 와인 토탈 서비스 땡큐와인의 와인 소개와 와인 이야기</description>\n  <language>ko-kr</language>\n{items}</channel>\n</rss>\n'
     write_text(os.path.join(ROOT,'feed.xml'),feed)
 
 def build(preview=False):
