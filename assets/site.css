@@ -48,9 +48,12 @@ b,strong{font-weight:700}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--bg)}
 .top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(255,255,255,.94);backdrop-filter:saturate(1.2) blur(8px);border-bottom:1px solid var(--line)}
 .top .wrap{display:flex;justify-content:space-between;align-items:center;height:64px;gap:16px}
-.logo{display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-family:var(--serif);font-weight:700;font-size:1.3rem;letter-spacing:-.02em}
-.logo svg{width:22px;height:22px}
-.logo small{font-family:var(--sans);font-weight:500;font-size:.72rem;color:var(--muted);letter-spacing:.08em;margin-left:2px}
+/* 워드 로고(2026-11-16 제작): 영문 Cormorant Garamond 600 버건디 + 한글 자간 넓게 */
+.wordmark{display:inline-flex;flex-direction:column;align-items:center;gap:4px;text-decoration:none;line-height:1;color:var(--wine)}
+.wordmark .en{font-family:"Cormorant Garamond",var(--serif),serif;font-weight:600;font-size:1.5rem;letter-spacing:.12em;margin-right:-.12em;color:var(--wine);white-space:nowrap}
+.wordmark .ko{font-family:var(--sans);font-weight:500;font-size:.58rem;letter-spacing:.6em;margin-right:-.6em;color:#555;white-space:nowrap}
+.logo{padding:4px 0}
+.logo:hover .en{color:var(--wine-deep)}
 .nav{display:flex;gap:2px;align-items:center}
 .nav a,.nav button{padding:8px 11px;border-radius:9px;text-decoration:none;color:var(--muted);font:500 .94rem var(--sans);background:none;border:0;cursor:pointer}
 .nav a:hover,.nav button:hover{color:var(--ink);background:var(--paper)}
@@ -61,7 +64,8 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .navbtn svg{width:24px;height:24px}
 @media(max-width:860px){
   .navbtn{display:inline-flex}
-  .logo small{display:none}
+  .wordmark .en{font-size:1.28rem}
+  .wordmark .ko{font-size:.52rem}
   .nav{display:none;position:absolute;left:0;right:0;top:64px;background:var(--bg);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;padding:10px max(16px,env(safe-area-inset-left,0px)) 18px max(16px,env(safe-area-inset-left,0px));gap:2px;box-shadow:0 16px 30px rgba(26,19,22,.08)}
   .nav.open{display:flex}
   .nav a,.nav button{padding:13px 12px;font-size:1.02rem;text-align:left}
@@ -279,7 +283,9 @@ footer .frow{display:flex;flex-wrap:wrap;gap:6px 18px}
 footer a{color:inherit;text-decoration:none}
 footer a:hover{color:var(--ink)}
 footer .warn{font-weight:700;color:var(--ink)}
-footer .fname{font-family:var(--serif);font-weight:600;color:var(--ink);font-size:1rem}
+footer .fname{margin-bottom:18px}
+footer .fname .wordmark .en{font-size:1.7rem}
+footer .fname .wordmark .ko{font-size:.64rem}
 .notfound{padding-block:120px;text-align:center}
 .notfound h1{margin-bottom:16px}
 

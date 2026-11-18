@@ -59,7 +59,7 @@ KNOWS=["와인","와인 추천","모임 와인","송년회 와인","기업 선�
 def ld_org():
     same=[SITE['blog'],SITE['insta']]+([SITE['naver_place']] if SITE['naver_place'] else [])
     return {"@context":"https://schema.org","@type":["LiquorStore","LocalBusiness"],"@id":ORG_ID,"name":"땡큐와인","alternateName":["Thank You Wine"],
-      "url":BASE+'/',"logo":BASE+'/assets/og.png',"image":BASE+'/assets/og.png',
+      "url":BASE+'/',"logo":BASE+'/assets/logo.png',"image":[BASE+'/assets/og.png',BASE+'/assets/logo.png'],
       "description":"서울 성수동 와인샵. 모임·행사 와인과 기업·명절 선물 와인을 인원과 예산에 맞춰 구성하고, 와인잔 대여와 세금계산서 발행까지 해 드려요. 와인 컨설턴트 이도하가 운영해요.",
       "telephone":"+82-"+PHONE[1:],"email":SITE['email'],"priceRange":"₩₩",
       "address":{"@type":"PostalAddress","streetAddress":"성덕정길 109 2층","addressLocality":"성동구","addressRegion":"서울","addressCountry":"KR"},
@@ -117,7 +117,7 @@ def head(key, rel, page=None, ld=None, og=None):
 <link rel="alternate" type="application/rss+xml" title="땡큐와인 블로그" href="{BASE}/feed.xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@600;700&display=swap">
 <link rel="stylesheet" href="{rel}assets/site.css">
 <script>window.TYW={cfg}</script>
 {ld_script(lds)}</head>
@@ -131,7 +131,7 @@ def header(rel, current):
     home=rel if rel else './'
     return f'''<header class="top">
   <div class="wrap wide">
-    <a class="logo" href="{home}" aria-label="땡큐와인 홈">{GLASS_SVG}땡큐와인<small>SEONGSU</small></a>
+    <a class="logo wordmark" href="{home}" aria-label="땡큐와인 홈"><span class="en">THANK YOU WINE</span><span class="ko">땡큐와인</span></a>
     <button class="navbtn" type="button" aria-expanded="false" aria-controls="nav" aria-label="메뉴">{MENU_SVG}</button>
     <nav class="nav" id="nav" aria-label="주요 메뉴">
       {a(rel+'gathering/','모임·행사 와인','gathering')}
@@ -164,7 +164,7 @@ def contact_dialog():
 def footer(rel):
     return f'''<footer>
   <div class="wrap">
-    <p class="fname">땡큐와인 <span class="muted small">THANK YOU WINE</span></p>
+    <p class="fname"><span class="wordmark"><span class="en">THANK YOU WINE</span><span class="ko">땡큐와인</span></span></p>
     <p class="warn">지나친 음주는 뇌졸중, 기억력 손상이나 치매를 유발합니다. 임신 중 음주는 기형아 출생 위험을 높입니다.</p>
     <p>땡큐와인은 만 19세 이상만 이용할 수 있어요. 가격은 사이트에 적지 않고 카카오톡으로 1:1 안내해 드려요.</p>
     <p>상호 {SITE['owner']} · 대표 {SITE['ceo']} · 사업자등록번호 {SITE['regno']} · 통신판매업 신고번호 {SITE['mailorder']}<br>{SITE['address']} · {PHONE} · {SITE['email']}</p>
@@ -939,7 +939,7 @@ def ld_post(p,faq):
          "headline":p['main'][:110],"alternativeHeadline":p['sub'],"name":p['title'],"description":p['summary'],
          "datePublished":p['date'],"dateModified":p['date'],"inLanguage":"ko-KR","isAccessibleForFree":True,
          "author":{"@type":"Person","@id":PERSON_ID,"name":"이도하","jobTitle":"와인 컨설턴트","url":BASE+'/about/'},
-         "publisher":{"@type":"Organization","@id":ORG_ID,"name":"땡큐와인","logo":{"@type":"ImageObject","url":BASE+'/assets/og.png'}},
+         "publisher":{"@type":"Organization","@id":ORG_ID,"name":"땡큐와인","logo":{"@type":"ImageObject","url":BASE+'/assets/logo.png',"width":800,"height":800}},
          "image":imgs or [BASE+'/assets/og.png'],"keywords":", ".join(p['tags']),"articleSection":p['category'],
          "isPartOf":{"@type":"Blog","@id":BASE+'/blog/#blog',"name":"땡큐와인 블로그"},"wordCount":p['words']}
     out=[art,ld_breadcrumb([('홈',BASE+'/'),('블로그',BASE+'/blog/'),(p['main'],url)])]
