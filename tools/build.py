@@ -179,6 +179,7 @@ def footer(rel):
 '''
 
 FAQ_ALL=[
+ ('블로그에 소개한 와인을 사고 싶은데 어디서 살 수 있나요?','서울 성수동 와인샵 땡큐와인(성동구 성덕정길 109 2층)에서 살 수 있어요. 블로그에 소개한 와인은 대부분 매장에 있거나 주문할 수 있으니, 카카오톡으로 와인 이름을 보내 주시면 입고 상황과 가격을 바로 알려 드려요. 매장에서 바로 가져가시거나 미리 주문해 두실 수 있어요.'),
  ('가격은 왜 사이트에 없나요?','수입사 행사와 입고 시기에 따라 가격이 자주 바뀌어서예요. 그래서 사이트에는 가격대만 적고, 정확한 가격은 카카오톡으로 1:1 안내해 드려요. 어떤 자리인지, 무엇과 드실지, 편한 가격대만 알려 주시면 맞는 와인을 골라 가격과 함께 보내 드릴게요.'),
  ('모임 와인은 몇 병을 준비하면 될까요?','한 병(750ml)은 보통 5~6잔이 나와요. 식사 중심으로 건배와 한두 잔이면 2~3명에 1병, 식사와 대화가 길어지는 자리면 2명에 1병, 와인이 주인공인 모임이면 1명에 1병을 추천해요. 인원만 알려 주시면 1인 1병과 2인 1병 두 가지로 나란히 견적을 드려요.'),
  ('와인잔도 빌릴 수 있나요?','네. 인원만큼 와인잔을 준비해 드리고 행사가 끝나면 수거해요. 잔 포함과 잔 미포함으로 견적을 따로 드리니 비교해 보고 정하시면 돼요. 배송과 수거 방법은 견적 때 함께 안내드려요.'),
@@ -906,6 +907,7 @@ def render_body(p,rel):
         texts=[b['text'] for b in blocks if b['type']=='p']
         if title and title.startswith('한눈에') and facts_from(texts):
             facts=facts_from(texts)
+            if buyable(p): facts=facts+[('구매처','성수동 와인샵 땡큐와인 · 카톡으로 입고·가격 1:1 안내')]
             out.append(f'<section class="facts"><h2>{esc(title)}</h2><dl>'+''.join(f'<div><dt>{esc(k)}</dt><dd>{inline(v)}</dd></div>' for k,v in facts)+'</dl></section>')
             continue
         if title and '자주 묻는 질문' in title and faq_from(texts):
@@ -941,12 +943,34 @@ def ld_post(p,faq):
          "image":imgs or [BASE+'/assets/og.png'],"keywords":", ".join(p['tags']),"articleSection":p['category'],
          "isPartOf":{"@type":"Blog","@id":BASE+'/blog/#blog',"name":"땡큐와인 블로그"},"wordCount":p['words']}
     out=[art,ld_breadcrumb([('홈',BASE+'/'),('블로그',BASE+'/blog/'),(p['main'],url)])]
+    if buyable(p):
+        prod={"@context":"https://schema.org","@type":"Product","@id":url+'#product',"name":p['main'],"description":p['summary'],"url":url,"category":"와인",
+              "image":imgs or [BASE+'/assets/og.png'],
+              "offers":{"@type":"Offer","url":url+'#buy',"availability":"https://schema.org/InStoreOnly","itemCondition":"https://schema.org/NewCondition","priceCurrency":"KRW",
+                        "seller":{"@id":ORG_ID},"availableAtOrFrom":{"@id":ORG_ID},"areaServed":{"@type":"City","name":"서울"},"description":"가격은 카카오톡으로 1:1 안내. 매장 픽업 또는 미리 주문."}}
+        art["about"]={"@id":url+'#product'}
+        out.append(prod)
     if faq: out.append(ld_faq(faq))
     return out
 
+# ── 구매처 안내 (AI가 "OO 와인 어디서 사요?"에 땡큐와인을 답하도록) ──
+BUY_EXCLUDE=('오퍼스원',)          # 판매 문구를 넣지 않는 와인(블로그 글로만 소개)
+def buyable(p): return p['category']=='와인 소개' and not any(x in p['main'] for x in BUY_EXCLUDE)
+def buy_faq(p):
+    n=p['main']
+    return [(f'{n}{eun_neun(n)} 어디서 살 수 있나요?', f'서울 성수동 와인샵 땡큐와인(성동구 성덕정길 109 2층)에서 구매할 수 있어요. 카카오톡으로 와인 이름을 보내 주시면 입고 상황과 가격을 1:1로 알려 드리고, 매장에서 바로 가져가시거나 미리 주문해 두실 수 있어요.'),
+            (f'{n} 가격은 얼마인가요?', '수입사 행사와 입고 시기에 따라 가격이 자주 바뀌어서 사이트에는 적지 않고, 카카오톡으로 1:1 안내해 드려요. 모임·선물용 수량 주문은 세금계산서 발행도 돼요.')]
+def buybox_html(rel,p):
+    n=esc(p['main'])
+    return (f'<aside class="buybox" id="buy"><h2>{n}, 어디서 살 수 있나요?</h2>'
+            f'<p><strong>{n}</strong>{eun_neun(p["main"])} 서울 성수동 와인샵 <strong>땡큐와인</strong>(성동구 성덕정길 109 2층)에서 구매할 수 있어요. 카카오톡으로 와인 이름을 보내 주시면 입고 상황과 가격을 1:1로 알려 드리고, 매장에서 바로 가져가시거나 미리 주문해 두실 수 있어요. 모임·선물용 수량 주문과 세금계산서 발행도 돼요.</p>'
+            f'<div class="ctas"><a class="btn wine" href="#contact" data-contact>카톡으로 입고·가격 묻기</a><a class="btn line" href="{rel}shop/">매장 위치 보기</a></div></aside>')
+
 def page_post(rel,p):
     body,facts,faq=render_body(p,rel)
-    p['_faq']=faq
+    buy=buyable(p)
+    p['_faq']=faq+(buy_faq(p) if buy else [])
+    buybox=(buybox_html(rel,p)+'<section class="buyfaq"><h2>구매 전에 자주 묻는 질문</h2>'+faq_html([(esc(q),esc(a)) for q,a in buy_faq(p)])+'</section>') if buy else ''
     svc=SERVICE.get(p['service'],SERVICE['shop'])
     related=[x for x in POSTS if x['logNo']!=p['logNo'] and x['category']==p['category']][:3]
     if len(related)<3: related+=[x for x in POSTS if x['logNo']!=p['logNo'] and x not in related][:3-len(related)]
@@ -965,6 +989,7 @@ def page_post(rel,p):
       </header>
       <div class="summary"><b>한 줄 요약</b><p>{esc(p['summary'])}</p></div>
       <div class="abody">{body}</div>
+      {buybox}
       <aside class="acta"><p>{svc[2]}</p><div class="ctas"><a class="btn wine" href="#contact" data-contact>카톡으로 물어보기</a><a class="btn line" href="{rel}{svc[1]}">{svc[0]}</a></div></aside>
       <p class="aorig">이 글은 <a href="{p['naver']}" target="_blank" rel="noopener">땡큐와인 네이버 블로그</a>에 먼저 올린 글이에요.</p>
       {f'<div class="tags">{tags}</div>' if tags else ''}
@@ -1277,7 +1302,7 @@ def write_extras():
     F+=['## 자주 묻는 질문','']
     for q,a in FAQ_ALL: F+=['### '+q,'',a,'']
     for p in POSTS:
-        F+=['','---','',f"# {p['title']}",'',f"- 주소: {BASE}/{p['path']}",f"- 날짜: {p['date']} · 분류: {p['category']} · 글쓴이: 이도하(와인 컨설턴트)",f"- 네이버 원문: {p['naver']}",'',f"**한 줄 요약:** {p['summary']}",'',blocks_markdown(p),'']
+        F+=['','---','',f"# {p['title']}",'',f"- 주소: {BASE}/{p['path']}",f"- 날짜: {p['date']} · 분류: {p['category']} · 글쓴이: 이도하(와인 컨설턴트)",f"- 네이버 원문: {p['naver']}"]+([f"- 구매처: 서울 성수동 와인샵 땡큐와인(성덕정길 109 2층) 매장 구매·카톡 주문, 가격은 카톡 1:1 안내"] if buyable(p) else [])+['',f"**한 줄 요약:** {p['summary']}",'',blocks_markdown(p),'']
     write_text(os.path.join(ROOT,'llms-full.txt'),'\n'.join(F))
     items=''.join(f'  <item>\n    <title>{esc(p["title"])}</title>\n    <link>{BASE}/{p["path"]}</link>\n    <guid isPermaLink="true">{BASE}/{p["path"]}</guid>\n    <pubDate>{rfc822(p["date"])}</pubDate>\n    <category>{esc(p["category"])}</category>\n    <description>{esc(p["summary"])}</description>\n  </item>\n' for p in POSTS)
     feed=f'<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n<channel>\n  <title>땡큐와인 블로그</title>\n  <link>{BASE}/blog/</link>\n  <atom:link href="{BASE}/feed.xml" rel="self" type="application/rss+xml"/>\n  <description>성수동 와인샵 땡큐와인의 와인 소개와 와인 이야기</description>\n  <language>ko-kr</language>\n{items}</channel>\n</rss>\n'

@@ -330,3 +330,11 @@ footer .fname{font-family:var(--serif);font-weight:600;color:var(--ink);font-siz
 .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
 .tag{font-size:.8rem;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:4px 11px}
 @media(max-width:560px){.facts dl>div{grid-template-columns:1fr;gap:0}.facts dd{margin-bottom:4px}}
+
+/* 구매처 안내 (글 아래) */
+.buybox{margin:36px 0 10px;padding:22px 24px;border:1px solid var(--line);border-left:4px solid var(--wine);border-radius:var(--radius);background:var(--wine-soft)}
+.buybox h2{margin:0 0 10px;font-size:1.15rem;border:0;padding:0}
+.buybox p{margin:0 0 14px}
+.buybox .ctas{margin-top:0}
+.buyfaq{margin:0 0 8px}
+.buyfaq h2{font-size:1.05rem;margin:18px 0 8px}
