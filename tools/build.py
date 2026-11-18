@@ -34,6 +34,14 @@ PHONE=SITE['phone']
 MAP_NAVER=SITE['naver_place'] or 'https://map.naver.com/p/search/'+quote(SITE['address'])
 MAP_KAKAO='https://map.kakao.com/?q='+quote(SITE['address'])
 
+import hashlib as _hl
+def _asset_v():
+    h=_hl.md5()
+    for f in ('site.css','site.js'):
+        try: h.update(open(os.path.join(SITEDIR,'assets',f),'rb').read())
+        except OSError: pass
+    return h.hexdigest()[:8]
+ASSET_V=_asset_v()   # 캐시 무효화용(css/js 바뀌면 값이 바뀜)
 GLASS_SVG='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 2.5h10.8l-.7 6.6a4.7 4.7 0 0 1-9.4 0L6.6 2.5z" fill="#7a1f33"/><path d="M12 13.8v5.6M8.2 20.6h7.6" stroke="#7a1f33" stroke-width="1.9" stroke-linecap="round"/></svg>'
 MENU_SVG='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>'
 
@@ -118,7 +126,7 @@ def head(key, rel, page=None, ld=None, og=None):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@600;700&display=swap">
-<link rel="stylesheet" href="{rel}assets/site.css">
+<link rel="stylesheet" href="{rel}assets/site.css?v={ASSET_V}">
 <script>window.TYW={cfg}</script>
 {ld_script(lds)}</head>
 <body>
@@ -173,7 +181,7 @@ def footer(rel):
   </div>
 </footer>
 {contact_dialog()}
-<script src="{rel}assets/site.js" defer></script>
+<script src="{rel}assets/site.js?v={ASSET_V}" defer></script>
 </body>
 </html>
 '''
