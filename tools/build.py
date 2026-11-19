@@ -94,6 +94,21 @@ def ld_faq(items):
     return {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":a}} for q,a in items]}
 def ld_breadcrumb(items):
     return {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":i+1,"name":n,"item":u} for i,(n,u) in enumerate(items)]}
+def ld_service(name,path,desc,stype):
+    return {"@context":"https://schema.org","@type":"Service","@id":BASE+'/'+path+'#service',"name":name,"serviceType":stype,"url":BASE+'/'+path,"description":desc,
+            "provider":{"@id":ORG_ID},"areaServed":{"@type":"City","name":"서울"},"availableChannel":{"@type":"ServiceChannel","serviceUrl":BASE+'/'+path,"servicePhone":{"@type":"ContactPoint","telephone":PHONE,"contactType":"상담"}}}
+def ld_page(key):
+    """모임·선물·매장·소개·FAQ 페이지 구조화 데이터 (AI 검색이 '누가 무엇을 하는지'를 바로 읽도록)."""
+    p=PAGES.get(key); 
+    if not p or key in ('index','404','privacy'): return None
+    bc=ld_breadcrumb([('홈',BASE+'/'),(p['title'].split(' · ')[0],BASE+'/'+p['path'])])
+    if key=='gathering':
+        return [ld_service('모임·행사 와인 구성과 견적','gathering/',p['desc'],'모임·행사 와인 케이터링'),ld_faq(FAQ_GATHERING),bc]
+    if key=='gift':
+        return [ld_service('기업·명절 선물 와인','gift/',p['desc'],'기업 선물 와인'),ld_faq(FAQ_GIFT),bc]
+    if key=='shop':
+        return [ld_org(),bc]
+    return [bc]
 def ld_script(objs):
     return ''.join('<script type="application/ld+json">'+json.dumps(o,ensure_ascii=False)+'</script>\n' for o in objs if o)
 
@@ -208,6 +223,20 @@ FAQ_ALL=[
  ('매장에서 마셔 볼 수 있나요?','멤버 시음회와 모임을 매장에서 열어요. 15명까지 앉을 수 있어요. 일정은 카카오톡과 인스타그램으로 알려 드리고, 멤버에게 먼저 초대를 드려요.'),
  ('미리 주문하고 찾아갈 수 있나요?','네. 카톡으로 미리 주문해 두면 매장에서 바로 가져가실 수 있어요. 모임·행사 와인은 행사장으로 배송하고, 잔을 빌리셨으면 수거까지 해 드려요.'),
  ('미성년자도 살 수 있나요?','아니요. 땡큐와인은 만 19세 이상만 이용할 수 있어요. 모임과 시음회 참석자도 모두 만 19세 이상이어야 해요.'),
+]
+FAQ_GATHERING=[
+ ('송년회 와인은 몇 병 준비하면 되나요?','한 병(750ml)은 5~6잔이 나와요. 식사 중심으로 건배와 한두 잔이면 2~3명에 1병, 식사와 대화가 길어지는 자리면 2명에 1병, 와인이 주인공인 모임이면 1명에 1병으로 잡아요. 땡큐와인 구성 예시로는 25명 송년회에 10병, 40명 송년회에 16병을 준비해요.'),
+ ('모임 와인은 어떤 순서로 내면 좋나요?','건배는 스파클링으로 시작해서 화이트로 가볍게 이어가다가, 메인 요리가 나올 때 레드로 마무리하는 흐름이 가장 무난해요. 단 와인이 싫다, 묵직한 레드가 좋다 같은 취향을 알려 주시면 구성에 반영해요.'),
+ ('행사 때 와인잔도 빌릴 수 있나요?','네. 인원만큼 와인잔을 빌려 드리고 행사가 끝나면 수거해요. 잔 포함과 잔 미포함 견적을 나란히 드리니 비교해 보고 정하시면 돼요.'),
+ ('행사장으로 와인을 배송해 주나요?','네. 행사장으로 배송해 드리고, 성수동 매장 픽업도 돼요. 원하시면 자리에서 와인을 짧게 소개해 드리고, 와인 매너 미니 클래스도 할 수 있어요.'),
+ ('견적은 어떻게 받나요?','가입 없이 견적 요청 폼이나 카카오톡으로 인원, 날짜, 장소, 예산을 알려 주세요. 영업일 하루 안에 1인 1병과 2인 1병처럼 구성 두세 가지와 견적을 보내 드려요. 회사·단체는 세금계산서를 발행해 드려요.'),
+]
+FAQ_GIFT=[
+ ('거래처 명절 선물 와인은 어떻게 고르나요?','1병 예산, 수량, 받는 분, 필요한 날을 알려 주세요. 같은 예산이라도 이름이 알려진 와인과 숨은 보석 같은 와인은 느낌이 달라서, 받는 분들의 성향을 듣고 예산 안에서 두세 가지를 골라 와인마다 고른 이유와 함께 카카오톡으로 보내 드려요.'),
+ ('VIP나 대표님께 드릴 와인은 무엇이 좋나요?','보르도 5대 샤토, 나파밸리, 빈티지 샴페인처럼 받자마자 알아보는 와인을 많이 찾으세요. 태어난 해 빈티지처럼 이야기가 있는 와인도 찾아 드려요.'),
+ ('와인을 잘 모르는 분께 선물해도 괜찮을까요?','네. 와인마다 산지와 맛, 어울리는 음식을 적은 소개 카드를 함께 넣어 드려서, 받는 분이 와인을 잘 몰라도 편하게 드실 수 있어요.'),
+ ('기업 선물 와인도 세금계산서가 되나요?','네. 계좌이체로 결제하시면 세금계산서를 발행해 드려요.'),
+ ('선물 와인은 어떻게 전달되나요?','매장 픽업, 사무실 배송으로 전달하고, 수량이 많으면 수입사에서 바로 배송해 드릴 수 있어요.'),
 ]
 def faq_html(items):
     return '<div class="faq">'+''.join(f'<details><summary>{q}</summary><p>{a}</p></details>' for q,a in items)+'</div>'
@@ -429,6 +458,15 @@ def page_gathering(rel):
   </div>
 </section>
 
+<section class="sec" id="faq">
+  <div class="wrap">
+    <div class="head">
+      <span class="kicker">자주 묻는 질문</span>
+      <h2>많이 물어보시는 것</h2>
+    </div>
+    {faq_html(FAQ_GATHERING)}
+  </div>
+</section>
 <section class="sec" id="quote">
   <div class="wrap">
     <div class="head">
@@ -526,6 +564,15 @@ def page_gift(rel):
   </div>
 </section>
 
+<section class="sec" id="faq">
+  <div class="wrap">
+    <div class="head">
+      <span class="kicker">자주 묻는 질문</span>
+      <h2>많이 물어보시는 것</h2>
+    </div>
+    {faq_html(FAQ_GIFT)}
+  </div>
+</section>
 <section class="sec" id="ask">
   <div class="wrap">
     <div class="head">
@@ -1385,6 +1432,8 @@ def write_extras():
     for p in POSTS: L.append(f"- [{p['title']}]({BASE}/{p['path']}): {p['summary']}")
     L+=['','## 자주 묻는 질문','']
     for q,a in FAQ_ALL: L.append(f'- {q} {a}')
+    L+=['','## 모임·행사 와인 질문','']+[f'- {q} {a}' for q,a in FAQ_GATHERING]
+    L+=['','## 기업·명절 선물 와인 질문','']+[f'- {q} {a}' for q,a in FAQ_GIFT]
     L+=['','## Optional','',f'- [전체 본문(llms-full.txt)]({BASE}/llms-full.txt)',f'- [RSS]({BASE}/feed.xml)',f'- [사이트맵]({BASE}/sitemap.xml)','']
     write_text(os.path.join(ROOT,'llms.txt'),'\n'.join(L))
     F=['# 땡큐와인 전체 본문','',L[2],'',f"주소 {SITE['address']} · 연락 {PHONE} · {SITE['email']} · 블로그 {SITE['blog']} · 인스타그램 {SITE['insta']}",'',
@@ -1399,6 +1448,7 @@ def write_extras():
     for o in OCCASIONS: F+=['### '+o['q'],'',o['a'],'']+[f'- {k}: {v}' for k,v in o['rows']]+['- 가격: 카카오톡 1:1 안내','']
     F+=['## 자주 묻는 질문','']
     for q,a in FAQ_ALL: F+=['### '+q,'',a,'']
+    for q,a in FAQ_GATHERING+FAQ_GIFT: F+=['### '+q,'',a,'']
     for p in POSTS:
         F+=['','---','',f"# {p['title']}",'',f"- 주소: {BASE}/{p['path']}",f"- 날짜: {p['date']} · 분류: {p['category']} · 글쓴이: 이도하(와인 컨설턴트)",f"- 네이버 원문: {p['naver']}"]+([f"- 구매처: 서울 성수동 땡큐와인 매장(성덕정길 109 2층) 구매·카톡 주문, 가격은 카톡 1:1 안내"] if buyable(p) else [])+['',f"**한 줄 요약:** {p['summary']}",'',blocks_markdown(p),'']
     write_text(os.path.join(ROOT,'llms-full.txt'),'\n'.join(F))
@@ -1431,7 +1481,7 @@ def build(preview=False):
         if p['path']=='404.html': out=os.path.join(ROOT,'404.html'); rel=''
         else: out=os.path.join(ROOT,p['path'],'index.html'); rel=rel_for(p['path'])
         cur=key if key!='index' else 'home'
-        ld=ld_blog() if key=='blog' else (ld_occasions() if key=='occasions' else None)
+        ld=ld_blog() if key=='blog' else (ld_occasions() if key=='occasions' else ld_page(key))
         html=head(key,rel,ld=ld)+header(rel,cur)+'<main>'+BUILDERS[key](rel)+'</main>\n'+footer(rel)
         emit(out,html,key)
     for p in POSTS:
