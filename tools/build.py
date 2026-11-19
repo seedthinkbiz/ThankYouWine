@@ -665,6 +665,7 @@ _FEE_KEEP=_re.compile(r'참가비|회비|수강료|강의료|강의|클래스|�
 def sanitize_title(t):
     if PRICE_MODE!='none' or not t: return sanitize_text(t)
     t=t.replace('와인 디렉터','와인 컨설턴트').replace('와인디렉터','와인 컨설턴트')
+    for a,b in WORD_RULES: t=t.replace(a,b)
     t=_re.sub(r'(?:\d[\d,]*\s*[~∼〜\-–]\s*)?\d[\d,]*\s*(?:만\s*\d*\s*천?\s*|천\s*)?원대?\s*(?:이하|이상|미만|이내|안팎|내외|정도|선|대)?\s*(?:의|짜리|에)?','',t)
     return _re.sub(r'\s{2,}',' ',t).strip(' ,·|-~')
 SANITIZE_STATS={'amounts':0,'parcel':0}
@@ -677,6 +678,7 @@ def sanitize_text(t,mode=None):
     mode=mode or PRICE_MODE
     if not t: return t
     t=t.replace('와인 디렉터','와인 컨설턴트').replace('와인디렉터','와인 컨설턴트').replace('Wine Director','Wine Consultant')   # 직함은 와인 컨설턴트(11/2 도하)
+    for a,b in WORD_RULES: t=t.replace(a,b)
     if mode=='keep': return t
     thr=10000 if mode=='band' else 15000
     out=[]
@@ -684,7 +686,7 @@ def sanitize_text(t,mode=None):
         for ln in t.split('\n'):
             kept=[]
             for x in _re.split(r'(?<=[.!?。])\s+',ln):
-                if '택배' in x: SANITIZE_STATS['parcel']+=1; continue
+                if _PARCEL.search(x): SANITIZE_STATS['parcel']+=1; continue
                 if _ANY_AMT.search(x) and (not _FEE_KEEP.search(x) or '가입비' in x): SANITIZE_STATS['amounts']+=1; continue
                 kept.append(x)
             ln=' '.join(kept).strip()
@@ -721,6 +723,7 @@ def sanitize_blocks(blocks):
         for k in ('text','caption','alt'):
             if isinstance(b.get(k),str): b[k]=sanitize_text(b[k])
         if b.get('type') in ('p','quote','h2') and not (b.get('text') or '').strip(): continue   # 택배 문장만 있던 문단은 통째로 제거
+        if b.get('type') in ('p','quote') and _OLD_LINES.match(strip_md(b.get('text') or '').strip()): continue   # 옛 꼬리 안내 줄 제거
         res.append(b)
     return res
 
@@ -792,6 +795,16 @@ HASHTAG_LINE=_re.compile(r'^(#\S+\s*)+$')
 URL_ONLY=_re.compile(r'^https?://\S+$')
 NAVER_CATS={'멤버십 와인 커뮤니티 땡큐와인'}
 _NOT_HEAD=_re.compile(r'^[\d@+]|[●○★☆]|^\d{2,3}-\d{3,4}-\d{4}$')
+# 옛 글 표현 정리(2026-11-19 도하 OK): 땡큐와인을 가리키는 '와인샵'은 땡큐와인/매장으로, 답례품은 선물로. 일반적인 뜻의 '와인샵'(에노테카 뜻풀이, '일반 와인샵')은 그대로
+WORD_RULES=[('땡큐와인(성수동 와인샵)','땡큐와인(성수동 매장)'),('서울숲 와인샵 땡큐와인','서울숲 땡큐와인'),('와인샵 땡큐와인','땡큐와인'),
+ ('성수동 와인샵&바 한낮의밤','성수동 땡큐와인 · 한낮의밤'),('성수동 와인샵,','성수동 땡큐와인,'),('성수동 와인샵','성수동 땡큐와인'),('와인샵 겸 바 한낮의밤','와인 매장 겸 바 한낮의밤'),
+ ('작은 와인샵이에요','작은 와인 매장이에요'),('와인샵이라 와인은','와인 매장이라 와인은'),('와인샵 공간이라','와인을 파는 공간이라'),('요즘 와인샵에서','요즘 매장에서'),
+ ('와인샵에서 가장 자주 듣는','매장에서 가장 자주 듣는'),('막상 와인샵에 가면','막상 매장에 오시면'),('단순한 와인샵을 넘어','단순히 와인을 파는 곳을 넘어'),
+ (', 결혼식 답례품',''),('결혼식 답례품','기념 선물'),('웨딩 답례품','기념 선물'),('기업 답례품','기업 선물'),('비즈니스 답례품','비즈니스 선물'),('선물이나 답례품으로','선물이나 행사 기념품으로'),('답례품','선물'),
+ ('인스타그램 @middaynight109','인스타그램 @thankyouwine')]
+# 옛 글(한낮의밤 시절) 꼬리 안내 줄: 옛 영업시간·휴무, 택배 안내, 옛 서명 줄은 사이트에 싣지 않음(영업시간은 사이트에 안 넣기로, 11/19 도하)
+_OLD_LINES=_re.compile(r'^(와인 재고 확인 & 가격 문의|010-8078-7493|영업시간\s*:?|오후 5시 ~ 12시|정기휴무\s*:?|매주 화요일|예약 및 문의\s*:?|매장 방문 결제시 전국 배송 가능.*|6병 이상 구매시 서울 전지역 퀵\s?배송비 무료)$')
+_PARCEL=_re.compile(r'택배|전국 ?배송|무료 ?배송|무료로 배송|비대면 배송')
 _SENT_END=_re.compile(r'[.,。!…:]$|(?:요|다|죠|까|네|니다|세요|어요|아요|해요|예요|에요|습니다)$')
 def _bold_line(b):
     raw=(b.get('text') or '').strip()
@@ -871,6 +884,7 @@ def _first_sentence(blocks):
         acc=(acc+' '+x).strip()
         if _re.search(r'[.!?。…]$|(?:요|다|죠|까|니다)$',x) or len(acc)>=120: break
     return acc
+HIDE_LOGNOS={'224240070422','224100251200','224240112168'}   # 웨딩·답례품이 주제인 옛 글은 사이트에 싣지 않음(11/19 도하). vercel.json에서 /blog/로 넘김
 def load_posts():
     idx=os.path.join(POSTS_RAW,'index.json')
     if not os.path.exists(idx): return []
@@ -892,6 +906,8 @@ def load_posts():
         if slug in seen_slug: slug=slug+'-'+d['logNo']
         seen_slug.add(slug)
         words=sum(len(strip_md(b.get('text','')).split()) for b in blocks)
+        if d['logNo'] in HIDE_LOGNOS:
+            WARNINGS.append(f"숨김(웨딩·답례품 글, 11/19 도하): {title[:40]}"); continue
         if EXCLUDE_TITLE.search(title) or words<40:
             WARNINGS.append(f"제외(안내 글이거나 너무 짧음): {title[:40]} · {words}단어"); continue
         ncat=d.get('category') or it.get('category') or ''
