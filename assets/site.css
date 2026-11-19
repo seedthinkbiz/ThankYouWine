@@ -194,6 +194,7 @@ td.us{color:var(--wine);font-weight:700;white-space:nowrap}
 .setbottles img{height:clamp(150px,18vw,230px);width:auto;max-width:none}
 .setbottles figcaption{font-size:.76rem;color:var(--muted);text-align:center;max-width:9em;line-height:1.35}
 @media(max-width:560px){.setbottles{overflow-x:auto;justify-content:flex-start}.setbottles figure{flex:0 0 auto}}
+@media(max-width:560px){table{min-width:0;font-size:.92rem}th,td{word-break:keep-all;overflow-wrap:anywhere}}
 
 /* 선물 종류 */
 .gifts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}

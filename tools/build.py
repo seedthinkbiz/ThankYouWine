@@ -24,7 +24,7 @@ SITE=dict(
   blog='https://blog.naver.com/middaynight109',
   insta='https://www.instagram.com/thankyouwine/',
   insta_id='thankyouwine',
-  corkmatch='https://corkmatch.vercel.app/',
+  corkmatch='https://corkmatch.com/',
   owner='한낮의밤', ceo='이도하', regno='482-11-01565', mailorder='제2024-서울성동-0327호',
 )
 # ──────────────────────────────────────────────────
@@ -199,7 +199,7 @@ def footer(rel):
 
 FAQ_ALL=[
  ('블로그에 소개한 와인을 사고 싶은데 어디서 살 수 있나요?','서울 성수동 땡큐와인 매장(성동구 성덕정길 109 2층)에서 살 수 있어요. 블로그에 소개한 와인은 대부분 매장에 있거나 주문할 수 있으니, 카카오톡으로 와인 이름을 보내 주시면 입고 상황과 가격을 바로 알려 드려요. 매장에서 바로 가져가시거나 미리 주문해 두실 수 있어요.'),
- ('가격은 왜 사이트에 없나요?','수입사 행사와 입고 시기에 따라 가격이 자주 바뀌어서예요. 그래서 사이트에는 가격대만 적고, 정확한 가격은 카카오톡으로 1:1 안내해 드려요. 어떤 자리인지, 무엇과 드실지, 편한 가격대만 알려 주시면 맞는 와인을 골라 가격과 함께 보내 드릴게요.'),
+ ('가격은 왜 사이트에 없나요?','수입사 행사와 입고 시기에 따라 가격이 자주 바뀌어서예요. 그래서 사이트에는 가격을 적지 않고, 카카오톡으로 1:1 안내해 드려요. 어떤 자리인지, 무엇과 드실지, 편한 가격대만 알려 주시면 맞는 와인을 골라 가격과 함께 보내 드릴게요.'),
  ('모임 와인은 몇 병을 준비하면 될까요?','한 병(750ml)은 보통 5~6잔이 나와요. 식사 중심으로 건배와 한두 잔이면 2~3명에 1병, 식사와 대화가 길어지는 자리면 2명에 1병, 와인이 주인공인 모임이면 1명에 1병을 추천해요. 인원만 알려 주시면 1인 1병과 2인 1병 두 가지로 나란히 견적을 드려요.'),
  ('와인잔도 빌릴 수 있나요?','네. 인원만큼 와인잔을 준비해 드리고 행사가 끝나면 수거해요. 잔 포함과 잔 미포함으로 견적을 따로 드리니 비교해 보고 정하시면 돼요. 배송과 수거 방법은 견적 때 함께 안내드려요.'),
  ('세금계산서가 발행되나요?','네. 사업자(회사·단체·개인사업자)라면 세금계산서를 발행해 드려요. 사업자등록번호를 알려 주시면 되고, 결제는 계좌이체가 기본이에요. 개인 구매는 요청하시면 현금영수증을 발행해 드려요.'),
@@ -498,7 +498,7 @@ def page_gift(rel):
 <section class="sec" id="range">
   <div class="wrap">
     <div class="head">
-      <span class="kicker">1병 기준 가격대</span>
+      <span class="kicker">예산별 제안</span>
       <h2>예산을 말씀해 주시면<br>그 안에서 가장 좋은 걸 찾아요</h2>
       <p>정확한 가격은 카카오톡으로 안내드려요. 수량이 많으면 수량에 맞춰 다시 맞춰 드려요.</p>
     </div>
@@ -664,6 +664,7 @@ _ANY_AMT=_re.compile(r'\d{1,3}(?:,\d{3})+\s*원|\d{4,}\s*원|\d+\s*만\s*\d*\s*�
 _FEE_KEEP=_re.compile(r'참가비|회비|수강료|강의료|강의|클래스|세미나|워크숍|멤버')
 def sanitize_title(t):
     if PRICE_MODE!='none' or not t: return sanitize_text(t)
+    t=t.replace('와인 디렉터','와인 컨설턴트').replace('와인디렉터','와인 컨설턴트')
     t=_re.sub(r'(?:\d[\d,]*\s*[~∼〜\-–]\s*)?\d[\d,]*\s*(?:만\s*\d*\s*천?\s*|천\s*)?원대?\s*(?:이하|이상|미만|이내|안팎|내외|정도|선|대)?\s*(?:의|짜리|에)?','',t)
     return _re.sub(r'\s{2,}',' ',t).strip(' ,·|-~')
 SANITIZE_STATS={'amounts':0,'parcel':0}
@@ -674,7 +675,9 @@ def _won(s): return int(s.replace(',',''))
 def _band(won): return f'{won//10000}만원대'
 def sanitize_text(t,mode=None):
     mode=mode or PRICE_MODE
-    if mode=='keep' or not t: return t
+    if not t: return t
+    t=t.replace('와인 디렉터','와인 컨설턴트').replace('와인디렉터','와인 컨설턴트').replace('Wine Director','Wine Consultant')   # 직함은 와인 컨설턴트(11/2 도하)
+    if mode=='keep': return t
     thr=10000 if mode=='band' else 15000
     out=[]
     if mode=='none':
@@ -788,6 +791,11 @@ EXCLUDE_TITLE=_re.compile(r'택배|배송 안내|배송 방법')
 HASHTAG_LINE=_re.compile(r'^(#\S+\s*)+$')
 URL_ONLY=_re.compile(r'^https?://\S+$')
 NAVER_CATS={'멤버십 와인 커뮤니티 땡큐와인'}
+_NOT_HEAD=_re.compile(r'^[\d@+]|[●○★☆]|^\d{2,3}-\d{3,4}-\d{4}$')
+_SENT_END=_re.compile(r'[.,。!…:]$|(?:요|다|죠|까|네|니다|세요|어요|아요|해요|예요|에요|습니다)$')
+def _bold_line(b):
+    raw=(b.get('text') or '').strip()
+    return b.get('type')=='p' and raw.startswith('**') and raw.endswith('**') and raw.count('**')==2 and '\n' not in raw
 def clean_blocks(blocks):
     cut=len(blocks)
     for i,b in enumerate(blocks):
@@ -807,8 +815,14 @@ def clean_blocks(blocks):
                 continue
             if sline.startswith('▲ 관련 글') and any(x.get('type')=='link' or URL_ONLY.match(strip_md(x.get('text') or '').strip()) for x in blocks[i+1:i+3]): continue
             raw=(b.get('text') or '').strip()
-            if raw.startswith('**') and raw.endswith('**') and raw.count('**')==2 and 2<len(sline)<=60 and not sline.endswith('?') and '\n' not in raw:
-                b=dict(b); b['type']='h2'; b['text']=sline
+            if _bold_line(b) and 2<len(sline)<=60 and not sline.endswith('?') and not _SENT_END.search(sline) and not _NOT_HEAD.search(sline):
+                nxt=next((x for x in blocks[i+1:i+4] if x.get('type') in ('p','quote','li','h2')),None)
+                if len(sline)<=24 or not (nxt and _bold_line(nxt)):      # 굵은 문장이 줄줄이 이어지면 강조 본문이지 소제목이 아님
+                    b=dict(b); b['type']='h2'; b['text']=sline
+        if b.get('type')=='h2':
+            sline=strip_md(b.get('text') or '').strip()
+            if len(sline)>45 or (len(sline)>24 and _SENT_END.search(sline)) or _NOT_HEAD.search(sline):   # 긴 문장·연락처·평점 줄은 소제목이 아니라 강조 본문
+                b=dict(b); b['type']='p'; b['text']='**'+sline+'**'
         out.append(b)
     tags=[x for x in dict.fromkeys(tags) if x and not any(bw in x for bw in BAN_TAG)]
     return out,tags
@@ -845,6 +859,18 @@ def _find_meta(meta,logNo,title):
         if v.get('match') and v['match'] in title: return v
     return {}
 
+def _first_sentence(blocks):
+    # 첫 문단(20자 넘는 p)부터 문장이 끝날 때까지 줄을 이어 붙여 한 줄 요약으로
+    texts=[(b['type'],strip_md(b.get('text') or '').split('\n')[0].strip()) for b in blocks if b.get('type') in ('p','quote','li','h2')]
+    start=next((i for i,(t,x) in enumerate(texts) if t=='p' and len(x)>20),None)
+    if start is None: start=next((i for i,(t,x) in enumerate(texts) if len(x)>15),None)
+    if start is None: return ''
+    acc=''
+    for t,x in texts[start:start+4]:
+        if not x: break
+        acc=(acc+' '+x).strip()
+        if _re.search(r'[.!?。…]$|(?:요|다|죠|까|니다)$',x) or len(acc)>=120: break
+    return acc
 def load_posts():
     idx=os.path.join(POSTS_RAW,'index.json')
     if not os.path.exists(idx): return []
@@ -858,7 +884,7 @@ def load_posts():
         m=_find_meta(meta,d['logNo'],title)
         raw,htags=clean_blocks(d.get('blocks') or [])
         blocks=sanitize_blocks(raw)
-        first=next((strip_md(b['text']).split('\n')[0] for b in blocks if b['type']=='p' and len(strip_md(b['text']))>20),'')
+        first=_first_sentence(blocks) or f'{main} 소개'
         desc=sanitize_text((d.get('desc') or '').strip())
         if len(desc)<30 or desc.endswith(('...','…')) or any(bw in desc for bw in BAN_TAG): desc=''
         pointsum=point_summary(main,blocks)
@@ -1042,7 +1068,7 @@ def page_post(rel,p):
         {sub}
         <p class="ameta"><a href="{rel}about/">이도하 · 와인 컨설턴트</a> · <time datetime="{p['date']}">{kdate(p['date'])}</time></p>
       </header>
-      <div class="summary"><b>한 줄 요약</b><p>{esc(p['summary'])}</p></div>
+      {('<div class="summary"><b>한 줄 요약</b><p>'+esc(p['summary'])+'</p></div>') if p['summary'] else ''}
       <div class="abody">{body}</div>
       {buybox}
       <aside class="acta"><p>{svc[2]}</p><div class="ctas"><a class="btn wine" href="#contact" data-contact>카톡으로 물어보기</a><a class="btn line" href="{rel}{svc[1]}">{svc[0]}</a></div></aside>
@@ -1307,6 +1333,7 @@ BUILDERS={'index':page_index,'gathering':page_gathering,'gift':page_gift,'shop':
 PREVIEW=False
 AI_BOTS=['GPTBot','OAI-SearchBot','ChatGPT-User','ClaudeBot','Claude-SearchBot','Claude-User','anthropic-ai','Google-Extended','Googlebot','Bingbot','PerplexityBot','Perplexity-User','Yeti','Applebot','Applebot-Extended','DuckAssistBot','meta-externalagent','Amazonbot','CCBot']
 def write_text(path,text):
+    text=text.replace('http://www.instagram.com','https://www.instagram.com')
     os.makedirs(os.path.dirname(path),exist_ok=True)
     with open(path,'w',encoding='utf-8') as f: f.write(text)
 def indexnow_key():
@@ -1383,7 +1410,7 @@ def build(preview=False):
                 html='<meta name="claude:viewport-fit-sides" content="cover">\n<script>document.documentElement.setAttribute("data-rel","");document.documentElement.setAttribute("data-preview","")</script>\n'+html
             html=_re.sub(r'href="([^"]*)"',lambda m:_fixhref(m.group(1)),html)
         os.makedirs(os.path.dirname(out),exist_ok=True)
-        with open(out,'w',encoding='utf-8') as f: f.write(html)
+        write_text(out,html)
     for key,p in PAGES.items():
         if p['path']=='404.html': out=os.path.join(ROOT,'404.html'); rel=''
         else: out=os.path.join(ROOT,p['path'],'index.html'); rel=rel_for(p['path'])
