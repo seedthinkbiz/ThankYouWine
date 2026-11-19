@@ -239,6 +239,17 @@ def hours_html():
     return f'<p class="hours">{SITE["hours"]}</p>' if SITE['hours'] else ''
 
 # ---------------- 홈 ----------------
+# ── 다가오는 행사(홈 첫 화면·관련 글에 신청 링크. until이 지나면 다음 빌드에서 자동으로 빠짐. 11/19 도하: 와인 인문학 강의는 코르크매치 행사 페이지로) ──
+EVENTS=[dict(id='wine-humanities-1127',title='와인 인문학 강의 · 역사와 문화로 읽는 와인의 세계',when='11월 27일(금) 19:00~21:30',where='강남역 라임스퀘어',
+             who='박찬준 대표님(아시아 와인 트로피 아시아 디렉터)',url='https://corkmatch.com/events/wine-humanities-1127/',until='2026-11-27',
+             posts=('224466864886','224479046305'),cta='코르크매치에서 보고 신청하기')]
+def live_events():
+    t=datetime.date.today()
+    return [e for e in EVENTS if datetime.date.fromisoformat(e['until'])>=t]
+def eventbar_html():
+    return ''.join(f'<a class="eventbar" href="{e["url"]}" target="_blank" rel="noopener"><span class="ev-k">행사</span><span class="ev-t"><b>{esc(e["title"])}</b><span>{esc(e["when"])} · {esc(e["where"])} · {esc(e["who"])}</span></span><span class="ev-c">{esc(e["cta"])} →</span></a>' for e in live_events())
+def eventbox_html(p):
+    return ''.join(f'<aside class="eventbox"><b>신청은 코르크매치 행사 페이지에서</b><p>{esc(e["title"])}<br>{esc(e["when"])} · {esc(e["where"])} · {esc(e["who"])}</p><a class="btn wine" href="{e["url"]}" target="_blank" rel="noopener">{esc(e["cta"])}</a></aside>' for e in live_events() if p['logNo'] in e.get('posts',()))
 def page_index(rel):
     return f'''
 <section class="hero">
@@ -252,6 +263,7 @@ def page_index(rel):
           <a class="btn line" href="{rel}gift/">기업·명절 선물 문의</a>
           <a class="textlink" href="{rel}blog/">블로그에서 와인 둘러보기 →</a>
         </div>
+        {eventbar_html()}
       </div>
       <div>
         <div class="bottles">{''.join(bottle(rel,k,c) for k,c in HERO_BOTTLES)}</div>
@@ -1085,6 +1097,7 @@ def page_post(rel,p):
         <p class="ameta"><a href="{rel}about/">이도하 · 와인 컨설턴트</a> · <time datetime="{p['date']}">{kdate(p['date'])}</time></p>
       </header>
       {('<div class="summary"><b>한 줄 요약</b><p>'+esc(p['summary'])+'</p></div>') if p['summary'] else ''}
+      {eventbox_html(p)}
       <div class="abody">{body}</div>
       {buybox}
       <aside class="acta"><p>{svc[2]}</p><div class="ctas"><a class="btn wine" href="#contact" data-contact>카톡으로 물어보기</a><a class="btn line" href="{rel}{svc[1]}">{svc[0]}</a></div></aside>
@@ -1376,7 +1389,7 @@ def write_extras():
        '## 기본 정보','',f"- 주소: {SITE['address']}",f"- 연락: {PHONE} (문자·전화·카카오톡 친구 추가), {SITE['email']}",
        f"- 네이버 블로그: {SITE['blog']}",f"- 인스타그램: {SITE['insta']}",
        '- 운영: 상호 한낮의밤, 대표 이도하(와인 컨설턴트).',
-       '- 멤버: 가입비 없음. 10만원 이상 구매하면 멤버로 등록되고 입고 소식·시음회·모임 안내를 카카오톡으로 먼저 받아요.','',
+       '- 멤버: 가입비 없음. 10만원 이상 구매하면 멤버로 등록되고 입고 소식·시음회·모임 안내를 카카오톡으로 먼저 받아요.']+[f"- 다가오는 행사: {e['title']} · {e['when']} · {e['where']} · {e['who']} · 안내와 신청: {e['url']}" for e in live_events()]+['',
        '## 주요 페이지','']
     for k,p in PAGES.items():
         if p['path'] in ('404.html','privacy/'): continue

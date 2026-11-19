@@ -352,3 +352,15 @@ footer .fname .wordmark .ko{font-size:.66rem}
 .buybox .ctas{margin-top:0}
 .buyfaq{margin:0 0 8px}
 .buyfaq h2{font-size:1.05rem;margin:18px 0 8px}
+
+/* 다가오는 행사 링크(홈 첫 화면·관련 글) */
+.eventbar{display:flex;align-items:center;gap:14px;margin-top:22px;padding:14px 18px;border:1px solid var(--wine);border-radius:14px;text-decoration:none;color:var(--ink);background:var(--wine-soft);max-width:36em}
+.eventbar .ev-k{flex:0 0 auto;font-size:.72rem;letter-spacing:.12em;color:#fff;background:var(--wine);padding:4px 9px;border-radius:999px}
+.eventbar .ev-t{display:flex;flex-direction:column;gap:3px;min-width:0}
+.eventbar .ev-t b{font-size:1rem;line-height:1.35}
+.eventbar .ev-t span{font-size:.86rem;color:var(--muted)}
+.eventbar .ev-c{flex:0 0 auto;margin-left:auto;color:var(--wine);font-weight:700;font-size:.9rem;white-space:nowrap}
+@media(max-width:560px){.eventbar{flex-wrap:wrap;gap:10px}.eventbar .ev-c{margin-left:0;width:100%}}
+.eventbox{border:1px solid var(--wine);background:var(--wine-soft);border-radius:14px;padding:18px 20px;margin:0 0 28px}
+.eventbox b{display:block;font-size:.78rem;color:var(--wine);letter-spacing:.06em;margin-bottom:6px}
+.eventbox p{margin:0 0 14px;font-size:1rem;line-height:1.6}
