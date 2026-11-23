@@ -222,7 +222,7 @@ def bottle(rel, key, caption):
     return f'<figure><img src="{rel}assets/img/{key}.jpg" alt="{caption}" loading="lazy"><figcaption>{caption}</figcaption></figure>'
 
 HERO_BOTTLES=[('sedici','세디치 브뤼 스푸만테'),('airen','라스 쿠아트로 에스타시오네스 아이렌'),('colombard','바롱 드 보삭 콜롱바르 소비뇽'),('beauvillage','샤또 보빌라쥬 메독'),('seguin-vv','조나단 세갱 부르고뉴 VV')]
-SET_BOTTLES=[('sedici','세디치 브뤼 스푸만테 · 스파클링'),('airen','아이렌 · 살짝 달콤한 화이트'),('colombard','콜롱바르 소비뇽 · 상큼한 화이트'),('beauvillage','보빌라쥬 메독 · 보르도 레드')]
+SET_BOTTLES=[('pinfleur','바론 도베른 · 그랑 크뤼 샴페인'),('macon','피에르 아르망 · 부르고뉴 화이트'),('seguin-vv','조나단 세갱 · 부르고뉴 피노 누아'),('loufrejau','루 프레조 · 샤토뇌프 뒤 파프'),('papillon','오린 스위프트 파피용 · 나파 밸리')]
 GIFT_BOTTLES=[('pinfleur','그랑 크뤼 샴페인'),('1865','칠레 까베르네 소비뇽'),('seguin-clos','부르고뉴 피노 누아'),('tarapaca','그란 리제르바 레드'),('auslese','독일 스위트 와인')]
 
 def members_section(rel):
@@ -413,16 +413,16 @@ def page_gathering(rel):
     <div class="head">
       <span class="kicker">구성 예시</span>
       <h2>인원별로 이렇게 짜 드려요</h2>
-      <p>모임에서 가장 많이 찾으시는 네 가지로 짠 예시예요. 가격은 카톡으로 안내드리고, 잔 대여는 따로 안내드려요. 취향과 음식에 따라 구성은 바꿔 드려요.</p>
+      <p>모임 성격에 맞춰 짠 예시예요. 가격은 카톡으로 안내드리고, 잔 대여는 따로 안내드려요. 예산과 취향, 음식에 따라 구성은 얼마든지 바꿔 드려요.</p>
     </div>
     <div class="sets">
-      <div class="set"><span class="who">10명 홈파티</span><span class="range">6병</span><ul><li>세디치 스푸만테<b>1</b></li><li>아이렌<b>2</b></li><li>콜롱바르 소비뇽<b>1</b></li><li>보빌라쥬 메독<b>2</b></li></ul></div>
-      <div class="set"><span class="who">25명 송년회</span><span class="range">10병</span><ul><li>세디치 스푸만테<b>2</b></li><li>아이렌<b>3</b></li><li>콜롱바르 소비뇽<b>2</b></li><li>보빌라쥬 메독<b>3</b></li></ul></div>
-      <div class="set"><span class="who">30명 송년회</span><span class="range">12병</span><ul><li>세디치 스푸만테<b>3</b></li><li>아이렌<b>3</b></li><li>콜롱바르 소비뇽<b>3</b></li><li>보빌라쥬 메독<b>3</b></li></ul></div>
-      <div class="set"><span class="who">40명 송년회</span><span class="range">16병</span><ul><li>세디치 스푸만테<b>4</b></li><li>아이렌<b>4</b></li><li>콜롱바르 소비뇽<b>4</b></li><li>보빌라쥬 메독<b>4</b></li></ul></div>
+      <div class="set"><span class="who">10명 홈파티</span><span class="range">6병</span><ul><li>마리 드메 뀌베 19세기 샴페인<b>1</b></li><li>피에르 아르망 마콩 빌라주<b>2</b></li><li>조나단 세갱 부르고뉴 피노 누아 VV<b>2</b></li><li>그랜드 바로사 까베르네 소비뇽<b>1</b></li></ul></div>
+      <div class="set"><span class="who">25명 송년회</span><span class="range">10병</span><ul><li>세디치 브뤼 스푸만테<b>2</b></li><li>샤또 드 말리니 샤블리<b>3</b></li><li>타라파카 그란 레세르바 까베르네 소비뇽<b>3</b></li><li>그랜드 바로사 까베르네 소비뇽<b>2</b></li></ul></div>
+      <div class="set"><span class="who">30명 기업 송년회</span><span class="range">12병</span><ul><li>바론 도베른 그랑 크뤼 샴페인<b>3</b></li><li>샤또 드 말리니 샤블리<b>3</b></li><li>루 프레조 샤토뇌프 뒤 파프<b>3</b></li><li>오베하 네그라 그란 레세르바<b>3</b></li></ul></div>
+      <div class="set"><span class="who">40명 VIP·비즈니스 모임</span><span class="range">16병</span><ul><li>바론 도베른 그랑 크뤼 샴페인<b>4</b></li><li>피에르 아르망 마콩 빌라주<b>4</b></li><li>프로두토리 델 바르바레스코<b>4</b></li><li>오린 스위프트 파피용<b>4</b></li></ul></div>
     </div>
     <div class="setbottles">{''.join(bottle(rel,k,c) for k,c in SET_BOTTLES)}</div>
-    <p class="postsnote">호텔에 납품되는 와인으로 올리거나, 샴페인과 부르고뉴로 특별하게 짜는 것도 물론 돼요. 예산만 알려 주세요.</p>
+    <p class="postsnote">부담 없는 데일리 와인으로 인원을 넉넉히 맞추거나, 보르도 그랑 크뤼·빈티지 샴페인으로 더 특별하게 짜는 것도 돼요. 예산만 알려 주세요. <a class="textlink" href="{rel}wines/">와인 목록 보기 →</a></p>
   </div>
 </section>
 
