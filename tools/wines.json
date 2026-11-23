@@ -24,7 +24,8 @@
    "now": true,
    "post": "",
    "tags": "f d MK P",
-   "push": 2
+   "push": 2,
+   "img": "assets/wines/wd7c2c040.jpg"
   },
   {
    "ko": "1865 셀렉티드 빈야드 소비뇽 블랑 (슈퍼픽션 에디션)",
@@ -2211,7 +2212,7 @@
    "grape": "까베르네 소비뇽 블렌드",
    "style": "레드",
    "now": true,
-   "post": "",
+   "post": "https://blog.naver.com/middaynight109/224484684995",
    "img": "assets/wines/we955fdbe.jpg",
    "tags": "f d M G",
    "push": 3
