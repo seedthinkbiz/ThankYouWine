@@ -1374,7 +1374,9 @@ def wine_card(rel,w):
     meta=' · '.join(x for x in (w['vintage'],where,w['grape']) if x)
     hay=' '.join([w['ko'],w['en'],w['vintage'],w['country'],w['region'],w['grape'],w['style']]).lower()
     status='<span class="wbadge now">지금 매장에</span>' if w['now'] else '<span class="wbadge">재입고 문의</span>'
-    post=f'<a class="textlink" href="{rel}{w["post"]}">소개 글 →</a>' if w.get('post') else ''
+    purl=w.get('post') or ''
+    post=(f'<a class="textlink" href="{purl}" target="_blank" rel="noopener">소개 글 →</a>' if purl.startswith('http')
+          else f'<a class="textlink" href="{rel}{purl}">소개 글 →</a>' if purl else '')
     pic=(f'<div class="wimg"><img src="{rel}{w["img"]}" alt="{esc(w["ko"])} 바틀" loading="lazy" width="300" height="480"></div>' if w.get('img')
          else f'<div class="wimg none" aria-hidden="true">{HEART_SVG}</div>')
     return (f'<li class="wine" data-style="{esc(w["style"])}" data-country="{esc(w["country"])}" data-now="{1 if w["now"] else 0}"'+(f' data-tags="{esc(w["tags"])}"' if w.get('tags') else '')+(f' data-push="{w["push"]}"' if w.get('push') else '')+f' data-q="{esc(hay)}">'
