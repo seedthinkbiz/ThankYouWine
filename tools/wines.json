@@ -257,8 +257,9 @@
    "region": "론",
    "grape": "",
    "style": "화이트",
-   "now": false,
-   "post": "posts/n224204465880/"
+   "now": true,
+   "post": "posts/n224204465880/",
+   "tags": "m d SC G"
   },
   {
    "ko": "루이 M. 마티니 소노마 카운티 까베르네 소비뇽",
@@ -402,9 +403,8 @@
    "region": "호크스 베이",
    "grape": "게뷔르츠트라미너",
    "style": "화이트",
-   "now": true,
-   "post": "",
-   "tags": "m o KC"
+   "now": false,
+   "post": ""
   },
   {
    "ko": "미션 에스테이트 레이트 하비스트",
@@ -799,8 +799,9 @@
    "region": "남서부",
    "grape": "소비뇽 블랑",
    "style": "화이트",
-   "now": false,
-   "post": "posts/n224126311280/"
+   "now": true,
+   "post": "posts/n224126311280/",
+   "tags": "l d SC"
   },
   {
    "ko": "스타즈 브뤼 유기농 빈티지 까바",
@@ -1599,9 +1600,10 @@
    "region": "마틴버러",
    "grape": "소비뇽 블랑",
    "style": "화이트",
-   "now": false,
+   "now": true,
    "post": "posts/n224204475836/",
-   "img": "assets/wines/w98975940.jpg"
+   "img": "assets/wines/w98975940.jpg",
+   "tags": "l d SKC"
   },
   {
    "ko": "나헤 리슬링 파인헤르브",
@@ -1797,9 +1799,10 @@
    "region": "피에몬테 랑게",
    "grape": "리슬링",
    "style": "화이트",
-   "now": false,
+   "now": true,
    "post": "posts/n224478339902/",
-   "img": "assets/wines/wf7316beb.jpg"
+   "img": "assets/wines/wf7316beb.jpg",
+   "tags": "l d SKC"
   },
   {
    "ko": "빔바젠 샤도네이",
@@ -1809,8 +1812,9 @@
    "region": "헌터 밸리",
    "grape": "샤도네이",
    "style": "화이트",
-   "now": false,
-   "post": ""
+   "now": true,
+   "post": "",
+   "tags": "m d SC"
   },
   {
    "ko": "빔바젠 세미용",
@@ -1820,8 +1824,9 @@
    "region": "헌터 밸리",
    "grape": "세미용",
    "style": "화이트",
-   "now": false,
-   "post": ""
+   "now": true,
+   "post": "",
+   "tags": "l d SC"
   },
   {
    "ko": "빔바젠 쉬라즈",
@@ -1943,9 +1948,10 @@
    "region": "시칠리아",
    "grape": "인졸리아",
    "style": "화이트",
-   "now": false,
+   "now": true,
    "post": "posts/n224200136834/",
-   "img": "assets/wines/w53430663.jpg"
+   "img": "assets/wines/w53430663.jpg",
+   "tags": "l d SC"
   },
   {
    "ko": "쿠수마노 샤도네이",
@@ -1955,8 +1961,9 @@
    "region": "시칠리아",
    "grape": "샤도네이",
    "style": "화이트",
-   "now": false,
-   "post": "posts/n224215635017/"
+   "now": true,
+   "post": "posts/n224215635017/",
+   "tags": "m d SC"
   },
   {
    "ko": "크룩 그랑 뀌베 173 에디션",
@@ -2001,9 +2008,10 @@
    "region": "말버러",
    "grape": "소비뇽 블랑",
    "style": "화이트",
-   "now": false,
+   "now": true,
    "post": "posts/kim-crawford-sauvignon-blanc/",
-   "img": "assets/wines/w9b21ad0a.jpg"
+   "img": "assets/wines/w9b21ad0a.jpg",
+   "tags": "l d SKC P"
   },
   {
    "ko": "케이머스 나파 밸리 까베르네 소비뇽",
@@ -2153,8 +2161,9 @@
    "region": "넬슨",
    "grape": "소비뇽 블랑",
    "style": "화이트",
-   "now": false,
-   "post": "posts/n224125902539/"
+   "now": true,
+   "post": "posts/n224125902539/",
+   "tags": "l d SKC"
   },
   {
    "ko": "앙리 르블랑 블랑 드 블랑",
