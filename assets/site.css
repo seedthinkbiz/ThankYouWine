@@ -375,7 +375,12 @@ footer .fname .wordmark .ko{font-size:.66rem}
 .wfind .chips{margin-bottom:6px}
 .wcount{font-size:.88rem;color:var(--muted);margin:0}
 .wines{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.wine{border:1px solid var(--line);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:4px;background:var(--bg)}
+.wine{border:1px solid var(--line);border-radius:14px;padding:14px 16px 14px 12px;display:flex;gap:14px;background:var(--bg)}
+.wbody{display:flex;flex-direction:column;gap:4px;flex:1;min-width:0}
+.wimg{flex:0 0 96px;height:160px;display:flex;align-items:center;justify-content:center;border-radius:10px;background:#fff}
+.wimg img{width:96px;height:160px;object-fit:contain}
+.wimg.none{background:var(--paper)}
+.wimg.none .mark{width:30px;height:40px;opacity:.28}
 .wine[hidden]{display:none}
 .wine h3{font-family:var(--sans);font-weight:700;font-size:1.04rem;line-height:1.45;margin:2px 0 0}
 .wen{margin:0;font-size:.86rem;color:var(--muted);line-height:1.4}

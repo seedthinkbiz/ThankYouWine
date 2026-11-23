@@ -22,7 +22,8 @@
    "grape": "까베르네 소비뇽",
    "style": "레드",
    "now": true,
-   "post": ""
+   "post": "",
+   "img": "assets/wines/wd7c2c040.jpg"
   },
   {
    "ko": "1865 셀렉티드 빈야드 소비뇽 블랑 (슈퍼픽션 에디션)",
@@ -66,7 +67,8 @@
    "grape": "까베르네 소비뇽",
    "style": "레드",
    "now": true,
-   "post": "posts/grand-barossa-cabernet-sauvignon-2020/"
+   "post": "posts/grand-barossa-cabernet-sauvignon-2020/",
+   "img": "assets/wines/w2b1353ce.jpg"
   },
   {
    "ko": "네로페르소 아파시멘토",
@@ -77,7 +79,8 @@
    "grape": "",
    "style": "레드",
    "now": true,
-   "post": "posts/n224125888492/"
+   "post": "posts/n224125888492/",
+   "img": "assets/wines/w3ce9578c.jpg"
   },
   {
    "ko": "트레드 소프틀리 피노 그리지오 (무알콜)",
@@ -110,7 +113,8 @@
    "grape": "피노 누아",
    "style": "레드",
    "now": false,
-   "post": "posts/n224200139101/"
+   "post": "posts/n224200139101/",
+   "img": "assets/wines/w353aad4a.jpg"
   },
   {
    "ko": "루이스 펠리페 에드워즈 도나 베르나다",
@@ -132,7 +136,8 @@
    "grape": "말벡(꼬뜨)",
    "style": "레드",
    "now": true,
-   "post": "posts/n224456701088/"
+   "post": "posts/n224456701088/",
+   "img": "assets/wines/wd9ab2aed.jpg"
   },
   {
    "ko": "도멘 그노 뚜헨 소비뇽 블랑",
@@ -143,7 +148,8 @@
    "grape": "소비뇽 블랑",
    "style": "화이트",
    "now": true,
-   "post": "posts/n224450309131/"
+   "post": "posts/n224450309131/",
+   "img": "assets/wines/wa8abd588.jpg"
   },
   {
    "ko": "드 보르톨리 노블 원",
@@ -154,7 +160,8 @@
    "grape": "세미용",
    "style": "스위트",
    "now": true,
-   "post": "posts/n224473830226/"
+   "post": "posts/n224473830226/",
+   "img": "assets/wines/w3f7239a0.jpg"
   },
   {
    "ko": "라 클로즈리 드 말에스까스",
@@ -168,8 +175,8 @@
    "post": "posts/n224456564805/"
   },
   {
-   "ko": "르 물랭 루즈 드 말에스까스",
-   "en": "Le Moulin Rouge de Malescasse",
+   "ko": "르 물랭 로즈 드 말에스까스",
+   "en": "Le Moulin Rose de Malescasse",
    "vintage": "2020",
    "country": "프랑스",
    "region": "보르도 오메독",
@@ -187,7 +194,8 @@
    "grape": "아이렌",
    "style": "화이트",
    "now": true,
-   "post": ""
+   "post": "",
+   "img": "assets/wines/wdba650d2.jpg"
   },
   {
    "ko": "라스 쿠아트로 에스타시오네스 템프라니요",
@@ -220,7 +228,8 @@
    "grape": "그르나슈 블렌드",
    "style": "레드",
    "now": true,
-   "post": "posts/n224204461448/"
+   "post": "posts/n224204461448/",
+   "img": "assets/wines/w4a6cbe8d.jpg"
   },
   {
    "ko": "도멘 루 프레조 샤토뇌프 뒤 파프 블랑",
@@ -297,7 +306,8 @@
    "grape": "",
    "style": "스파클링",
    "now": true,
-   "post": "posts/n224201363630/"
+   "post": "posts/n224201363630/",
+   "img": "assets/wines/wa2899b53.jpg"
   },
   {
    "ko": "모조 모스카토",
@@ -308,7 +318,8 @@
    "grape": "모스카토",
    "style": "스위트",
    "now": false,
-   "post": ""
+   "post": "",
+   "img": "assets/wines/w36ce1e71.jpg"
   },
   {
    "ko": "모조 쉬라즈",
@@ -319,7 +330,8 @@
    "grape": "쉬라즈",
    "style": "레드",
    "now": false,
-   "post": ""
+   "post": "",
+   "img": "assets/wines/w17e67ad2.jpg"
   },
   {
    "ko": "무똥 까데 헤리티지 루즈",
@@ -330,7 +342,8 @@
    "grape": "",
    "style": "레드",
    "now": false,
-   "post": ""
+   "post": "",
+   "img": "assets/wines/w9ddb6f43.jpg"
   },
   {
    "ko": "미라벤토 모스카토 스푸만테",
@@ -407,7 +420,8 @@
    "grape": "피노 누아",
    "style": "스파클링",
    "now": true,
-   "post": "posts/baron-dauvergne-fine-fleur-champagne/"
+   "post": "posts/baron-dauvergne-fine-fleur-champagne/",
+   "img": "assets/wines/w421310d4.jpg"
   },
   {
    "ko": "바서만 요르단 다이데스하임 리슬링 파인헤르프",
@@ -451,7 +465,8 @@
    "grape": "",
    "style": "레드",
    "now": false,
-   "post": ""
+   "post": "",
+   "img": "assets/wines/w57c36b14.jpg"
   },
   {
    "ko": "보 비뉴 히어로 프로프라이어터리 레드",
@@ -484,7 +499,8 @@
    "grape": "샤르도네",
    "style": "스파클링",
    "now": true,
-   "post": ""
+   "post": "",
+   "img": "assets/wines/wc02074d8.jpg"
   },
   {
    "ko": "부 샤르무아 소비뇽 블랑-비오니에",
@@ -495,7 +511,8 @@
    "grape": "소비뇽 블랑, 비오니에",
    "style": "화이트",
    "now": true,
-   "post": "posts/n224343180730/"
+   "post": "posts/n224343180730/",
+   "img": "assets/wines/w11838321.jpg"
   },
   {
    "ko": "부 샤르무아 피노 누아",
@@ -539,7 +556,8 @@
    "grape": "",
    "style": "무알콜",
    "now": true,
-   "post": "posts/n224478273504/"
+   "post": "posts/n224478273504/",
+   "img": "assets/wines/we138e935.jpg"
   },
   {
    "ko": "르 쁘띠 베레 까베르네 소비뇽 (무알콜)",
@@ -605,7 +623,8 @@
    "grape": "",
    "style": "레드",
    "now": true,
-   "post": ""
+   "post": "",
+   "img": "assets/wines/w5cfea74a.jpg"
   },
   {
    "ko": "샤또 르 종시에 블라이",
@@ -627,7 +646,8 @@
    "grape": "",
    "style": "레드",
    "now": false,
-   "post": ""
+   "post": "",
+   "img": "assets/wines/we5247f96.jpg"
   },
   {
    "ko": "도멘 오뜨 브랑드 메를로",
@@ -638,7 +658,8 @@
    "grape": "메를로",
    "style": "레드",
    "now": true,
-   "post": "posts/domaine-haut-brande-merlot-2022/"
+   "post": "posts/domaine-haut-brande-merlot-2022/",
+   "img": "assets/wines/w54454b49.jpg"
   },
   {
    "ko": "샤또 페이라솔 레드",
@@ -649,7 +670,8 @@
    "grape": "",
    "style": "레드",
    "now": true,
-   "post": "posts/n224460009307/"
+   "post": "posts/n224460009307/",
+   "img": "assets/wines/wef3dc956.jpg"
   },
   {
    "ko": "샹동 브뤼 야라 밸리",
@@ -671,7 +693,8 @@
    "grape": "",
    "style": "스파클링",
    "now": true,
-   "post": "posts/n224307400214/"
+   "post": "posts/n224307400214/",
+   "img": "assets/wines/wb8e6ebd2.jpg"
   },
   {
    "ko": "세라믹 모나스트렐",
@@ -704,7 +727,8 @@
    "grape": "그로 망상",
    "style": "화이트",
    "now": true,
-   "post": "posts/n224471517380/"
+   "post": "posts/n224471517380/",
+   "img": "assets/wines/wd380947b.jpg"
   },
   {
    "ko": "쉐 되브르 까베르네 소비뇽",
@@ -737,7 +761,8 @@
    "grape": "",
    "style": "스파클링",
    "now": false,
-   "post": ""
+   "post": "",
+   "img": "assets/wines/w9f363ee7.jpg"
   },
   {
    "ko": "아니마 네그라 AN/2",
@@ -748,7 +773,8 @@
    "grape": "",
    "style": "레드",
    "now": true,
-   "post": "posts/n224363978133/"
+   "post": "posts/n224363978133/",
+   "img": "assets/wines/wd9c61175.jpg"
   },
   {
    "ko": "아커만 벨 로얄 크레망 드 루아르",
@@ -814,7 +840,8 @@
    "grape": "",
    "style": "레드",
    "now": true,
-   "post": "posts/n224293634932/"
+   "post": "posts/n224293634932/",
+   "img": "assets/wines/wcfcb09ab.jpg"
   },
   {
    "ko": "오베하 네그라 까베르네 소비뇽 그란 레세르바",
@@ -825,7 +852,8 @@
    "grape": "까베르네 소비뇽",
    "style": "레드",
    "now": true,
-   "post": "posts/n224224809948/"
+   "post": "posts/n224224809948/",
+   "img": "assets/wines/w485ec406.jpg"
   },
   {
    "ko": "이그나시오 마린 올드 바인 가르나차",
@@ -836,7 +864,8 @@
    "grape": "가르나차",
    "style": "레드",
    "now": true,
-   "post": "posts/n224258721975/"
+   "post": "posts/n224258721975/",
+   "img": "assets/wines/w4944de21.jpg"
   },
   {
    "ko": "월터 한셀 뀌베 알리스 샤도네이",
@@ -913,7 +942,8 @@
    "grape": "피노 누아",
    "style": "레드",
    "now": true,
-   "post": "posts/jonathan-seguin-bourgogne-pinot-noir-vv-2024/"
+   "post": "posts/jonathan-seguin-bourgogne-pinot-noir-vv-2024/",
+   "img": "assets/wines/w743b7978.jpg"
   },
   {
    "ko": "조나단 세갱 쇼슈아 '끌로 드 샤리에르'",
@@ -924,7 +954,8 @@
    "grape": "피노 누아",
    "style": "레드",
    "now": true,
-   "post": ""
+   "post": "",
+   "img": "assets/wines/w5e5a16a1.jpg"
   },
   {
    "ko": "첸토리 모스카토 디 파비아",
@@ -935,7 +966,8 @@
    "grape": "모스카토",
    "style": "스위트",
    "now": true,
-   "post": "posts/n224460005174/"
+   "post": "posts/n224460005174/",
+   "img": "assets/wines/w836b918a.jpg"
   },
   {
    "ko": "카르페 디엠 배드 보이즈",
@@ -946,7 +978,8 @@
    "grape": "",
    "style": "레드",
    "now": true,
-   "post": ""
+   "post": "",
+   "img": "assets/wines/wcb8f899a.jpg"
   },
   {
    "ko": "카르페 디엠 페테아스카 네아그라",
@@ -1023,7 +1056,8 @@
    "grape": "까베르네 소비뇽",
    "style": "레드",
    "now": true,
-   "post": "posts/n224239431820/"
+   "post": "posts/n224239431820/",
+   "img": "assets/wines/wc2dd322f.jpg"
   },
   {
    "ko": "크룹 브라더스 '더 프로페서'",
@@ -1056,7 +1090,8 @@
    "grape": "까베르네 소비뇽",
    "style": "레드",
    "now": true,
-   "post": "posts/tarapaca-gran-reserva-cabernet-sauvignon-2023/"
+   "post": "posts/tarapaca-gran-reserva-cabernet-sauvignon-2023/",
+   "img": "assets/wines/wad82ffa2.jpg"
   },
   {
    "ko": "따론지노 오렌지 와인",
@@ -1078,7 +1113,8 @@
    "grape": "",
    "style": "레드",
    "now": true,
-   "post": "posts/il-corno-minaemoro-2017/"
+   "post": "posts/il-corno-minaemoro-2017/",
+   "img": "assets/wines/w58d4c4ee.jpg"
   },
   {
    "ko": "테누타 카제누오베 키안티 클라시코 리제르바",
@@ -1089,7 +1125,8 @@
    "grape": "산지오베제",
    "style": "레드",
    "now": true,
-   "post": "posts/n224224796620/"
+   "post": "posts/n224224796620/",
+   "img": "assets/wines/wcb08920a.jpg"
   },
   {
    "ko": "테라사스 데 로스 안데스 레세르바 말벡",
@@ -1111,7 +1148,8 @@
    "grape": "알바리뇨",
    "style": "화이트",
    "now": false,
-   "post": ""
+   "post": "",
+   "img": "assets/wines/w9b605264.jpg"
   },
   {
    "ko": "티오 페페 피노",
@@ -1199,7 +1237,8 @@
    "grape": "",
    "style": "레드",
    "now": true,
-   "post": "posts/n224201381948/"
+   "post": "posts/n224201381948/",
+   "img": "assets/wines/w4d63dc0a.jpg"
   },
   {
    "ko": "페어히즈 앵커 리제르바",
@@ -1210,7 +1249,8 @@
    "grape": "",
    "style": "레드",
    "now": true,
-   "post": "posts/n224232788227/"
+   "post": "posts/n224232788227/",
+   "img": "assets/wines/wdea0be5d.jpg"
   },
   {
    "ko": "폰 비닝 윈윈 리슬링",
@@ -1309,7 +1349,8 @@
    "grape": "샤르도네",
    "style": "화이트",
    "now": true,
-   "post": "posts/pierre-armand-macon-villages-2024/"
+   "post": "posts/pierre-armand-macon-villages-2024/",
+   "img": "assets/wines/wf5d8e658.jpg"
   },
   {
    "ko": "하셀그로브 '디 올드 넛' (500ml)",
@@ -1342,7 +1383,8 @@
    "grape": "쉬라즈",
    "style": "레드",
    "now": false,
-   "post": ""
+   "post": "",
+   "img": "assets/wines/w15a650ee.jpg"
   },
   {
    "ko": "도멘 데 떼레 정띠에 부르고뉴 샤르도네",
@@ -1375,7 +1417,8 @@
    "grape": "",
    "style": "스파클링",
    "now": false,
-   "post": "posts/n224126266650/"
+   "post": "posts/n224126266650/",
+   "img": "assets/wines/w73cd6548.jpg"
   },
   {
    "ko": "디안데 멘도사 말벡",
@@ -1430,7 +1473,8 @@
    "grape": "모스카토",
    "style": "스파클링",
    "now": false,
-   "post": "posts/n224470332118/"
+   "post": "posts/n224470332118/",
+   "img": "assets/wines/wc3a8ce6a.jpg"
   },
   {
    "ko": "라다치니 모스카토 로제",
@@ -1441,7 +1485,8 @@
    "grape": "모스카토",
    "style": "스파클링",
    "now": false,
-   "post": "posts/n224470333519/"
+   "post": "posts/n224470333519/",
+   "img": "assets/wines/w77597c10.jpg"
   },
   {
    "ko": "러시안 잭 소비뇽 블랑",
@@ -1452,7 +1497,8 @@
    "grape": "소비뇽 블랑",
    "style": "화이트",
    "now": false,
-   "post": "posts/n224204475836/"
+   "post": "posts/n224204475836/",
+   "img": "assets/wines/w98975940.jpg"
   },
   {
    "ko": "나헤 리슬링 파인헤르브",
@@ -1463,7 +1509,8 @@
    "grape": "리슬링",
    "style": "화이트",
    "now": false,
-   "post": "posts/n224473829320/"
+   "post": "posts/n224473829320/",
+   "img": "assets/wines/wf75c7207.jpg"
   },
   {
    "ko": "르네 르캥 콜랭 상뜨네 '수 라 로슈'",
@@ -1496,7 +1543,8 @@
    "grape": "까베르네 소비뇽",
    "style": "레드",
    "now": false,
-   "post": ""
+   "post": "",
+   "img": "assets/wines/w7afcc08f.jpg"
   },
   {
    "ko": "물랭 드 라 라귄",
@@ -1518,7 +1566,8 @@
    "grape": "콜롱바르, 소비뇽 블랑",
    "style": "화이트",
    "now": false,
-   "post": "posts/baron-de-baussac-colombard-sauvignon-2023/"
+   "post": "posts/baron-de-baussac-colombard-sauvignon-2023/",
+   "img": "assets/wines/w4fd5eb08.jpg"
   },
   {
    "ko": "바롱 드 보삭 비오니에",
@@ -1529,7 +1578,8 @@
    "grape": "비오니에",
    "style": "화이트",
    "now": false,
-   "post": "posts/baron-de-baussac-colombard-sauvignon-2023-224224815779/"
+   "post": "posts/baron-de-baussac-colombard-sauvignon-2023-224224815779/",
+   "img": "assets/wines/wa52eb757.jpg"
   },
   {
    "ko": "바롱 드 보삭 메를로",
@@ -1540,7 +1590,8 @@
    "grape": "메를로",
    "style": "레드",
    "now": false,
-   "post": ""
+   "post": "",
+   "img": "assets/wines/w4b12925b.jpg"
   },
   {
    "ko": "발레피치올라 키안티 클라시코 매그넘",
@@ -1551,7 +1602,8 @@
    "grape": "산지오베제",
    "style": "레드",
    "now": false,
-   "post": "posts/n224338607257/"
+   "post": "posts/n224338607257/",
+   "img": "assets/wines/w6f528e9c.jpg"
   },
   {
    "ko": "베르나르 롱끌라 셀렉션 브뤼",
@@ -1562,7 +1614,8 @@
    "grape": "",
    "style": "스파클링",
    "now": false,
-   "post": ""
+   "post": "",
+   "img": "assets/wines/wb9b935d0.jpg"
   },
   {
    "ko": "뵈브 클리코 옐로우 라벨",
@@ -1573,7 +1626,8 @@
    "grape": "",
    "style": "스파클링",
    "now": false,
-   "post": "posts/n224201371384/"
+   "post": "posts/n224201371384/",
+   "img": "assets/wines/w24d46242.jpg"
   },
   {
    "ko": "벨 글로스 클라크 앤 텔레폰 피노 누아",
@@ -1595,7 +1649,8 @@
    "grape": "까르메네르",
    "style": "레드",
    "now": false,
-   "post": "posts/n224285094923/"
+   "post": "posts/n224285094923/",
+   "img": "assets/wines/w13f0f3c7.jpg"
   },
   {
    "ko": "브레드 앤 버터 까베르네 소비뇽",
@@ -1606,7 +1661,8 @@
    "grape": "까베르네 소비뇽",
    "style": "레드",
    "now": false,
-   "post": ""
+   "post": "",
+   "img": "assets/wines/wa6d150f3.jpg"
   },
   {
    "ko": "브레드 앤 버터 까베르네 소비뇽 매그넘",
@@ -1639,7 +1695,8 @@
    "grape": "리슬링",
    "style": "화이트",
    "now": false,
-   "post": "posts/n224478339902/"
+   "post": "posts/n224478339902/",
+   "img": "assets/wines/wf7316beb.jpg"
   },
   {
    "ko": "빔바젠 샤도네이",
@@ -1705,7 +1762,8 @@
    "grape": "",
    "style": "레드",
    "now": false,
-   "post": ""
+   "post": "",
+   "img": "assets/wines/w8c669a00.jpg"
   },
   {
    "ko": "샤또 보빌라쥬 메독 크뤼 부르주아",
@@ -1716,7 +1774,8 @@
    "grape": "",
    "style": "레드",
    "now": false,
-   "post": "posts/n224460008014/"
+   "post": "posts/n224460008014/",
+   "img": "assets/wines/w1f0d998e.jpg"
   },
   {
    "ko": "샤또 퓌게로",
@@ -1782,7 +1841,8 @@
    "grape": "인졸리아",
    "style": "화이트",
    "now": false,
-   "post": "posts/n224200136834/"
+   "post": "posts/n224200136834/",
+   "img": "assets/wines/w53430663.jpg"
   },
   {
    "ko": "쿠수마노 샤도네이",
@@ -1815,7 +1875,8 @@
    "grape": "소비뇽 블랑",
    "style": "화이트",
    "now": false,
-   "post": "posts/n224453393740/"
+   "post": "posts/n224453393740/",
+   "img": "assets/wines/w907729c0.jpg"
   },
   {
    "ko": "클라우디 베이 펠로루스",
@@ -1826,7 +1887,8 @@
    "grape": "",
    "style": "스파클링",
    "now": false,
-   "post": ""
+   "post": "",
+   "img": "assets/wines/w019133d4.jpg"
   },
   {
    "ko": "킴 크로포드 소비뇽 블랑",
@@ -1837,7 +1899,8 @@
    "grape": "소비뇽 블랑",
    "style": "화이트",
    "now": false,
-   "post": "posts/kim-crawford-sauvignon-blanc/"
+   "post": "posts/kim-crawford-sauvignon-blanc/",
+   "img": "assets/wines/w9b21ad0a.jpg"
   },
   {
    "ko": "케이머스 나파 밸리 까베르네 소비뇽",
@@ -1848,7 +1911,8 @@
    "grape": "까베르네 소비뇽",
    "style": "레드",
    "now": false,
-   "post": "posts/caymus-napa-cabernet-sauvignon/"
+   "post": "posts/caymus-napa-cabernet-sauvignon/",
+   "img": "assets/wines/w48ff7660.jpg"
   },
   {
    "ko": "토마스 슈미트 프라이빗 컬렉션 아우스레제",
@@ -1859,7 +1923,8 @@
    "grape": "리슬링",
    "style": "스위트",
    "now": false,
-   "post": "posts/n224450325523/"
+   "post": "posts/n224450325523/",
+   "img": "assets/wines/w1d3e05b4.jpg"
   },
   {
    "ko": "토타라 말버러 소비뇽 블랑",
@@ -1870,7 +1935,8 @@
    "grape": "소비뇽 블랑",
    "style": "화이트",
    "now": false,
-   "post": ""
+   "post": "",
+   "img": "assets/wines/wadcd6817.jpg"
   },
   {
    "ko": "파이퍼 하이직 뀌베 브뤼",
@@ -1881,7 +1947,8 @@
    "grape": "",
    "style": "스파클링",
    "now": false,
-   "post": "posts/n224367213459/"
+   "post": "posts/n224367213459/",
+   "img": "assets/wines/w21800c49.jpg"
   },
   {
    "ko": "페라리 로제",
@@ -1936,7 +2003,8 @@
    "grape": "",
    "style": "스파클링",
    "now": false,
-   "post": "posts/n224470157972/"
+   "post": "posts/n224470157972/",
+   "img": "assets/wines/w659d850b.jpg"
   },
   {
    "ko": "피타스 소비뇽 블랑",
@@ -1947,7 +2015,8 @@
    "grape": "소비뇽 블랑",
    "style": "화이트",
    "now": false,
-   "post": ""
+   "post": "",
+   "img": "assets/wines/w41d575b3.jpg"
   },
   {
    "ko": "피타스 샤르도네",
@@ -1958,7 +2027,8 @@
    "grape": "샤르도네",
    "style": "화이트",
    "now": false,
-   "post": ""
+   "post": "",
+   "img": "assets/wines/wbc2cadab.jpg"
   },
   {
    "ko": "찰스 가데 프레스티지 밀레짐",
@@ -1969,7 +2039,8 @@
    "grape": "",
    "style": "스파클링",
    "now": false,
-   "post": "posts/charles-gardet-millesime-2008/"
+   "post": "posts/charles-gardet-millesime-2008/",
+   "img": "assets/wines/w775ed167.jpg"
   },
   {
    "ko": "홀라쇼 소비뇽 블랑",
@@ -2002,7 +2073,8 @@
    "grape": "",
    "style": "레드",
    "now": false,
-   "post": ""
+   "post": "",
+   "img": "assets/wines/we955fdbe.jpg"
   },
   {
    "ko": "인도미타 그란 레세르바 까베르네 소비뇽",
@@ -2068,7 +2140,8 @@
    "grape": "템프라니요",
    "style": "레드",
    "now": false,
-   "post": "posts/coto-de-imaz-gran-reserva-2020/"
+   "post": "posts/coto-de-imaz-gran-reserva-2020/",
+   "img": "assets/wines/w4b2fa9d8.jpg"
   },
   {
    "ko": "리오하 보르돈 그란 레세르바",
@@ -2079,7 +2152,8 @@
    "grape": "템프라니요",
    "style": "레드",
    "now": false,
-   "post": "posts/n224473828396/"
+   "post": "posts/n224473828396/",
+   "img": "assets/wines/w5b4b808e.jpg"
   },
   {
    "ko": "오메나헤 아 돈키호테 로블레",
@@ -2145,7 +2219,8 @@
    "grape": "",
    "style": "무알콜",
    "now": false,
-   "post": "posts/n224478339605/"
+   "post": "posts/n224478339605/",
+   "img": "assets/wines/wcbd3898a.jpg"
   },
   {
    "ko": "디뱅 오리진 소비뇽 블랑 스파클링 0.0",
@@ -2156,7 +2231,8 @@
    "grape": "소비뇽 블랑",
    "style": "무알콜",
    "now": false,
-   "post": "posts/n224478284928/"
+   "post": "posts/n224478284928/",
+   "img": "assets/wines/w65ee8ffd.jpg"
   },
   {
    "ko": "장 페리에 사부아 샤르도네",
@@ -2222,7 +2298,8 @@
    "grape": "까베르네 소비뇽",
    "style": "레드",
    "now": false,
-   "post": "posts/textbook-napa-cabernet-sauvignon/"
+   "post": "posts/textbook-napa-cabernet-sauvignon/",
+   "img": "assets/wines/w78cd239d.jpg"
   },
   {
    "ko": "베도바 사페라비",
@@ -2288,7 +2365,8 @@
    "grape": "피노 누아",
    "style": "레드",
    "now": false,
-   "post": "posts/n224204575158/"
+   "post": "posts/n224204575158/",
+   "img": "assets/wines/w55c2fd60.jpg"
   },
   {
    "ko": "이든 리프트 에스테이트 피노 누아",
@@ -2310,7 +2388,8 @@
    "grape": "피노 누아",
    "style": "레드",
    "now": false,
-   "post": "posts/n224204557040/"
+   "post": "posts/n224204557040/",
+   "img": "assets/wines/wd3c58d11.jpg"
   },
   {
    "ko": "도멘 생 뱅상 꼬뜨 뒤 론 빌라쥬 블랑",
@@ -2365,7 +2444,8 @@
    "grape": "피노 누아",
    "style": "레드",
    "now": false,
-   "post": "posts/n224200409963/"
+   "post": "posts/n224200409963/",
+   "img": "assets/wines/w160a9f1a.jpg"
   },
   {
    "ko": "페냐롤렌 까베르네 소비뇽",
@@ -2475,7 +2555,8 @@
    "grape": "리슬링",
    "style": "화이트",
    "now": false,
-   "post": ""
+   "post": "",
+   "img": "assets/wines/wa09f3e6a.jpg"
   },
   {
    "ko": "해리스 파커 샤도네이",
@@ -2486,7 +2567,8 @@
    "grape": "샤도네이",
    "style": "화이트",
    "now": false,
-   "post": ""
+   "post": "",
+   "img": "assets/wines/w928aab6b.jpg"
   },
   {
    "ko": "해리스 파커 피노 누아",

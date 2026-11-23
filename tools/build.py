@@ -1367,7 +1367,7 @@ def load_wines():
     fn=os.path.join(HERE,'wines.json')
     if not os.path.exists(fn): return []
     W=json.load(open(fn,encoding='utf-8'))['wines']
-    W.sort(key=lambda w:(not w['now'],STYLE_ORDER.index(w['style']) if w['style'] in STYLE_ORDER else 99,w['ko']))
+    W.sort(key=lambda w:(not w['now'],not w.get('img'),STYLE_ORDER.index(w['style']) if w['style'] in STYLE_ORDER else 99,w['ko']))
     return W
 def wine_card(rel,w):
     where=' '.join(x for x in (w['country'],w['region']) if x)
@@ -1375,11 +1375,13 @@ def wine_card(rel,w):
     hay=' '.join([w['ko'],w['en'],w['vintage'],w['country'],w['region'],w['grape'],w['style']]).lower()
     status='<span class="wbadge now">지금 매장에</span>' if w['now'] else '<span class="wbadge">재입고 문의</span>'
     post=f'<a class="textlink" href="{rel}{w["post"]}">소개 글 →</a>' if w.get('post') else ''
+    pic=(f'<div class="wimg"><img src="{rel}{w["img"]}" alt="{esc(w["ko"])} 바틀" loading="lazy" width="300" height="480"></div>' if w.get('img')
+         else f'<div class="wimg none" aria-hidden="true">{HEART_SVG}</div>')
     return (f'<li class="wine" data-style="{esc(w["style"])}" data-country="{esc(w["country"])}" data-now="{1 if w["now"] else 0}" data-q="{esc(hay)}">'
-            f'<div class="wtop"><span class="wstyle">{esc(w["style"])}</span>{status}</div>'
+            f'{pic}<div class="wbody"><div class="wtop"><span class="wstyle">{esc(w["style"])}</span>{status}</div>'
             f'<h3>{esc(w["ko"])}</h3>'+(f'<p class="wen" lang="en">{esc(w["en"])}</p>' if w['en'] else '')+
             (f'<p class="wmeta">{esc(meta)}</p>' if meta else '')+
-            f'<div class="wacts"><a class="btn line sm" href="#contact" data-contact data-wine="{esc(w["ko"])}">가격 문의</a>{post}</div></li>')
+            f'<div class="wacts"><a class="btn line sm" href="#contact" data-contact data-wine="{esc(w["ko"])}">가격 문의</a>{post}</div></div></li>')
 def page_wines(rel):
     W=WINES
     styles=[s for s in STYLE_ORDER if any(w['style']==s for w in W)]
