@@ -2035,9 +2035,10 @@
    "region": "모젤",
    "grape": "리슬링",
    "style": "스위트",
-   "now": false,
+   "now": true,
    "post": "posts/n224450325523/",
-   "img": "assets/wines/w1d3e05b4.jpg"
+   "img": "assets/wines/w1d3e05b4.jpg",
+   "tags": "m s DCK G"
   },
   {
    "ko": "토타라 말버러 소비뇽 블랑",
