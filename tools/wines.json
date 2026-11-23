@@ -1486,9 +1486,11 @@
    "region": "맥라렌 베일",
    "grape": "쉬라즈",
    "style": "레드",
-   "now": false,
+   "now": true,
    "post": "",
-   "img": "assets/wines/w15a650ee.jpg"
+   "img": "assets/wines/w15a650ee.jpg",
+   "tags": "f d MK G",
+   "push": 2
   },
   {
    "ko": "도멘 데 떼레 정띠에 부르고뉴 샤르도네",
