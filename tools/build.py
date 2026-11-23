@@ -1377,7 +1377,7 @@ def wine_card(rel,w):
     post=f'<a class="textlink" href="{rel}{w["post"]}">소개 글 →</a>' if w.get('post') else ''
     pic=(f'<div class="wimg"><img src="{rel}{w["img"]}" alt="{esc(w["ko"])} 바틀" loading="lazy" width="300" height="480"></div>' if w.get('img')
          else f'<div class="wimg none" aria-hidden="true">{HEART_SVG}</div>')
-    return (f'<li class="wine" data-style="{esc(w["style"])}" data-country="{esc(w["country"])}" data-now="{1 if w["now"] else 0}" data-q="{esc(hay)}">'
+    return (f'<li class="wine" data-style="{esc(w["style"])}" data-country="{esc(w["country"])}" data-now="{1 if w["now"] else 0}"'+(f' data-tags="{esc(w["tags"])}"' if w.get('tags') else '')+f' data-q="{esc(hay)}">'
             f'{pic}<div class="wbody"><div class="wtop"><span class="wstyle">{esc(w["style"])}</span>{status}</div>'
             f'<h3>{esc(w["ko"])}</h3>'+(f'<p class="wen" lang="en">{esc(w["en"])}</p>' if w['en'] else '')+
             (f'<p class="wmeta">{esc(meta)}</p>' if meta else '')+
@@ -1396,6 +1396,18 @@ def page_wines(rel):
       <span class="kicker">와인 목록</span>
       <h1>땡큐와인이 소개하고 판매한 와인</h1>
       <p>지금 매장에 있는 와인 {now_n}종과 지금까지 소개하고 판매한 와인까지 모두 {len(W)}종이에요. 가격은 수입사 사정과 입고 시기에 따라 자주 바뀌어서 적지 않았어요. 궁금한 와인은 <b>가격 문의</b>를 눌러 카톡이나 문자로 이름만 보내 주세요. 다 나간 와인도 다시 구해 드릴 수 있는지 알아봐 드려요.</p>
+    </div>
+    <div class="wpick" id="wpick">
+      <h2>뭘 골라야 할지 모르겠다면</h2>
+      <p class="wpicklead">세 가지만 눌러 주세요. 지금 매장에 있는 와인 중에서 세 병을 골라 드려요.</p>
+      <div class="pq" data-q="occ"><b>어떤 자리예요?</b><div class="chips"><button class="chip" type="button" data-v="G" aria-pressed="false">선물</button><button class="chip" type="button" data-v="P" aria-pressed="false">여럿이 모임·건배</button><button class="chip" type="button" data-v="H" aria-pressed="false">집에서 편하게</button><button class="chip" type="button" data-v="N" aria-pressed="false">술을 안 드시는 분</button></div></div>
+      <div class="pq" data-q="food"><b>무엇과 함께 드세요?</b><div class="chips"><button class="chip" type="button" data-v="M" aria-pressed="false">고기</button><button class="chip" type="button" data-v="S" aria-pressed="false">회·해산물</button><button class="chip" type="button" data-v="K" aria-pressed="false">한식·매운 음식</button><button class="chip" type="button" data-v="C" aria-pressed="false">치즈·가벼운 안주</button><button class="chip" type="button" data-v="D" aria-pressed="false">디저트</button><button class="chip" type="button" data-v="" aria-pressed="false">와인만</button></div></div>
+      <div class="pq" data-q="taste"><b>어떤 맛이 좋으세요?</b><div class="chips"><button class="chip" type="button" data-v="l" aria-pressed="false">가볍고 산뜻하게</button><button class="chip" type="button" data-v="m" aria-pressed="false">적당히</button><button class="chip" type="button" data-v="f" aria-pressed="false">진하고 묵직하게</button><button class="chip" type="button" data-v="s" aria-pressed="false">달콤하게</button><button class="chip" type="button" data-v="" aria-pressed="false">잘 모르겠어요</button></div></div>
+      <div class="wpickgo"><button class="btn wine" type="button" id="wpickbtn">추천 받기</button><span class="wpickmsg" id="wpickmsg" aria-live="polite"></span></div>
+      <div id="wpickout" hidden>
+        <ul class="wines wpickres" id="wpickres"></ul>
+        <p class="wpicknote">맛과 음식 궁합을 기준으로 고른 참고용 추천이에요. 예산이나 받는 분 취향을 알려 주시면 더 잘 맞춰 드려요. <button class="textlink" type="button" id="wpickagain">다시 고르기</button></p>
+      </div>
     </div>
     <div class="wfind" role="search">
       <label class="wsearch"><span class="sr">와인 검색</span><input id="wq" type="search" placeholder="와인 이름, 품종, 지역으로 찾기 (예: 피노 누아, 보르도, Chablis)" autocomplete="off"></label>

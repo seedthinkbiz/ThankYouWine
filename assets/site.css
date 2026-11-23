@@ -397,3 +397,17 @@ footer .fname .wordmark .ko{font-size:.66rem}
 @media(max-width:900px){.wines{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.wines{grid-template-columns:1fr}}
 @media(min-width:861px){.wfind{position:sticky;top:64px;z-index:5}}
+/* 와인 추천기 (/wines/) */
+.wpick{border:1.5px solid var(--wine);border-radius:16px;padding:22px 22px 18px;margin:0 0 26px;background:var(--bg)}
+.wpick h2{font-family:var(--sans);font-weight:700;font-size:1.25rem;margin:0 0 4px}
+.wpicklead{margin:0 0 14px;color:var(--muted)}
+.pq{margin:0 0 12px}
+.pq b{display:block;font-size:.98rem;margin-bottom:8px}
+.pq .chips{margin-bottom:0}
+.wpickgo{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:6px}
+.wpickmsg{font-size:.92rem;color:var(--muted)}
+.wpickres{margin-top:18px}
+.wpicknote{font-size:.9rem;color:var(--muted);margin:12px 0 0}
+.wpicknote .textlink{background:none;border:0;padding:0;font:inherit;cursor:pointer}
+#wpickout[hidden]{display:none}
+@media(max-width:600px){.wpick{padding:18px 16px 14px}}
