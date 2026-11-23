@@ -59,6 +59,7 @@ PAGES={
  'index':     dict(path='',           title='땡큐와인 · 성수동 와인 토탈 서비스, 모임·행사 와인과 기업 선물', desc='성수동의 와인 토탈 서비스 땡큐와인. 집에서 마실 한 병부터 송년회 와인, 거래처 명절 선물까지 인원과 예산에 맞춰 골라 드려요. 와인잔 대여, 와인 강의·시음회.'),
  'gathering': dict(path='gathering/', title='모임·행사 와인 견적 · 땡큐와인', desc='송년회, 동호회, 회사 모임 와인. 인원과 예산에 맞춘 구성, 와인잔 대여와 배송·수거까지. 가입 없이 견적을 요청하세요.'),
  'gift':      dict(path='gift/',      title='기업·명절 선물 와인 · 땡큐와인', desc='거래처 명절 선물, 임직원 선물, 감사 인사 한 병. 보르도 5대 샤토부터 데일리 와인까지 예산에 맞춰 고르고 세금계산서를 발행해 드려요.'),
+ 'wines':     dict(path='wines/',     title='와인 목록 · 땡큐와인이 소개하고 판매한 와인 찾기', desc='땡큐와인에서 지금 만날 수 있는 와인과 지금까지 소개·판매한 와인 목록. 이름·나라·스타일로 찾고, 가격은 카카오톡으로 1:1 문의하세요.'),
  'shop':      dict(path='shop/',      title='매장 안내 · 땡큐와인', desc='서울 성동구 성덕정길 109 2층. 매장 픽업, 멤버 시음회·모임 안내.'),
  'about':     dict(path='about/',     title='소개 · 땡큐와인과 와인 컨설턴트 이도하', desc='땡큐와인은 모임·행사·기업 선물 와인부터 와인 강의·시음회까지 맡는 성수동의 와인 토탈 서비스예요. 운영하는 와인 컨설턴트 이도하 소개.'),
  'blog':      dict(path='blog/',      title='블로그 · 땡큐와인', desc='땡큐와인이 네이버 블로그에 올린 와인 소개·와인 이야기·모임·선물 글을 사이트에서 그대로 읽어요. 글마다 한 줄 요약부터.'),
@@ -155,6 +156,7 @@ def header(rel, current):
     <nav class="nav" id="nav" aria-label="주요 메뉴">
       {a(rel+'gathering/','모임·행사 와인','gathering')}
       {a(rel+'gift/','기업·명절 선물','gift')}
+      {a(rel+'wines/','와인 목록','wines')}
       {a(rel+'shop/','매장 안내','shop')}
       {a(rel+'blog/','블로그','blog')}
       {a(rel+'about/','소개','about')}
@@ -187,7 +189,7 @@ def footer(rel):
     <p class="warn">지나친 음주는 뇌졸중, 기억력 손상이나 치매를 유발합니다. 임신 중 음주는 기형아 출생 위험을 높입니다.</p>
     <p>땡큐와인은 만 19세 이상만 이용할 수 있어요. 가격은 사이트에 적지 않고 카카오톡으로 1:1 안내해 드려요.</p>
     <p>상호 {SITE['owner']} · 대표 {SITE['ceo']} · 사업자등록번호 {SITE['regno']} · 통신판매업 신고번호 {SITE['mailorder']}<br>{SITE['address']} · {PHONE} · {SITE['email']}</p>
-    <p class="frow"><a href="{rel}gathering/">모임·행사 와인</a><a href="{rel}gift/">기업·명절 선물</a><a href="{rel}shop/">매장 안내</a><a href="{rel}occasions/">상황별 와인 고르기</a><a href="{rel}faq/">자주 묻는 질문</a><a href="{rel}privacy/">개인정보처리방침</a><a href="{SITE['blog']}" target="_blank" rel="noopener">블로그</a><a href="{SITE['insta']}" target="_blank" rel="noopener">인스타그램</a><a href="{SITE['corkmatch']}" target="_blank" rel="noopener">코르크매치</a></p>
+    <p class="frow"><a href="{rel}gathering/">모임·행사 와인</a><a href="{rel}gift/">기업·명절 선물</a><a href="{rel}wines/">와인 목록</a><a href="{rel}shop/">매장 안내</a><a href="{rel}occasions/">상황별 와인 고르기</a><a href="{rel}faq/">자주 묻는 질문</a><a href="{rel}privacy/">개인정보처리방침</a><a href="{SITE['blog']}" target="_blank" rel="noopener">블로그</a><a href="{SITE['insta']}" target="_blank" rel="noopener">인스타그램</a><a href="{SITE['corkmatch']}" target="_blank" rel="noopener">코르크매치</a></p>
     <p>© <span class="year">2026</span> 땡큐와인</p>
   </div>
 </footer>
@@ -1357,7 +1359,58 @@ def preview_head_inline(html):
     body=html[m.end():].replace('</body>\n</html>\n','')
     return headinner+body
 
-BUILDERS={'index':page_index,'gathering':page_gathering,'gift':page_gift,'shop':page_shop,'about':page_about,'blog':page_blog,'faq':page_faq,'occasions':page_occasions,'privacy':page_privacy,'404':page_404}
+
+# ---------------- 와인 목록 (2026-11-23 도하: 판매 중·판매했던 와인 전부, 검색, 가격은 문의) ----------------
+# 목록은 tools/wines.json 한 곳에서 고쳐요. now=true 면 '지금 매장에', 아니면 '재입고 문의'. 가격 칸은 일부러 없어요.
+STYLE_ORDER=['레드','화이트','로제','스파클링','스위트','포트·셰리','무알콜','기타']
+def load_wines():
+    fn=os.path.join(HERE,'wines.json')
+    if not os.path.exists(fn): return []
+    W=json.load(open(fn,encoding='utf-8'))['wines']
+    W.sort(key=lambda w:(not w['now'],STYLE_ORDER.index(w['style']) if w['style'] in STYLE_ORDER else 99,w['ko']))
+    return W
+def wine_card(rel,w):
+    where=' '.join(x for x in (w['country'],w['region']) if x)
+    meta=' · '.join(x for x in (w['vintage'],where,w['grape']) if x)
+    hay=' '.join([w['ko'],w['en'],w['vintage'],w['country'],w['region'],w['grape'],w['style']]).lower()
+    status='<span class="wbadge now">지금 매장에</span>' if w['now'] else '<span class="wbadge">재입고 문의</span>'
+    post=f'<a class="textlink" href="{rel}{w["post"]}">소개 글 →</a>' if w.get('post') else ''
+    return (f'<li class="wine" data-style="{esc(w["style"])}" data-country="{esc(w["country"])}" data-now="{1 if w["now"] else 0}" data-q="{esc(hay)}">'
+            f'<div class="wtop"><span class="wstyle">{esc(w["style"])}</span>{status}</div>'
+            f'<h3>{esc(w["ko"])}</h3>'+(f'<p class="wen" lang="en">{esc(w["en"])}</p>' if w['en'] else '')+
+            (f'<p class="wmeta">{esc(meta)}</p>' if meta else '')+
+            f'<div class="wacts"><a class="btn line sm" href="#contact" data-contact data-wine="{esc(w["ko"])}">가격 문의</a>{post}</div></li>')
+def page_wines(rel):
+    W=WINES
+    styles=[s for s in STYLE_ORDER if any(w['style']==s for w in W)]
+    countries=sorted({w['country'] for w in W if w['country']},key=lambda c:-sum(1 for w in W if w['country']==c))
+    chips=''.join(f'<button class="chip" type="button" data-style="{esc(s)}" aria-pressed="false">{esc(s)}</button>' for s in styles)
+    opts=''.join(f'<option value="{esc(c)}">{esc(c)}</option>' for c in countries)
+    now_n=sum(1 for w in W if w['now'])
+    return f"""
+<section class="sec tight" id="wines">
+  <div class="wrap wide">
+    <div class="head">
+      <span class="kicker">와인 목록</span>
+      <h1>땡큐와인이 소개하고 판매한 와인</h1>
+      <p>지금 매장에 있는 와인 {now_n}종과 지금까지 소개하고 판매한 와인까지 모두 {len(W)}종이에요. 가격은 수입사 사정과 입고 시기에 따라 자주 바뀌어서 적지 않았어요. 궁금한 와인은 <b>가격 문의</b>를 눌러 카톡이나 문자로 이름만 보내 주세요. 다 나간 와인도 다시 구해 드릴 수 있는지 알아봐 드려요.</p>
+    </div>
+    <div class="wfind" role="search">
+      <label class="wsearch"><span class="sr">와인 검색</span><input id="wq" type="search" placeholder="와인 이름, 품종, 지역으로 찾기 (예: 피노 누아, 보르도, Chablis)" autocomplete="off"></label>
+      <div class="wsel">
+        <label><span class="sr">나라</span><select id="wcountry"><option value="">모든 나라</option>{opts}</select></label>
+        <label class="wnow"><input id="wnow" type="checkbox"> 지금 매장에 있는 와인만</label>
+      </div>
+      <div class="chips" id="wchips" role="group" aria-label="스타일"><button class="chip" type="button" data-style="" aria-pressed="true">전체</button>{chips}</div>
+      <p class="wcount" id="wcount" aria-live="polite">{len(W)}종</p>
+    </div>
+    <ul class="wines" id="wlist">{''.join(wine_card(rel,w) for w in W)}</ul>
+    <p class="wempty" id="wempty" hidden>찾는 와인이 목록에 없어도 구해 드릴 수 있어요. <a class="textlink" href="#contact" data-contact>카톡으로 물어보기 →</a></p>
+    <p class="muted small" style="margin-top:28px">'지금 매장에'는 매장 재고 기준이라 그사이 다 나갔을 수 있어요. 가져가시기 전에 카톡으로 한 번 확인해 주세요.</p>
+  </div>
+</section>"""
+
+BUILDERS={'index':page_index,'wines':page_wines,'gathering':page_gathering,'gift':page_gift,'shop':page_shop,'about':page_about,'blog':page_blog,'faq':page_faq,'occasions':page_occasions,'privacy':page_privacy,'404':page_404}
 
 PREVIEW=False
 AI_BOTS=['GPTBot','OAI-SearchBot','ChatGPT-User','ClaudeBot','Claude-SearchBot','Claude-User','anthropic-ai','Google-Extended','Googlebot','Bingbot','PerplexityBot','Perplexity-User','Yeti','Applebot','Applebot-Extended','DuckAssistBot','meta-externalagent','Amazonbot','CCBot']
@@ -1423,6 +1476,7 @@ def build(preview=False):
     global PREVIEW, ROOT, POSTS
     PREVIEW=preview; ROOT=SITEDIR
     POSTS=load_posts()
+    global WINES; WINES=load_wines()
     prepare_images(POSTS)
     write_posts_json(POSTS)
     if preview:
