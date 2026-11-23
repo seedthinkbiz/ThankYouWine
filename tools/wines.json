@@ -10,7 +10,7 @@
    "region": "",
    "grape": "",
    "style": "레드",
-   "now": true,
+   "now": false,
    "post": "posts/n224276297579/"
   },
   {
@@ -67,8 +67,7 @@
    "grape": "까베르네 소비뇽",
    "style": "레드",
    "now": true,
-   "post": "posts/grand-barossa-cabernet-sauvignon-2020/",
-   "img": "assets/wines/w2b1353ce.jpg"
+   "post": "posts/grand-barossa-cabernet-sauvignon-2020/"
   },
   {
    "ko": "네로페르소 아파시멘토",
@@ -522,7 +521,7 @@
    "region": "남부",
    "grape": "피노 누아",
    "style": "레드",
-   "now": true,
+   "now": false,
    "post": ""
   },
   {
@@ -623,8 +622,7 @@
    "grape": "",
    "style": "레드",
    "now": true,
-   "post": "",
-   "img": "assets/wines/w5cfea74a.jpg"
+   "post": ""
   },
   {
    "ko": "샤또 르 종시에 블라이",
@@ -658,8 +656,7 @@
    "grape": "메를로",
    "style": "레드",
    "now": true,
-   "post": "posts/domaine-haut-brande-merlot-2022/",
-   "img": "assets/wines/w54454b49.jpg"
+   "post": "posts/domaine-haut-brande-merlot-2022/"
   },
   {
    "ko": "샤또 페이라솔 레드",
@@ -670,8 +667,7 @@
    "grape": "",
    "style": "레드",
    "now": true,
-   "post": "posts/n224460009307/",
-   "img": "assets/wines/wef3dc956.jpg"
+   "post": "posts/n224460009307/"
   },
   {
    "ko": "샹동 브뤼 야라 밸리",
@@ -1125,8 +1121,7 @@
    "grape": "산지오베제",
    "style": "레드",
    "now": true,
-   "post": "posts/n224224796620/",
-   "img": "assets/wines/wcb08920a.jpg"
+   "post": "posts/n224224796620/"
   },
   {
    "ko": "테라사스 데 로스 안데스 레세르바 말벡",
