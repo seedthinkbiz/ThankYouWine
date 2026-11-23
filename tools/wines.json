@@ -24,7 +24,8 @@
    "now": true,
    "post": "",
    "img": "assets/wines/wd7c2c040.jpg",
-   "tags": "f d MK P"
+   "tags": "f d MK P",
+   "push": 2
   },
   {
    "ko": "1865 셀렉티드 빈야드 소비뇽 블랑 (슈퍼픽션 에디션)",
@@ -70,7 +71,8 @@
    "style": "레드",
    "now": true,
    "post": "posts/grand-barossa-cabernet-sauvignon-2020/",
-   "tags": "f d M P"
+   "tags": "f d M P",
+   "push": 3
   },
   {
    "ko": "네로페르소 아파시멘토",
@@ -156,7 +158,8 @@
    "now": true,
    "post": "posts/n224450309131/",
    "img": "assets/wines/wa8abd588.jpg",
-   "tags": "l d SC"
+   "tags": "l d SC",
+   "push": 1
   },
   {
    "ko": "드 보르톨리 노블 원",
@@ -206,7 +209,8 @@
    "now": true,
    "post": "",
    "img": "assets/wines/wdba650d2.jpg",
-   "tags": "l d SCK P"
+   "tags": "l d SCK P",
+   "push": 2
   },
   {
    "ko": "라스 쿠아트로 에스타시오네스 템프라니요",
@@ -229,7 +233,8 @@
    "style": "스위트",
    "now": true,
    "post": "",
-   "tags": "m s D G"
+   "tags": "m s D G",
+   "push": 1
   },
   {
    "ko": "도멘 루 프레조 샤토뇌프 뒤 파프 루즈",
@@ -265,7 +270,8 @@
    "style": "레드",
    "now": true,
    "post": "",
-   "tags": "f d M G"
+   "tags": "f d M G",
+   "push": 1
   },
   {
    "ko": "마리 드메 뀌베 19세기 브뤼",
@@ -277,7 +283,8 @@
    "style": "스파클링",
    "now": true,
    "post": "posts/n224363990732/",
-   "tags": "l d SC GP"
+   "tags": "l d SC GP",
+   "push": 2
   },
   {
    "ko": "마운트 피쉬 말버러 소비뇽 블랑",
@@ -504,7 +511,8 @@
    "style": "레드",
    "now": true,
    "post": "posts/n224204003776/",
-   "tags": "f d M G"
+   "tags": "f d M G",
+   "push": 2
   },
   {
    "ko": "복 로얄 뀌베",
@@ -542,7 +550,8 @@
    "now": true,
    "post": "posts/n224343180730/",
    "img": "assets/wines/w11838321.jpg",
-   "tags": "l d SCK"
+   "tags": "l d SCK",
+   "push": 3
   },
   {
    "ko": "부 샤르무아 피노 누아",
@@ -657,7 +666,8 @@
    "style": "레드",
    "now": true,
    "post": "",
-   "tags": "m d M"
+   "tags": "m d M",
+   "push": 1
   },
   {
    "ko": "샤또 르 종시에 블라이",
@@ -692,7 +702,8 @@
    "style": "레드",
    "now": true,
    "post": "posts/domaine-haut-brande-merlot-2022/",
-   "tags": "m d MK"
+   "tags": "m d MK",
+   "push": 2
   },
   {
    "ko": "샤또 페이라솔 레드",
@@ -704,7 +715,8 @@
    "style": "레드",
    "now": true,
    "post": "posts/n224460009307/",
-   "tags": "m d MC"
+   "tags": "m d MC",
+   "push": 1
   },
   {
    "ko": "샹동 브뤼 야라 밸리",
@@ -728,7 +740,8 @@
    "now": true,
    "post": "posts/n224307400214/",
    "img": "assets/wines/wb8e6ebd2.jpg",
-   "tags": "l d SCK P"
+   "tags": "l d SCK P",
+   "push": 2
   },
   {
    "ko": "세라믹 모나스트렐",
@@ -812,7 +825,8 @@
    "now": true,
    "post": "posts/n224363978133/",
    "img": "assets/wines/wd9c61175.jpg",
-   "tags": "m d MC"
+   "tags": "m d MC",
+   "push": 1
   },
   {
    "ko": "아커만 벨 로얄 크레망 드 루아르",
@@ -860,7 +874,8 @@
    "style": "레드",
    "now": true,
    "post": "",
-   "tags": "f o M G"
+   "tags": "f o M G",
+   "push": 1
   },
   {
    "ko": "엠포리움 프리미티보 디 만두리아",
@@ -911,7 +926,8 @@
    "now": true,
    "post": "posts/n224258721975/",
    "img": "assets/wines/w4944de21.jpg",
-   "tags": "m d MC"
+   "tags": "m d MC",
+   "push": 2
   },
   {
    "ko": "월터 한셀 뀌베 알리스 샤도네이",
@@ -981,7 +997,8 @@
    "style": "로제",
    "now": true,
    "post": "posts/n224250027067/",
-   "tags": "l d SKC"
+   "tags": "l d SKC",
+   "push": 2
   },
   {
    "ko": "조나단 세갱 꼬뜨 드 쇼슈아 피노 누아 VV",
@@ -1080,7 +1097,8 @@
    "style": "레드",
    "now": true,
    "post": "posts/n224204422819/",
-   "tags": "f d M G"
+   "tags": "f d M G",
+   "push": 1
   },
   {
    "ko": "콥케 10년 토니 포트 디캔터 에디션",
@@ -1166,7 +1184,8 @@
    "style": "기타",
    "now": true,
    "post": "posts/n223493705775/",
-   "tags": "l o C"
+   "tags": "l o C",
+   "push": 2
   },
   {
    "ko": "테누타 일 코르노 미나에모로",
@@ -1358,7 +1377,8 @@
    "style": "스위트",
    "now": true,
    "post": "posts/n224453586665/",
-   "tags": "m s DC"
+   "tags": "m s DC",
+   "push": 1
   },
   {
    "ko": "폴레츠키 토카이 아쑤 5 푸토뇨스 (500ml)",
@@ -1394,7 +1414,8 @@
    "style": "레드",
    "now": true,
    "post": "posts/n224091537763/",
-   "tags": "f d M G"
+   "tags": "f d M G",
+   "push": 1
   },
   {
    "ko": "푸카리 피노 누아",
@@ -1430,7 +1451,8 @@
    "now": true,
    "post": "posts/pierre-armand-macon-villages-2024/",
    "img": "assets/wines/wf5d8e658.jpg",
-   "tags": "m d SC"
+   "tags": "m d SC",
+   "push": 1
   },
   {
    "ko": "하셀그로브 '디 올드 넛' (500ml)",
@@ -2156,7 +2178,8 @@
    "now": true,
    "post": "",
    "img": "assets/wines/we955fdbe.jpg",
-   "tags": "f d M G"
+   "tags": "f d M G",
+   "push": 3
   },
   {
    "ko": "인도미타 그란 레세르바 까베르네 소비뇽",

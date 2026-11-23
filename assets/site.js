@@ -88,7 +88,7 @@
       $$('.chip',g).forEach(x=>x.setAttribute('aria-pressed',String(x===b)));
       msg.textContent='';
     }));
-    const score=li=>{
+    const score=(li,np)=>{
       const [body,sw,food,flags='']=(li.dataset.tags||'').split(' ');
       const st=li.dataset.style, occ=sel.occ, f=sel.food, t=sel.taste;
       if(occ==='N'){ if(st!=='무알콜') return -99; } else if(st==='무알콜') return -99;
@@ -102,6 +102,7 @@
       else if(t){ const o='lmf', d=Math.abs(o.indexOf(body)-o.indexOf(t)); s+= d===0?3: d===1?1:-1; }
       if(sw==='s'&&!sweetOK) s-=4;
       if(f==='D'&&sw!=='s') s-=2;
+      if(!np) s+=(+li.dataset.push||0)*1.75;
       if(li.querySelector('.wimg img')) s+=.5;
       return s+Math.random()*.6;
     };
@@ -110,6 +111,10 @@
       const cand=$$('.wine[data-now="1"][data-tags]',wlist).map(li=>[score(li),li]).filter(x=>x[0]>-50).sort((a,b)=>b[0]-a[0]);
       const picked=[], seen=new Set();
       for(const [,li] of cand){ const k=(li.querySelector('h3').textContent||'').split(' ')[0]; if(seen.has(k)) continue; seen.add(k); picked.push(li); if(picked.length===3) break; }
+      if(!picked.some(li=>li.dataset.push==='3')){
+        const must=cand.filter(([,li])=>li.dataset.push==='3').map(([,li])=>[score(li,1),li]).filter(x=>x[0]>=2).sort((a,b)=>b[0]-a[0])[0];
+        if(must){ picked.pop(); picked.unshift(must[1]); }
+      }
       res.replaceChildren(...picked.map(li=>{ const c=li.cloneNode(true); c.hidden=false; return c; }));
       out.hidden=false; msg.textContent='';
       res.scrollIntoView({behavior:'smooth',block:'start'});
