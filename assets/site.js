@@ -42,6 +42,40 @@
     if(location.hash==='#contact'){try{cd.showModal()}catch(e){}}
   }
 
+
+  /* ---------- 와인 목록: 검색·나라·스타일·재고 필터, 가격 문의 때 와인 이름 보여 주기 ---------- */
+  const wl=$('#wlist');
+  if(wl){
+    const q=$('#wq'), cs=$('#wcountry'), nw=$('#wnow'), wc=$('#wchips'), cnt=$('#wcount'), emp=$('#wempty');
+    let style='';
+    const norm=t=>String(t||'').toLowerCase().replace(/\s+/g,'');
+    const run=()=>{
+      const words=String(q.value||'').toLowerCase().split(/\s+/).filter(Boolean).map(norm);
+      let n=0;
+      $$('.wine',wl).forEach(li=>{
+        const hay=norm(li.dataset.q);
+        const ok=(!style||li.dataset.style===style)&&(!cs.value||li.dataset.country===cs.value)&&(!nw.checked||li.dataset.now==='1')&&words.every(w=>hay.includes(w));
+        li.hidden=!ok; if(ok) n++;
+      });
+      cnt.textContent=n+'종'; emp.hidden=n>0;
+    };
+    q.addEventListener('input',run); cs.addEventListener('change',run); nw.addEventListener('change',run);
+    wc.addEventListener('click',e=>{const b=e.target.closest('.chip'); if(!b) return; style=b.dataset.style||''; $$('.chip',wc).forEach(x=>x.setAttribute('aria-pressed',String(x===b))); run();});
+    const dlg=$('#contact');
+    if(dlg){
+      const box=document.createElement('p'); box.className='cdwine'; box.hidden=true;
+      const t=document.createElement('span');
+      const c=document.createElement('button'); c.type='button'; c.className='btn line sm'; c.style.marginLeft='8px';
+      box.append(t,c); $('.cdbody',dlg).prepend(box);
+      c.addEventListener('click',()=>{try{navigator.clipboard.writeText(c.dataset.copy);c.textContent='복사했어요'}catch(_){}});
+      wl.addEventListener('click',e=>{
+        const b=e.target.closest('[data-wine]'); if(!b) return;
+        t.textContent='문의할 와인: '+b.dataset.wine; c.textContent='이름 복사'; c.dataset.copy=b.dataset.wine+' 가격 문의드려요'; box.hidden=false;
+      },true);
+      dlg.addEventListener('close',()=>{box.hidden=true});
+    }
+  }
+
   /* ---------- 블로그 글 (목록은 HTML에 미리 들어 있어요. 여기서는 분류 필터와 네이버 새 글만) ---------- */
   const splitTitle=t=>{const s=String(t||'');const i=s.indexOf('｜');return i>0?[s.slice(0,i).trim(),s.slice(i+1).trim()]:[s,'']};
   const all=$('#posts-all'), chips=$('#post-chips');
