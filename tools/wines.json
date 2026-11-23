@@ -588,24 +588,46 @@
    "post": ""
   },
   {
-   "ko": "르 쁘띠 베레 무알콜 와인 (블랑 드 블랑 스파클링 외)",
-   "en": "Le Petit Béret (Non-Alcoholic)",
+   "ko": "르 쁘띠 베레 블랑 드 블랑 스파클링 (무알콜)",
+   "en": "Le Petit Béret Blanc de Blancs Sparkling 0.0 (Non-Alcoholic)",
    "vintage": "",
    "country": "프랑스",
-   "region": "",
+   "region": "랑그독",
+   "grape": "샤르도네",
+   "style": "무알콜",
+   "now": false,
+   "post": "posts/n224478273504/",
+   "img": "assets/wines/we138e935.jpg"
+  },
+  {
+   "ko": "르 쁘띠 베레 로제 스파클링 (무알콜)",
+   "en": "Le Petit Béret Rosé Sparkling 0.0 (Non-Alcoholic)",
+   "vintage": "",
+   "country": "프랑스",
+   "region": "랑그독",
    "grape": "",
    "style": "무알콜",
+   "now": false,
+   "post": ""
+  },
+  {
+   "ko": "르 쁘띠 베레 피노 누아 (무알콜)",
+   "en": "Le Petit Béret Pinot Noir (Non-Alcoholic)",
+   "vintage": "",
+   "country": "프랑스",
+   "region": "랑그독",
+   "grape": "피노 누아",
+   "style": "무알콜",
    "now": true,
-   "post": "posts/n224478273504/",
-   "img": "assets/wines/we138e935.jpg",
-   "tags": "l d SC P"
+   "post": "",
+   "tags": "l d MC"
   },
   {
    "ko": "르 쁘띠 베레 까베르네 소비뇽 (무알콜)",
    "en": "Le Petit Béret Cabernet Sauvignon (Non-Alcoholic)",
    "vintage": "",
    "country": "프랑스",
-   "region": "",
+   "region": "랑그독",
    "grape": "까베르네 소비뇽",
    "style": "무알콜",
    "now": false,
@@ -619,8 +641,9 @@
    "region": "",
    "grape": "뮈스까",
    "style": "무알콜",
-   "now": false,
-   "post": "posts/n224201417558/"
+   "now": true,
+   "post": "posts/n224201417558/",
+   "tags": "l s DC P"
   },
   {
    "ko": "샤또 꺄트르 리유",
@@ -2329,8 +2352,8 @@
    "post": ""
   },
   {
-   "ko": "마셋 제로 무알콜 스파클링 (화이트·로제)",
-   "en": "Masset Zero",
+   "ko": "마셋 제로 무알콜 스파클링 화이트",
+   "en": "Masset Zero White",
    "vintage": "",
    "country": "스페인",
    "region": "",
@@ -2339,6 +2362,17 @@
    "now": false,
    "post": "posts/n224478339605/",
    "img": "assets/wines/wcbd3898a.jpg"
+  },
+  {
+   "ko": "마셋 제로 무알콜 스파클링 로제",
+   "en": "Masset Zero Rosé",
+   "vintage": "",
+   "country": "스페인",
+   "region": "",
+   "grape": "",
+   "style": "무알콜",
+   "now": false,
+   "post": "posts/n224478339605/"
   },
   {
    "ko": "디뱅 오리진 소비뇽 블랑 스파클링 0.0",
