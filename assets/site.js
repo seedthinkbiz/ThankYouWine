@@ -76,6 +76,58 @@
     }
   }
 
+
+  /* ---------- 와인 추천기: 자리·음식·맛 세 가지로 매장 와인 3병 고르기 ---------- */
+  const wp=$('#wpick'), wlist=$('#wlist');
+  if(wp&&wlist){
+    const sel={occ:null,food:null,taste:null};
+    const msg=$('#wpickmsg'), out=$('#wpickout'), res=$('#wpickres');
+    $$('.pq',wp).forEach(g=>g.addEventListener('click',e=>{
+      const b=e.target.closest('.chip'); if(!b) return;
+      sel[g.dataset.q]=b.dataset.v;
+      $$('.chip',g).forEach(x=>x.setAttribute('aria-pressed',String(x===b)));
+      msg.textContent='';
+    }));
+    const score=(li,np)=>{
+      const [body,sw,food,flags='']=(li.dataset.tags||'').split(' ');
+      const st=li.dataset.style, occ=sel.occ, f=sel.food, t=sel.taste;
+      if(occ==='N'){ if(st!=='무알콜') return -99; } else if(st==='무알콜') return -99;
+      let s=0;
+      if(occ==='G'&&flags.includes('G')) s+=4;
+      if(occ==='P'&&flags.includes('P')) s+=4;
+      if(occ==='H'&&!flags.includes('G')) s+=1.5;
+      if(f){ if(food.includes(f)) s+=4; else s-=1; }
+      const sweetOK=(t==='s')||(f==='D');
+      if(t==='s'){ s+= sw==='s'?4: sw==='o'?2:-2; }
+      else if(t){ const o='lmf', d=Math.abs(o.indexOf(body)-o.indexOf(t)); s+= d===0?3: d===1?1:-1; }
+      if(sw==='s'&&!sweetOK) s-=4;
+      if(f==='D'&&sw!=='s') s-=2;
+      if(!np) s+=(+li.dataset.push||0)*1.75;
+      if(li.querySelector('.wimg img')) s+=.5;
+      return s+Math.random()*.6;
+    };
+    const go=()=>{
+      if(!sel.occ||sel.food===null||sel.taste===null){ msg.textContent='세 가지 질문에 하나씩 골라 주세요.'; return; }
+      const cand=$$('.wine[data-now="1"][data-tags]',wlist).map(li=>[score(li),li]).filter(x=>x[0]>-50).sort((a,b)=>b[0]-a[0]);
+      const picked=[], seen=new Set();
+      for(const [,li] of cand){ const k=(li.querySelector('h3').textContent||'').split(' ')[0]; if(seen.has(k)) continue; seen.add(k); picked.push(li); if(picked.length===3) break; }
+      if(!picked.some(li=>li.dataset.push==='3')){
+        const must=cand.filter(([,li])=>li.dataset.push==='3').map(([,li])=>[score(li,1),li]).filter(x=>x[0]>=2).sort((a,b)=>b[0]-a[0])[0];
+        if(must){ picked.pop(); picked.unshift(must[1]); }
+      }
+      res.replaceChildren(...picked.map(li=>{ const c=li.cloneNode(true); c.hidden=false; return c; }));
+      out.hidden=false; msg.textContent='';
+      res.scrollIntoView({behavior:'smooth',block:'start'});
+    };
+    $('#wpickbtn').addEventListener('click',go);
+    $('#wpickagain').addEventListener('click',()=>{ out.hidden=true; Object.keys(sel).forEach(k=>{sel[k]=null}); $$('.chip',wp).forEach(x=>x.setAttribute('aria-pressed','false')); wp.scrollIntoView({behavior:'smooth',block:'start'}); });
+    res.addEventListener('click',e=>{
+      const b=e.target.closest('[data-contact]'); if(!b) return;
+      e.preventDefault();
+      const o=$$('[data-wine]',wlist).find(x=>x.dataset.wine===b.dataset.wine); if(o) o.click();
+    });
+  }
+
   /* ---------- 블로그 글 (목록은 HTML에 미리 들어 있어요. 여기서는 분류 필터와 네이버 새 글만) ---------- */
   const splitTitle=t=>{const s=String(t||'');const i=s.indexOf('｜');return i>0?[s.slice(0,i).trim(),s.slice(i+1).trim()]:[s,'']};
   const all=$('#posts-all'), chips=$('#post-chips');
