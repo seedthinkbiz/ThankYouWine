@@ -146,9 +146,9 @@
     const have=new Set(CFG.posts||[]);
     fetch(REL+'api/posts',{cache:'no-cache'}).then(r=>r.ok?r.json():null).then(j=>{
       if(!j||!j.ok||!Array.isArray(j.posts)) return;
-      const fresh=j.posts.filter(p=>{const m=String(p.url||'').match(/(\d{9,})\s*$/);return m&&!have.has(m[1])});
+      const fresh=j.posts.filter(p=>{const m=String(p.url||'').match(/\/(\d{9,})(?:[?#/]|$)/);return m&&!have.has(m[1])}).map(p=>({...p,url:String(p.url).split('?')[0]}));
       if(!fresh.length) return;
-      all.insertAdjacentHTML('afterbegin',fresh.slice(0,6).map(p=>{const [a,b]=splitTitle(p.title);return `<a class="post ext" href="${esc(p.url)}" target="_blank" rel="noopener" data-cat="${esc(p.category||'')}"><span class="pcat">네이버 새 글 · ${esc(p.category||'블로그')}</span><h3>${esc(a)}</h3>${b?`<p class="psub">${esc(b)}</p>`:''}${p.lead?`<p class="plead">${esc(p.lead)}</p>`:''}<span class="pmeta"><span>${esc(p.date||'')}</span><i>네이버에서 읽기 →</i></span></a>`}).join(''));
+      all.insertAdjacentHTML('afterbegin',fresh.slice(0,30).map(p=>{const [a,b]=splitTitle(p.title);return `<a class="post ext" href="${esc(p.url)}" target="_blank" rel="noopener" data-cat="${esc(p.category||'')}"><span class="pcat">네이버 새 글 · ${esc(p.category||'블로그')}</span><h3>${esc(a)}</h3>${b?`<p class="psub">${esc(b)}</p>`:''}${p.lead?`<p class="plead">${esc(p.lead)}</p>`:''}<span class="pmeta"><span>${esc(p.date||'')}</span><i>네이버에서 읽기 →</i></span></a>`}).join(''));
     }).catch(()=>{});
   }
 
