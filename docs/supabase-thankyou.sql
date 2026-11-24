@@ -128,6 +128,7 @@ declare uid uuid := auth.uid(); other boolean := false;
 begin
   if uid is null then raise exception 'not signed in'; end if;
   delete from public.ty_reviews where user_id = uid;
+  if to_regclass('public.ty_saves') is not null then execute 'delete from public.ty_saves where user_id = $1' using uid; end if;
   delete from public.ty_links where user_id = uid;
   delete from public.ty_profiles where id = uid;
   if to_regclass('public.profiles') is not null then
@@ -140,3 +141,48 @@ begin
 end $$;
 revoke all on function public.ty_leave() from public, anon;
 grant execute on function public.ty_leave() to authenticated;
+
+-- ⑥ 찜하기 (11/24): 회원 본인만 읽고 씀. 로그인 전 찜은 그 기기(브라우저)에만 있다가 로그인하면 여기로 옮겨요.
+create table if not exists public.ty_saves (
+  user_id uuid not null references auth.users(id) on delete cascade,
+  wine_key text not null check (char_length(wine_key) <= 40),
+  created_at timestamptz not null default now(),
+  primary key (user_id, wine_key)
+);
+alter table public.ty_saves enable row level security;
+drop policy if exists ty_saves_own on public.ty_saves;
+create policy ty_saves_own on public.ty_saves for all to authenticated
+  using (user_id = auth.uid()) with check (user_id = auth.uid());
+
+-- ⑦ 문의 수 (11/24): '가격 문의·주문 문의' 버튼을 누른 횟수만 셉니다(누가 눌렀는지는 남기지 않아요). 표는 관리자만 보고, 쓰기는 ty_ask() 로만.
+create table if not exists public.ty_asks (
+  id bigint generated always as identity primary key,
+  wine_key text not null check (char_length(wine_key) <= 40),
+  at timestamptz not null default now()
+);
+create index if not exists ty_asks_key_at on public.ty_asks(wine_key, at);
+alter table public.ty_asks enable row level security;
+drop policy if exists ty_asks_admin on public.ty_asks;
+create policy ty_asks_admin on public.ty_asks for select to authenticated using (public.is_admin());
+create or replace function public.ty_ask(k text)
+returns void language sql security definer set search_path = public as $$
+  insert into public.ty_asks(wine_key) select k where k ~ '^[wx][0-9a-f]{10}$';
+$$;
+grant execute on function public.ty_ask(text) to anon, authenticated;
+
+-- ⑧ 와인 목록에 보이는 숫자 (11/24): 와인별 평균 별점·찜 수·최근 30일 문의 수. 누가 남겼는지는 안 나와요.
+--    평균 별점은 3명 이상 남긴 와인만 보여 줘요(한두 명이면 누가 남긴지 짐작할 수 있어서).
+create or replace function public.ty_wine_stats()
+returns table(wine_key text, stars_avg numeric, stars_n int, saves_n int, asks_n int)
+language sql stable security definer set search_path = public as $$
+  with r as (select wine_key, avg(stars) a, count(*)::int n from public.ty_reviews where stars is not null group by wine_key),
+       s as (select wine_key, count(*)::int n from public.ty_saves group by wine_key),
+       q as (select wine_key, count(*)::int n from public.ty_asks where at > now() - interval '30 days' group by wine_key),
+       k as (select wine_key from r union select wine_key from s union select wine_key from q)
+  select k.wine_key,
+         case when coalesce(r.n,0) >= 3 then round(r.a, 1) end,
+         case when coalesce(r.n,0) >= 3 then r.n else 0 end,
+         coalesce(s.n,0), coalesce(q.n,0)
+  from k left join r using (wine_key) left join s using (wine_key) left join q using (wine_key);
+$$;
+grant execute on function public.ty_wine_stats() to anon, authenticated;

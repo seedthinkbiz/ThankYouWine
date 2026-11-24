@@ -307,4 +307,77 @@
     });
     onAuth(u=>{ $$('[data-admin-login] [data-login-provider]',ap).forEach(b=>b.hidden=!!u); $('[data-admin-who]',ap).textContent=u?`${nameOf(u)} · ${u.email||''}`:''; load(); });
   }
+
+  /* ---------- 찜하기 · 평균 별점 · '많이 찜한/문의 많은 와인' (와인 목록·와인 페이지·내 와인) ---------- */
+  const LOCAL_SAVES='ty-saves', NOTE_OFF='ty-save-note-off';
+  const HEART='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2z"/></svg>';
+  let SAVED=new Set(store.get(LOCAL_SAVES)||[]), serverSaves=false;
+  const hasSocial=()=>$('[data-save]')||$('[data-stats]')||$('[data-me-saved]');
+  function paintSaves(){
+    $$('[data-save]').forEach(b=>{const on=SAVED.has(b.dataset.save); b.setAttribute('aria-pressed',on); b.setAttribute('aria-label',on?'찜 해제':'찜하기');
+      const l=$('[data-save-label]',b); if(l) l.textContent=on?'찜했어요':'찜하기';});
+    paintSavedList();
+  }
+  function saveNote(){
+    const n=$('[data-save-note]'); if(!n) return;
+    if(user||store.get(NOTE_OFF)||!SAVED.size){n.hidden=true;return}
+    n.innerHTML=`<b>이 기기에만 저장돼 있어요.</b> <a class="textlink" href="${REL}login/?next=${encodeURIComponent(location.pathname)}">로그인</a>하면 휴대폰·컴퓨터 어디서든 찜한 와인을 모아 볼 수 있어요. <button type="button" class="noteclose" aria-label="닫기">×</button>`;
+    n.hidden=false; $('.noteclose',n).onclick=()=>{store.set(NOTE_OFF,1);n.hidden=true};
+  }
+  async function loadServerSaves(){
+    if(!client||!user){serverSaves=false; SAVED=new Set(store.get(LOCAL_SAVES)||[]); return}
+    const {data,error}=await client.from('ty_saves').select('wine_key').eq('user_id',user.id).limit(2000);
+    if(error){serverSaves=false; return}
+    serverSaves=true;
+    const local=store.get(LOCAL_SAVES)||[], have=new Set((data||[]).map(r=>r.wine_key));
+    const add=local.filter(k=>!have.has(k));   // 로그인 전에 이 기기에서 찜한 것을 계정으로 옮겨요
+    if(add.length){ const {error:e2}=await client.from('ty_saves').upsert(add.map(k=>({user_id:user.id,wine_key:k}))); if(!e2){add.forEach(k=>have.add(k)); store.del(LOCAL_SAVES);} }
+    else if(local.length) store.del(LOCAL_SAVES);
+    SAVED=have;
+  }
+  document.addEventListener('click',async e=>{
+    const b=e.target.closest('[data-save]'); if(!b) return; e.preventDefault();
+    const k=b.dataset.save, on=!SAVED.has(k);
+    if(on) SAVED.add(k); else SAVED.delete(k);
+    paintSaves();
+    if(serverSaves&&user){
+      const q=on?client.from('ty_saves').upsert({user_id:user.id,wine_key:k}):client.from('ty_saves').delete().eq('user_id',user.id).eq('wine_key',k);
+      const {error}=await q; if(error){ if(on) SAVED.delete(k); else SAVED.add(k); paintSaves(); alert('저장하지 못했어요. 잠시 뒤 다시 눌러 주세요.'); }
+    } else { store.set(LOCAL_SAVES,[...SAVED].slice(0,500)); }
+    saveNote();
+  });
+  /* 문의 버튼 누른 횟수(익명, 와인마다 한 브라우저에서 하루 한 번만) */
+  document.addEventListener('click',e=>{
+    const a=e.target.closest('[data-ask]'); if(!a||!client) return;
+    const k=a.dataset.ask, day=new Date().toISOString().slice(0,10), mem=store.get('ty-asked')||{};
+    if(mem[k]===day) return; mem[k]=day; store.set('ty-asked',mem);
+    client.rpc('ty_ask',{k}).then(()=>{},()=>{});
+  },true);
+  /* 평균 별점·배지 */
+  const starRow=v=>{let h='';for(let i=1;i<=5;i++){const f=Math.max(0,Math.min(1,v-i+1));h+=`<span class="s5" style="--f:${Math.round(f*100)}%"></span>`}return h};
+  async function paintStats(){
+    const slots=$$('[data-stats]'); if(!slots.length||!client) return;
+    const {data,error}=await client.rpc('ty_wine_stats'); if(error||!data) return;
+    const top=(f,min)=>new Set(data.filter(r=>r[f]>=min).sort((a,b)=>b[f]-a[f]).slice(0,10).map(r=>r.wine_key));
+    const saved=top('saves_n',3), asked=top('asks_n',5), by={}; data.forEach(r=>by[r.wine_key]=r);
+    slots.forEach(el=>{const r=by[el.dataset.stats]; if(!r) return;
+      let h='';
+      if(r.stars_avg) h+=`<span class="wstars" title="회원 ${r.stars_n}명 평균"><span class="s5row" aria-hidden="true">${starRow(+r.stars_avg)}</span><b>${(+r.stars_avg).toFixed(1)}</b><span class="muted small">(${r.stars_n})</span><span class="sr">회원 ${r.stars_n}명 평균 별점 ${r.stars_avg}점</span></span>`;
+      const bs=[]; if(asked.has(r.wine_key)) bs.push('<span class="hb ask">문의 많은 와인</span>'); if(saved.has(r.wine_key)) bs.push('<span class="hb save">많이 찜한 와인</span>');
+      if(bs.length) h+=`<span class="hbs">${bs.join('')}</span>`;
+      if(h){el.innerHTML=h;el.hidden=false}});
+  }
+  /* 내 와인: 찜한 와인 */
+  function paintSavedList(){
+    const box=$('[data-me-saved]'); if(!box) return;
+    const keys=[...SAVED].filter(k=>WI[k]);
+    box.innerHTML=keys.length?keys.map(k=>{const w=WI[k];
+      const pic=w.i?`<div class="wimg"><img src="${REL}${esc(w.i)}" alt="" loading="lazy" width="300" height="480"></div>`:`<div class="wimg none" aria-hidden="true">${$('.logo .mark')?$('.logo .mark').outerHTML:''}</div>`;
+      return `<li class="wine mywine"><div class="wpicwrap">${pic}<button class="wsave" type="button" data-save="${esc(k)}" aria-pressed="true" aria-label="찜 해제">${HEART}</button></div><div class="wbody"><div class="wtop"><span class="wstyle">${esc([w.s,w.c].filter(Boolean).join(' · '))}</span></div><h3>${esc(w.k)}</h3><div class="wacts"><a class="btn line sm" href="${REL}wines/?q=${encodeURIComponent(w.k)}">와인 목록에서 보기</a></div></div></li>`}).join('')
+      :`<p class="muted">아직 찜한 와인이 없어요. <a class="textlink" href="${REL}wines/">와인 목록</a>에서 하트를 눌러 보세요.</p>`;
+  }
+  if(hasSocial()){
+    paintSaves(); saveNote(); paintStats();
+    if(client) onAuth(async()=>{ await loadServerSaves(); paintSaves(); saveNote(); });
+  }
 })();

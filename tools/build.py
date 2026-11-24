@@ -163,7 +163,7 @@ def head(key, rel, page=None, ld=None, og=None):
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@600;700&display=swap">
 <link rel="stylesheet" href="{rel}assets/site.css?v={ASSET_V}">
 <script>window.TYW={cfg}</script>
-{MEMBER_SCRIPTS.format(rel=rel,v=ASSET_V) if key in MEMBER_PAGES else ''}
+{MEMBER_SCRIPTS.format(rel=rel,v=ASSET_V) if (key in MEMBER_PAGES or (MEMBERS_OPEN and key in ('wines','wine'))) else ''}
 {ld_script(lds)}</head>
 <body>
 '''
@@ -1442,11 +1442,12 @@ def wine_card(rel,w):
     pic=(f'<div class="wimg"><img src="{rel}{w["img"]}" alt="{esc(w["ko"])} 바틀" loading="lazy" width="300" height="480"></div>' if w.get('img')
          else f'<div class="wimg none" aria-hidden="true">{HEART_SVG}</div>')
     return (f'<li class="wine" data-style="{esc(w["style"])}" data-country="{esc(w["country"])}" data-now="{1 if w["now"] else 0}"'+(f' data-tags="{esc(w["tags"])}"' if w.get('tags') else '')+(f' data-push="{w["push"]}"' if w.get('push') else '')+f' data-q="{esc(hay)}">'
-            f'{pic}<div class="wbody"><div class="wtop"><span class="wstyle">{esc(w["style"])}</span>{status}</div>'+
+            f'<div class="wpicwrap">{pic}'+(f'<button class="wsave" type="button" data-save="{wine_key(w["ko"])}" aria-pressed="false" aria-label="찜하기"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2z"/></svg></button>' if MEMBERS_OPEN else '')+'</div>'+f'<div class="wbody"><div class="wtop"><span class="wstyle">{esc(w["style"])}</span>{status}</div>'+
             (f'<h3><a href="{rel}{wine_path(w)}">{esc(w["ko"])}</a></h3>' if w.get('price') else f'<h3>{esc(w["ko"])}</h3>')+(f'<p class="wen" lang="en">{esc(w["en"])}</p>' if w['en'] else '')+
             (f'<p class="wmeta">{esc(meta)}</p>' if meta else '')+
+            (f'<div class="wsocial" data-stats="{wine_key(w["ko"])}" hidden></div>' if MEMBERS_OPEN else '')+
             (f'<p class="wprice"><a href="{rel}{wine_path(w)}">{w["price"]:,}원</a></p>' if w.get('price') else '')+
-            f'<div class="wacts"><a class="btn line sm" href="#contact" data-contact data-wine="{esc(w["ko"])}">{"주문 문의" if w.get("price") else "가격 문의"}</a>{post}</div></div></li>')
+            f'<div class="wacts"><a class="btn line sm" href="#contact" data-contact data-wine="{esc(w["ko"])}" data-ask="{wine_key(w["ko"])}">{"주문 문의" if w.get("price") else "가격 문의"}</a>{post}</div></div></li>')
 # ── 가격 공개 와인 개별 페이지 (2026-11-24 도하: 1개월 내 받은 단가 + 데일리샷 최저가 비교, 마진 30% 이상만) ──
 def wine_slug(w):
     import unicodedata
@@ -1490,10 +1491,12 @@ def page_wine(rel,w):
       <div class="wbody">
         <div class="wtop"><span class="wstyle">{esc(w['style'])}</span>{st}</div>
         <h1>{esc(w['ko'])}</h1>{f'<p class="wen" lang="en">{esc(w["en"])}</p>' if w.get('en') else ''}
+        {f'<div class="wsocial big" data-stats="{wine_key(w["ko"])}" hidden></div>' if MEMBERS_OPEN else ''}
         <p class="wprice big">{w['price']:,}원</p>
         <table class="wfacts">{rows}</table>
         <p>{esc(wine_desc(w))} 매장에서 바로 사거나, 카톡·문자로 이름만 보내 주시면 준비해 둘게요. 6병 이상이면 서울 퀵 배송비가 무료예요.</p>
-        <div class="wacts"><a class="btn sm" href="#contact" data-contact data-wine="{esc(w['ko'])}">주문 문의</a>{post}</div>
+        <div class="wacts"><a class="btn sm" href="#contact" data-contact data-wine="{esc(w['ko'])}" data-ask="{wine_key(w['ko'])}">주문 문의</a>{(f'<button class="wsave inline" type="button" data-save="{wine_key(w["ko"])}" aria-pressed="false" aria-label="찜하기"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2z"/></svg><span data-save-label>찜하기</span></button>' if MEMBERS_OPEN else '')}{post}</div>
+        <p class="savenote" data-save-note hidden></p>
         <p class="note">가격은 {price_date().month}월 {price_date().day}일 기준이에요. 수입사 가격이 바뀌면 달라질 수 있어요.</p>
       </div>
     </div>
@@ -1535,6 +1538,7 @@ def page_wines(rel):
       <div class="chips" id="wchips" role="group" aria-label="스타일"><button class="chip" type="button" data-style="" aria-pressed="true">전체</button>{chips}</div>
       <p class="wcount" id="wcount" aria-live="polite">{len(W)}종</p>
     </div>
+    {'<p class="savenote" data-save-note hidden></p>' if MEMBERS_OPEN else ''}
     <ul class="wines" id="wlist">{''.join(wine_card(rel,w) for w in W)}</ul>
     <p class="wempty" id="wempty" hidden>찾는 와인이 목록에 없어도 구해 드릴 수 있어요. <a class="textlink" href="#contact" data-contact>카톡으로 물어보기 →</a></p>
     <p class="muted small" style="margin-top:28px">'지금 매장에'는 매장 재고 기준이라 그사이 다 나갔을 수 있어요. 가져가시기 전에 카톡으로 한 번 확인해 주세요.</p>
@@ -1560,6 +1564,7 @@ def page_login(rel):
     <p class="lead2">땡큐와인에서 산 와인이 한곳에 모이고, 마셔 본 와인에 별점과 한 줄 메모를 남길 수 있어요. 다음에 무엇을 고를지, 지난번 그 와인이 뭐였는지 바로 찾을 수 있어요.</p>
     <ul class="checks one" style="margin:18px 0 24px">
       <li>매장에서 산 와인이 자동으로 모여요 (따로 입력할 것 없어요)</li>
+      <li>찜한 와인을 휴대폰·컴퓨터 어디서든 모아 볼 수 있어요</li>
       <li>선불권이 있으면 남은 금액과 사용 내역도 볼 수 있어요</li>
       <li>별점·메모는 직접 산 와인에만 남길 수 있고, 나만 봐요</li>
       <li>가입비 없고, 언제든 탈퇴할 수 있어요</li>
@@ -1605,6 +1610,10 @@ def page_me(rel):
         </div>
         <ul class="wines mywines" data-me-list></ul>
         <p class="muted small" style="margin-top:20px">별점과 메모는 나만 봐요. 같은 별을 한 번 더 누르면 지워져요. 목록에 없는 구매가 있으면 카톡으로 알려 주세요.</p>
+      </div>
+      <div class="mesaved" data-me-saved-box>
+        <h2>찜한 와인</h2>
+        <ul class="wines mywines" data-me-saved></ul>
       </div>
       <form class="formbox meform" data-me-form novalidate>
         <h2>내 정보</h2>

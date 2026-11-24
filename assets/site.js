@@ -59,7 +59,7 @@
       });
       cnt.textContent=n+'종'; emp.hidden=n>0;
     };
-    q.addEventListener('input',run); cs.addEventListener('change',run); nw.addEventListener('change',run);
+    q.addEventListener('input',run); const q0=new URLSearchParams(location.search).get('q'); if(q0){q.value=q0;run();} cs.addEventListener('change',run); nw.addEventListener('change',run);
     wc.addEventListener('click',e=>{const b=e.target.closest('.chip'); if(!b) return; style=b.dataset.style||''; $$('.chip',wc).forEach(x=>x.setAttribute('aria-pressed',String(x===b))); run();});
     const dlg=$('#contact');
     if(dlg){
