@@ -1434,7 +1434,9 @@ def wine_card(rel,w):
             f'<div class="wacts"><a class="btn line sm" href="#contact" data-contact data-wine="{esc(w["ko"])}">{"주문 문의" if w.get("price") else "가격 문의"}</a>{post}</div></div></li>')
 # ── 가격 공개 와인 개별 페이지 (2026-11-24 도하: 1개월 내 받은 단가 + 데일리샷 최저가 비교, 마진 30% 이상만) ──
 def wine_slug(w):
-    base=_re.sub(r'[^a-z0-9]+','-',(w.get('en') or '').lower()).strip('-')
+    import unicodedata
+    en=unicodedata.normalize('NFKD',w.get('en') or '').encode('ascii','ignore').decode()
+    base=_re.sub(r'[^a-z0-9]+','-',en.lower().replace("'",'')).strip('-')
     if w.get('vintage') and w['vintage'] not in base: base=(base+'-'+w['vintage']).strip('-')
     return base or 'w'+_hl.md5(w['ko'].encode()).hexdigest()[:8]
 def wine_path(w): return 'wines/'+wine_slug(w)+'/'
