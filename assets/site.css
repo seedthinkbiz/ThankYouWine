@@ -431,3 +431,5 @@ footer .fname .wordmark .ko{font-size:.66rem}
 .wdetail .wimg.big{height:auto;flex:none;padding:16px}
 .wdetail .wimg.big img{width:100%;height:auto;max-height:420px;object-fit:contain}
 .wdetail .wimg.big.none{aspect-ratio:3/5}
+.wlist{color:var(--muted);font-weight:400;font-size:.86em;margin-right:4px}
+.woff{color:#c0392b;margin-right:4px}
