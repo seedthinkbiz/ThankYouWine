@@ -466,3 +466,22 @@ button.textlink{background:none;border:0;padding:0;cursor:pointer;font:inherit;c
 .ppd{color:var(--muted)}
 .ppa{font-weight:700;white-space:nowrap}
 .ppa.out{color:var(--muted)}
+/* 가격 공개 와인 (11/24) */
+.wprice{margin:6px 0 0;font-weight:700;color:var(--wine);font-size:1.02rem}
+.wprice a{color:inherit;text-decoration:none}
+.wine h3 a{color:inherit;text-decoration:none}
+.wine h3 a:hover,.wprice a:hover{text-decoration:underline}
+.wprice.big{font-size:1.5rem;margin:12px 0}
+.wdetail{display:grid;grid-template-columns:minmax(140px,240px) 1fr;gap:28px;align-items:start;margin-top:12px}
+.wdetail .wimg.big{border-radius:16px;overflow:hidden;background:#fff}
+.wdetail .wimg.big img{width:100%;height:auto;display:block}
+.wdetail h1{margin:6px 0 2px;font-size:1.6rem;line-height:1.3}
+.wfacts{border-collapse:collapse;margin:8px 0 14px;font-size:.95rem}
+.wfacts th{text-align:left;color:var(--muted);font-weight:500;padding:4px 16px 4px 0;white-space:nowrap}
+.wfacts td{padding:4px 0}
+.crumb{font-size:.88rem;color:var(--muted);margin:0}
+.crumb a{color:inherit}
+@media (max-width:640px){.wdetail{grid-template-columns:1fr}.wdetail .wimg.big{max-width:200px}}
+.wdetail .wimg.big{height:auto;flex:none;padding:16px}
+.wdetail .wimg.big img{width:100%;height:auto;max-height:420px;object-fit:contain}
+.wdetail .wimg.big.none{aspect-ratio:3/5}
