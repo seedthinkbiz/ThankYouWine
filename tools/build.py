@@ -252,7 +252,7 @@ def bottle(rel, key, caption):
 
 HERO_BOTTLES=[('sedici','세디치 브뤼 스푸만테'),('airen','라스 쿠아트로 에스타시오네스 아이렌'),('colombard','바롱 드 보삭 콜롱바르 소비뇽'),('beauvillage','샤또 보빌라쥬 메독'),('seguin-vv','조나단 세갱 부르고뉴 VV')]
 SET_BOTTLES=[('pinfleur','바론 도베른 · 그랑 크뤼 샴페인'),('macon','피에르 아르망 · 부르고뉴 화이트'),('seguin-vv','조나단 세갱 · 부르고뉴 피노 누아'),('loufrejau','루 프레조 · 샤토뇌프 뒤 파프'),('papillon','오린 스위프트 파피용 · 나파 밸리')]
-GIFT_BOTTLES=[('pinfleur','그랑 크뤼 샴페인'),('seguin-clos','부르고뉴 피노 누아'),('tarapaca','그란 리제르바 레드'),('auslese','독일 스위트 와인')]
+GIFT_BOTTLES=[('pinfleur','그랑 크뤼 샴페인'),('1865','칠레 까베르네 소비뇽'),('seguin-clos','부르고뉴 피노 누아'),('tarapaca','그란 리제르바 레드'),('auslese','독일 스위트 와인')]
 
 def members_section(rel):
     return f'''<section class="sec band" id="members">
