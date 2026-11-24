@@ -5,119 +5,179 @@ Allow: /
 Disallow: /api/
 Disallow: /tools/
 Disallow: /docs/
+Disallow: /login/
+Disallow: /me/
+Disallow: /admin/
 
 User-agent: GPTBot
 Allow: /
 Disallow: /api/
 Disallow: /tools/
 Disallow: /docs/
+Disallow: /login/
+Disallow: /me/
+Disallow: /admin/
 
 User-agent: OAI-SearchBot
 Allow: /
 Disallow: /api/
 Disallow: /tools/
 Disallow: /docs/
+Disallow: /login/
+Disallow: /me/
+Disallow: /admin/
 
 User-agent: ChatGPT-User
 Allow: /
 Disallow: /api/
 Disallow: /tools/
 Disallow: /docs/
+Disallow: /login/
+Disallow: /me/
+Disallow: /admin/
 
 User-agent: ClaudeBot
 Allow: /
 Disallow: /api/
 Disallow: /tools/
 Disallow: /docs/
+Disallow: /login/
+Disallow: /me/
+Disallow: /admin/
 
 User-agent: Claude-SearchBot
 Allow: /
 Disallow: /api/
 Disallow: /tools/
 Disallow: /docs/
+Disallow: /login/
+Disallow: /me/
+Disallow: /admin/
 
 User-agent: Claude-User
 Allow: /
 Disallow: /api/
 Disallow: /tools/
 Disallow: /docs/
+Disallow: /login/
+Disallow: /me/
+Disallow: /admin/
 
 User-agent: anthropic-ai
 Allow: /
 Disallow: /api/
 Disallow: /tools/
 Disallow: /docs/
+Disallow: /login/
+Disallow: /me/
+Disallow: /admin/
 
 User-agent: Google-Extended
 Allow: /
 Disallow: /api/
 Disallow: /tools/
 Disallow: /docs/
+Disallow: /login/
+Disallow: /me/
+Disallow: /admin/
 
 User-agent: Googlebot
 Allow: /
 Disallow: /api/
 Disallow: /tools/
 Disallow: /docs/
+Disallow: /login/
+Disallow: /me/
+Disallow: /admin/
 
 User-agent: Bingbot
 Allow: /
 Disallow: /api/
 Disallow: /tools/
 Disallow: /docs/
+Disallow: /login/
+Disallow: /me/
+Disallow: /admin/
 
 User-agent: PerplexityBot
 Allow: /
 Disallow: /api/
 Disallow: /tools/
 Disallow: /docs/
+Disallow: /login/
+Disallow: /me/
+Disallow: /admin/
 
 User-agent: Perplexity-User
 Allow: /
 Disallow: /api/
 Disallow: /tools/
 Disallow: /docs/
+Disallow: /login/
+Disallow: /me/
+Disallow: /admin/
 
 User-agent: Yeti
 Allow: /
 Disallow: /api/
 Disallow: /tools/
 Disallow: /docs/
+Disallow: /login/
+Disallow: /me/
+Disallow: /admin/
 
 User-agent: Applebot
 Allow: /
 Disallow: /api/
 Disallow: /tools/
 Disallow: /docs/
+Disallow: /login/
+Disallow: /me/
+Disallow: /admin/
 
 User-agent: Applebot-Extended
 Allow: /
 Disallow: /api/
 Disallow: /tools/
 Disallow: /docs/
+Disallow: /login/
+Disallow: /me/
+Disallow: /admin/
 
 User-agent: DuckAssistBot
 Allow: /
 Disallow: /api/
 Disallow: /tools/
 Disallow: /docs/
+Disallow: /login/
+Disallow: /me/
+Disallow: /admin/
 
 User-agent: meta-externalagent
 Allow: /
 Disallow: /api/
 Disallow: /tools/
 Disallow: /docs/
+Disallow: /login/
+Disallow: /me/
+Disallow: /admin/
 
 User-agent: Amazonbot
 Allow: /
 Disallow: /api/
 Disallow: /tools/
 Disallow: /docs/
+Disallow: /login/
+Disallow: /me/
+Disallow: /admin/
 
 User-agent: CCBot
 Allow: /
 Disallow: /api/
 Disallow: /tools/
 Disallow: /docs/
+Disallow: /login/
+Disallow: /me/
+Disallow: /admin/
 
 Sitemap: https://thankyouwine.vercel.app/sitemap.xml
