@@ -168,12 +168,24 @@
         link?client.from('ty_purchases').select('id,date,wine_key,wine,qty').eq('ref',link.ref).order('date',{ascending:false}).limit(2000):Promise.resolve({data:[]}),
         client.from('ty_reviews').select('wine_key,stars,note,updated_at').eq('user_id',user.id)]);
       REV={}; (revs||[]).forEach(r=>REV[r.wine_key]=r);
+      if(link){ const {data:pp}=await client.from('ty_prepaid').select('id,date,kind,amount,label').eq('ref',link.ref).order('date',{ascending:true}).limit(500); paintPrepaid(pp||[]); }
+      else paintPrepaid([]);
       WINES=group(rows||[]);
       wait.hidden=!!link; box.hidden=!link;
       $('[data-me-wait-msg]',mp).textContent=profile&&profile.phone
         ?`${fmtPhone(profile.phone)} 번호로 매장 구매 기록을 찾아 연결해 드릴게요. 보통 하루 안에 연결되고, 연결되면 산 와인이 여기에 모여요.`
         :'휴대폰 번호를 남겨 주시면 매장에서 산 와인을 찾아 연결해 드려요.';
       if(link){ if(!WINES.length) list.innerHTML='<p class="muted">연결됐어요. 아직 기록된 구매가 없어요.</p>'; else paint(); }
+    }
+    const ppBox=$('[data-me-prepaid]',mp);
+    const won=n=>Math.abs(n).toLocaleString('ko-KR')+'원';
+    function paintPrepaid(rows){
+      if(!ppBox) return;
+      if(!rows.length){ppBox.hidden=true;return}
+      const bal=rows.reduce((a,r)=>a+(r.amount||0),0);
+      $('[data-pp-bal]',ppBox).textContent=won(bal);
+      $('[data-pp-list]',ppBox).innerHTML=rows.slice().reverse().map(r=>`<li><span class="ppd">${fmtD(r.date)}</span><span class="ppl"><b>${esc(r.kind)}</b> ${esc(r.label||'')}</span><span class="ppa${r.amount<0?' out':''}">${r.amount<0?'−':'+'}${won(r.amount)}</span></li>`).join('');
+      ppBox.hidden=false;
     }
     async function render(u){
       if(!u){out.hidden=false;inn.hidden=true;return}
@@ -254,6 +266,12 @@
       const {data:have}=await client.from('ty_purchases').select('id').eq('ref',ref).limit(5000);
       const keep=new Set(rows.map(r=>r.id)), gone=(have||[]).map(r=>r.id).filter(id=>!keep.has(id));
       if(gone.length){ const {error}=await client.from('ty_purchases').delete().in('id',gone); if(error) throw error; }
+      // 선불권(이 손님 것만)
+      const pp=(LEDGER.prepaid||[]).filter(p=>p.ref===ref).map(p=>({id:p.id,ref,date:p.date||null,kind:p.kind,amount:p.amount,label:String(p.label||'').slice(0,120),updated_at:new Date().toISOString()}));
+      if(pp.length){ const {error}=await client.from('ty_prepaid').upsert(pp); if(error) throw error; }
+      const {data:havePP}=await client.from('ty_prepaid').select('id').eq('ref',ref).limit(2000);
+      const keepPP=new Set(pp.map(r=>r.id)), gonePP=(havePP||[]).map(r=>r.id).filter(id=>!keepPP.has(id));
+      if(gonePP.length){ const {error}=await client.from('ty_prepaid').delete().in('id',gonePP); if(error) throw error; }
       return rows.length;
     }
     fileIn.addEventListener('change',async()=>{

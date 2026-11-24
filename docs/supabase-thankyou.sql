@@ -3,7 +3,8 @@
 -- Supabase 대시보드 → SQL Editor → New query 에 전부 붙여넣고 Run. 여러 번 실행해도 괜찮아요.
 --
 -- 개인정보 원칙
---  · 가격·결제 금액·주소는 여기 올리지 않아요. 와인 이름·구매 날짜·병 수만.
+--  · 구매 내역엔 가격·결제 금액·주소를 올리지 않아요. 와인 이름·구매 날짜·병 수만.
+--  · 선불권 금액(충전·사용·잔액)만 예외로, 그 손님 본인에게만 보여요.
 --  · 장부 손님 전체를 올리지 않아요. 회원이 가입하고 휴대폰 번호를 남기면, 관리자가 장부 손님과 맞는지 확인하고 '연결'한 사람의 구매만 올라가요.
 --  · 구매 내역과 별점·메모는 본인과 관리자만 봐요.
 
@@ -50,11 +51,31 @@ create table if not exists public.ty_purchases (
 );
 create index if not exists ty_purchases_ref on public.ty_purchases(ref);
 
--- 연결을 끊거나(관리자) 계정이 지워지면(코르크매치 탈퇴 포함) 그 사람 구매 내역도 같이 지워요.
+-- ③-2 선불권(충전·사용·잔액): 연결된 본인 것만 보기, 관리자가 장부에서 올림. 본인 계정 안에서만 금액이 보여요.
+create table if not exists public.ty_prepaid (
+  id text primary key check (char_length(id) <= 120),
+  ref text not null check (char_length(ref) <= 80),
+  date date,
+  kind text not null check (kind in ('충전','사용','조정')),
+  amount int not null check (amount between -100000000 and 100000000),   -- 충전 +, 사용 −
+  label text not null default '' check (char_length(label) <= 120),
+  updated_at timestamptz not null default now()
+);
+create index if not exists ty_prepaid_ref on public.ty_prepaid(ref);
+alter table public.ty_prepaid enable row level security;
+drop policy if exists ty_prepaid_own on public.ty_prepaid;
+create policy ty_prepaid_own on public.ty_prepaid for select to authenticated
+  using (ref = (select l.ref from public.ty_links l where l.user_id = auth.uid()));
+drop policy if exists ty_prepaid_admin on public.ty_prepaid;
+create policy ty_prepaid_admin on public.ty_prepaid for all to authenticated
+  using (public.is_admin()) with check (public.is_admin());
+
+-- 연결을 끊거나(관리자) 계정이 지워지면(코르크매치 탈퇴 포함) 그 사람 구매 내역·선불권도 같이 지워요.
 create or replace function public.ty_links_cleanup()
 returns trigger language plpgsql security definer set search_path = public as $$
 begin
   delete from public.ty_purchases where ref = old.ref;
+  delete from public.ty_prepaid where ref = old.ref;
   return old;
 end $$;
 drop trigger if exists ty_links_cleanup on public.ty_links;

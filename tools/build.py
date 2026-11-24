@@ -1331,7 +1331,7 @@ def page_privacy(rel):
         <tr><td>모임·행사 와인 견적</td><td>연락처(이름, 휴대폰 번호 또는 카카오톡 ID), 인원, 날짜, 장소, 자리 성격, 예산, 음식, 요청 내용</td><td>견적 요청 폼 작성 시</td></tr>
         <tr><td>기업·명절 선물 문의</td><td>회사·이름, 연락처(휴대폰 번호 또는 이메일), 수량, 예산, 받는 분, 필요한 날, 세금계산서 필요 여부, 요청 내용</td><td>선물 문의 폼 작성 시</td></tr>
         <tr><td>멤버 등록</td><td>이름, 연락처(휴대폰 번호 또는 카카오톡 ID), 구매 내역</td><td>10만원 이상 구매로 멤버 등록 시</td></tr>
-        <tr id="member"><td>회원 가입(내 와인)</td><td>이름, 이메일(카카오·구글 계정 정보), 휴대폰 번호, 매장 구매 기록 중 와인 이름·구매 날짜·병 수, 별점·한 줄 메모</td><td>카카오·구글로 가입하고 내 정보를 저장할 때, 관리자가 구매 기록을 연결할 때</td></tr>
+        <tr id="member"><td>회원 가입(내 와인)</td><td>이름, 이메일(카카오·구글 계정 정보), 휴대폰 번호, 매장 구매 기록 중 와인 이름·구매 날짜·병 수, 선불권 충전·사용 내역과 잔액(선불권이 있는 경우), 별점·한 줄 메모</td><td>카카오·구글로 가입하고 내 정보를 저장할 때, 관리자가 구매 기록을 연결할 때</td></tr>
         <tr><td>자동 수집</td><td>접속 IP, 브라우저 정보, 접수 시각</td><td>폼 접수 시 자동 기록</td></tr>
       </tbody>
     </table></div>
@@ -1507,6 +1507,7 @@ def page_login(rel):
     <p class="lead2">땡큐와인에서 산 와인이 한곳에 모이고, 마셔 본 와인에 별점과 한 줄 메모를 남길 수 있어요. 다음에 무엇을 고를지, 지난번 그 와인이 뭐였는지 바로 찾을 수 있어요.</p>
     <ul class="checks one" style="margin:18px 0 24px">
       <li>매장에서 산 와인이 자동으로 모여요 (따로 입력할 것 없어요)</li>
+      <li>선불권이 있으면 남은 금액과 사용 내역도 볼 수 있어요</li>
       <li>별점·메모는 직접 산 와인에만 남길 수 있고, 나만 봐요</li>
       <li>가입비 없고, 언제든 탈퇴할 수 있어요</li>
     </ul>
@@ -1514,7 +1515,7 @@ def page_login(rel):
       <label class="check all"><input type="checkbox" data-agree-all><span><b>모두 동의해요</b></span></label>
       <label class="check"><input type="checkbox" data-agree="age" required><span>[필수] 만 19세 이상이에요.</span></label>
       <label class="check"><input type="checkbox" data-agree="privacy" required><span>[필수] 개인정보 수집·이용에 동의해요. <a class="textlink" href="{rel}privacy/#member" target="_blank" rel="noopener">내용 보기</a></span></label>
-      <p class="muted small">수집: 이름, 이메일(카카오·구글 계정), 휴대폰 번호, 매장 구매 기록(와인 이름·날짜), 별점·메모 · 목적: 산 와인 모아 보기와 기록 · 보유: 탈퇴할 때까지</p>
+      <p class="muted small">수집: 이름, 이메일(카카오·구글 계정), 휴대폰 번호, 매장 구매 기록(와인 이름·날짜), 선불권 내역(있는 경우), 별점·메모 · 목적: 산 와인 모아 보기와 기록 · 보유: 탈퇴할 때까지</p>
     </div>
     <div class="socials">{KAKAO_BTN}{GOOGLE_BTN}</div>
     <p class="muted small" data-login-hint>필수 항목에 동의하면 버튼이 눌려요.</p>
@@ -1539,6 +1540,11 @@ def page_me(rel):
       <div class="mewait" data-me-wait hidden>
         <b>매장 구매 기록과 연결하는 중이에요</b>
         <p data-me-wait-msg></p>
+      </div>
+      <div class="prepaid" data-me-prepaid hidden>
+        <div class="pphead"><span>선불권 잔액</span><b data-pp-bal></b></div>
+        <details><summary>충전·사용 내역</summary><ul class="pplist" data-pp-list></ul></details>
+        <p class="muted small">매장 장부 기준이에요. 다르게 보이면 카톡으로 알려 주세요.</p>
       </div>
       <div data-me-wines hidden>
         <div class="metabs"><p class="mesum" data-me-sum></p>
@@ -1573,7 +1579,7 @@ def page_admin(rel):
     <div data-admin-bar hidden>
       <div class="formbox">
         <h2>1. 장부 파일 열기</h2>
-        <p class="muted small">비서실에 '땡큐와인 회원 장부 파일 만들어 줘'라고 하면 만들어 드려요. 파일은 이 브라우저 안에서만 읽고, 연결한 회원의 구매 줄(와인 이름·날짜·병 수)만 올라가요. 가격은 올라가지 않아요.</p>
+        <p class="muted small">비서실에 '땡큐와인 회원 장부 파일 만들어 줘'라고 하면 만들어 드려요. 파일은 이 브라우저 안에서만 읽고, 연결한 회원의 구매 줄(와인 이름·날짜·병 수)과 그 회원의 선불권 내역만 올라가요. 와인 가격은 올라가지 않아요.</p>
         <input type="file" accept=".json,application/json" data-admin-file>
         <p class="small" data-admin-file-msg></p>
         <div class="ctas"><button class="btn line sm" type="button" data-admin-sync>연결된 회원 구매 내역 새로 반영</button><button class="btn line sm" type="button" data-admin-reload>새로고침</button></div>

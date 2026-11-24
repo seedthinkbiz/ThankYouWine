@@ -4,7 +4,13 @@
 장부(아티팩트 db)의 members·sales 를 JSON 파일로 내려받은 폴더를 읽어서,
 관리자 페이지(/admin/ → '장부 파일 열기')에 넣을 파일 하나를 만들어요.
 
-  python3 tools/ledger_export.py <내려받은 폴더> <만들 파일.json>
+  python3 tools/ledger_export.py <내려받은 폴더> <만들 파일.json> [선불권.json]
+
+선불권: 장부 판매 중 결제방식 '선불권'은 사용(−), 품목에 '선불권'이 든 판매는 충전(+)으로 자동으로 넣어요.
+판매에 없는 충전·사용(예: 보너스가 붙은 충전, 판매 내역에 없는 시음회 차감)은 [선불권.json]에 적어요:
+  {"<장부 회원 id>": [{"date":"2026-06-26","kind":"충전","amount":2300000,"label":"200만원 결제 + 보너스 30만원"}, ...]}
+  (사용은 amount 를 음수로. "sale": "<판매 id>" 를 적으면 그 판매의 자동 줄 대신 이 줄을 써요.)
+선불권 금액은 그 손님 본인에게만 보여요. 선불권.json 도 저장소에 올리지 마세요.
 
   <내려받은 폴더>/members/*.json, <내려받은 폴더>/sales/*.json  (ArtifactData list → out_dir 모양)
 
@@ -77,7 +83,33 @@ def phone(p):
     d = re.sub(r'\D', '', p or '')
     return f'{d[:3]}-{d[3:-4]}-{d[-4:]}' if len(d) in (10, 11) else (p or '').strip()
 
-def main(src, out):
+NAME_HONOR = re.compile(r'\S+\s*(대표님|회장님|원장님|교수님|선생님|이사님|님)')
+def prepaid_label(s):
+    """사용 줄 이름: 와인 이름 위주로, 다른 사람 이름(OO 대표님 등)은 지워요."""
+    names = [f"{clean(i.get('name'))} {i.get('qty') or 1}병" for i in (s.get('items') or []) if i.get('name') and not SKIP.search(i['name'])]
+    t = ', '.join(names) if names else (s.get('legacyTitle') or '와인 구매')
+    return re.sub(r'\s+', ' ', NAME_HONOR.sub('', t)).strip(' ,')[:120]
+
+def build_prepaid(members, sales, src):
+    manual = json.load(open(src, encoding='utf-8')) if src else {}
+    used_sales = {e.get('sale') for es in manual.values() if isinstance(es, list) for e in es if e.get('sale')}
+    rows = []
+    for ref, es in manual.items():
+        if ref.startswith('_') or ref not in members: continue
+        for i, e in enumerate(es):
+            rows.append(dict(id=f'pp:{ref}:{i}', ref=ref, date=e.get('date'), kind=e.get('kind') or ('충전' if e['amount'] > 0 else '사용'),
+                             amount=int(e['amount']), label=NAME_HONOR.sub('', e.get('label') or '').strip()[:120]))
+    for sid, s in sales.items():
+        ref = s.get('memberId') or ''
+        if ref not in members or sid in used_sales or not s.get('total'): continue
+        if any('선불권' in (i.get('name') or '') for i in (s.get('items') or [])):
+            rows.append(dict(id=f'pp:{sid}', ref=ref, date=s.get('date'), kind='충전', amount=int(s['total']), label='선불권 충전'))
+        elif (s.get('payment') or '') == '선불권':
+            rows.append(dict(id=f'pp:{sid}', ref=ref, date=s.get('date'), kind='사용', amount=-int(s['total']), label=prepaid_label(s)))
+    rows.sort(key=lambda r: (r['ref'], r['date'] or '', r['id']))
+    return rows
+
+def main(src, out, prepaid_src=None):
     W, alias = load_wines(), load_alias()
     rd = lambda f: json.load(open(f, encoding='utf-8'))
     members = {os.path.basename(f)[:-5]: rd(f) for f in glob.glob(os.path.join(src, 'members', '*.json'))}
@@ -101,16 +133,19 @@ def main(src, out):
             purchases.append(dict(id=f'{sid}:{i}', ref=ref, date=s.get('date') or None,
                                   key=wine_key(ko) if ko else other_key(raw), wine=shown[:120], qty=int(qty)))
     purchases.sort(key=lambda p: (p['ref'], p['date'] or '', p['id']))
+    prepaid = build_prepaid(members, sales, prepaid_src)
     doc = dict(kind='thankyouwine-ledger', made=datetime.datetime.now().isoformat(timespec='minutes'),
                note='손님 연락처가 들어 있어요. 저장소에 올리지 마세요. 가격은 들어 있지 않아요.',
-               customers=customers, purchases=purchases)
+               customers=customers, purchases=purchases, prepaid=prepaid)
     os.makedirs(os.path.dirname(os.path.abspath(out)), exist_ok=True)
     json.dump(doc, open(out, 'w', encoding='utf-8'), ensure_ascii=False, indent=0)
-    print(f'손님 {len(customers)}명 · 구매 줄 {len(purchases)}개 → {out}')
+    print(f'손님 {len(customers)}명 · 구매 줄 {len(purchases)}개 · 선불권 줄 {len(prepaid)}개 → {out}')
+    for ref in sorted({p['ref'] for p in prepaid}):
+        print(f"  선불권 잔액 {members[ref].get('name','')}: {sum(p['amount'] for p in prepaid if p['ref']==ref):,}원")
     if unmatched:
         print(f'사이트 와인 목록과 못 맞춘 이름 {len(unmatched)}개 (그대로 보여요. 맞추려면 tools/ledger_alias.json 에 "장부 이름": "목록 이름"):')
         for k, v in sorted(unmatched.items(), key=lambda x: -x[1]): print(f'  {v}  {k}')
 
 if __name__ == '__main__':
-    if len(sys.argv) != 3: sys.exit(__doc__)
-    main(sys.argv[1], sys.argv[2])
+    if len(sys.argv) not in (3, 4): sys.exit(__doc__)
+    main(*sys.argv[1:])

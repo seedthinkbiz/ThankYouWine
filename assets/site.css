@@ -455,3 +455,14 @@ footer .fname .wordmark .ko{font-size:.66rem}
 .okmark{color:#1f7a3a;font-weight:700;font-size:.9rem}
 button.textlink{background:none;border:0;padding:0;cursor:pointer;font:inherit;color:var(--wine)}
 .mywine .bought{margin:0 0 2px;color:var(--muted)}
+.prepaid{margin:20px 0;padding:16px 18px;border:1px solid var(--line);border-radius:14px;background:var(--paper)}
+.pphead{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.pphead span{font-weight:700}
+.pphead b{font-size:1.5rem;color:var(--wine)}
+.prepaid details{margin-top:8px}
+.prepaid summary{cursor:pointer;color:var(--wine);font-size:.95rem}
+.pplist{list-style:none;padding:0;margin:8px 0 0}
+.pplist li{display:grid;grid-template-columns:5.5em 1fr auto;gap:8px;padding:7px 0;border-top:1px solid var(--line);font-size:.93rem}
+.ppd{color:var(--muted)}
+.ppa{font-weight:700;white-space:nowrap}
+.ppa.out{color:var(--muted)}
