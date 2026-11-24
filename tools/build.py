@@ -10,6 +10,7 @@ HERE=os.path.dirname(os.path.abspath(__file__))   # tools/
 SITEDIR=os.path.dirname(HERE)                   # 저장소 루트 = 사이트 폴더
 ROOT=SITEDIR
 TODAY=datetime.date(2026,11,3)
+PRIVACY_DATE=datetime.date(2026,11,24)   # 개인정보처리방침 내용을 바꿀 때만 고쳐요(11/24 회원 '내 와인' 추가)
 
 # ───────────────── 여기만 고치면 돼요 ─────────────────
 SITE=dict(
@@ -27,6 +28,9 @@ SITE=dict(
   corkmatch='https://corkmatch.com/',
   owner='한낮의밤', ceo='이도하', regno='482-11-01565', mailorder='제2024-서울성동-0327호',
 )
+# 회원 '내 와인'(로그인·산 와인 모아 보기·별점). Supabase 설정(docs/members.md)을 마친 뒤 True 로 두면 메뉴에 '내 와인'이 보여요.
+MEMBERS_OPEN=True
+SUPABASE_REGION='미국'  # 회원 저장 서버(Supabase) 국가. 코르크매치 build.py 와 같은 값으로(대시보드 → Project Settings → General → Region)
 # ──────────────────────────────────────────────────
 
 BASE=SITE['base']
@@ -66,9 +70,13 @@ PAGES={
  'occasions': dict(path='occasions/', title='상황별 와인 고르기 · 송년회·거래처 선물·고기·해산물 와인 | 땡큐와인', desc='회사 송년회 몇 병, 거래처 명절 선물 예산, 고기 굽는 날 레드, 해산물 화이트, 생빈티지 선물까지. 땡큐와인의 와인 컨설턴트가 상황별 고르는 기준을 정리했어요.'),
  'faq':       dict(path='faq/',       title='자주 묻는 질문 · 땡큐와인', desc='가격, 모임 와인 병 수, 와인잔 대여, 세금계산서, 멤버에 대해 자주 묻는 질문.'),
  'privacy':   dict(path='privacy/',   title='개인정보처리방침 · 땡큐와인', desc='땡큐와인 개인정보처리방침'),
+ 'login':     dict(path='login/',     title='로그인 · 땡큐와인', desc='카카오·구글로 로그인하고 내가 산 와인을 모아 보세요.'),
+ 'me':        dict(path='me/',        title='내 와인 · 땡큐와인', desc='땡큐와인에서 산 와인을 모아 보고 별점과 한 줄 메모를 남겨요.'),
+ 'admin':     dict(path='admin/',     title='회원 연결 · 땡큐와인', desc='관리자 전용'),
  '404':       dict(path='404.html',   title='페이지를 찾을 수 없어요 · 땡큐와인', desc='땡큐와인'),
 }
 
+MEMBER_PAGES=('login','me','admin')   # 검색에 안 나오고 사이트맵·llms.txt 에도 안 넣어요
 def rel_for(path):
     return '../'*path.count('/')
 
@@ -136,7 +144,7 @@ def head(key, rel, page=None, ld=None, og=None):
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>{title}</title>
 <meta name="description" content="{desc}">
-<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+<meta name="robots" content="{'noindex,nofollow' if key in MEMBER_PAGES else 'index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1'}">
 <link rel="canonical" href="{canon}">
 <meta property="og:type" content="{og.get('type','website')}">
 <meta property="og:site_name" content="땡큐와인">
@@ -155,10 +163,12 @@ def head(key, rel, page=None, ld=None, og=None):
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@600;700&display=swap">
 <link rel="stylesheet" href="{rel}assets/site.css?v={ASSET_V}">
 <script>window.TYW={cfg}</script>
+{MEMBER_SCRIPTS.format(rel=rel,v=ASSET_V) if key in MEMBER_PAGES else ''}
 {ld_script(lds)}</head>
 <body>
 '''
 
+MEMBER_SCRIPTS='<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js" defer></script>\n<script src="{rel}assets/members.js?v={v}" defer></script>'
 def header(rel, current):
     def a(href,label,k):
         cur=' aria-current="page"' if k==current else ''
@@ -175,6 +185,7 @@ def header(rel, current):
       {a(rel+'shop/','매장 안내','shop')}
       {a(rel+'blog/','블로그','blog')}
       {a(rel+'about/','소개','about')}
+      {a(rel+'me/','내 와인','me') if MEMBERS_OPEN else ''}
       <a class="btn wine sm" href="#contact" data-contact>문의하기</a>
     </nav>
   </div>
@@ -1310,7 +1321,7 @@ def page_privacy(rel):
 <section class="sec tight">
   <div class="wrap doc">
     <h1>개인정보처리방침</h1>
-    <p class="date">시행일 {TODAY.year}년 {TODAY.month}월 {TODAY.day}일</p>
+    <p class="date">시행일 {PRIVACY_DATE.year}년 {PRIVACY_DATE.month}월 {PRIVACY_DATE.day}일</p>
     <p>땡큐와인(운영 {SITE['owner']}, 이하 "땡큐와인")은 개인정보 보호법에 따라 이용자의 개인정보를 보호하고, 이와 관련한 고충을 신속하게 처리하기 위해 다음과 같이 개인정보처리방침을 둡니다.</p>
     <h2>1. 수집하는 개인정보와 수집 방법</h2>
     <p>땡큐와인은 이용자가 직접 입력한 정보만 수집하며, 서비스별로 다음 항목을 수집합니다.</p>
@@ -1320,6 +1331,7 @@ def page_privacy(rel):
         <tr><td>모임·행사 와인 견적</td><td>연락처(이름, 휴대폰 번호 또는 카카오톡 ID), 인원, 날짜, 장소, 자리 성격, 예산, 음식, 요청 내용</td><td>견적 요청 폼 작성 시</td></tr>
         <tr><td>기업·명절 선물 문의</td><td>회사·이름, 연락처(휴대폰 번호 또는 이메일), 수량, 예산, 받는 분, 필요한 날, 세금계산서 필요 여부, 요청 내용</td><td>선물 문의 폼 작성 시</td></tr>
         <tr><td>멤버 등록</td><td>이름, 연락처(휴대폰 번호 또는 카카오톡 ID), 구매 내역</td><td>10만원 이상 구매로 멤버 등록 시</td></tr>
+        <tr id="member"><td>회원 가입(내 와인)</td><td>이름, 이메일(카카오·구글 계정 정보), 휴대폰 번호, 매장 구매 기록 중 와인 이름·구매 날짜·병 수, 별점·한 줄 메모</td><td>카카오·구글로 가입하고 내 정보를 저장할 때, 관리자가 구매 기록을 연결할 때</td></tr>
         <tr><td>자동 수집</td><td>접속 IP, 브라우저 정보, 접수 시각</td><td>폼 접수 시 자동 기록</td></tr>
       </tbody>
     </table></div>
@@ -1328,12 +1340,14 @@ def page_privacy(rel):
       <li>견적·문의 확인과 와인 추천, 결과 안내, 연락</li>
       <li>주문 확인, 결제 안내, 세금계산서·현금영수증 발행, 전달</li>
       <li>멤버에게 입고 소식과 시음회·모임 안내 (원하지 않으면 언제든 중단)</li>
+      <li>회원이 산 와인을 모아 보여 주고, 산 와인에 별점·메모를 남기게 함 (구매 가격은 보여 주지 않음)</li>
       <li>부정 이용 방지, 서비스 개선</li>
     </ul>
     <h2>3. 보유와 이용 기간</h2>
     <ul>
       <li>견적·문의 정보: 상담 종료 후 1년. 이용자가 삭제를 요청하면 즉시 삭제합니다.</li>
       <li>멤버 정보: 탈퇴 또는 삭제 요청 시 즉시 삭제합니다.</li>
+      <li>회원(내 와인) 정보: 탈퇴하면 회원 정보·구매 기록 연결·별점·메모를 즉시 삭제합니다. 같은 로그인으로 코르크매치를 쓰지 않으면 로그인 계정도 함께 삭제합니다.</li>
       <li>계약·결제 기록: 전자상거래 등에서의 소비자보호에 관한 법률에 따라 5년, 세법에 따른 거래 증빙은 5년 보관합니다.</li>
       <li>접속 기록: 통신비밀보호법에 따라 3개월 보관합니다.</li>
     </ul>
@@ -1346,6 +1360,7 @@ def page_privacy(rel):
       <tbody>
         <tr><td>Vercel Inc.</td><td>웹사이트 호스팅, 폼 접수 처리</td><td>미국</td></tr>
         <tr><td>Google LLC</td><td>접수 내용 저장(스프레드시트), 메일 알림</td><td>미국</td></tr>
+        <tr><td>Supabase Inc.</td><td>회원 계정, 내 와인(구매 기록 연결·별점·메모) 저장</td><td>{SUPABASE_REGION}</td></tr>
       </tbody>
     </table></div>
     <h2>6. 이용자의 권리</h2>
@@ -1473,7 +1488,107 @@ def page_wines(rel):
   </div>
 </section>"""
 
-BUILDERS={'index':page_index,'wines':page_wines,'gathering':page_gathering,'gift':page_gift,'shop':page_shop,'about':page_about,'blog':page_blog,'faq':page_faq,'occasions':page_occasions,'privacy':page_privacy,'404':page_404}
+
+# ---------------- 회원: 로그인 · 내 와인 · 관리자 연결 (2026-11-24 도하: 산 와인 모아 보기, 산 와인에만 별점·메모) ----------------
+# 회원은 코르크매치·비노나루와 같은 Supabase(카카오·구글). 구매 내역은 장부에서 관리자가 '연결'한 회원 것만 올라가요. 가격은 어디에도 없어요.
+import hashlib as _hashlib
+def wine_key(ko): return 'w'+_hashlib.md5(ko.encode('utf-8')).hexdigest()[:10]   # tools/ledger_export.py 와 같은 규칙
+def wine_index_json():
+    idx={wine_key(w['ko']):{k:v for k,v in (('k',w['ko']),('i',w.get('img','')),('s',w['style']),('c',w['country']),('p',w.get('post',''))) if v} for w in WINES}
+    return json.dumps(idx,ensure_ascii=False,separators=(',',':')).replace('</','<\\/')
+KAKAO_BTN='<button class="btn social kakao" type="button" data-login-provider="kakao">카카오로 시작하기</button>'
+GOOGLE_BTN='<button class="btn social google" type="button" data-login-provider="google">구글로 시작하기</button>'
+def page_login(rel):
+    return f"""
+<section class="sec tight">
+  <div class="wrap narrow" data-login-page>
+    <span class="kicker">내 와인</span>
+    <h1>산 와인을 모아 보고<br>별점을 남겨 보세요</h1>
+    <p class="lead2">땡큐와인에서 산 와인이 한곳에 모이고, 마셔 본 와인에 별점과 한 줄 메모를 남길 수 있어요. 다음에 무엇을 고를지, 지난번 그 와인이 뭐였는지 바로 찾을 수 있어요.</p>
+    <ul class="checks one" style="margin:18px 0 24px">
+      <li>매장에서 산 와인이 자동으로 모여요 (따로 입력할 것 없어요)</li>
+      <li>별점·메모는 직접 산 와인에만 남길 수 있고, 나만 봐요</li>
+      <li>가입비 없고, 언제든 탈퇴할 수 있어요</li>
+    </ul>
+    <div class="consentbox">
+      <label class="check all"><input type="checkbox" data-agree-all><span><b>모두 동의해요</b></span></label>
+      <label class="check"><input type="checkbox" data-agree="age" required><span>[필수] 만 19세 이상이에요.</span></label>
+      <label class="check"><input type="checkbox" data-agree="privacy" required><span>[필수] 개인정보 수집·이용에 동의해요. <a class="textlink" href="{rel}privacy/#member" target="_blank" rel="noopener">내용 보기</a></span></label>
+      <p class="muted small">수집: 이름, 이메일(카카오·구글 계정), 휴대폰 번호, 매장 구매 기록(와인 이름·날짜), 별점·메모 · 목적: 산 와인 모아 보기와 기록 · 보유: 탈퇴할 때까지</p>
+    </div>
+    <div class="socials">{KAKAO_BTN}{GOOGLE_BTN}</div>
+    <p class="muted small" data-login-hint>필수 항목에 동의하면 버튼이 눌려요.</p>
+    <p class="soon">회원 기능은 곧 열려요. 그동안 산 와인이 궁금하시면 카톡으로 물어봐 주세요.</p>
+  </div>
+</section>"""
+def page_me(rel):
+    return f"""
+<section class="sec tight">
+  <div class="wrap" data-me-page>
+    <div data-me-out hidden>
+      <span class="kicker">내 와인</span>
+      <h1>로그인하면 산 와인이 모여요</h1>
+      <p class="lead2">땡큐와인에서 산 와인을 한곳에서 보고, 마셔 본 와인에 별점과 한 줄 메모를 남겨 보세요.</p>
+      <div class="ctas"><a class="btn wine" href="{rel}login/">로그인 · 가입</a><a class="btn line" href="{rel}wines/">와인 목록 보기</a></div>
+    </div>
+    <div data-me-in hidden>
+      <p class="welcome" data-me-welcome hidden>가입을 마쳤어요. 반가워요!</p>
+      <span class="kicker">내 와인</span>
+      <h1 data-me-hello>내 와인</h1>
+      <p class="muted small" data-me-sub></p>
+      <div class="mewait" data-me-wait hidden>
+        <b>매장 구매 기록과 연결하는 중이에요</b>
+        <p data-me-wait-msg></p>
+      </div>
+      <div data-me-wines hidden>
+        <div class="metabs"><p class="mesum" data-me-sum></p>
+          <div class="chips" data-me-tabs role="group" aria-label="보기"><button class="chip" type="button" data-tab="all" aria-pressed="true">전체 <span></span></button><button class="chip" type="button" data-tab="todo" aria-pressed="false">별점 남길 와인 <span></span></button><button class="chip" type="button" data-tab="done" aria-pressed="false">별점 남긴 와인 <span></span></button></div>
+        </div>
+        <ul class="wines mywines" data-me-list></ul>
+        <p class="muted small" style="margin-top:20px">별점과 메모는 나만 봐요. 같은 별을 한 번 더 누르면 지워져요. 목록에 없는 구매가 있으면 카톡으로 알려 주세요.</p>
+      </div>
+      <form class="formbox meform" data-me-form novalidate>
+        <h2>내 정보</h2>
+        <div class="consentbox" data-me-consent hidden>
+          <label class="check"><input type="checkbox" name="age"><span>[필수] 만 19세 이상이에요.</span></label>
+          <label class="check"><input type="checkbox" name="privacy"><span>[필수] 개인정보 수집·이용에 동의해요. <a class="textlink" href="{rel}privacy/#member" target="_blank" rel="noopener">내용 보기</a></span></label>
+        </div>
+        <div class="row"><label>이름<input name="name" maxlength="50" autocomplete="name"></label>
+          <label>휴대폰 번호<input name="phone" inputmode="tel" maxlength="20" placeholder="010-0000-0000" autocomplete="tel"></label></div>
+        <p class="muted small">매장에서 구매할 때 쓰신 번호를 남겨 주세요. 이 번호로 구매 기록을 찾아 연결해 드려요.</p>
+        <div class="ctas" style="margin-top:12px"><button class="btn wine" type="submit">저장</button><span class="muted small" data-me-msg aria-live="polite"></span></div>
+        <p class="meout"><button class="textlink" type="button" data-logout>로그아웃</button> · <button class="textlink" type="button" data-me-delete>회원 탈퇴</button></p>
+      </form>
+    </div>
+  </div>
+  <script type="application/json" id="wine-index">{wine_index_json()}</script>
+</section>"""
+def page_admin(rel):
+    return f"""
+<section class="sec tight">
+  <div class="wrap" data-admin-page>
+    <span class="kicker">관리자</span>
+    <h1>회원 연결 · 구매 내역 반영</h1>
+    <div class="adminlogin" data-admin-login><span class="muted small" data-admin-who></span>{KAKAO_BTN}{GOOGLE_BTN}</div>
+    <div data-admin-bar hidden>
+      <div class="formbox">
+        <h2>1. 장부 파일 열기</h2>
+        <p class="muted small">비서실에 '땡큐와인 회원 장부 파일 만들어 줘'라고 하면 만들어 드려요. 파일은 이 브라우저 안에서만 읽고, 연결한 회원의 구매 줄(와인 이름·날짜·병 수)만 올라가요. 가격은 올라가지 않아요.</p>
+        <input type="file" accept=".json,application/json" data-admin-file>
+        <p class="small" data-admin-file-msg></p>
+        <div class="ctas"><button class="btn line sm" type="button" data-admin-sync>연결된 회원 구매 내역 새로 반영</button><button class="btn line sm" type="button" data-admin-reload>새로고침</button></div>
+      </div>
+      <p class="adminstat" data-admin-status aria-live="polite"></p>
+      <h2>2. 연결 기다리는 회원</h2>
+      <p class="muted small">회원이 남긴 번호와 장부 번호가 같으면 미리 골라 둬요. 본인이 맞는지 보고 '연결'을 눌러 주세요.</p>
+      <div data-admin-pending></div>
+      <h2 style="margin-top:32px">연결된 회원</h2>
+      <div data-admin-linked></div>
+    </div>
+  </div>
+</section>"""
+
+BUILDERS={'login':page_login,'me':page_me,'admin':page_admin,'index':page_index,'wines':page_wines,'gathering':page_gathering,'gift':page_gift,'shop':page_shop,'about':page_about,'blog':page_blog,'faq':page_faq,'occasions':page_occasions,'privacy':page_privacy,'404':page_404}
 
 PREVIEW=False
 AI_BOTS=['GPTBot','OAI-SearchBot','ChatGPT-User','ClaudeBot','Claude-SearchBot','Claude-User','anthropic-ai','Google-Extended','Googlebot','Bingbot','PerplexityBot','Perplexity-User','Yeti','Applebot','Applebot-Extended','DuckAssistBot','meta-externalagent','Amazonbot','CCBot']
@@ -1490,12 +1605,13 @@ def rfc822(iso):
     return datetime.datetime.strptime(iso,'%Y-%m-%d').replace(hour=9).strftime('%a, %d %b %Y %H:%M:%S +0900')
 
 def write_extras():
-    pages=[(BASE+'/'+p['path'],TODAY.isoformat()) for k,p in PAGES.items() if p['path']!='404.html']
+    pages=[(BASE+'/'+p['path'],TODAY.isoformat()) for k,p in PAGES.items() if p['path']!='404.html' and k not in MEMBER_PAGES]
     posts=[(BASE+'/'+p['path'],p['date']) for p in POSTS]
     sm='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'  <url><loc>{u}</loc><lastmod>{d}</lastmod></url>\n' for u,d in pages+posts)+'</urlset>\n'
     write_text(os.path.join(ROOT,'sitemap.xml'),sm)
-    rb='# 땡큐와인 — 검색엔진과 AI 어시스턴트 크롤러 모두 환영해요. 가격은 사이트에 없고 카카오톡으로 1:1 안내해요.\n\nUser-agent: *\nAllow: /\nDisallow: /api/\nDisallow: /tools/\nDisallow: /docs/\n\n'
-    rb+=''.join(f'User-agent: {b}\nAllow: /\nDisallow: /api/\nDisallow: /tools/\nDisallow: /docs/\n\n' for b in AI_BOTS)
+    NO='Disallow: /api/\nDisallow: /tools/\nDisallow: /docs/\nDisallow: /login/\nDisallow: /me/\nDisallow: /admin/\n'
+    rb='# 땡큐와인 — 검색엔진과 AI 어시스턴트 크롤러 모두 환영해요. 가격은 사이트에 없고 카카오톡으로 1:1 안내해요.\n\nUser-agent: *\nAllow: /\n'+NO+'\n'
+    rb+=''.join(f'User-agent: {b}\nAllow: /\n'+NO+'\n' for b in AI_BOTS)
     rb+=f'Sitemap: {BASE}/sitemap.xml\n'
     write_text(os.path.join(ROOT,'robots.txt'),rb)
     key=indexnow_key(); write_text(os.path.join(ROOT,key+'.txt'),key)
@@ -1508,7 +1624,7 @@ def write_extras():
        '- 멤버: 가입비 없음. 10만원 이상 구매하면 멤버로 등록되고 입고 소식·시음회·모임 안내를 카카오톡으로 먼저 받아요.']+[f"- 다가오는 행사: {e['title']} · {e['when']} · {e['where']} · {e['who']} · 안내와 신청: {e['url']}" for e in live_events()]+['',
        '## 주요 페이지','']
     for k,p in PAGES.items():
-        if p['path'] in ('404.html','privacy/'): continue
+        if p['path'] in ('404.html','privacy/') or k in MEMBER_PAGES: continue
         L.append(f"- [{p['title'].split(' · ')[0]}]({BASE}/{p['path']}): {p['desc']}")
     L+=['','## 블로그 글 (와인 소개·와인 이야기·모임·선물)','']
     for p in POSTS: L.append(f"- [{p['title']}]({BASE}/{p['path']}): {p['summary']}")
@@ -1564,7 +1680,7 @@ def build(preview=False):
         if p['path']=='404.html': out=os.path.join(ROOT,'404.html'); rel=''
         else: out=os.path.join(ROOT,p['path'],'index.html'); rel=rel_for(p['path'])
         cur=key if key!='index' else 'home'
-        ld=ld_blog() if key=='blog' else (ld_occasions() if key=='occasions' else ld_page(key))
+        ld=ld_blog() if key=='blog' else (ld_occasions() if key=='occasions' else (None if key in MEMBER_PAGES else ld_page(key)))
         html=head(key,rel,ld=ld)+header(rel,cur)+'<main>'+BUILDERS[key](rel)+'</main>\n'+footer(rel)
         emit(out,html,key)
     for p in POSTS:
