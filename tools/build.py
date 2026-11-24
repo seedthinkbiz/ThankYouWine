@@ -1430,7 +1430,7 @@ def wine_card(rel,w):
             f'{pic}<div class="wbody"><div class="wtop"><span class="wstyle">{esc(w["style"])}</span>{status}</div>'+
             (f'<h3><a href="{rel}{wine_path(w)}">{esc(w["ko"])}</a></h3>' if w.get('price') else f'<h3>{esc(w["ko"])}</h3>')+(f'<p class="wen" lang="en">{esc(w["en"])}</p>' if w['en'] else '')+
             (f'<p class="wmeta">{esc(meta)}</p>' if meta else '')+
-            (f'<p class="wprice"><a href="{rel}{wine_path(w)}">{w["price"]:,}원</a></p>' if w.get('price') else '')+
+            (price_html(w,link=rel+wine_path(w)) if w.get('price') else '')+
             f'<div class="wacts"><a class="btn line sm" href="#contact" data-contact data-wine="{esc(w["ko"])}">{"주문 문의" if w.get("price") else "가격 문의"}</a>{post}</div></div></li>')
 # ── 가격 공개 와인 개별 페이지 (2026-11-24 도하: 1개월 내 받은 단가 + 데일리샷 최저가 비교, 마진 30% 이상만) ──
 def wine_slug(w):
@@ -1440,6 +1440,16 @@ def wine_slug(w):
     if w.get('vintage') and w['vintage'] not in base: base=(base+'-'+w['vintage']).strip('-')
     return base or 'w'+_hl.md5(w['ko'].encode()).hexdigest()[:8]
 def wine_path(w): return 'wines/'+wine_slug(w)+'/'
+def price_html(w,cls='wprice',link=None):
+    """가격 표시: 최대 정가 대비 할인율(2026-11-24 도하: 가격 노출 땐 항상 최대 정가 대비 할인율)."""
+    p=w['price']; lp=w.get('list_price') or 0
+    inner=f'{p:,}원'
+    if lp>p:
+        pct=int((lp-p)*100/lp)
+        inner=f'<s class="wlist">정가 {lp:,}원</s> <b class="woff">{pct}%</b> {p:,}원'
+    if link: inner=f'<a href="{link}">{inner}</a>'
+    return f'<p class="{cls}">{inner}</p>'
+
 def price_date():
     fn=os.path.join(HERE,'wines.json')
     d=json.load(open(fn,encoding='utf-8')).get('price_date')
@@ -1459,7 +1469,7 @@ def wine_desc(w):
     where=' '.join(x for x in (w['country'],w['region']) if x)
     bits=[x for x in (where,w.get('grape'),w.get('style')) if x]
     st='성수동 땡큐와인 매장에 있어요' if w['now'] else '주문하면 받아 드려요'
-    return f"{w['ko']}{' '+w['vintage'] if w.get('vintage') and w['vintage'] not in w['ko'] else ''}" + (f" ({', '.join(bits)})" if bits else '') + f". 땡큐와인 가격 {w['price']:,}원, {st}."
+    return f"{w['ko']}{' '+w['vintage'] if w.get('vintage') and w['vintage'] not in w['ko'] else ''}" + (f" ({', '.join(bits)})" if bits else '') + (f". 정가 {w['list_price']:,}원에서 {int((w['list_price']-w['price'])*100/w['list_price'])}% 할인된 땡큐와인 가격 {w['price']:,}원, {st}." if (w.get('list_price') or 0)>w['price'] else f". 땡큐와인 가격 {w['price']:,}원, {st}.")
 def page_wine(rel,w):
     where=' '.join(x for x in (w['country'],w['region']) if x)
     rows=''.join(f'<tr><th>{k}</th><td>{esc(v)}</td></tr>' for k,v in (('빈티지',w.get('vintage')),('나라·지역',where),('품종',w.get('grape')),('스타일',w.get('style'))) if v)
@@ -1475,7 +1485,7 @@ def page_wine(rel,w):
       <div class="wbody">
         <div class="wtop"><span class="wstyle">{esc(w['style'])}</span>{st}</div>
         <h1>{esc(w['ko'])}</h1>{f'<p class="wen" lang="en">{esc(w["en"])}</p>' if w.get('en') else ''}
-        <p class="wprice big">{w['price']:,}원</p>
+        {price_html(w,cls='wprice big')}
         <table class="wfacts">{rows}</table>
         <p>{esc(wine_desc(w))} 매장에서 바로 사거나, 카톡·문자로 이름만 보내 주시면 준비해 둘게요. 6병 이상이면 서울 퀵 배송비가 무료예요.</p>
         <div class="wacts"><a class="btn sm" href="#contact" data-contact data-wine="{esc(w['ko'])}">주문 문의</a>{post}</div>
