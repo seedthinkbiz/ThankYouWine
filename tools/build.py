@@ -1408,19 +1408,19 @@ def preview_head_inline(html):
 
 
 # ---------------- 와인 목록 (2026-11-23 도하: 판매 중·판매했던 와인 전부, 검색, 가격은 문의) ----------------
-# 목록은 tools/wines.json 한 곳에서 고쳐요. now=true 면 '지금 매장에', 아니면 '재입고 문의'. 가격 칸은 일부러 없어요.
+# 목록은 tools/wines.json 한 곳에서 고쳐요. now=true 면 '지금 매장에', order=true 면 '주문 가능'(수입사 주문), 아니면 '재입고 문의'. 가격 칸은 일부러 없어요.
 STYLE_ORDER=['레드','화이트','로제','스파클링','스위트','포트·셰리','무알콜','기타']
 def load_wines():
     fn=os.path.join(HERE,'wines.json')
     if not os.path.exists(fn): return []
     W=json.load(open(fn,encoding='utf-8'))['wines']
-    W.sort(key=lambda w:(not w['now'],not w.get('img'),STYLE_ORDER.index(w['style']) if w['style'] in STYLE_ORDER else 99,w['ko']))
+    W.sort(key=lambda w:(not w['now'],not w.get('order'),not w.get('img'),STYLE_ORDER.index(w['style']) if w['style'] in STYLE_ORDER else 99,w['ko']))
     return W
 def wine_card(rel,w):
     where=' '.join(x for x in (w['country'],w['region']) if x)
     meta=' · '.join(x for x in (w['vintage'],where,w['grape']) if x)
     hay=' '.join([w['ko'],w['en'],w['vintage'],w['country'],w['region'],w['grape'],w['style']]).lower()
-    status='<span class="wbadge now">지금 매장에</span>' if w['now'] else '<span class="wbadge">재입고 문의</span>'
+    status=('<span class="wbadge now">지금 매장에</span>' if w['now'] else '<span class="wbadge order">주문 가능</span>' if w.get('order') else '<span class="wbadge">재입고 문의</span>')
     purl=w.get('post') or ''
     post=(f'<a class="textlink" href="{purl}" target="_blank" rel="noopener">소개 글 →</a>' if purl.startswith('http')
           else f'<a class="textlink" href="{rel}{purl}">소개 글 →</a>' if purl else '')
@@ -1444,7 +1444,7 @@ def page_wines(rel):
     <div class="head">
       <span class="kicker">와인 목록</span>
       <h1>땡큐와인이 소개하고 판매한 와인</h1>
-      <p>지금 매장에 있는 와인 {now_n}종과 지금까지 소개하고 판매한 와인까지 모두 {len(W)}종이에요. 가격은 수입사 사정과 입고 시기에 따라 자주 바뀌어서 적지 않았어요. 궁금한 와인은 <b>가격 문의</b>를 눌러 카톡이나 문자로 이름만 보내 주세요. 다 나간 와인도 다시 구해 드릴 수 있는지 알아봐 드려요.</p>
+      <p>지금 매장에 있는 와인 {now_n}종, 주문해서 받아 드릴 수 있는 와인 {sum(1 for w in W if w.get('order') and not w['now'])}종, 지금까지 소개하고 판매한 와인까지 모두 {len(W)}종이에요. 가격은 수입사 사정과 입고 시기에 따라 자주 바뀌어서 적지 않았어요. 궁금한 와인은 <b>가격 문의</b>를 눌러 카톡이나 문자로 이름만 보내 주세요. 다 나간 와인도 다시 구해 드릴 수 있는지 알아봐 드려요.</p>
     </div>
     <div class="wpick" id="wpick">
       <h2>뭘 골라야 할지 모르겠다면</h2>
