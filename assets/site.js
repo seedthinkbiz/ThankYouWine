@@ -92,6 +92,7 @@
       const [body,sw,food,flags='']=(li.dataset.tags||'').split(' ');
       const st=li.dataset.style, occ=sel.occ, f=sel.food, t=sel.taste;
       if(occ==='N'){ if(st!=='무알콜') return -99; } else if(st==='무알콜') return -99;
+      if(t==='s'&&sw==='d') return -99;
       let s=0;
       if(occ==='G'&&flags.includes('G')) s+=4;
       if(occ==='P'&&flags.includes('P')) s+=4;
