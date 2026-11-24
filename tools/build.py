@@ -59,7 +59,7 @@ PAGES={
  'index':     dict(path='',           title='땡큐와인 · 성수동 와인 토탈 서비스, 모임·행사 와인과 기업 선물', desc='성수동의 와인 토탈 서비스 땡큐와인. 집에서 마실 한 병부터 송년회 와인, 거래처 명절 선물까지 인원과 예산에 맞춰 골라 드려요. 와인잔 대여, 와인 강의·시음회.'),
  'gathering': dict(path='gathering/', title='모임·행사 와인 견적 · 땡큐와인', desc='송년회, 동호회, 회사 모임 와인. 인원과 예산에 맞춘 구성, 와인잔 대여와 배송·수거까지. 가입 없이 견적을 요청하세요.'),
  'gift':      dict(path='gift/',      title='기업·명절 선물 와인 · 땡큐와인', desc='거래처 명절 선물, 임직원 선물, 감사 인사 한 병. 보르도 5대 샤토부터 데일리 와인까지 예산에 맞춰 고르고 세금계산서를 발행해 드려요.'),
- 'wines':     dict(path='wines/',     title='와인 목록 · 땡큐와인이 소개하고 판매한 와인 찾기', desc='땡큐와인에서 지금 만날 수 있는 와인과 지금까지 소개·판매한 와인 목록. 이름·나라·스타일로 찾고, 가격은 카카오톡으로 1:1 문의하세요.'),
+ 'wines':     dict(path='wines/',     title='와인 목록 · 땡큐와인이 소개하고 판매한 와인 찾기', desc='땡큐와인에서 지금 만날 수 있는 와인과 지금까지 소개·판매한 와인 목록. 이름·나라·스타일로 찾고, 와인별 가격도 확인하세요.'),
  'shop':      dict(path='shop/',      title='매장 안내 · 땡큐와인', desc='서울 성동구 성덕정길 109 2층. 매장 픽업, 멤버 시음회·모임 안내.'),
  'about':     dict(path='about/',     title='소개 · 땡큐와인과 와인 컨설턴트 이도하', desc='땡큐와인은 모임·행사·기업 선물 와인부터 와인 강의·시음회까지 맡는 성수동의 와인 토탈 서비스예요. 운영하는 와인 컨설턴트 이도하 소개.'),
  'blog':      dict(path='blog/',      title='블로그 · 땡큐와인', desc='땡큐와인이 네이버 블로그에 올린 와인 소개·와인 이야기·모임·선물 글을 사이트에서 그대로 읽어요. 글마다 한 줄 요약부터.'),
@@ -202,7 +202,7 @@ def footer(rel):
   <div class="wrap">
     <p class="fname"><span class="logo">{HEART_SVG}{WORDMARK}</span></p>
     <p class="warn">지나친 음주는 뇌졸중, 기억력 손상이나 치매를 유발합니다. 임신 중 음주는 기형아 출생 위험을 높입니다.</p>
-    <p>땡큐와인은 만 19세 이상만 이용할 수 있어요. 가격은 사이트에 적지 않고 카카오톡으로 1:1 안내해 드려요.</p>
+    <p>땡큐와인은 만 19세 이상만 이용할 수 있어요. 와인 가격은 와인 목록에 적힌 것 말고는 카카오톡으로 1:1 안내해 드려요.</p>
     <p>상호 {SITE['owner']} · 대표 {SITE['ceo']} · 사업자등록번호 {SITE['regno']} · 통신판매업 신고번호 {SITE['mailorder']}<br>{SITE['address']} · {PHONE} · {SITE['email']}</p>
     <p class="frow"><a href="{rel}gathering/">모임·행사 와인</a><a href="{rel}gift/">기업·명절 선물</a><a href="{rel}wines/">와인 목록</a><a href="{rel}shop/">매장 안내</a><a href="{rel}occasions/">상황별 와인 고르기</a><a href="{rel}faq/">자주 묻는 질문</a><a href="{rel}privacy/">개인정보처리방침</a><a href="{SITE['blog']}" target="_blank" rel="noopener">블로그</a><a href="{SITE['insta']}" target="_blank" rel="noopener">인스타그램</a><a href="{SITE['corkmatch']}" target="_blank" rel="noopener">코르크매치</a></p>
     <p>© <span class="year">2026</span> 땡큐와인</p>
@@ -216,7 +216,7 @@ def footer(rel):
 
 FAQ_ALL=[
  ('블로그에 소개한 와인을 사고 싶은데 어디서 살 수 있나요?','서울 성수동 땡큐와인 매장(성동구 성덕정길 109 2층)에서 살 수 있어요. 블로그에 소개한 와인은 대부분 매장에 있거나 주문할 수 있으니, 카카오톡으로 와인 이름을 보내 주시면 입고 상황과 가격을 바로 알려 드려요. 매장에서 바로 가져가시거나 미리 주문해 두실 수 있어요.'),
- ('가격은 왜 사이트에 없나요?','수입사 행사와 입고 시기에 따라 가격이 자주 바뀌어서예요. 그래서 사이트에는 가격을 적지 않고, 카카오톡으로 1:1 안내해 드려요. 어떤 자리인지, 무엇과 드실지, 편한 가격대만 알려 주시면 맞는 와인을 골라 가격과 함께 보내 드릴게요.'),
+ ('와인 가격은 어디서 보나요?','최근 수입사에서 받은 가격이 확실한 와인은 와인 목록과 와인별 페이지에 가격을 적어 두었어요. 나머지는 수입사 행사와 입고 시기에 따라 자주 바뀌어서 카카오톡으로 1:1 안내해 드려요. 어떤 자리인지, 무엇과 드실지, 편한 가격대만 알려 주시면 맞는 와인을 골라 가격과 함께 보내 드릴게요.'),
  ('모임 와인은 몇 병을 준비하면 될까요?','한 병(750ml)은 보통 5~6잔이 나와요. 식사 중심으로 건배와 한두 잔이면 2~3명에 1병, 식사와 대화가 길어지는 자리면 2명에 1병, 와인이 주인공인 모임이면 1명에 1병을 추천해요. 인원만 알려 주시면 1인 1병과 2인 1병 두 가지로 나란히 견적을 드려요.'),
  ('와인잔도 빌릴 수 있나요?','네. 인원만큼 와인잔을 준비해 드리고 행사가 끝나면 수거해요. 잔 포함과 잔 미포함으로 견적을 따로 드리니 비교해 보고 정하시면 돼요. 배송과 수거 방법은 견적 때 함께 안내드려요.'),
  ('세금계산서가 발행되나요?','네. 사업자(회사·단체·개인사업자)라면 세금계산서를 발행해 드려요. 사업자등록번호를 알려 주시면 되고, 결제는 계좌이체가 기본이에요. 개인 구매는 요청하시면 현금영수증을 발행해 드려요.'),
@@ -337,7 +337,7 @@ def page_index(rel):
     <div class="head">
       <span class="kicker">가격</span>
       <h2>예산을 말씀해 주시면<br>그 안에서 가장 좋은 구성을 찾아요</h2>
-      <p>수입사 행사와 입고 시기에 따라 가격이 자주 바뀌어요. 그래서 사이트에는 가격을 적지 않고, 1:1 카카오톡으로 안내드려요.</p>
+      <p>가격이 확실한 와인은 <a href="{rel}wines/">와인 목록</a>에 적어 두었어요. 나머지는 수입사 행사와 입고 시기에 따라 자주 바뀌어서 1:1 카카오톡으로 안내드려요.</p>
     </div>
     <dl class="ranges">
       <div><dt>데일리</dt><dd><b>여러 병 쓰는 모임</b><span>집에서 편하게, 모임에서 여러 병 쓰기 좋은 와인</span></dd></div>
@@ -672,7 +672,7 @@ def page_about(rel):
     <ul class="checks">
       <li>모임·행사 와인 구성과 견적, 와인잔 대여, 행사장 배송·수거</li>
       <li>기업·명절 선물 와인 구성과 제안</li>
-      <li>매장 구매와 미리 주문(성동구 성덕정길 109 2층), 가격은 카카오톡 1:1 안내</li>
+      <li>매장 구매와 미리 주문(성동구 성덕정길 109 2층), 와인 목록에 없는 가격은 카카오톡 1:1 안내</li>
       <li>와인 매너·와인 인문학 강의, 시음회 진행</li>
       <li>멤버 시음회·모임(10만원 이상 구매하시면 멤버)</li>
       <li><span>와인 수입사 <b>선샤인와인</b>, 와인 강사·인플루언서 매칭 <a class="textlink" href="{SITE['corkmatch']}" target="_blank" rel="noopener">코르크매치</a>와 함께</span></li>
@@ -1427,10 +1427,61 @@ def wine_card(rel,w):
     pic=(f'<div class="wimg"><img src="{rel}{w["img"]}" alt="{esc(w["ko"])} 바틀" loading="lazy" width="300" height="480"></div>' if w.get('img')
          else f'<div class="wimg none" aria-hidden="true">{HEART_SVG}</div>')
     return (f'<li class="wine" data-style="{esc(w["style"])}" data-country="{esc(w["country"])}" data-now="{1 if w["now"] else 0}"'+(f' data-tags="{esc(w["tags"])}"' if w.get('tags') else '')+(f' data-push="{w["push"]}"' if w.get('push') else '')+f' data-q="{esc(hay)}">'
-            f'{pic}<div class="wbody"><div class="wtop"><span class="wstyle">{esc(w["style"])}</span>{status}</div>'
-            f'<h3>{esc(w["ko"])}</h3>'+(f'<p class="wen" lang="en">{esc(w["en"])}</p>' if w['en'] else '')+
+            f'{pic}<div class="wbody"><div class="wtop"><span class="wstyle">{esc(w["style"])}</span>{status}</div>'+
+            (f'<h3><a href="{rel}{wine_path(w)}">{esc(w["ko"])}</a></h3>' if w.get('price') else f'<h3>{esc(w["ko"])}</h3>')+(f'<p class="wen" lang="en">{esc(w["en"])}</p>' if w['en'] else '')+
             (f'<p class="wmeta">{esc(meta)}</p>' if meta else '')+
-            f'<div class="wacts"><a class="btn line sm" href="#contact" data-contact data-wine="{esc(w["ko"])}">가격 문의</a>{post}</div></div></li>')
+            (f'<p class="wprice"><a href="{rel}{wine_path(w)}">{w["price"]:,}원</a></p>' if w.get('price') else '')+
+            f'<div class="wacts"><a class="btn line sm" href="#contact" data-contact data-wine="{esc(w["ko"])}">{"주문 문의" if w.get("price") else "가격 문의"}</a>{post}</div></div></li>')
+# ── 가격 공개 와인 개별 페이지 (2026-11-24 도하: 1개월 내 받은 단가 + 데일리샷 최저가 비교, 마진 30% 이상만) ──
+def wine_slug(w):
+    base=_re.sub(r'[^a-z0-9]+','-',(w.get('en') or '').lower()).strip('-')
+    if w.get('vintage') and w['vintage'] not in base: base=(base+'-'+w['vintage']).strip('-')
+    return base or 'w'+_hl.md5(w['ko'].encode()).hexdigest()[:8]
+def wine_path(w): return 'wines/'+wine_slug(w)+'/'
+def price_date():
+    fn=os.path.join(HERE,'wines.json')
+    d=json.load(open(fn,encoding='utf-8')).get('price_date')
+    return datetime.date.fromisoformat(d) if d else datetime.date.today()
+def ld_wine(w):
+    url=BASE+'/'+wine_path(w)
+    img=BASE+'/'+w['img'] if w.get('img') else BASE+'/assets/og.png'
+    valid=(price_date()+datetime.timedelta(days=30)).isoformat()
+    prod={"@context":"https://schema.org","@type":"Product","@id":url+'#product',"name":w['ko'],"alternateName":w.get('en') or None,"url":url,"image":[img],"category":"와인",
+          "description":wine_desc(w),"brand":None,
+          "offers":{"@type":"Offer","url":url,"price":w['price'],"priceCurrency":"KRW","priceValidUntil":valid,
+                    "availability":"https://schema.org/InStock" if w['now'] else "https://schema.org/BackOrder","itemCondition":"https://schema.org/NewCondition",
+                    "seller":{"@id":ORG_ID},"availableAtOrFrom":{"@id":ORG_ID},"areaServed":{"@type":"City","name":"서울"}}}
+    prod={k:v for k,v in prod.items() if v is not None}
+    return [prod,ld_breadcrumb([('홈',BASE+'/'),('와인 목록',BASE+'/wines/'),(w['ko'],url)])]
+def wine_desc(w):
+    where=' '.join(x for x in (w['country'],w['region']) if x)
+    bits=[x for x in (where,w.get('grape'),w.get('style')) if x]
+    st='성수동 땡큐와인 매장에 있어요' if w['now'] else '주문하면 받아 드려요'
+    return f"{w['ko']}{' '+w['vintage'] if w.get('vintage') and w['vintage'] not in w['ko'] else ''}" + (f" ({', '.join(bits)})" if bits else '') + f". 땡큐와인 가격 {w['price']:,}원, {st}."
+def page_wine(rel,w):
+    where=' '.join(x for x in (w['country'],w['region']) if x)
+    rows=''.join(f'<tr><th>{k}</th><td>{esc(v)}</td></tr>' for k,v in (('빈티지',w.get('vintage')),('나라·지역',where),('품종',w.get('grape')),('스타일',w.get('style'))) if v)
+    purl=w.get('post') or ''
+    post=(f'<a class="textlink" href="{purl}" target="_blank" rel="noopener">소개 글 →</a>' if purl.startswith('http') else f'<a class="textlink" href="{rel}{purl}">소개 글 →</a>' if purl else '')
+    pic=(f'<div class="wimg big"><img src="{rel}{w["img"]}" alt="{esc(w["ko"])} 바틀" width="300" height="480"></div>' if w.get('img') else f'<div class="wimg big none" aria-hidden="true">{HEART_SVG}</div>')
+    st='<span class="wbadge now">지금 매장에</span>' if w['now'] else '<span class="wbadge order">주문 가능</span>'
+    return f"""
+<section class="sec tight" id="wine">
+  <div class="wrap">
+    <p class="crumb"><a href="{rel}wines/">와인 목록</a> › {esc(w['ko'])}</p>
+    <div class="wdetail">{pic}
+      <div class="wbody">
+        <div class="wtop"><span class="wstyle">{esc(w['style'])}</span>{st}</div>
+        <h1>{esc(w['ko'])}</h1>{f'<p class="wen" lang="en">{esc(w["en"])}</p>' if w.get('en') else ''}
+        <p class="wprice big">{w['price']:,}원</p>
+        <table class="wfacts">{rows}</table>
+        <p>{esc(wine_desc(w))} 매장에서 바로 사거나, 카톡·문자로 이름만 보내 주시면 준비해 둘게요. 6병 이상이면 서울 퀵 배송비가 무료예요.</p>
+        <div class="wacts"><a class="btn sm" href="#contact" data-contact data-wine="{esc(w['ko'])}">주문 문의</a>{post}</div>
+        <p class="note">가격은 {price_date().month}월 {price_date().day}일 기준이에요. 수입사 가격이 바뀌면 달라질 수 있어요.</p>
+      </div>
+    </div>
+  </div>
+</section>"""
 def page_wines(rel):
     W=WINES
     styles=[s for s in STYLE_ORDER if any(w['style']==s for w in W)]
@@ -1444,7 +1495,7 @@ def page_wines(rel):
     <div class="head">
       <span class="kicker">와인 목록</span>
       <h1>땡큐와인이 소개하고 판매한 와인</h1>
-      <p>지금 매장에 있는 와인 {now_n}종, 주문해서 받아 드릴 수 있는 와인 {sum(1 for w in W if w.get('order') and not w['now'])}종, 지금까지 소개하고 판매한 와인까지 모두 {len(W)}종이에요. 가격은 수입사 사정과 입고 시기에 따라 자주 바뀌어서 적지 않았어요. 궁금한 와인은 <b>가격 문의</b>를 눌러 카톡이나 문자로 이름만 보내 주세요. 다 나간 와인도 다시 구해 드릴 수 있는지 알아봐 드려요.</p>
+      <p>지금 매장에 있는 와인 {now_n}종, 주문해서 받아 드릴 수 있는 와인 {sum(1 for w in W if w.get('order') and not w['now'])}종, 지금까지 소개하고 판매한 와인까지 모두 {len(W)}종이에요. 최근 수입사에서 받은 가격이 확실한 와인은 가격을 적어 두었고, 나머지는 입고 시기에 따라 자주 바뀌어서 <b>가격 문의</b>로 남겨 두었어요. 카톡이나 문자로 이름만 보내 주세요. 다 나간 와인도 다시 구해 드릴 수 있는지 알아봐 드려요.</p>
     </div>
     <div class="wpick" id="wpick">
       <h2>뭘 골라야 할지 모르겠다면</h2>
@@ -1492,16 +1543,17 @@ def rfc822(iso):
 def write_extras():
     pages=[(BASE+'/'+p['path'],TODAY.isoformat()) for k,p in PAGES.items() if p['path']!='404.html']
     posts=[(BASE+'/'+p['path'],p['date']) for p in POSTS]
+    posts+=[(BASE+'/'+wine_path(w),price_date().isoformat()) for w in WINES if w.get('price')]
     sm='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'  <url><loc>{u}</loc><lastmod>{d}</lastmod></url>\n' for u,d in pages+posts)+'</urlset>\n'
     write_text(os.path.join(ROOT,'sitemap.xml'),sm)
-    rb='# 땡큐와인 — 검색엔진과 AI 어시스턴트 크롤러 모두 환영해요. 가격은 사이트에 없고 카카오톡으로 1:1 안내해요.\n\nUser-agent: *\nAllow: /\nDisallow: /api/\nDisallow: /tools/\nDisallow: /docs/\n\n'
+    rb='# 땡큐와인 — 검색엔진과 AI 어시스턴트 크롤러 모두 환영해요. 가격이 확실한 와인은 와인 페이지에 적고, 나머지는 카카오톡으로 1:1 안내해요.\n\nUser-agent: *\nAllow: /\nDisallow: /api/\nDisallow: /tools/\nDisallow: /docs/\n\n'
     rb+=''.join(f'User-agent: {b}\nAllow: /\nDisallow: /api/\nDisallow: /tools/\nDisallow: /docs/\n\n' for b in AI_BOTS)
     rb+=f'Sitemap: {BASE}/sitemap.xml\n'
     write_text(os.path.join(ROOT,'robots.txt'),rb)
     key=indexnow_key(); write_text(os.path.join(ROOT,key+'.txt'),key)
     # llms.txt (llmstxt.org 형식)
     L=['# 땡큐와인 (Thank You Wine)','',
-       '> 서울 성수동의 와인 토탈 서비스. 와인 컨설턴트 이도하가 모임·행사 와인과 기업·명절 선물 와인을 인원과 예산에 맞춰 골라 드리고, 와인잔 대여·와인 강의·시음회까지 해 드려요. 와인은 성수동 매장에서 구매하거나 미리 주문할 수 있고, 가격은 사이트에 적지 않고 카카오톡으로 1:1 안내해요.','',
+       '> 서울 성수동의 와인 토탈 서비스. 와인 컨설턴트 이도하가 모임·행사 와인과 기업·명절 선물 와인을 인원과 예산에 맞춰 골라 드리고, 와인잔 대여·와인 강의·시음회까지 해 드려요. 와인은 성수동 매장에서 구매하거나 미리 주문할 수 있고, 가격이 확실한 와인은 와인 목록에 적고, 나머지는 카카오톡으로 1:1 안내해요.','',
        '## 기본 정보','',f"- 주소: {SITE['address']}",f"- 연락: {PHONE} (문자·전화·카카오톡 친구 추가), {SITE['email']}",
        f"- 네이버 블로그: {SITE['blog']}",f"- 인스타그램: {SITE['insta']}",
        '- 운영: 상호 한낮의밤, 대표 이도하(와인 컨설턴트).',
@@ -1525,7 +1577,7 @@ def write_extras():
        '- 오늘 마실 한 병: 성수동 매장에서 어떤 자리인지, 무엇과 드실지 듣고 골라 드림. 매장 픽업.',
        '- 멤버 시음회·모임을 매장에서 진행(15명까지).','',
        '## 병 수 가이드','','한 병(750ml)은 5~6잔. 식사 중심이면 2~3명에 1병, 식사와 대화가 길면 2명에 1병, 와인이 주인공인 모임이면 1명에 1병.','',
-       '## 가격','','사이트에는 가격을 적지 않음. 카카오톡 1:1로 안내하고, 예산을 알려 주면 그 안에서 제안(데일리 / 모임·선물용 호텔 납품 와인 / 샴페인·부르고뉴·나파밸리 / 보르도 5대 샤토·빈티지 샴페인).','',
+       '## 가격','','가격이 확실한 와인은 와인 목록(/wines/)과 와인별 페이지에 원화 가격을 적음. 나머지는 카카오톡 1:1로 안내하고, 예산을 알려 주면 그 안에서 제안(데일리 / 모임·선물용 호텔 납품 와인 / 샴페인·부르고뉴·나파밸리 / 보르도 5대 샤토·빈티지 샴페인).','',
        '## 상황별 와인 고르기','']
     for o in OCCASIONS: F+=['### '+o['q'],'',o['a'],'']+[f'- {k}: {v}' for k,v in o['rows']]+['- 가격: 카카오톡 1:1 안내','']
     F+=['## 자주 묻는 질문','']
@@ -1574,6 +1626,12 @@ def build(preview=False):
         img=next((BASE+'/'+b['web'] for b in p['blocks'] if b.get('web')),None)
         html=head('post',rel,page=page,ld=ld_post(p,p.get('_faq')),og=dict(type='article',image=img,published=p['date'],modified=p['date'],section=p['category'],tags=p['tags']))+header(rel,'blog')+'<main>'+body+'</main>\n'+footer(rel)
         emit(out,html,'post')
+    for w in WINES:
+        if not w.get('price'): continue
+        path=wine_path(w); rel=rel_for(path); out=os.path.join(ROOT,path,'index.html')
+        page=dict(path=path,title=f"{w['ko']} 가격 {w['price']:,}원 · 성수 땡큐와인",desc=short(wine_desc(w),150))
+        html=head('wine',rel,page=page,ld=ld_wine(w),og=dict(image=(BASE+'/'+w['img']) if w.get('img') else None))+header(rel,'wines')+'<main>'+page_wine(rel,w)+'</main>\n'+footer(rel)
+        emit(out,html,'wine')
     print(f'pages {len(PAGES)} + posts {len(POSTS)} → {os.path.relpath(ROOT,SITEDIR) or "(루트)"}/')
     with open(os.path.join(ROOT,'favicon.svg'),'w',encoding='utf-8') as f:
         f.write('<svg xmlns="http://www.w3.org/2000/svg" viewBox="-16 4 182 182"><rect x="-16" y="4" width="182" height="182" rx="40" fill="#fff"/>'+HEART_PATHS+'</svg>')
