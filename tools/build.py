@@ -1442,12 +1442,12 @@ def wine_card(rel,w):
     pic=(f'<div class="wimg"><img src="{rel}{w["img"]}" alt="{esc(w["ko"])} 바틀" loading="lazy" width="300" height="480"></div>' if w.get('img')
          else f'<div class="wimg none" aria-hidden="true">{HEART_SVG}</div>')
     return (f'<li class="wine" data-style="{esc(w["style"])}" data-country="{esc(w["country"])}" data-now="{1 if w["now"] else 0}"'+(f' data-tags="{esc(w["tags"])}"' if w.get('tags') else '')+(f' data-push="{w["push"]}"' if w.get('push') else '')+f' data-q="{esc(hay)}">'
-            f'<div class="wpicwrap">{pic}'+(f'<button class="wsave" type="button" data-save="{wine_key(w["ko"])}" aria-pressed="false" aria-label="찜하기"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2z"/></svg></button>' if MEMBERS_OPEN else '')+'</div>'+f'<div class="wbody"><div class="wtop"><span class="wstyle">{esc(w["style"])}</span>{status}</div>'+
+            f'{pic}<div class="wbody"><div class="wtop"><span class="wstyle">{esc(w["style"])}</span>{status}</div>'+
             (f'<h3><a href="{rel}{wine_path(w)}">{esc(w["ko"])}</a></h3>' if w.get('price') else f'<h3>{esc(w["ko"])}</h3>')+(f'<p class="wen" lang="en">{esc(w["en"])}</p>' if w['en'] else '')+
             (f'<p class="wmeta">{esc(meta)}</p>' if meta else '')+
             (f'<div class="wsocial" data-stats="{wine_key(w["ko"])}" hidden></div>' if MEMBERS_OPEN else '')+
             (price_html(w,link=rel+wine_path(w)) if w.get('price') else '')+
-            f'<div class="wacts"><a class="btn line sm" href="#contact" data-contact data-wine="{esc(w["ko"])}" data-ask="{wine_key(w["ko"])}">{"주문 문의" if w.get("price") else "가격 문의"}</a>{post}</div></div></li>')
+            f'<div class="wacts"><a class="btn line sm" href="#contact" data-contact data-wine="{esc(w["ko"])}" data-ask="{wine_key(w["ko"])}">{"주문 문의" if w.get("price") else "가격 문의"}</a>'+(f'<button class="wsave" type="button" data-save="{wine_key(w["ko"])}" aria-pressed="false" aria-label="찜하기"><svg viewBox="10 8 130 120" aria-hidden="true"><path d="M75 118 C 30 88 14 62 22 38 C 30 14 62 12 75 36 C 88 12 120 14 128 38 C 136 62 120 88 75 118 Z"/></svg><span data-save-label>찜하기</span></button>' if MEMBERS_OPEN else '')+f'{post}</div></div></li>')
 # ── 가격 공개 와인 개별 페이지 (2026-11-24 도하: 1개월 내 받은 단가 + 데일리샷 최저가 비교, 마진 30% 이상만) ──
 def wine_slug(w):
     import unicodedata
@@ -1505,7 +1505,7 @@ def page_wine(rel,w):
         {price_html(w,cls='wprice big')}
         <table class="wfacts">{rows}</table>
         <p>{esc(wine_desc(w))} 매장에서 바로 사거나, 카톡·문자로 이름만 보내 주시면 준비해 둘게요. 6병 이상이면 서울 퀵 배송비가 무료예요.</p>
-        <div class="wacts"><a class="btn sm" href="#contact" data-contact data-wine="{esc(w['ko'])}" data-ask="{wine_key(w['ko'])}">주문 문의</a>{(f'<button class="wsave inline" type="button" data-save="{wine_key(w["ko"])}" aria-pressed="false" aria-label="찜하기"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2z"/></svg><span data-save-label>찜하기</span></button>' if MEMBERS_OPEN else '')}{post}</div>
+        <div class="wacts"><a class="btn sm" href="#contact" data-contact data-wine="{esc(w['ko'])}" data-ask="{wine_key(w['ko'])}">주문 문의</a>{(f'<button class="wsave" type="button" data-save="{wine_key(w["ko"])}" aria-pressed="false" aria-label="찜하기"><svg viewBox="10 8 130 120" aria-hidden="true"><path d="M75 118 C 30 88 14 62 22 38 C 30 14 62 12 75 36 C 88 12 120 14 128 38 C 136 62 120 88 75 118 Z"/></svg><span data-save-label>찜하기</span></button>' if MEMBERS_OPEN else '')}{post}</div>
         <p class="savenote" data-save-note hidden></p>
         <p class="note">가격은 {price_date().month}월 {price_date().day}일 기준이에요. 수입사 가격이 바뀌면 달라질 수 있어요.</p>
       </div>

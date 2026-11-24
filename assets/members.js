@@ -310,7 +310,7 @@
 
   /* ---------- 찜하기 · 평균 별점 · '많이 찜한/문의 많은 와인' (와인 목록·와인 페이지·내 와인) ---------- */
   const LOCAL_SAVES='ty-saves', NOTE_OFF='ty-save-note-off';
-  const HEART='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2z"/></svg>';
+  const HEART='<svg viewBox="10 8 130 120" aria-hidden="true"><path d="M75 118 C 30 88 14 62 22 38 C 30 14 62 12 75 36 C 88 12 120 14 128 38 C 136 62 120 88 75 118 Z"/></svg>';
   let SAVED=new Set(store.get(LOCAL_SAVES)||[]), serverSaves=false;
   const hasSocial=()=>$('[data-save]')||$('[data-stats]')||$('[data-me-saved]');
   function paintSaves(){
@@ -321,7 +321,7 @@
   function saveNote(){
     const n=$('[data-save-note]'); if(!n) return;
     if(user||store.get(NOTE_OFF)||!SAVED.size){n.hidden=true;return}
-    n.innerHTML=`<b>이 기기에만 저장돼 있어요.</b> <a class="textlink" href="${REL}login/?next=${encodeURIComponent(location.pathname)}">로그인</a>하면 휴대폰·컴퓨터 어디서든 찜한 와인을 모아 볼 수 있어요. <button type="button" class="noteclose" aria-label="닫기">×</button>`;
+    n.innerHTML=`찜한 와인은 지금 이 기기에만 남아 있어요. <a class="textlink" href="${REL}login/?next=${encodeURIComponent(location.pathname)}">로그인</a>하면 휴대폰·컴퓨터 어디서든 찜한 와인을 모아 볼 수 있어요. <button type="button" class="noteclose" aria-label="닫기">×</button>`;
     n.hidden=false; $('.noteclose',n).onclick=()=>{store.set(NOTE_OFF,1);n.hidden=true};
   }
   async function loadServerSaves(){
@@ -354,16 +354,15 @@
     client.rpc('ty_ask',{k}).then(()=>{},()=>{});
   },true);
   /* 평균 별점·배지 */
-  const starRow=v=>{let h='';for(let i=1;i<=5;i++){const f=Math.max(0,Math.min(1,v-i+1));h+=`<span class="s5" style="--f:${Math.round(f*100)}%"></span>`}return h};
-  async function paintStats(){
+    async function paintStats(){
     const slots=$$('[data-stats]'); if(!slots.length||!client) return;
     const {data,error}=await client.rpc('ty_wine_stats'); if(error||!data) return;
     const top=(f,min)=>new Set(data.filter(r=>r[f]>=min).sort((a,b)=>b[f]-a[f]).slice(0,10).map(r=>r.wine_key));
     const saved=top('saves_n',3), asked=top('asks_n',5), by={}; data.forEach(r=>by[r.wine_key]=r);
     slots.forEach(el=>{const r=by[el.dataset.stats]; if(!r) return;
       let h='';
-      if(r.stars_avg) h+=`<span class="wstars" title="회원 ${r.stars_n}명 평균"><span class="s5row" aria-hidden="true">${starRow(+r.stars_avg)}</span><b>${(+r.stars_avg).toFixed(1)}</b><span class="muted small">(${r.stars_n})</span><span class="sr">회원 ${r.stars_n}명 평균 별점 ${r.stars_avg}점</span></span>`;
-      const bs=[]; if(asked.has(r.wine_key)) bs.push('<span class="hb ask">문의 많은 와인</span>'); if(saved.has(r.wine_key)) bs.push('<span class="hb save">많이 찜한 와인</span>');
+      if(r.stars_avg) h+=`<span class="wrate" title="산 와인에 회원 ${r.stars_n}명이 남긴 평균"><span class="wrk">회원 평점</span><b>${(+r.stars_avg).toFixed(1)}</b><span class="meter" aria-hidden="true"><i style="width:${Math.round(r.stars_avg/5*100)}%"></i></span><span class="wrn">${r.stars_n}명</span></span>`;
+      const bs=[]; if(asked.has(r.wine_key)) bs.push('<span class="hb">문의 많은 와인</span>'); if(saved.has(r.wine_key)) bs.push('<span class="hb">많이 찜한 와인</span>');
       if(bs.length) h+=`<span class="hbs">${bs.join('')}</span>`;
       if(h){el.innerHTML=h;el.hidden=false}});
   }
@@ -373,7 +372,7 @@
     const keys=[...SAVED].filter(k=>WI[k]);
     box.innerHTML=keys.length?keys.map(k=>{const w=WI[k];
       const pic=w.i?`<div class="wimg"><img src="${REL}${esc(w.i)}" alt="" loading="lazy" width="300" height="480"></div>`:`<div class="wimg none" aria-hidden="true">${$('.logo .mark')?$('.logo .mark').outerHTML:''}</div>`;
-      return `<li class="wine mywine"><div class="wpicwrap">${pic}<button class="wsave" type="button" data-save="${esc(k)}" aria-pressed="true" aria-label="찜 해제">${HEART}</button></div><div class="wbody"><div class="wtop"><span class="wstyle">${esc([w.s,w.c].filter(Boolean).join(' · '))}</span></div><h3>${esc(w.k)}</h3><div class="wacts"><a class="btn line sm" href="${REL}wines/?q=${encodeURIComponent(w.k)}">와인 목록에서 보기</a></div></div></li>`}).join('')
+      return `<li class="wine mywine">${pic}<div class="wbody"><div class="wtop"><span class="wstyle">${esc([w.s,w.c].filter(Boolean).join(' · '))}</span></div><h3>${esc(w.k)}</h3><div class="wacts"><a class="btn line sm" href="${REL}wines/?q=${encodeURIComponent(w.k)}">와인 목록에서 보기</a><button class="wsave" type="button" data-save="${esc(k)}" aria-pressed="true" aria-label="찜 해제">${HEART}<span data-save-label>찜했어요</span></button></div></div></li>`}).join('')
       :`<p class="muted">아직 찜한 와인이 없어요. <a class="textlink" href="${REL}wines/">와인 목록</a>에서 하트를 눌러 보세요.</p>`;
   }
   if(hasSocial()){
