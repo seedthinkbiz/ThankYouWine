@@ -527,3 +527,9 @@ dialog.wcard .wclose{position:absolute;top:8px;right:12px;z-index:2;border:0;bac
 .wine.big h3{font-size:1.3rem}
 .wine.big .wacts{margin-top:8px}
 @media (min-width:560px){.wine.big{flex-direction:row;align-items:flex-start}.wine.big .wimg{width:170px;height:272px}}
+
+/* 실제 구매 기록 꼬리표 (11/25) */
+.wbuys{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;margin:6px 0 2px}
+.wbuys.big{margin:10px 0}
+.wbuy{font-size:.84rem;color:var(--muted)}
+.wbuy b{color:var(--wine);font-weight:700}
