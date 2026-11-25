@@ -72,7 +72,8 @@
    "now": true,
    "post": "posts/grand-barossa-cabernet-sauvignon-2020/",
    "tags": "f d M P",
-   "push": 3
+   "push": 3,
+   "rank": 6
   },
   {
    "ko": "네로페르소 아파시멘토",
@@ -145,7 +146,8 @@
    "now": true,
    "post": "posts/n224456701088/",
    "img": "assets/wines/wd9ab2aed.jpg",
-   "tags": "m d MC"
+   "tags": "m d MC",
+   "rank": 15
   },
   {
    "ko": "도멘 그노 뚜헨 소비뇽 블랑",
@@ -159,7 +161,8 @@
    "post": "posts/n224450309131/",
    "img": "assets/wines/wa8abd588.jpg",
    "tags": "l d SC",
-   "push": 1
+   "push": 1,
+   "rank": 16
   },
   {
    "ko": "드 보르톨리 노블 원",
@@ -172,7 +175,8 @@
    "now": true,
    "post": "posts/n224473830226/",
    "img": "assets/wines/w3f7239a0.jpg",
-   "tags": "m s DC G"
+   "tags": "m s DC G",
+   "rank": 27
   },
   {
    "ko": "라 클로즈리 드 말에스까스",
@@ -210,7 +214,8 @@
    "post": "",
    "img": "assets/wines/wdba650d2.jpg",
    "tags": "l d SCK P",
-   "push": 2
+   "push": 2,
+   "rank": 1
   },
   {
    "ko": "라스 쿠아트로 에스타시오네스 템프라니요",
@@ -285,7 +290,8 @@
    "now": true,
    "post": "posts/n224363990732/",
    "tags": "l d SC GP",
-   "push": 2
+   "push": 2,
+   "rank": 14
   },
   {
    "ko": "마운트 피쉬 말버러 소비뇽 블랑",
@@ -308,7 +314,8 @@
    "style": "레드",
    "now": true,
    "post": "",
-   "tags": "f o MK P"
+   "tags": "f o MK P",
+   "rank": 26
   },
   {
    "ko": "메이오미 피노 누아",
@@ -320,7 +327,8 @@
    "style": "레드",
    "now": true,
    "post": "",
-   "tags": "m o MKC"
+   "tags": "m o MKC",
+   "rank": 35
   },
   {
    "ko": "모엣 & 샹동 임페리얼 브뤼",
@@ -335,7 +343,8 @@
    "img": "assets/wines/wa2899b53.jpg",
    "tags": "l d SC GP",
    "price": 61900,
-   "list_price": 95000
+   "list_price": 95000,
+   "rank": 2
   },
   {
    "ko": "모조 모스카토",
@@ -515,7 +524,8 @@
    "now": true,
    "post": "posts/n224204003776/",
    "tags": "f d M G",
-   "push": 2
+   "push": 2,
+   "rank": 12
   },
   {
    "ko": "복 로얄 뀌베",
@@ -554,7 +564,8 @@
    "post": "posts/n224343180730/",
    "img": "assets/wines/w11838321.jpg",
    "tags": "l d SCK",
-   "push": 3
+   "push": 3,
+   "rank": 3
   },
   {
    "ko": "부 샤르무아 피노 누아",
@@ -623,7 +634,8 @@
    "style": "무알콜",
    "now": true,
    "post": "",
-   "tags": "l d MC"
+   "tags": "l d MC",
+   "rank": 37
   },
   {
    "ko": "르 쁘띠 베레 까베르네 소비뇽 (무알콜)",
@@ -693,7 +705,8 @@
    "now": true,
    "post": "",
    "tags": "m d M",
-   "push": 1
+   "push": 1,
+   "rank": 23
   },
   {
    "ko": "샤또 르 종시에 블라이",
@@ -729,7 +742,8 @@
    "now": true,
    "post": "posts/domaine-haut-brande-merlot-2022/",
    "tags": "m d MK",
-   "push": 2
+   "push": 2,
+   "rank": 28
   },
   {
    "ko": "샤또 페이라솔 레드",
@@ -769,7 +783,8 @@
    "post": "posts/n224307400214/",
    "img": "assets/wines/wb8e6ebd2.jpg",
    "tags": "l d SCK P",
-   "push": 2
+   "push": 2,
+   "rank": 7
   },
   {
    "ko": "세라믹 모나스트렐",
@@ -792,7 +807,8 @@
    "style": "레드",
    "now": true,
    "post": "posts/7-deadly-red/",
-   "tags": "f o MK"
+   "tags": "f o MK",
+   "rank": 10
   },
   {
    "ko": "쉐 되브르 그로 망상",
@@ -805,7 +821,8 @@
    "now": true,
    "post": "posts/n224471517380/",
    "img": "assets/wines/wd380947b.jpg",
-   "tags": "l d SCK"
+   "tags": "l d SCK",
+   "rank": 13
   },
   {
    "ko": "쉐 되브르 까베르네 소비뇽",
@@ -829,7 +846,8 @@
    "style": "화이트",
    "now": true,
    "post": "posts/n224126311280/",
-   "tags": "l d SC"
+   "tags": "l d SC",
+   "rank": 24
   },
   {
    "ko": "스타즈 브뤼 유기농 빈티지 까바",
@@ -929,7 +947,8 @@
    "now": true,
    "post": "posts/n224293634932/",
    "img": "assets/wines/wcfcb09ab.jpg",
-   "tags": "f d M G"
+   "tags": "f d M G",
+   "rank": 19
   },
   {
    "ko": "오베하 네그라 까베르네 소비뇽 그란 레세르바",
@@ -942,7 +961,8 @@
    "now": true,
    "post": "posts/n224224809948/",
    "img": "assets/wines/w485ec406.jpg",
-   "tags": "f d M P"
+   "tags": "f d M P",
+   "rank": 39
   },
   {
    "ko": "이그나시오 마린 올드 바인 가르나차",
@@ -956,7 +976,8 @@
    "post": "posts/n224258721975/",
    "img": "assets/wines/w4944de21.jpg",
    "tags": "m d MC",
-   "push": 2
+   "push": 2,
+   "rank": 5
   },
   {
    "ko": "월터 한셀 뀌베 알리스 샤도네이",
@@ -1002,7 +1023,8 @@
    "style": "화이트",
    "now": true,
    "post": "",
-   "tags": "m d SC"
+   "tags": "m d SC",
+   "rank": 38
   },
   {
    "ko": "콜레프리시오 인앤아웃",
@@ -1014,7 +1036,8 @@
    "style": "레드",
    "now": true,
    "post": "posts/n224320071132/",
-   "tags": "m d MKC"
+   "tags": "m d MKC",
+   "rank": 8
   },
   {
    "ko": "잘레오 로사도",
@@ -1040,7 +1063,8 @@
    "now": true,
    "post": "posts/jonathan-seguin-bourgogne-pinot-noir-vv-2024/",
    "img": "assets/wines/w743b7978.jpg",
-   "tags": "l d MSC G"
+   "tags": "l d MSC G",
+   "rank": 21
   },
   {
    "ko": "조나단 세갱 쇼슈아 '끌로 드 샤리에르'",
@@ -1053,7 +1077,8 @@
    "now": true,
    "post": "",
    "img": "assets/wines/w5e5a16a1.jpg",
-   "tags": "l d MSC G"
+   "tags": "l d MSC G",
+   "rank": 36
   },
   {
    "ko": "첸토리 모스카토 디 파비아",
@@ -1068,7 +1093,8 @@
    "img": "assets/wines/w836b918a.jpg",
    "tags": "l s DC",
    "price": 15800,
-   "list_price": 20000
+   "list_price": 20000,
+   "rank": 40
   },
   {
    "ko": "카르페 디엠 배드 보이즈",
@@ -1141,7 +1167,8 @@
    "style": "포트·셰리",
    "now": true,
    "post": "posts/n224136487142/",
-   "tags": "m s DC G"
+   "tags": "m s DC G",
+   "rank": 30
   },
   {
    "ko": "쾰러 루프레히트 칼슈타터 자우마겐 리슬링 카비네트 트로켄",
@@ -1166,7 +1193,8 @@
    "now": true,
    "post": "posts/n224239431820/",
    "img": "assets/wines/wc2dd322f.jpg",
-   "tags": "f d M G"
+   "tags": "f d M G",
+   "rank": 29
   },
   {
    "ko": "크룹 브라더스 '더 프로페서'",
@@ -1203,7 +1231,8 @@
    "now": true,
    "post": "posts/tarapaca-gran-reserva-cabernet-sauvignon-2023/",
    "img": "assets/wines/wad82ffa2.jpg",
-   "tags": "f d M P"
+   "tags": "f d M P",
+   "rank": 34
   },
   {
    "ko": "따론지노 오렌지 와인",
@@ -1291,7 +1320,8 @@
    "style": "화이트",
    "now": true,
    "post": "posts/n224204498337/",
-   "tags": "l o SKC"
+   "tags": "l o SKC",
+   "rank": 9
   },
   {
    "ko": "티키 싱글 빈야드 샤도네이",
@@ -1361,7 +1391,8 @@
    "now": true,
    "post": "posts/n224201381948/",
    "img": "assets/wines/w4d63dc0a.jpg",
-   "tags": "f d M"
+   "tags": "f d M",
+   "rank": 22
   },
   {
    "ko": "페어히즈 앵커 리제르바",
@@ -1376,7 +1407,8 @@
    "img": "assets/wines/wdea0be5d.jpg",
    "tags": "f d M",
    "price": 39000,
-   "list_price": 52000
+   "list_price": 52000,
+   "rank": 11
   },
   {
    "ko": "폰 비닝 윈윈 리슬링",
@@ -1437,7 +1469,8 @@
    "style": "스위트",
    "now": true,
    "post": "posts/n224453586665/",
-   "tags": "m s DC G"
+   "tags": "m s DC G",
+   "rank": 33
   },
   {
    "ko": "프로두토리 델 바르바레스코",
@@ -1487,7 +1520,8 @@
    "post": "posts/pierre-armand-macon-villages-2024/",
    "img": "assets/wines/wf5d8e658.jpg",
    "tags": "m d SC",
-   "push": 1
+   "push": 1,
+   "rank": 32
   },
   {
    "ko": "하셀그로브 '디 올드 넛' (500ml)",
@@ -1639,7 +1673,8 @@
    "now": true,
    "post": "posts/n224204475836/",
    "img": "assets/wines/w98975940.jpg",
-   "tags": "l d SKC"
+   "tags": "l d SKC",
+   "rank": 4
   },
   {
    "ko": "나헤 리슬링 파인헤르브",
@@ -1990,7 +2025,8 @@
    "now": true,
    "post": "posts/n224200136834/",
    "img": "assets/wines/w53430663.jpg",
-   "tags": "l d SC"
+   "tags": "l d SC",
+   "rank": 25
   },
   {
    "ko": "쿠수마노 샤도네이",
@@ -2054,7 +2090,8 @@
    "now": true,
    "post": "posts/kim-crawford-sauvignon-blanc/",
    "img": "assets/wines/w9b21ad0a.jpg",
-   "tags": "l d SKC P"
+   "tags": "l d SKC P",
+   "rank": 31
   },
   {
    "ko": "케이머스 나파 밸리 까베르네 소비뇽",
@@ -2079,7 +2116,8 @@
    "now": true,
    "post": "posts/n224450325523/",
    "img": "assets/wines/w1d3e05b4.jpg",
-   "tags": "m s DCK G"
+   "tags": "m s DCK G",
+   "rank": 18
   },
   {
    "ko": "토타라 말버러 소비뇽 블랑",
@@ -2211,7 +2249,8 @@
    "style": "화이트",
    "now": true,
    "post": "posts/n224125902539/",
-   "tags": "l d SKC"
+   "tags": "l d SKC",
+   "rank": 20
   },
   {
    "ko": "앙리 르블랑 블랑 드 블랑",
@@ -2238,7 +2277,8 @@
    "tags": "f d M G",
    "push": 3,
    "price": 299000,
-   "list_price": 399000
+   "list_price": 399000,
+   "rank": 17
   },
   {
    "ko": "인도미타 그란 레세르바 까베르네 소비뇽",
