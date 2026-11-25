@@ -163,7 +163,7 @@
 
     async function loadWines(){
       // 관리자도 자기 구매만 보이게 연결된 장부 id로 꼭 거릅니다
-      const {data:link}=await client.from('ty_links').select('ref,linked_at').eq('user_id',user.id).maybeSingle();
+      const {data:link}=await client.from('ty_links').select('ref,linked_at,since').eq('user_id',user.id).maybeSingle();
       const [{data:rows},{data:revs}]=await Promise.all([
         link?client.from('ty_purchases').select('id,date,wine_key,wine,qty').eq('ref',link.ref).order('date',{ascending:false}).limit(2000):Promise.resolve({data:[]}),
         client.from('ty_reviews').select('wine_key,stars,note,updated_at').eq('user_id',user.id)]);
@@ -173,9 +173,11 @@
       WINES=group(rows||[]);
       wait.hidden=!!link; box.hidden=!link;
       $('[data-me-wait-msg]',mp).textContent=profile&&profile.phone
-        ?`${fmtPhone(profile.phone)} 번호로 매장 구매 기록을 찾아 연결해 드릴게요. 보통 하루 안에 연결되고, 연결되면 산 와인이 여기에 모여요.`
+        ?`${fmtPhone(profile.phone)} 번호로 매장 구매 기록을 찾고 있어요. 확인을 마치면 보통 하루 안에 산 와인이 여기에 모이고, 기록이 없으면 다음 구매부터 쌓여요.`
         :'휴대폰 번호를 남겨 주시면 매장에서 산 와인을 찾아 연결해 드려요.';
-      if(link){ if(!WINES.length) list.innerHTML='<p class="muted">연결됐어요. 아직 기록된 구매가 없어요.</p>'; else paint(); }
+      if(link){ if(!WINES.length) list.innerHTML=link.since
+          ?`<p class="muted">${fmtD(link.since)} 가입하셨어요. 이제부터 매장에서 사시는 와인이 여기에 차곡차곡 쌓여요.</p>`
+          :'<p class="muted">연결됐어요. 아직 기록된 구매가 없어요.</p>'; else paint(); }
     }
     const ppBox=$('[data-me-prepaid]',mp);
     const won=n=>Math.abs(n).toLocaleString('ko-KR')+'원';
@@ -232,20 +234,44 @@
     const fileIn=$('[data-admin-file]',ap), fileMsg=$('[data-admin-file-msg]',ap);
     let LEDGER=null, PROFILES=[], LINKS=[];
     const custOf=ref=>LEDGER&&LEDGER.customers.find(c=>c.ref===ref);
+    const isNew=ref=>/^new-/.test(ref||'');
+    const today=()=>new Date(Date.now()+9*3600e3).toISOString().slice(0,10);
+    const after=(rows,since)=>since?rows.filter(r=>r.date&&r.date>=since):rows;
+    function preview(ref,since){  // 연결하면 손님 '내 와인'에 보일 내용
+      if(!LEDGER||!ref) return '';
+      const ps=after(LEDGER.purchases.filter(p=>p.ref===ref),since), pp=after((LEDGER.prepaid||[]).filter(p=>p.ref===ref),since);
+      const g={}; ps.forEach(p=>{const k=p.key||p.wine; (g[k]=g[k]||{wine:p.wine,n:0,last:''}); g[k].n+=(p.qty||1); if((p.date||'')>g[k].last) g[k].last=p.date||''});
+      const ws=Object.values(g).sort((a,b)=>b.last.localeCompare(a.last));
+      const bal=pp.reduce((a,r)=>a+(r.amount||0),0);
+      return `<details class="aprev" open><summary>손님에게 보일 내용 · 와인 ${ws.length}종${pp.length?` · 선불권 잔액 ${bal.toLocaleString('ko-KR')}원`:''}</summary>`+
+        (ws.length?`<ul>${ws.slice(0,40).map(w=>`<li><span>${esc(w.wine)}</span><span class="muted small">${w.n}병 · ${fmtD(w.last)}</span></li>`).join('')}${ws.length>40?`<li class="muted small">외 ${ws.length-40}종</li>`:''}</ul>`:'<p class="muted small">보일 구매가 없어요.</p>')+`</details>`;
+    }
     function render(){
       const linkedIds=new Set(LINKS.map(l=>l.user_id));
       const waiting=PROFILES.filter(p=>!linkedIds.has(p.id)&&p.agreed_at);
-      const opts=LEDGER?LEDGER.customers.filter(c=>!LINKS.some(l=>l.ref===c.ref)).map(c=>`<option value="${esc(c.ref)}">${esc(c.name)}${c.phone?' · '+esc(c.phone):''}</option>`).join(''):'';
-      pend.innerHTML=waiting.length?waiting.map(p=>{
-        const hit=LEDGER&&p.phone?LEDGER.customers.filter(c=>digits(c.phone)&&digits(c.phone)===digits(p.phone)):[];
-        const sel=hit.length===1?hit[0].ref:'';
-        return `<article class="arow" data-uid="${esc(p.id)}"><div class="ahead2"><b>${esc(p.name||'(이름 없음)')}</b><span class="muted small">${esc(p.phone||'번호 없음')} · ${esc(p.email)} · ${fmtD(p.created_at)} 가입</span></div>
-          ${LEDGER?`<div class="linkrow"><select data-ref aria-label="장부 손님"><option value="">장부 손님 고르기</option>${opts.replace(`value="${esc(sel)}"`,`value="${esc(sel)}" selected`)}</select>
-          <button class="btn wine sm" type="button" data-link>연결</button>${hit.length===1?'<span class="okmark">번호 일치</span>':hit.length>1?'<span class="muted small">같은 번호 손님이 여럿이에요</span>':p.phone?'<span class="muted small">같은 번호 없음</span>':''}</div>`:'<p class="muted small">장부 파일을 열면 같은 번호 손님을 찾아 드려요.</p>'}
-        </article>`}).join(''):'<p class="muted">연결을 기다리는 회원이 없어요.</p>';
+      const taken=new Set(LINKS.filter(l=>!isNew(l.ref)).map(l=>l.ref));
+      const opts=LEDGER?LEDGER.customers.filter(c=>!taken.has(c.ref)).map(c=>`<option value="${esc(c.ref)}">${esc(c.name)}${c.phone?' · '+esc(c.phone):''}</option>`).join(''):'';
+      const hitsOf=p=>LEDGER&&digits(p.phone)?LEDGER.customers.filter(c=>!taken.has(c.ref)&&digits(c.phone)===digits(p.phone)):[];
+      // 신규로 시작한 회원 중 장부에 같은 번호 손님(=가입 뒤 첫 구매)이 생긴 사람
+      const newbuy=LINKS.filter(l=>isNew(l.ref)).map(l=>{const p=PROFILES.find(x=>x.id===l.user_id)||{}, h=hitsOf(p); return {l,p,h}}).filter(x=>x.h.length===1);
+      const card=(p,body)=>`<article class="arow" data-uid="${esc(p.id)}"><div class="ahead2"><b>${esc(p.name||'(이름 없음)')}</b><span class="muted small">${esc(p.phone||'번호 없음')} · ${esc(p.email||'')} · ${fmtD(p.created_at)} 가입</span></div>${body}</article>`;
+      let h='';
+      h+=newbuy.map(({l,p,h:hit})=>card(p,`<div class="linkrow"><span class="okmark">신규 회원 첫 구매</span><span class="muted small">장부 ${esc(hit[0].name)} · ${esc(hit[0].phone)} · ${fmtD(l.since)} 이후 구매만</span></div>${preview(hit[0].ref,l.since)}
+          <div class="linkrow"><input type="hidden" data-ref value="${esc(hit[0].ref)}"><button class="btn wine sm" type="button" data-adopt>확인하고 보여 주기</button></div>`)).join('');
+      h+=waiting.map(p=>{
+        const hit=hitsOf(p), sel=hit.length===1?hit[0].ref:'';
+        if(!LEDGER) return card(p,'<p class="muted small">장부 파일을 열면 같은 번호 손님을 찾아 드려요.</p>');
+        const status=hit.length===1?'<span class="okmark">번호 일치 · 기존 손님</span>':hit.length>1?'<span class="muted small">같은 번호 손님이 여럿이에요. 골라 주세요.</span>':p.phone?'<span class="muted small">장부에 같은 번호 없음 · 신규 손님으로 보여요</span>':'<span class="muted small">번호를 아직 안 남겼어요</span>';
+        return card(p,`<div class="linkrow">${status}</div>${sel?preview(sel):''}
+          <div class="linkrow"><select data-ref aria-label="장부 손님"><option value="">장부 손님 고르기</option>${opts.replace(`value="${esc(sel)}"`,`value="${esc(sel)}" selected`)}</select>
+          <button class="btn wine sm" type="button" data-link>${sel?'확인하고 연결':'연결'}</button>
+          ${!hit.length?'<button class="btn line sm" type="button" data-new>신규로 시작 (다음 구매부터)</button>':''}</div>`)}).join('');
+      pend.innerHTML=h||'<p class="muted">검토할 회원이 없어요.</p>';
       linked.innerHTML=LINKS.length?LINKS.map(l=>{const p=PROFILES.find(x=>x.id===l.user_id)||{}, c=custOf(l.ref);
-        return `<article class="arow" data-uid="${esc(l.user_id)}"><div class="ahead2"><b>${esc(p.name||'')}</b><span class="muted small">${esc(p.phone||'')} → 장부 ${esc(c?c.name:l.ref)} · ${fmtD(l.linked_at)} 연결</span>
+        const to=isNew(l.ref)?`신규 · ${fmtD(l.since)}부터 쌓는 중(아직 구매 없음)`:`장부 ${esc(c?c.name:l.ref)}${l.since?` · ${fmtD(l.since)} 이후 구매만`:''}`;
+        return `<article class="arow" data-uid="${esc(l.user_id)}"><div class="ahead2"><b>${esc(p.name||'')}</b><span class="muted small">${esc(p.phone||'')} → ${to} · ${fmtD(l.linked_at)} 연결</span>
           <button class="btn line sm" type="button" data-unlink>연결 끊기</button></div></article>`}).join(''):'<p class="muted">연결된 회원이 아직 없어요.</p>';
+      const cnt=$('[data-admin-count]',ap); if(cnt) cnt.textContent=(newbuy.length+waiting.length)?`검토할 회원 ${newbuy.length+waiting.length}명`:'';
     }
     async function load(){
       if(!client||!user){bar.hidden=true;return}
@@ -259,15 +285,16 @@
       else st.textContent=`회원 ${PROFILES.length}명 · 연결 ${LINKS.length}명`;
       bar.hidden=false; render();
     }
-    function rowsFor(ref){ return LEDGER.purchases.filter(p=>p.ref===ref).map(p=>({id:p.id,ref:p.ref,date:p.date||null,wine_key:p.key,wine:String(p.wine).slice(0,120),qty:p.qty||null,updated_at:new Date().toISOString()})) }
-    async function push(ref){  // 이 손님 구매 줄만 올리고, 장부에서 지워진 줄은 서버에서도 지워요
-      const rows=rowsFor(ref);
+    function rowsFor(ref,since){ return after(LEDGER.purchases.filter(p=>p.ref===ref),since).map(p=>({id:p.id,ref:p.ref,date:p.date||null,wine_key:p.key,wine:String(p.wine).slice(0,120),qty:p.qty||null,updated_at:new Date().toISOString()})) }
+    async function push(ref,since){  // 이 손님 구매 줄만 올리고(신규 회원은 가입 이후 것만), 장부에서 지워진 줄은 서버에서도 지워요
+      if(isNew(ref)) return 0;
+      const rows=rowsFor(ref,since);
       if(rows.length){ const {error}=await client.from('ty_purchases').upsert(rows); if(error) throw error; }
       const {data:have}=await client.from('ty_purchases').select('id').eq('ref',ref).limit(5000);
       const keep=new Set(rows.map(r=>r.id)), gone=(have||[]).map(r=>r.id).filter(id=>!keep.has(id));
       if(gone.length){ const {error}=await client.from('ty_purchases').delete().in('id',gone); if(error) throw error; }
       // 선불권(이 손님 것만)
-      const pp=(LEDGER.prepaid||[]).filter(p=>p.ref===ref).map(p=>({id:p.id,ref,date:p.date||null,kind:p.kind,amount:p.amount,label:String(p.label||'').slice(0,120),updated_at:new Date().toISOString()}));
+      const pp=after((LEDGER.prepaid||[]).filter(p=>p.ref===ref),since).map(p=>({id:p.id,ref,date:p.date||null,kind:p.kind,amount:p.amount,label:String(p.label||'').slice(0,120),updated_at:new Date().toISOString()}));
       if(pp.length){ const {error}=await client.from('ty_prepaid').upsert(pp); if(error) throw error; }
       const {data:havePP}=await client.from('ty_prepaid').select('id').eq('ref',ref).limit(2000);
       const keepPP=new Set(pp.map(r=>r.id)), gonePP=(havePP||[]).map(r=>r.id).filter(id=>!keepPP.has(id));
@@ -291,6 +318,20 @@
           const n=await push(ref); st.textContent=`${p.name||''}님 연결, 구매 ${n}줄 반영했어요.`; await load();
         }catch(err){ alert('연결하지 못했어요: '+(err.message||err)); lb.disabled=false; }
         return; }
+      const nb=e.target.closest('[data-new]');
+      if(nb){ const uid=nb.closest('[data-uid]').dataset.uid, p=PROFILES.find(x=>x.id===uid)||{};
+        if(!confirm(`${p.name||''}님은 장부 기록이 없는 신규 손님으로 시작할게요. 오늘(${today()}) 이후 구매부터 쌓여요.`)) return;
+        nb.disabled=true;
+        const {error}=await client.from('ty_links').insert({user_id:uid,ref:'new-'+uid.replace(/-/g,'').slice(0,20),since:today()});
+        if(error){alert('저장하지 못했어요: '+error.message);nb.disabled=false;return}
+        st.textContent=`${p.name||''}님을 신규로 시작했어요. 장부에 같은 번호로 첫 구매가 생기면 여기 '검토할 회원'에 다시 떠요.`; await load(); return; }
+      const ab=e.target.closest('[data-adopt]');
+      if(ab){ const row=ab.closest('[data-uid]'), uid=row.dataset.uid, ref=$('[data-ref]',row).value, l=LINKS.find(x=>x.user_id===uid)||{};
+        ab.disabled=true;
+        try{ const {error}=await client.from('ty_links').update({ref}).eq('user_id',uid); if(error) throw error;
+          const n=await push(ref,l.since); st.textContent=`첫 구매 ${n}줄을 보여 주기 시작했어요.`; await load();
+        }catch(err){ alert('반영하지 못했어요: '+(err.message||err)); ab.disabled=false; }
+        return; }
       const ub=e.target.closest('[data-unlink]');
       if(ub){ const uid=ub.closest('[data-uid]').dataset.uid;
         if(!confirm('연결을 끊으면 이 회원에게 보이던 구매 내역이 서버에서 지워져요(별점·메모는 남아요). 끊을까요?')) return;
@@ -299,8 +340,8 @@
       if(e.target.closest('[data-admin-sync]')){
         if(!LEDGER){alert('먼저 장부 파일을 열어 주세요.');return}
         const b=e.target.closest('[data-admin-sync]'); b.disabled=true; let n=0,miss=0;
-        try{ for(const l of LINKS){ if(!custOf(l.ref)){miss++;continue} n+=await push(l.ref); }
-          st.textContent=`연결된 ${LINKS.length-miss}명 구매 ${n}줄 반영했어요.`+(miss?` (장부 파일에 없는 손님 ${miss}명은 그대로 뒀어요)`:'');
+        try{ for(const l of LINKS){ if(isNew(l.ref)) continue; if(!custOf(l.ref)){miss++;continue} n+=await push(l.ref,l.since); }
+          st.textContent=`연결된 ${LINKS.filter(l=>!isNew(l.ref)).length-miss}명 구매 ${n}줄 반영했어요.`+(miss?` (장부 파일에 없는 손님 ${miss}명은 그대로 뒀어요)`:'');
         }catch(err){ st.textContent='반영하다 멈췄어요: '+(err.message||err); }
         b.disabled=false; return; }
       if(e.target.closest('[data-admin-reload]')) load();
