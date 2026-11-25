@@ -59,5 +59,11 @@
       "destination": "/blog/",
       "permanent": true
     }
-  ]
+  ],
+  "git": {
+    "deploymentEnabled": {
+      "main": true,
+      "claude/*": false
+    }
+  }
 }
