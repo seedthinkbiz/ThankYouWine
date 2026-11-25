@@ -512,3 +512,18 @@ button.textlink{background:none;border:0;padding:0;cursor:pointer;font:inherit;c
 .wlist{color:var(--muted);font-weight:400;font-size:.86em;margin-right:4px}
 .woff{color:#c0392b;margin-right:4px}
 .wbadge.disc{background:#eee;color:#777}
+
+/* 와인 카드 팝업 (11/25) */
+.wname{all:unset;cursor:pointer;font:inherit;color:inherit}
+.wname:hover,.wname:focus-visible{text-decoration:underline;color:var(--wine)}
+.wine .wimg{cursor:zoom-in}
+.wine.mywine .wimg{cursor:default}
+dialog.wcard{width:min(560px,calc(100vw - 24px));position:relative;overflow:auto}
+dialog.wcard .wclose{position:absolute;top:8px;right:12px;z-index:2;border:0;background:none;font-size:1.6rem;line-height:1;cursor:pointer;color:var(--muted)}
+.wine.big{border:0;border-radius:0;padding:28px 22px 22px;flex-direction:column;align-items:center;gap:16px}
+.wine.big .wimg{flex:none;width:180px;height:288px;cursor:default}
+.wine.big .wimg img{max-height:100%;width:auto}
+.wine.big .wbody{width:100%}
+.wine.big h3{font-size:1.3rem}
+.wine.big .wacts{margin-top:8px}
+@media (min-width:560px){.wine.big{flex-direction:row;align-items:flex-start}.wine.big .wimg{width:170px;height:272px}}

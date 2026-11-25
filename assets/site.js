@@ -77,6 +77,38 @@
   }
 
 
+  /* ---------- 와인 카드: 와인 이름·사진을 누르면 크게 보기 (11/25 도하) ---------- */
+  if($('.wine [data-wcard]')||$('#wlist')){
+    const wd=document.createElement('dialog'); wd.className='cd wcard'; wd.setAttribute('aria-label','와인 카드');
+    document.body.appendChild(wd);
+    let src=null;
+    const open=li=>{
+      src=li; const c=li.cloneNode(true); c.hidden=false; c.classList.add('big');
+      $$('[data-wcard]',c).forEach(b=>{const h=document.createElement('span'); h.textContent=b.textContent; b.replaceWith(h);});
+      $$('[id]',c).forEach(x=>x.removeAttribute('id'));
+      if(li.dataset.page){ const a=document.createElement('a'); a.className='textlink'; a.href=li.dataset.page; a.textContent='가격·자세한 정보 보기 →'; const acts=$('.wacts',c); if(acts) acts.append(a); }
+      wd.innerHTML='<button type="button" class="wclose" aria-label="닫기">×</button>'; wd.append(c);
+      try{wd.showModal()}catch(_){wd.setAttribute('open','')}
+    };
+    document.addEventListener('click',e=>{
+      if(wd.contains(e.target)) return;
+      const t=e.target.closest('.wine [data-wcard], .wine .wimg'); if(!t) return;
+      const li=t.closest('.wine'); if(!li||li.classList.contains('mywine')) return;
+      e.preventDefault(); open(li);
+    });
+    wd.addEventListener('click',e=>{
+      if(e.target===wd||e.target.closest('.wclose')){wd.close();return}
+      const ct=e.target.closest('[data-contact]');
+      if(ct){ e.preventDefault(); wd.close();
+        const orig=src&&($('#wlist .wine[data-key="'+src.dataset.key+'"] [data-contact]')||$('[data-contact]',src));
+        if(orig) orig.click(); else { const d=$('#contact'); if(d&&!d.open) d.showModal(); }
+      }
+    });
+    const k0=new URLSearchParams(location.search).get('w');
+    if(k0){ const li=$('#wlist .wine[data-key="'+k0.replace(/[^\w]/g,'')+'"]'); if(li) setTimeout(()=>open(li),50); }
+  }
+
+
   /* ---------- 와인 추천기: 자리·음식·맛 세 가지로 매장 와인 3병 고르기 ---------- */
   const wp=$('#wpick'), wlist=$('#wlist');
   if(wp&&wlist){
