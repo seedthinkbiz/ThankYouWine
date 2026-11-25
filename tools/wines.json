@@ -73,7 +73,8 @@
    "post": "posts/grand-barossa-cabernet-sauvignon-2020/",
    "tags": "f d M P",
    "push": 3,
-   "rank": 6
+   "rank": 6,
+   "img": "assets/wines/w2b1353ce.jpg"
   },
   {
    "ko": "네로페르소 아파시멘토",
@@ -923,7 +924,8 @@
    "style": "레드",
    "now": true,
    "post": "",
-   "tags": "f o MK"
+   "tags": "f o MK",
+   "img": "assets/wines/wdc042716.jpg"
   },
   {
    "ko": "에디찌오네 No.22",
