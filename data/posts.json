@@ -3,6 +3,17 @@
  "note": "사이트에 올린 블로그 글 목록(build.py가 만들어요). 사이트는 이 목록을 HTML에 미리 넣고, /api/posts(네이버 RSS)로 아직 사이트에 없는 새 글만 덧붙여요.",
  "posts": [
   {
+   "logNo": "tw20261126awt",
+   "title": "2026 아시아와인트로피, 이번 대회에서 눈에 띈 와인들 | 조지아 크베브리의 약진, 그리고 메달 받은 한국 와인",
+   "path": "posts/asia-wine-trophy-2026-results/",
+   "url": "https://thankyouwine.com/posts/asia-wine-trophy-2026-results/",
+   "naver": "",
+   "date": "2026-11-26",
+   "category": "와인 소개",
+   "lead": "2026 아시아와인트로피에서 그랑골드를 받은 와인, 줄줄이 메달을 받은 조지아 크베브리 와인, 그리고 메달을 받은 한국 와이너리를 정리했어요. 12월 7일 업계 대상 써밋 안내도 함께 담았어요.",
+   "image": ""
+  },
+  {
    "logNo": "tw20261125party",
    "title": "주최자의 두통을 줄여 드리는 홈파티 와인 6병 | 땡큐와인이 엄선한 A안·B안 리스트",
    "path": "posts/homeparty-6-wine-package/",
