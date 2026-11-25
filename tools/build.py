@@ -788,12 +788,12 @@ def sanitize_text(t,mode=None):
         ln=_re.sub(_MAN+r'\s*원'+_KEEP,man,ln)
         out.append(ln)
     return '\n'.join(out)
-def sanitize_blocks(blocks):
+def sanitize_blocks(blocks,mode=None):
     res=[]
     for b in blocks:
         b=dict(b)
         for k in ('text','caption','alt'):
-            if isinstance(b.get(k),str): b[k]=sanitize_text(b[k])
+            if isinstance(b.get(k),str): b[k]=sanitize_text(b[k],mode)
         if b.get('type') in ('p','quote','h2') and not (b.get('text') or '').strip(): continue   # 택배 문장만 있던 문단은 통째로 제거
         if b.get('type') in ('p','quote') and _OLD_LINES.match(strip_md(b.get('text') or '').strip()): continue   # 옛 꼬리 안내 줄 제거
         res.append(b)
@@ -965,11 +965,14 @@ def load_posts():
         fn=os.path.join(POSTS_RAW,it['logNo']+'.json')
         if not os.path.exists(fn): continue
         d=json.load(open(fn,encoding='utf-8'))
-        title=sanitize_title((d.get('title') or it.get('title') or '').strip())
+        rawtitle=(d.get('title') or it.get('title') or '').strip()
+        m=_find_meta(meta,d['logNo'],rawtitle)
+        # keep_price: 도하가 지시한 글만(예: 패키지 합계 가격, 11/16·11/25 도하) 금액 문장을 남김. 와인별 가격은 원고에 넣지 않음
+        pmode='keep' if m.get('keep_price') else None
+        title=sanitize_text(rawtitle,'keep') if pmode else sanitize_title(rawtitle)
         main,sub=split_title(title)
-        m=_find_meta(meta,d['logNo'],title)
         raw,htags=clean_blocks(d.get('blocks') or [])
-        blocks=sanitize_blocks(raw)
+        blocks=sanitize_blocks(raw,pmode)
         first=_first_sentence(blocks) or f'{main} 소개'
         desc=sanitize_text((d.get('desc') or '').strip())
         if len(desc)<30 or desc.endswith(('...','…')) or any(bw in desc for bw in BAN_TAG): desc=''
@@ -985,12 +988,12 @@ def load_posts():
         ncat=d.get('category') or it.get('category') or ''
         if ncat in NAVER_CATS: ncat=''
         ntags=[t for t in (d.get('tags') or []) if t and not any(bw in t for bw in BAN_TAG)]
-        p=dict(logNo=d['logNo'],naver=d.get('url') or f"{SITE['blog']}/{d['logNo']}",title=main+(' | '+sub if sub else ''),main=main,sub=sub,
+        p=dict(logNo=d['logNo'],naver='' if d.get('native') else (d.get('url') or f"{SITE['blog']}/{d['logNo']}"),title=main+(' | '+sub if sub else ''),main=main,sub=sub,
                date=parse_date(d.get('date') or it.get('date') or d.get('addDate')) or TODAY.isoformat(),
                category=m.get('category') or ncat or guess_category(main,title),
                tags=(ntags or htags)[:12],blocks=blocks,slug=slug,path='posts/'+slug+'/',
                summary=sanitize_text(m.get('summary') or '') or pointsum or desc or first,service=m.get('service') or 'shop',standin=bool(d.get('standin')),words=words)
-        for b in blocks:
+        for b in ([] if pmode else blocks):
             if b['type'] in ('p','quote'):
                 for hit in PRICE_RE.findall(strip_md(b['text'])): WARNINGS.append(f"가격 표현 확인: {p['slug']} → '{hit}'")
         posts.append(p)
@@ -1161,7 +1164,7 @@ def page_post(rel,p):
       <div class="abody">{body}</div>
       {buybox}
       <aside class="acta"><p>{svc[2]}</p><div class="ctas"><a class="btn wine" href="#contact" data-contact>카톡으로 물어보기</a><a class="btn line" href="{rel}{svc[1]}">{svc[0]}</a></div></aside>
-      <p class="aorig">이 글은 <a href="{p['naver']}" target="_blank" rel="noopener">땡큐와인 네이버 블로그</a>에 먼저 올린 글이에요.</p>
+      {f'<p class="aorig">이 글은 <a href="{p["naver"]}" target="_blank" rel="noopener">땡큐와인 네이버 블로그</a>에 먼저 올린 글이에요.</p>' if p['naver'] else ''}
       {f'<div class="tags">{tags}</div>' if tags else ''}
     </article>
   </div>
@@ -1727,7 +1730,7 @@ def write_extras():
     for q,a in FAQ_ALL: F+=['### '+q,'',a,'']
     for q,a in FAQ_GATHERING+FAQ_GIFT: F+=['### '+q,'',a,'']
     for p in POSTS:
-        F+=['','---','',f"# {p['title']}",'',f"- 주소: {BASE}/{p['path']}",f"- 날짜: {p['date']} · 분류: {p['category']} · 글쓴이: 이도하(와인 컨설턴트)",f"- 네이버 원문: {p['naver']}"]+([f"- 구매처: 서울 성수동 땡큐와인 매장(성덕정길 109 2층) 구매·카톡 주문, 가격은 카톡 1:1 안내"] if buyable(p) else [])+['',f"**한 줄 요약:** {p['summary']}",'',blocks_markdown(p),'']
+        F+=['','---','',f"# {p['title']}",'',f"- 주소: {BASE}/{p['path']}",f"- 날짜: {p['date']} · 분류: {p['category']} · 글쓴이: 이도하(와인 컨설턴트)",]+([f"- 네이버 원문: {p['naver']}"] if p['naver'] else [])+([f"- 구매처: 서울 성수동 땡큐와인 매장(성덕정길 109 2층) 구매·카톡 주문, 가격은 카톡 1:1 안내"] if buyable(p) else [])+['',f"**한 줄 요약:** {p['summary']}",'',blocks_markdown(p),'']
     write_text(os.path.join(ROOT,'llms-full.txt'),'\n'.join(F))
     items=''.join(f'  <item>\n    <title>{esc(p["title"])}</title>\n    <link>{BASE}/{p["path"]}</link>\n    <guid isPermaLink="true">{BASE}/{p["path"]}</guid>\n    <pubDate>{rfc822(p["date"])}</pubDate>\n    <category>{esc(p["category"])}</category>\n    <description>{esc(p["summary"])}</description>\n  </item>\n' for p in POSTS)
     feed=f'<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n<channel>\n  <title>땡큐와인 블로그</title>\n  <link>{BASE}/blog/</link>\n  <atom:link href="{BASE}/feed.xml" rel="self" type="application/rss+xml"/>\n  <description>성수동 와인 토탈 서비스 땡큐와인의 와인 소개와 와인 이야기</description>\n  <language>ko-kr</language>\n{items}</channel>\n</rss>\n'
