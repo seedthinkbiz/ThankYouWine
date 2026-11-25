@@ -29,8 +29,8 @@ def make(src,ko,erase=None):
     from PIL import ImageFilter
     bx=(W-b.width)//2; by=H-b.height-20
     m=stamp(max(80,min(int(b.width*0.84),160)))
-    # 병 몸통 아래쪽(병 높이 91% 지점)에 흰 로고+어두운 테두리: 어느 병·라벨 위에서도 보이고 잘라내기 어렵게(도용 방지)
-    x=(W-m.width)//2; y=by+int(b.height*0.91)-m.height//2
+    # 병 몸통 아래쪽(병 높이 96% 지점, 밑동)에 흰 로고+어두운 테두리: 어느 병·라벨 위에서도 보이고 잘라내기 어렵게(도용 방지)
+    x=(W-m.width)//2; y=by+int(b.height*0.958)-m.height//2
     edge=m.filter(ImageFilter.MaxFilter(3)).filter(ImageFilter.GaussianBlur(0.8)).point(lambda v:int(v*0.7))
     out.paste((25,25,25),(x,y),edge)
     out.paste((255,255,255),(x,y),m)
