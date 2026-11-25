@@ -1,0 +1,55 @@
+{
+ "id": "/",
+ "name": "땡큐와인",
+ "short_name": "땡큐와인",
+ "lang": "ko",
+ "description": "성수동 와인 토탈 서비스 땡큐와인. 특가와 새로 들어온 와인 소식을 알림으로 받아요.",
+ "start_url": "/?source=app",
+ "scope": "/",
+ "display": "standalone",
+ "orientation": "portrait",
+ "background_color": "#ffffff",
+ "theme_color": "#ffffff",
+ "icons": [
+  {
+   "src": "/assets/app/icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "/assets/app/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "/assets/app/maskable-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ],
+ "shortcuts": [
+  {
+   "name": "와인 목록",
+   "url": "/wines/?source=app",
+   "icons": [
+    {
+     "src": "/assets/app/icon-192.png",
+     "sizes": "192x192"
+    }
+   ]
+  },
+  {
+   "name": "내 와인",
+   "url": "/me/?source=app",
+   "icons": [
+    {
+     "src": "/assets/app/icon-192.png",
+     "sizes": "192x192"
+    }
+   ]
+  }
+ ]
+}

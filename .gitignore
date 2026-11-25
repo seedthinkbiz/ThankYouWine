@@ -5,3 +5,4 @@ __pycache__/
 .vercel
 build_backup_*.py
 *.zip
+node_modules/

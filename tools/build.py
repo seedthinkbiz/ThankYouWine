@@ -10,7 +10,7 @@ HERE=os.path.dirname(os.path.abspath(__file__))   # tools/
 SITEDIR=os.path.dirname(HERE)                   # 저장소 루트 = 사이트 폴더
 ROOT=SITEDIR
 TODAY=datetime.date(2026,11,3)
-PRIVACY_DATE=datetime.date(2026,11,24)   # 개인정보처리방침 내용을 바꿀 때만 고쳐요(11/24 회원 '내 와인' 추가)
+PRIVACY_DATE=datetime.date(2026,11,26)   # 개인정보처리방침 내용을 바꿀 때만 고쳐요(11/24 회원 '내 와인', 11/26 앱 알림 추가)
 
 # ───────────────── 여기만 고치면 돼요 ─────────────────
 SITE=dict(
@@ -41,7 +41,7 @@ MAP_KAKAO='https://map.kakao.com/?q='+quote(SITE['address'])
 import hashlib as _hl
 def _asset_v():
     h=_hl.md5()
-    for f in ('site.css','site.js'):
+    for f in ('site.css','site.js','app.js'):
         try: h.update(open(os.path.join(SITEDIR,'assets',f),'rb').read())
         except OSError: pass
     return h.hexdigest()[:8]
@@ -73,6 +73,7 @@ PAGES={
  'login':     dict(path='login/',     title='로그인 · 땡큐와인', desc='카카오·구글로 로그인하고 내가 산 와인을 모아 보세요.'),
  'me':        dict(path='me/',        title='내 와인 · 땡큐와인', desc='땡큐와인에서 산 와인을 모아 보고 별점과 한 줄 메모를 남겨요.'),
  'admin':     dict(path='admin/',     title='회원 연결 · 땡큐와인', desc='관리자 전용'),
+ 'app':       dict(path='app/',       title='땡큐와인 앱 받기 · 특가·신규 입고 알림', desc='앱스토어 없이 땡큐와인을 휴대폰 홈 화면에 추가하고, 알림을 켜 두면 특가와 새로 들어온 와인 소식을 먼저 받아요. 무료, 로그인 없이 돼요.'),
  '404':       dict(path='404.html',   title='페이지를 찾을 수 없어요 · 땡큐와인', desc='땡큐와인'),
 }
 
@@ -157,6 +158,12 @@ def head(key, rel, page=None, ld=None, og=None):
 <meta name="theme-color" content="#ffffff">
 {"".join(VERIFY_META)}
 <link rel="icon" href="{rel}favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/assets/app/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="땡큐와인">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="alternate" type="application/rss+xml" title="땡큐와인 블로그" href="{BASE}/feed.xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -215,12 +222,13 @@ def footer(rel):
     <p class="warn">지나친 음주는 뇌졸중, 기억력 손상이나 치매를 유발합니다. 임신 중 음주는 기형아 출생 위험을 높입니다.</p>
     <p>땡큐와인은 만 19세 이상만 이용할 수 있어요. 와인 가격은 와인 목록에 적힌 것 말고는 카카오톡으로 1:1 안내해 드려요.</p>
     <p>상호 {SITE['owner']} · 대표 {SITE['ceo']} · 사업자등록번호 {SITE['regno']} · 통신판매업 신고번호 {SITE['mailorder']}<br>{SITE['address']} · {PHONE} · {SITE['email']}</p>
-    <p class="frow"><a href="{rel}gathering/">모임·행사 와인</a><a href="{rel}gift/">기업·명절 선물</a><a href="{rel}wines/">와인 목록</a><a href="{rel}shop/">매장 안내</a><a href="{rel}occasions/">상황별 와인 고르기</a><a href="{rel}faq/">자주 묻는 질문</a><a href="{rel}privacy/">개인정보처리방침</a><a href="{SITE['blog']}" target="_blank" rel="noopener">블로그</a><a href="{SITE['insta']}" target="_blank" rel="noopener">인스타그램</a><a href="{SITE['corkmatch']}" target="_blank" rel="noopener">코르크매치</a></p>
+    <p class="frow"><a href="{rel}gathering/">모임·행사 와인</a><a href="{rel}gift/">기업·명절 선물</a><a href="{rel}wines/">와인 목록</a><a href="{rel}shop/">매장 안내</a><a href="{rel}occasions/">상황별 와인 고르기</a><a href="{rel}faq/">자주 묻는 질문</a><a href="{rel}app/">앱 받기·알림</a><a href="{rel}privacy/">개인정보처리방침</a><a href="{SITE['blog']}" target="_blank" rel="noopener">블로그</a><a href="{SITE['insta']}" target="_blank" rel="noopener">인스타그램</a><a href="{SITE['corkmatch']}" target="_blank" rel="noopener">코르크매치</a></p>
     <p>© <span class="year">2026</span> 땡큐와인</p>
   </div>
 </footer>
 {contact_dialog()}
 <script src="{rel}assets/site.js?v={ASSET_V}" defer></script>
+<script src="{rel}assets/app.js?v={ASSET_V}" defer></script>
 </body>
 </html>
 '''
@@ -1335,6 +1343,7 @@ def page_privacy(rel):
         <tr><td>기업·명절 선물 문의</td><td>회사·이름, 연락처(휴대폰 번호 또는 이메일), 수량, 예산, 받는 분, 필요한 날, 세금계산서 필요 여부, 요청 내용</td><td>선물 문의 폼 작성 시</td></tr>
         <tr><td>멤버 등록</td><td>이름, 연락처(휴대폰 번호 또는 카카오톡 ID), 구매 내역</td><td>10만원 이상 구매로 멤버 등록 시</td></tr>
         <tr id="member"><td>회원 가입(내 와인)</td><td>이름, 이메일(카카오·구글 계정 정보), 휴대폰 번호, 매장 구매 기록 중 와인 이름·구매 날짜·병 수, 선불권 충전·사용 내역과 잔액(선불권이 있는 경우), 별점·한 줄 메모</td><td>카카오·구글로 가입하고 내 정보를 저장할 때, 관리자가 구매 기록을 연결할 때</td></tr>
+        <tr id="push"><td>앱 알림(선택)</td><td>알림 받을 주소(휴대폰·브라우저가 만든 값), 받을 소식 종류(특가·신규 입고), 수신 동의 일시, 기기 종류(브라우저 정보). 로그인한 상태로 켜면 회원 계정과 함께 저장</td><td>앱 알림을 켤 때</td></tr>
         <tr><td>자동 수집</td><td>접속 IP, 브라우저 정보, 접수 시각</td><td>폼 접수 시 자동 기록</td></tr>
       </tbody>
     </table></div>
@@ -1343,6 +1352,7 @@ def page_privacy(rel):
       <li>견적·문의 확인과 와인 추천, 결과 안내, 연락</li>
       <li>주문 확인, 결제 안내, 세금계산서·현금영수증 발행, 전달</li>
       <li>멤버에게 입고 소식과 시음회·모임 안내 (원하지 않으면 언제든 중단)</li>
+      <li>앱 알림을 켠 이용자에게 특가·신규 입고 소식(광고성 정보) 보내기. 밤 9시부터 아침 8시까지는 보내지 않음</li>
       <li>회원이 산 와인을 모아 보여 주고, 산 와인에 별점·메모를 남기게 함 (구매 가격은 보여 주지 않음)</li>
       <li>부정 이용 방지, 서비스 개선</li>
     </ul>
@@ -1351,6 +1361,7 @@ def page_privacy(rel):
       <li>견적·문의 정보: 상담 종료 후 1년. 이용자가 삭제를 요청하면 즉시 삭제합니다.</li>
       <li>멤버 정보: 탈퇴 또는 삭제 요청 시 즉시 삭제합니다.</li>
       <li>회원(내 와인) 정보: 탈퇴하면 회원 정보·구매 기록 연결·별점·메모를 즉시 삭제합니다. 같은 로그인으로 코르크매치를 쓰지 않으면 로그인 계정도 함께 삭제합니다.</li>
+      <li>앱 알림 정보: 알림을 끄거나 홈 화면 앱을 지워 알림이 더 전달되지 않으면 즉시 삭제합니다.</li>
       <li>계약·결제 기록: 전자상거래 등에서의 소비자보호에 관한 법률에 따라 5년, 세법에 따른 거래 증빙은 5년 보관합니다.</li>
       <li>접속 기록: 통신비밀보호법에 따라 3개월 보관합니다.</li>
     </ul>
@@ -1363,9 +1374,10 @@ def page_privacy(rel):
       <tbody>
         <tr><td>Vercel Inc.</td><td>웹사이트 호스팅, 폼 접수 처리</td><td>미국</td></tr>
         <tr><td>Google LLC</td><td>접수 내용 저장(스프레드시트), 메일 알림</td><td>미국</td></tr>
-        <tr><td>Supabase Inc.</td><td>회원 계정, 내 와인(구매 기록 연결·별점·메모) 저장</td><td>{SUPABASE_REGION}</td></tr>
+        <tr><td>Supabase Inc.</td><td>회원 계정, 내 와인(구매 기록 연결·별점·메모), 앱 알림 받을 주소 저장</td><td>{SUPABASE_REGION}</td></tr>
       </tbody>
     </table></div>
+    <p class="muted small">앱 알림은 이용자 휴대폰·브라우저 회사(구글·애플·모질라 등)의 알림 서버를 거쳐 전달됩니다. 알림 내용 말고 개인정보는 넘기지 않습니다.</p>
     <h2>6. 이용자의 권리</h2>
     <p>이용자는 언제든지 자신의 개인정보를 열람·정정·삭제하거나 처리 정지를 요청할 수 있습니다. 아래 연락처로 요청하시면 영업일 3일 안에 처리하고 결과를 알려 드립니다.</p>
     <h2>7. 개인정보의 파기</h2>
@@ -1694,11 +1706,113 @@ def page_admin(rel):
       <div data-admin-pending></div>
       <h2 style="margin-top:32px">연결된 회원</h2>
       <div data-admin-linked></div>
+      {push_admin_html()}
     </div>
   </div>
 </section>"""
 
-BUILDERS={'login':page_login,'me':page_me,'admin':page_admin,'index':page_index,'wines':page_wines,'gathering':page_gathering,'gift':page_gift,'shop':page_shop,'about':page_about,'blog':page_blog,'faq':page_faq,'occasions':page_occasions,'privacy':page_privacy,'404':page_404}
+# ---------------- 땡큐와인 앱(홈 화면에 추가) · 특가·신규 입고 알림 (2026-11-25 도하) ----------------
+# 앱스토어 없이 사이트를 홈 화면에 설치(PWA)하고, 알림을 켠 손님에게 관리자 화면에서 소식을 보내요.
+# 손님 화면: assets/app.js · 서비스 워커: sw.js · 보내기: api/push.js · 서버 표: docs/supabase-push.sql
+MANIFEST={
+ "id":"/","name":"땡큐와인","short_name":"땡큐와인","lang":"ko",
+ "description":"성수동 와인 토탈 서비스 땡큐와인. 특가와 새로 들어온 와인 소식을 알림으로 받아요.",
+ "start_url":"/?source=app","scope":"/","display":"standalone","orientation":"portrait",
+ "background_color":"#ffffff","theme_color":"#ffffff",
+ "icons":[{"src":"/assets/app/icon-192.png","sizes":"192x192","type":"image/png","purpose":"any"},
+          {"src":"/assets/app/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any"},
+          {"src":"/assets/app/maskable-512.png","sizes":"512x512","type":"image/png","purpose":"maskable"}],
+ "shortcuts":[{"name":"와인 목록","url":"/wines/?source=app","icons":[{"src":"/assets/app/icon-192.png","sizes":"192x192"}]},
+              {"name":"내 와인","url":"/me/?source=app","icons":[{"src":"/assets/app/icon-192.png","sizes":"192x192"}]}],
+}
+APP_FAQ=[('돈이 드나요?', '아니요. 설치도 알림도 무료예요. 앱스토어를 거치지 않아서 휴대폰 용량도 거의 차지하지 않아요.'),
+ ('어떤 정보가 저장되나요?', "휴대폰·브라우저가 만든 '알림 받을 주소'와 고른 소식 종류, 동의한 시각만 저장해요. 이름이나 번호는 받지 않아요."),
+ ('알림이 너무 자주 오면요?', "좋은 소식이 있을 때만 보내요. 이 화면에서 소식 종류를 바꾸거나 '알림 끄기'를 누르면 바로 멈춰요. 휴대폰 설정에서 땡큐와인 알림을 꺼도 돼요."),
+ ('아이폰인데 알림 켜기 버튼이 안 보여요', "아이폰은 Safari에서 '홈 화면에 추가'한 뒤, 홈 화면의 땡큐와인 앱을 열어야 알림을 켤 수 있어요. iOS 16.4 이상에서 돼요.")]
+def page_app(rel):
+    return f"""
+<section class="sec tight">
+  <div class="wrap narrow" data-app-page>
+    <span class="kicker">땡큐와인 앱</span>
+    <h1>홈 화면에 땡큐와인을 두고<br>특가·신규 입고 소식을 먼저 받아 보세요</h1>
+    <p class="lead2">앱스토어에서 받을 필요 없이, 이 사이트를 휴대폰 홈 화면에 추가하면 앱처럼 열려요. 알림을 켜 두면 특가와 새로 들어온 와인 소식을 보내 드려요.</p>
+    <ul class="checks one" style="margin:18px 0 8px">
+      <li>무료예요. 로그인하지 않아도 돼요.</li>
+      <li>특가, 신규 입고 중 받고 싶은 소식만 고를 수 있어요.</li>
+      <li>밤 9시부터 아침 8시까지는 보내지 않아요.</li>
+      <li>언제든 이 화면에서 알림을 끌 수 있어요.</li>
+    </ul>
+
+    <div class="formbox appstep" data-app-install>
+      <h2><span class="stepno">1</span> 홈 화면에 추가하기</h2>
+      <p class="appdone" data-app-installed hidden>이미 홈 화면의 땡큐와인 앱으로 보고 계세요.</p>
+      <div data-app-inapp hidden>
+        <p>카카오톡·인스타그램 같은 앱 안에서 열린 화면에서는 설치와 알림이 안 돼요. 기본 브라우저로 열어 주세요.</p>
+        <div class="ctas"><a class="btn wine" href="#" data-app-open-external>기본 브라우저로 열기</a><button class="btn line" type="button" data-copy-text="https://thankyouwine.com/app/">주소 복사</button></div>
+        <p class="muted small">버튼이 안 되면 오른쪽 위·아래의 ⋮ 또는 공유 버튼에서 'Safari로 열기'·'다른 브라우저로 열기'를 눌러 주세요.</p>
+      </div>
+      <div data-app-prompt hidden>
+        <p>버튼 하나로 홈 화면에 추가돼요.</p>
+        <div class="ctas"><button class="btn wine" type="button" data-app-install-btn>홈 화면에 추가</button></div>
+      </div>
+      <div class="apphow" data-app-how>
+        <details data-how="ios"><summary>아이폰 (Safari)</summary>
+          <ol><li>Safari로 이 화면을 열어요.</li><li>아래쪽 <b>공유 버튼</b>(네모에서 화살표가 위로 나온 모양)을 눌러요.</li><li><b>홈 화면에 추가</b>를 누르고 오른쪽 위 <b>추가</b>.</li><li>홈 화면에 생긴 <b>땡큐와인</b>을 열고 아래 2번에서 알림을 켜요.</li></ol>
+          <p class="muted small">아이폰은 홈 화면에 추가한 땡큐와인 앱에서만 알림을 받을 수 있어요(iOS 16.4 이상).</p></details>
+        <details data-how="android"><summary>갤럭시·안드로이드 (크롬·삼성 인터넷)</summary>
+          <ol><li>크롬 오른쪽 위 <b>⋮</b> 또는 삼성 인터넷 아래쪽 <b>≡</b> 메뉴를 눌러요.</li><li><b>홈 화면에 추가</b>(또는 <b>앱 설치</b>)를 눌러요.</li><li>아래 2번에서 알림을 켜요. 안드로이드는 설치 전에도 알림을 받을 수 있어요.</li></ol></details>
+        <details data-how="pc"><summary>컴퓨터 (크롬·엣지)</summary>
+          <ol><li>주소창 오른쪽의 <b>설치</b> 아이콘(모니터에 화살표)을 눌러요.</li><li>아래 2번에서 알림을 켜요.</li></ol></details>
+      </div>
+    </div>
+
+    <div class="formbox appstep" id="alarm" data-app-push>
+      <h2><span class="stepno">2</span> 알림 켜기</h2>
+      <p class="muted" data-push-unsupported hidden></p>
+      <div data-push-form hidden>
+        <p class="small" style="margin:0 0 8px">받고 싶은 소식을 골라 주세요.</p>
+        <label class="check"><input type="checkbox" data-push-topic value="sale" checked><span><b>특가</b> · 수입사 행사가, 마지막 몇 병 같은 좋은 가격 소식</span></label>
+        <label class="check"><input type="checkbox" data-push-topic value="new" checked><span><b>신규 입고</b> · 새로 들어온 와인 소식</span></label>
+        <p class="muted small" data-push-consent>[선택] 버튼을 누르면 땡큐와인(한낮의밤)의 특가·신규 입고 소식(광고성 정보)을 앱 알림으로 받는 데 동의하는 거예요. 밤 9시~아침 8시엔 보내지 않고, 언제든 끌 수 있어요. <a class="textlink" href="{rel}privacy/#push">개인정보 처리 내용</a></p>
+        <div class="ctas"><button class="btn wine" type="button" data-push-on>동의하고 알림 켜기</button><button class="btn line" type="button" data-push-save hidden>받을 소식 저장</button><button class="btn line" type="button" data-push-off hidden>알림 끄기</button></div>
+        <p class="pushmsg" data-push-msg aria-live="polite"></p>
+      </div>
+    </div>
+
+    <h2 style="margin-top:36px">자주 묻는 질문</h2>
+    {faq_html(APP_FAQ)}
+  </div>
+</section>"""
+def push_wines_json():
+    rows=[]
+    for w in sorted(WINES,key=lambda w:(0 if w.get('price') else 1)):
+        u=('/'+wine_path(w)) if w.get('price') else '/wines/?w='+wine_key(w['ko'])
+        rows.append({'k':w['ko'],'u':u,'i':('/'+w['img']) if w.get('img') else ''})
+    return json.dumps(rows,ensure_ascii=False,separators=(',',':')).replace('</','<\\/')
+def push_admin_html():
+    return f"""<div class="formbox pushadmin" data-push-admin style="margin-top:40px">
+        <h2>3. 앱 알림 보내기 <span class="muted small" data-pa-count></span></h2>
+        <p class="muted small">'땡큐와인 앱'(<a class="textlink" href="/app/" target="_blank" rel="noopener">/app/</a>)에서 알림을 켠 손님에게 보내요. 광고성 소식이라 제목 앞에 '(광고)', 끝에 수신거부 안내가 자동으로 붙고, 밤 9시~아침 8시엔 손님에게 보낼 수 없어요. 먼저 '내 폰으로 먼저 받아 보기'로 확인하세요.</p>
+        <div data-pa-setup hidden><p class="small">알림 서명 키가 아직 없어요. 처음 한 번만 누르면 만들어져요.</p><div class="ctas"><button class="btn wine sm" type="button" data-pa-genkey>알림 기능 처음 켜기</button></div></div>
+        <div data-pa-form hidden>
+          <div class="row"><label>소식 종류<select data-pa-topic><option value="sale">특가</option><option value="new">신규 입고</option></select></label>
+            <label>와인 고르기 (선택)<select data-pa-wine><option value="">고르지 않음 · 와인 목록으로 연결</option></select></label></div>
+          <label>제목 <span class="muted small" data-pa-tlen></span><input data-pa-title maxlength="40" placeholder="예: 모엣 샹동 임페리얼 3L 마지막 1병"></label>
+          <label>내용 <span class="muted small" data-pa-blen></span><textarea data-pa-body maxlength="120" rows="3" placeholder="예: 연말 파티용 대용량, 이번 주까지만 이 가격이에요."></textarea></label>
+          <label>누르면 열릴 주소<input data-pa-url value="/wines/"></label>
+          <p class="small" style="margin:14px 0 6px"><b>손님 폰에 이렇게 보여요</b></p>
+          <div class="pushpreview" data-pa-preview></div>
+          <div class="ctas"><button class="btn line sm" type="button" data-pa-test>내 폰으로 먼저 받아 보기</button><button class="btn wine sm" type="button" data-pa-send>손님에게 보내기</button></div>
+          <p class="small" data-pa-msg aria-live="polite"></p>
+          <p class="muted small">'내 폰으로 먼저 받아 보기'는 관리자 계정으로 로그인한 상태에서 /app/ 에서 알림을 켠 기기와 지금 이 브라우저로만 가요.</p>
+          <h3 style="margin-top:22px">보낸 알림</h3>
+          <ul class="pushlog" data-pa-log></ul>
+        </div>
+        <script type="application/json" id="push-wines">{push_wines_json()}</script>
+        <script src="../assets/push-admin.js?v={ASSET_V}" defer></script>
+      </div>"""
+
+BUILDERS={'app':page_app,'login':page_login,'me':page_me,'admin':page_admin,'index':page_index,'wines':page_wines,'gathering':page_gathering,'gift':page_gift,'shop':page_shop,'about':page_about,'blog':page_blog,'faq':page_faq,'occasions':page_occasions,'privacy':page_privacy,'404':page_404}
 
 PREVIEW=False
 AI_BOTS=['GPTBot','OAI-SearchBot','ChatGPT-User','ClaudeBot','Claude-SearchBot','Claude-User','anthropic-ai','Google-Extended','Googlebot','Bingbot','PerplexityBot','Perplexity-User','Yeti','Applebot','Applebot-Extended','DuckAssistBot','meta-externalagent','Amazonbot','CCBot']
@@ -1810,6 +1924,7 @@ def build(preview=False):
     print(f'pages {len(PAGES)} + posts {len(POSTS)} → {os.path.relpath(ROOT,SITEDIR) or "(루트)"}/')
     with open(os.path.join(ROOT,'favicon.svg'),'w',encoding='utf-8') as f:
         f.write('<svg xmlns="http://www.w3.org/2000/svg" viewBox="-16 4 182 182"><rect x="-16" y="4" width="182" height="182" rx="40" fill="#fff"/>'+HEART_PATHS+'</svg>')
+    write_text(os.path.join(ROOT,'manifest.webmanifest'),json.dumps(MANIFEST,ensure_ascii=False,indent=1)+'\n')
     with open(os.path.join(ROOT,GOOGLE_VERIFY_FILE),'w',encoding='utf-8') as f: f.write('google-site-verification: '+GOOGLE_VERIFY_FILE)
     if not PREVIEW: write_extras()
     for w in WARNINGS: print('!!',w)

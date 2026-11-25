@@ -540,3 +540,29 @@ dialog.wcard .wclose{position:absolute;top:8px;right:12px;z-index:2;border:0;bac
 .wviv b{color:#a8123e}
 .wviv .wvn{color:var(--muted);font-size:.82rem}
 #wlist .wine:not(.big) .wviv{display:none}
+
+/* 땡큐와인 앱 받기·알림 (11/25) */
+.appstep{margin-top:22px;display:grid;gap:12px}
+.appstep h2{margin:0;font-size:1.2rem;display:flex;align-items:center;gap:10px}
+.appstep .ctas{margin:4px 0 0}
+.appstep ol{margin:8px 0 6px;padding-left:1.3em}
+.stepno{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--wine);color:var(--on-wine);font-size:.9rem;flex:none}
+.apphow details{border-top:1px solid var(--line);padding:12px 0}
+.apphow details:last-child{border-bottom:1px solid var(--line)}
+.apphow summary{cursor:pointer;font-weight:700}
+.appdone,.pushmsg.ok{color:var(--wine);font-weight:700}
+.pushmsg{margin:4px 0 0;font-size:.95rem}
+.pushmsg:empty{display:none}
+.appbar{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:40;display:flex;align-items:center;gap:12px;padding:12px 12px 12px 14px;background:var(--bg);border:1px solid var(--line);border-radius:16px;box-shadow:0 10px 30px rgba(26,19,22,.16);max-width:520px;margin:0 auto;font-size:.92rem;line-height:1.45}
+.appbar img{width:40px;height:40px;border-radius:10px;border:1px solid var(--line);flex:none}
+.appbar p{margin:0;flex:1}
+.appbar .btn{flex:none}
+.appbar .x{background:none;border:0;font-size:1.4rem;line-height:1;color:var(--muted);padding:4px 6px;cursor:pointer;flex:none}
+.pushadmin{display:grid;gap:14px}
+.pushadmin h2,.pushadmin h3{margin:0}
+.pushpreview{display:flex;gap:12px;align-items:flex-start;background:#f2f2f4;border-radius:16px;padding:12px 14px;max-width:420px;font-size:.9rem;line-height:1.45}
+.pushpreview img{width:38px;height:38px;border-radius:9px;flex:none}
+.pushpreview b{display:block}
+.pushpreview span{white-space:pre-line;color:#3a3a3c}
+.pushlog{margin:0;padding:0;list-style:none;display:grid;gap:8px;font-size:.9rem}
+.pushlog li{border-top:1px solid var(--line);padding-top:8px}
