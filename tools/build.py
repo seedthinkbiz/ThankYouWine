@@ -1432,7 +1432,7 @@ def load_wines():
     fn=os.path.join(HERE,'wines.json')
     if not os.path.exists(fn): return []
     W=json.load(open(fn,encoding='utf-8'))['wines']
-    W.sort(key=lambda w:(not w['now'],bool(w.get('disc')),not w.get('order'),not w.get('img'),STYLE_ORDER.index(w['style']) if w['style'] in STYLE_ORDER else 99,w['ko']))
+    W.sort(key=lambda w:(not w['now'],w.get('rank') or 9999,bool(w.get('disc')),not w.get('order'),not w.get('img'),STYLE_ORDER.index(w['style']) if w['style'] in STYLE_ORDER else 99,w['ko']))
     return W
 def wine_card(rel,w):
     where=' '.join(x for x in (w['country'],w['region']) if x)
