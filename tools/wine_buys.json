@@ -1,0 +1,45 @@
+{
+ "made": "2026-11-25T00:10",
+ "wines": {
+  "w3bc08f207f": {
+   "again": true,
+   "n": 6
+  },
+  "w59b4cf9e19": {
+   "again": true,
+   "n": 2
+  },
+  "w6435c5aa44": {
+   "again": false,
+   "n": 3
+  },
+  "w907729c01a": {
+   "again": true,
+   "n": 3
+  },
+  "w98975940ac": {
+   "again": true,
+   "n": 1
+  },
+  "wa2899b5377": {
+   "again": true,
+   "n": 2
+  },
+  "wa6d150f35c": {
+   "again": true,
+   "n": 1
+  },
+  "wb8e6ebd2b6": {
+   "again": true,
+   "n": 7
+  },
+  "wc40bb04abf": {
+   "again": true,
+   "n": 1
+  },
+  "wdea0be5deb": {
+   "again": false,
+   "n": 3
+  }
+ }
+}
