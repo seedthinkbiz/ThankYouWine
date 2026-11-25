@@ -17,6 +17,8 @@ def make(src,ko,erase=None):
         im.putalpha(a.point(lambda v:0 if v<200 else 255))
     bg0=Image.new('RGBA',im.size,(255,255,255,255)); bg0.alpha_composite(im); im=bg0.convert('RGB')
     if erase: im.paste((255,255,255),erase)
+    # 거의 흰 배경(연회색 카드 등)은 완전 흰색으로
+    m=im.convert('L').point(lambda v:255 if v>=236 else 0); im.paste((255,255,255),mask=m)
     g=ImageChops.invert(im.convert('L')).point(lambda v:255 if v>18 else 0)
     b=im.crop(g.getbbox())
     s=min(250/b.width,430/b.height); b=b.resize((max(1,int(b.width*s)),int(b.height*s)),Image.LANCZOS)
