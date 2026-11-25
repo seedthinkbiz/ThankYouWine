@@ -6,20 +6,11 @@ from PIL import Image,ImageChops
 HERE=os.path.dirname(os.path.abspath(__file__)); ROOT=os.path.dirname(HERE)
 W,H=300,480
 def stamp(w):
-    """땡큐와인 로고 마스크: 하트 와인잔(꼭 들어감, 도하 11/25) 위 + THANK YOU WINE 아래, 폭 w."""
-    from PIL import ImageFilter
+    """원래 땡큐와인 로고(assets/logo-wide.png, 하트 와인잔+THANK YOU WINE+땡큐와인)의 모양·배치 그대로, 색만 흰색으로(도하 11/25 "색만 바꿔"). 반환 L 마스크."""
     lg=Image.open(os.path.join(ROOT,'assets/logo-wide.png')).convert('L')
-    def mask(box,boost):
-        m=ImageChops.invert(lg.crop(box)).point(lambda v:min(255,v*boost))
-        return m.crop(m.point(lambda v:255 if v>30 else 0).getbbox())
-    heart=mask((110,80,260,260),3)
-    text=mask((290,100,1100,175),3).filter(ImageFilter.MaxFilter(5))
-    tw=w; text=text.resize((tw,max(1,int(text.height*tw/text.width))),Image.LANCZOS)
-    hh=int(w*0.30); heart=heart.resize((max(1,int(heart.width*hh/heart.height)),hh),Image.LANCZOS)
-    gap=max(2,w//40)
-    m=Image.new('L',(w,hh+gap+text.height),0)
-    m.paste(heart,((w-heart.width)//2,0)); m.paste(text,(0,hh+gap))
-    return m
+    m=ImageChops.invert(lg)
+    m=m.crop(m.point(lambda v:255 if v>10 else 0).getbbox()).point(lambda v:min(255,v*2))
+    return m.resize((w,max(1,int(m.height*w/m.width))),Image.LANCZOS)
 def make(src,ko,erase=None):
     im=Image.open(src).convert('RGBA')
     a=im.split()[3]
@@ -37,8 +28,8 @@ def make(src,ko,erase=None):
     # 로고를 병 아래쪽 유리 위에 얹음(흰 글자+옅은 그림자, 밝은 병에서도 보이게)
     from PIL import ImageFilter
     bx=(W-b.width)//2; by=H-b.height-20
-    m=stamp(max(70,min(int(b.width*0.74),140)))
-    # 병 몸통 아래쪽(병 높이 91% 지점)에 흰 로고+어두운 테두리: 어느 병·라벨 위에서도 보이고 잘라내기 어렵게
+    m=stamp(max(80,min(int(b.width*0.84),160)))
+    # 병 몸통 아래쪽(병 높이 91% 지점)에 흰 로고+어두운 테두리: 어느 병·라벨 위에서도 보이고 잘라내기 어렵게(도용 방지)
     x=(W-m.width)//2; y=by+int(b.height*0.91)-m.height//2
     edge=m.filter(ImageFilter.MaxFilter(3)).filter(ImageFilter.GaussianBlur(0.8)).point(lambda v:int(v*0.7))
     out.paste((25,25,25),(x,y),edge)
