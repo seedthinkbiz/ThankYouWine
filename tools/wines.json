@@ -923,12 +923,12 @@
    "push": 1
   },
   {
-   "ko": "아커만 벨 로얄 크레망 드 루아르",
-   "en": "Ackerman Bel Royal Crémant de Loire",
+   "ko": "아케르만 뷸 로얄 크레망 드 루아르",
+   "en": "Ackerman Crémant de Loire Royale Brut",
    "vintage": "",
    "country": "프랑스",
    "region": "루아르",
-   "grape": "",
+   "grape": "슈냉 블랑",
    "style": "스파클링",
    "now": true,
    "post": "posts/n224125862520/",
@@ -1836,15 +1836,15 @@
    "img": "assets/wines/w6f528e9c.jpg"
   },
   {
-   "ko": "베르나르 롱끌라 셀렉션 브뤼",
+   "ko": "버나드 론클라스 셀렉션 브뤼",
    "en": "Bernard Lonclas Sélection Brut",
-   "vintage": "",
+   "vintage": "NV",
    "country": "프랑스",
-   "region": "샹파뉴",
-   "grape": "",
+   "region": "샹파뉴 랭스",
+   "grape": "샤르도네, 피노 뫼니에, 피노 누아",
    "style": "스파클링",
-   "now": false,
-   "post": "",
+   "now": true,
+   "post": "posts/bernard-lonclas-selection-brut/",
    "img": "assets/wines/wb9b935d0.jpg"
   },
   {
