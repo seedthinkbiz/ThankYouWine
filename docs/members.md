@@ -25,7 +25,7 @@
 ## 켜는 순서 (Supabase 는 코르크매치와 같은 프로젝트)
 1. Supabase → SQL Editor 에 `docs/supabase-thankyou.sql` 붙여넣고 Run.
 2. Authentication → URL Configuration → Redirect URLs 에 추가:
-   `https://thankyouwine.vercel.app/**`, 미리보기용 `https://*-doha17.vercel.app/**` (도메인 붙이면 `https://thankyouwine.com/**` 도)
+   `https://thankyouwine.com/**`, `https://thankyouwine.vercel.app/**`, 미리보기용 `https://*-doha17.vercel.app/**`
 3. 카카오·구글 로그인은 코르크매치에서 켠 것을 같이 써요. 꺼져 있으면 버튼 대신 '곧 열려요'가 보여요.
 4. 관리자는 코르크매치 `admins` 표에 있는 계정이에요(같은 계정으로 로그인).
 

@@ -15,7 +15,7 @@ PRIVACY_DATE=datetime.date(2026,11,24)   # 개인정보처리방침 내용을 �
 # ───────────────── 여기만 고치면 돼요 ─────────────────
 SITE=dict(
   name='땡큐와인', en='THANK YOU WINE',
-  base='https://thankyouwine.vercel.app',          # 실제 주소가 정해지면 바꾸기
+  base='https://thankyouwine.com',                   # 11/25 도메인 연결(옛 thankyouwine.vercel.app 은 vercel.json 에서 이 주소로 넘김)
   phone='010-8078-7493',
   email='thankyouwine@gmail.com',
   address='서울 성동구 성덕정길 109 2층',

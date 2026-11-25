@@ -180,4 +180,4 @@ Disallow: /login/
 Disallow: /me/
 Disallow: /admin/
 
-Sitemap: https://thankyouwine.vercel.app/sitemap.xml
+Sitemap: https://thankyouwine.com/sitemap.xml

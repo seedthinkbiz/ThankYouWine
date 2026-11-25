@@ -39,6 +39,17 @@
   ],
   "redirects": [
     {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "thankyouwine.vercel.app"
+        }
+      ],
+      "destination": "https://thankyouwine.com/:path*",
+      "permanent": true
+    },
+    {
       "source": "/posts/:slug(n224240070422|n224100251200|n224240112168)",
       "destination": "/blog/",
       "permanent": true
