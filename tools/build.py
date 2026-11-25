@@ -1466,11 +1466,19 @@ def wine_card(rel,w):
     return (f'<li class="wine" data-key="{wine_key(w["ko"])}"'+(f' data-page="{rel}{wine_path(w)}"' if w.get('price') else '')+f' data-style="{esc(w["style"])}" data-country="{esc(w["country"])}" data-now="{1 if w["now"] else 0}"'+(f' data-tags="{esc(w["tags"])}"' if w.get('tags') else '')+(f' data-push="{w["push"]}"' if w.get('push') else '')+f' data-q="{esc(hay)}">'
             f'{pic}<div class="wbody"><div class="wtop"><span class="wstyle">{esc(w["style"])}</span>{status}</div>'+
             f'<h3><button class="wname" type="button" data-wcard aria-haspopup="dialog">{esc(w["ko"])}</button></h3>'+(f'<p class="wen" lang="en">{esc(w["en"])}</p>' if w['en'] else '')+
-            (f'<p class="wmeta">{esc(meta)}</p>' if meta else '')+buys_html(w)+
+            (f'<p class="wmeta">{esc(meta)}</p>' if meta else '')+viv_html(w)+buys_html(w)+
             (f'<div class="wsocial" data-stats="{wine_key(w["ko"])}" hidden></div>' if MEMBERS_OPEN else '')+
             (price_html(w,link=rel+wine_path(w)) if w.get('price') else '')+
             f'<div class="wacts"><a class="btn line sm" href="#contact" data-contact data-wine="{esc(w["ko"])}" data-ask="{wine_key(w["ko"])}">{"주문 문의" if w.get("price") else "가격 문의"}</a>'+(f'<button class="wsave" type="button" data-save="{wine_key(w["ko"])}" aria-pressed="false" aria-label="찜하기"><svg viewBox="10 8 130 120" aria-hidden="true"><path d="M75 118 C 30 88 14 62 22 38 C 30 14 62 12 75 36 C 88 12 120 14 128 38 C 136 62 120 88 75 118 Z"/></svg><span data-save-label>찜하기</span></button>' if MEMBERS_OPEN else '')+f'{post}</div></div></li>')
 # ── 가격 공개 와인 개별 페이지 (2026-11-24 도하: 1개월 내 받은 단가 + 데일리샷 최저가 비교, 마진 30% 이상만) ──
+def viv_html(w):
+    """Vivino 평점(2026-11-25 도하: 카드 눌러 들어가면 비비노 평점도 보이게). wines.json vivino={r,n,url}."""
+    v=w.get('vivino') or {}
+    if not v.get('r'): return ''
+    n=f' <span class="wvn">({v["n"]:,}명)</span>' if v.get('n') else ''
+    inner=f'<span class="wvl">Vivino</span> <b>★ {v["r"]:.1f}</b>{n}'
+    if v.get('url'): inner=f'<a href="{esc(v["url"])}" target="_blank" rel="noopener nofollow">{inner}</a>'
+    return f'<p class="wviv">{inner}</p>'
 def wine_slug(w):
     import unicodedata
     en=unicodedata.normalize('NFKD',w.get('en') or '').encode('ascii','ignore').decode()
@@ -1523,6 +1531,7 @@ def page_wine(rel,w):
       <div class="wbody">
         <div class="wtop"><span class="wstyle">{esc(w['style'])}</span>{st}</div>
         <h1>{esc(w['ko'])}</h1>{f'<p class="wen" lang="en">{esc(w["en"])}</p>' if w.get('en') else ''}
+        {viv_html(w)}
         {buys_html(w,True)}
         {f'<div class="wsocial big" data-stats="{wine_key(w["ko"])}" hidden></div>' if MEMBERS_OPEN else ''}
         {price_html(w,cls='wprice big')}
