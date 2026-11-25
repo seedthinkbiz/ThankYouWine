@@ -5,8 +5,7 @@
 회원이 아닌 손님(행사 주문, 엑스포 현장 판매 등)도 셉니다. 나오는 파일엔 와인 키와 숫자만 있어요
 (손님 이름·번호·날짜·가격 없음). 그래서 저장소에 넣어도 돼요.
 사이트 표시(2026-11-25 도하):
-  - '손님 N명이 샀어요': 그 와인이 들어간 판매 건수(행사·현장 판매 포함, 한 건 = 한 명) 3건 이상
-  - 아니면 '최근 3개월 N병 팔렸어요': 최근 90일 12병 이상
+  - '최근 3개월간 N병 팔렸어요': 최근 90일 판매 병 수(행사·현장 판매 포함), 1병 이상이면 표시 (도하 11/25: 손님 수 표시는 뺌)
   - '많이 팔린 와인': 최근 90일 판매 병 수 상위 10개(12병 이상) (도하 11/25)
   - '다시 찾는 와인': 같은 손님이 다른 날 또 산 와인
 """
@@ -40,7 +39,7 @@ def main(src):
     out = {}
     for k, v in who.items():
         n = len(sales_of[k]); again = any(len(d) > 1 for d in v.values()); bt = bottles[k]
-        if n >= 3 or recent[k] >= 12 or again:
+        if recent[k] > 0 or again:
             out[k] = {'n': n, 'bottles': bt, 'b90': recent[k], 'again': again}
     fn = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'wine_buys.json')
     json.dump({'made': datetime.date.today().isoformat(), 'wines': out}, open(fn, 'w', encoding='utf-8'), ensure_ascii=False, indent=1, sort_keys=True)
