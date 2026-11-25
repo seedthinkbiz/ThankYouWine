@@ -37,7 +37,19 @@
       ]
     },
     {
-<<<<<<< HEAD
+      "source": "/p/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow, noarchive"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
+      ]
+    },
+    {
       "source": "/sw.js",
       "headers": [
         {
@@ -60,17 +72,6 @@
         {
           "key": "Cache-Control",
           "value": "no-cache"
-=======
-      "source": "/p/(.*)",
-      "headers": [
-        {
-          "key": "X-Robots-Tag",
-          "value": "noindex, nofollow, noarchive"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=3600"
->>>>>>> origin/main
         }
       ]
     }
