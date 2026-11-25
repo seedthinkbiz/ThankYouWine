@@ -74,7 +74,10 @@
    "tags": "f d M P",
    "push": 3,
    "rank": 6,
-   "img": "assets/wines/w2b1353ce.jpg"
+   "img": "assets/wines/w2b1353ce.jpg",
+   "vivino": {
+    "r": 3.9
+   }
   },
   {
    "ko": "네로페르소 아파시멘토",
@@ -293,7 +296,10 @@
    "tags": "l d SC GP",
    "push": 2,
    "rank": 14,
-   "img": "assets/wines/w6cc62325.jpg"
+   "img": "assets/wines/w6cc62325.jpg",
+   "vivino": {
+    "r": 4.2
+   }
   },
   {
    "ko": "마운트 피쉬 말버러 소비뇽 블랑",
@@ -542,7 +548,10 @@
    "tags": "f d M G",
    "push": 2,
    "rank": 12,
-   "img": "assets/wines/wd0e86423.jpg"
+   "img": "assets/wines/wd0e86423.jpg",
+   "vivino": {
+    "r": 4.2
+   }
   },
   {
    "ko": "복 로얄 뀌베",
@@ -867,7 +876,10 @@
    "post": "posts/n224126311280/",
    "tags": "l d SC",
    "rank": 24,
-   "img": "assets/wines/wc97b0a65.jpg"
+   "img": "assets/wines/wc97b0a65.jpg",
+   "vivino": {
+    "r": 4.3
+   }
   },
   {
    "ko": "스타즈 브뤼 유기농 빈티지 까바",
@@ -930,7 +942,10 @@
    "now": true,
    "post": "",
    "tags": "f o MK",
-   "img": "assets/wines/wdc042716.jpg"
+   "img": "assets/wines/wdc042716.jpg",
+   "vivino": {
+    "r": 4.3
+   }
   },
   {
    "ko": "에디찌오네 No.22",
