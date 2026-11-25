@@ -6456,7 +6456,9 @@
    "now": false,
    "post": "",
    "order": true,
-   "img": "assets/wines/w7f1fa95b82.jpg"
+   "img": "assets/wines/w7f1fa95b82.jpg",
+   "price": 29000,
+   "list_price": 44000
   }
  ],
  "price_date": "2026-11-24"
