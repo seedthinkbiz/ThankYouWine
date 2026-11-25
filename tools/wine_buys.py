@@ -1,25 +1,47 @@
-"""장부 구매 기록 → 와인별 '산 손님 수'·'다시 산 손님 있음' (tools/wine_buys.json)
+"""장부 판매 기록 → 와인별 '산 손님 수'·'팔린 병 수'·'다시 산 손님 있음' (tools/wine_buys.json)
 
-  python3 tools/wine_buys.py <ledger_export.py 로 만든 파일.json>
+  python3 tools/wine_buys.py <내려받은 장부 폴더>      (ledger_export.py 와 같은 폴더: members/, sales/)
 
-나오는 파일엔 와인 키와 숫자만 있어요(손님 이름·번호·날짜·가격 없음). 그래서 저장소에 넣어도 돼요.
+회원이 아닌 손님(행사 주문, 엑스포 현장 판매 등)도 셉니다. 나오는 파일엔 와인 키와 숫자만 있어요
+(손님 이름·번호·날짜·가격 없음). 그래서 저장소에 넣어도 돼요.
 사이트 표시(2026-11-25 도하):
-  - '손님 N명이 샀어요': 산 손님이 3명 이상인 와인만
-  - '많이 팔린 와인': 산 손님 3명 이상 중 상위 10개
+  - '손님 N명이 샀어요': 산 손님이 3명 이상
+  - 아니면 '지금까지 N병 팔렸어요': 12병 이상
+  - '많이 팔린 와인': 팔린 병 수 상위 10개(12병 이상)
   - '다시 찾는 와인': 같은 손님이 다른 날 또 산 와인
 """
-import sys, json, os, collections, datetime
-src = sys.argv[1]
-j = json.load(open(src, encoding='utf-8'))
-by = collections.defaultdict(lambda: collections.defaultdict(set))
-for p in j['purchases']:
-    if p.get('ref') and str(p.get('key', '')).startswith('w'):
-        by[p['key']][p['ref']].add(p.get('date') or p['id'])
-out = {}
-for k, v in by.items():
-    n = len(v); again = any(len(d) > 1 for d in v.values())
-    if n >= 3 or again:
-        out[k] = {'n': n, 'again': again}
-fn = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'wine_buys.json')
-json.dump({'made': j.get('made') or datetime.date.today().isoformat(), 'wines': out}, open(fn, 'w', encoding='utf-8'), ensure_ascii=False, indent=1, sort_keys=True)
-print(f'{len(out)}종 → {fn}')
+import sys, os, json, glob, re, collections, datetime
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from ledger_export import SKIP, load_wines, load_alias, match, wine_key
+
+DROP = ('취소', '환불', '견적 발송 대기')
+def buyer(sid, s):
+    if s.get('memberId'): return 'm:' + s['memberId']
+    g = re.split(r'[—(]', s.get('guestName') or '')[0].strip()
+    if not g or '현장' in (s.get('guestName') or '') or '손님' in g: return 's:' + sid   # 이름 없는 손님은 판매마다 다른 사람
+    return 'g:' + re.sub(r'\s+', '', g)
+
+def main(src):
+    W, alias = load_wines(), load_alias()
+    who = collections.defaultdict(lambda: collections.defaultdict(set)); bottles = collections.Counter()
+    for f in glob.glob(os.path.join(src, 'sales', '*.json')):
+        sid = os.path.basename(f)[:-5]; s = json.load(open(f, encoding='utf-8')); s = s.get('data', s)
+        if (s.get('status') or '') in DROP: continue
+        b = buyer(sid, s)
+        for it in s.get('items') or []:
+            raw = it.get('name') or ''; qty = it.get('qty') or 0
+            if not raw or SKIP.search(raw) or qty <= 0: continue
+            ko = match(raw, W, alias)
+            if not ko: continue
+            k = wine_key(ko); who[k][b].add(s.get('date') or sid); bottles[k] += int(qty)
+    out = {}
+    for k, v in who.items():
+        n = len(v); again = any(len(d) > 1 for d in v.values()); bt = bottles[k]
+        if n >= 3 or bt >= 12 or again:
+            out[k] = {'n': n, 'bottles': bt, 'again': again}
+    fn = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'wine_buys.json')
+    json.dump({'made': datetime.date.today().isoformat(), 'wines': out}, open(fn, 'w', encoding='utf-8'), ensure_ascii=False, indent=1, sort_keys=True)
+    print(f'{len(out)}종 → {fn}')
+
+if __name__ == '__main__':
+    main(sys.argv[1])
