@@ -6444,6 +6444,19 @@
    "order": true,
    "price": 79000,
    "list_price": 82500
+  },
+  {
+   "ko": "스코토 패밀리 셀라 샤도네이",
+   "en": "Scotto Family Cellars Chardonnay",
+   "vintage": "2020",
+   "country": "미국",
+   "region": "캘리포니아 로디",
+   "grape": "샤도네이",
+   "style": "화이트",
+   "now": false,
+   "post": "",
+   "order": true,
+   "img": "assets/wines/w7f1fa95b82.jpg"
   }
  ],
  "price_date": "2026-11-24"
