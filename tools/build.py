@@ -1439,7 +1439,7 @@ def load_buys():
     fn=os.path.join(HERE,'wine_buys.json')
     if not os.path.exists(fn): return {}
     d=json.load(open(fn,encoding='utf-8'))['wines']
-    top=sorted((k for k,v in d.items() if v.get('bottles',0)>=12),key=lambda k:-d[k]['bottles'])[:10]
+    top=sorted((k for k,v in d.items() if v['n']>=3),key=lambda k:(-d[k]['n'],-d[k].get('bottles',0)))[:10]
     for k in top: d[k]['top']=True
     return d
 BUYS=load_buys()

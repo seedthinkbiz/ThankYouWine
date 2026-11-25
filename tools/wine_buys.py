@@ -5,9 +5,9 @@
 회원이 아닌 손님(행사 주문, 엑스포 현장 판매 등)도 셉니다. 나오는 파일엔 와인 키와 숫자만 있어요
 (손님 이름·번호·날짜·가격 없음). 그래서 저장소에 넣어도 돼요.
 사이트 표시(2026-11-25 도하):
-  - '손님 N명이 샀어요': 산 손님이 3명 이상
+  - '손님 N명이 샀어요': 그 와인이 들어간 판매 건수(행사·현장 판매 포함, 한 건 = 한 명) 3건 이상
   - 아니면 '지금까지 N병 팔렸어요': 12병 이상
-  - '많이 팔린 와인': 팔린 병 수 상위 10개(12병 이상)
+  - '많이 팔린 와인': 판매 건수 상위 10개(3건 이상, 같으면 병 수 많은 순)
   - '다시 찾는 와인': 같은 손님이 다른 날 또 산 와인
 """
 import sys, os, json, glob, re, collections, datetime
@@ -24,6 +24,7 @@ def buyer(sid, s):
 def main(src):
     W, alias = load_wines(), load_alias()
     who = collections.defaultdict(lambda: collections.defaultdict(set)); bottles = collections.Counter()
+    sales_of = collections.defaultdict(set)   # 도하(11/25): 판매 한 건 = 손님 한 명
     for f in glob.glob(os.path.join(src, 'sales', '*.json')):
         sid = os.path.basename(f)[:-5]; s = json.load(open(f, encoding='utf-8')); s = s.get('data', s)
         if (s.get('status') or '') in DROP: continue
@@ -33,10 +34,10 @@ def main(src):
             if not raw or SKIP.search(raw) or qty <= 0: continue
             ko = match(raw, W, alias)
             if not ko: continue
-            k = wine_key(ko); who[k][b].add(s.get('date') or sid); bottles[k] += int(qty)
+            k = wine_key(ko); who[k][b].add(s.get('date') or sid); bottles[k] += int(qty); sales_of[k].add(sid)
     out = {}
     for k, v in who.items():
-        n = len(v); again = any(len(d) > 1 for d in v.values()); bt = bottles[k]
+        n = len(sales_of[k]); again = any(len(d) > 1 for d in v.values()); bt = bottles[k]
         if n >= 3 or bt >= 12 or again:
             out[k] = {'n': n, 'bottles': bt, 'again': again}
     fn = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'wine_buys.json')
