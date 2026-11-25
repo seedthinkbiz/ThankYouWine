@@ -117,7 +117,7 @@
       const bought=g.times>1?`${fmtD(g.last)} 외 ${g.times-1}번 더 샀어요`:`${fmtD(g.last)}에 샀어요`;
       return `<li class="wine mywine" data-key="${esc(g.key)}">${pic}<div class="wbody">
         ${metaLine?`<div class="wtop"><span class="wstyle">${esc(metaLine)}</span></div>`:''}
-        <h3>${esc(w?w.k:g.wine)}</h3>
+        <h3>${w?`<a href="${REL}wines/?w=${esc(g.key)}">${esc(w.k)}</a>`:esc(g.wine)}</h3>
         <p class="wmeta bought">${esc(bought)}</p>
         ${stars(g.key,+r.stars||0)}
         <label class="memo"><span class="sr">한 줄 메모</span><input type="text" maxlength="100" placeholder="한 줄 메모 (예: 고기랑 최고, 다음엔 두 병)" value="${esc(r.note||'')}" data-note="${esc(g.key)}"></label>
@@ -413,7 +413,7 @@
     const keys=[...SAVED].filter(k=>WI[k]);
     box.innerHTML=keys.length?keys.map(k=>{const w=WI[k];
       const pic=w.i?`<div class="wimg"><img src="${REL}${esc(w.i)}" alt="" loading="lazy" width="300" height="480"></div>`:`<div class="wimg none" aria-hidden="true">${$('.logo .mark')?$('.logo .mark').outerHTML:''}</div>`;
-      return `<li class="wine mywine">${pic}<div class="wbody"><div class="wtop"><span class="wstyle">${esc([w.s,w.c].filter(Boolean).join(' · '))}</span></div><h3>${esc(w.k)}</h3><div class="wacts"><a class="btn line sm" href="${REL}wines/?q=${encodeURIComponent(w.k)}">와인 목록에서 보기</a><button class="wsave" type="button" data-save="${esc(k)}" aria-pressed="true" aria-label="찜 해제">${HEART}<span data-save-label>찜했어요</span></button></div></div></li>`}).join('')
+      return `<li class="wine mywine">${pic}<div class="wbody"><div class="wtop"><span class="wstyle">${esc([w.s,w.c].filter(Boolean).join(' · '))}</span></div><h3><a href="${REL}wines/?w=${esc(k)}">${esc(w.k)}</a></h3><div class="wacts"><a class="btn line sm" href="${REL}wines/?w=${esc(k)}">와인 카드 보기</a><button class="wsave" type="button" data-save="${esc(k)}" aria-pressed="true" aria-label="찜 해제">${HEART}<span data-save-label>찜했어요</span></button></div></div></li>`}).join('')
       :`<p class="muted">아직 찜한 와인이 없어요. <a class="textlink" href="${REL}wines/">와인 목록</a>에서 하트를 눌러 보세요.</p>`;
   }
   if(hasSocial()){

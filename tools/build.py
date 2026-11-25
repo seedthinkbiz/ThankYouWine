@@ -1444,9 +1444,9 @@ def wine_card(rel,w):
           else f'<a class="textlink" href="{rel}{purl}">소개 글 →</a>' if purl else '')
     pic=(f'<div class="wimg"><img src="{rel}{w["img"]}" alt="{esc(w["ko"])} 바틀" loading="lazy" width="300" height="480"></div>' if w.get('img')
          else f'<div class="wimg none" aria-hidden="true">{HEART_SVG}</div>')
-    return (f'<li class="wine" data-style="{esc(w["style"])}" data-country="{esc(w["country"])}" data-now="{1 if w["now"] else 0}"'+(f' data-tags="{esc(w["tags"])}"' if w.get('tags') else '')+(f' data-push="{w["push"]}"' if w.get('push') else '')+f' data-q="{esc(hay)}">'
+    return (f'<li class="wine" data-key="{wine_key(w["ko"])}"'+(f' data-page="{rel}{wine_path(w)}"' if w.get('price') else '')+f' data-style="{esc(w["style"])}" data-country="{esc(w["country"])}" data-now="{1 if w["now"] else 0}"'+(f' data-tags="{esc(w["tags"])}"' if w.get('tags') else '')+(f' data-push="{w["push"]}"' if w.get('push') else '')+f' data-q="{esc(hay)}">'
             f'{pic}<div class="wbody"><div class="wtop"><span class="wstyle">{esc(w["style"])}</span>{status}</div>'+
-            (f'<h3><a href="{rel}{wine_path(w)}">{esc(w["ko"])}</a></h3>' if w.get('price') else f'<h3>{esc(w["ko"])}</h3>')+(f'<p class="wen" lang="en">{esc(w["en"])}</p>' if w['en'] else '')+
+            f'<h3><button class="wname" type="button" data-wcard aria-haspopup="dialog">{esc(w["ko"])}</button></h3>'+(f'<p class="wen" lang="en">{esc(w["en"])}</p>' if w['en'] else '')+
             (f'<p class="wmeta">{esc(meta)}</p>' if meta else '')+
             (f'<div class="wsocial" data-stats="{wine_key(w["ko"])}" hidden></div>' if MEMBERS_OPEN else '')+
             (price_html(w,link=rel+wine_path(w)) if w.get('price') else '')+
