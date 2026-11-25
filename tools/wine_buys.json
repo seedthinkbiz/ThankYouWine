@@ -1,44 +1,134 @@
 {
- "made": "2026-11-25T00:10",
+ "made": "2026-11-25",
  "wines": {
+  "w03f5b0b34f": {
+   "again": false,
+   "bottles": 13,
+   "n": 3
+  },
+  "w2b1353ced5": {
+   "again": true,
+   "bottles": 23,
+   "n": 5
+  },
   "w3bc08f207f": {
    "again": true,
+   "bottles": 10,
    "n": 6
+  },
+  "w4944de212e": {
+   "again": true,
+   "bottles": 19,
+   "n": 2
+  },
+  "w4b2fa9d88f": {
+   "again": false,
+   "bottles": 17,
+   "n": 3
+  },
+  "w4fd5eb0863": {
+   "again": true,
+   "bottles": 22,
+   "n": 2
+  },
+  "w524748cd5b": {
+   "again": false,
+   "bottles": 6,
+   "n": 4
   },
   "w59b4cf9e19": {
    "again": true,
+   "bottles": 13,
    "n": 2
   },
   "w6435c5aa44": {
    "again": false,
+   "bottles": 4,
+   "n": 4
+  },
+  "w77597c1001": {
+   "again": false,
+   "bottles": 5,
+   "n": 4
+  },
+  "w8cb13f4c92": {
+   "again": false,
+   "bottles": 4,
    "n": 3
   },
   "w907729c01a": {
    "again": true,
+   "bottles": 36,
    "n": 3
   },
   "w98975940ac": {
    "again": true,
+   "bottles": 24,
    "n": 1
   },
-  "wa2899b5377": {
-   "again": true,
-   "n": 2
+  "w9ddb6f43f1": {
+   "again": false,
+   "bottles": 12,
+   "n": 1
+  },
+  "wa05a42a256": {
+   "again": false,
+   "bottles": 6,
+   "n": 5
   },
   "wa6d150f35c": {
    "again": true,
+   "bottles": 12,
    "n": 1
+  },
+  "wae8b32134c": {
+   "again": false,
+   "bottles": 6,
+   "n": 5
+  },
+  "wafc1e71f63": {
+   "again": false,
+   "bottles": 4,
+   "n": 3
+  },
+  "wb2de0bfa9d": {
+   "again": false,
+   "bottles": 3,
+   "n": 3
   },
   "wb8e6ebd2b6": {
    "again": true,
-   "n": 7
+   "bottles": 82,
+   "n": 10
+  },
+  "wc3a8ce6aea": {
+   "again": false,
+   "bottles": 4,
+   "n": 3
   },
   "wc40bb04abf": {
    "again": true,
+   "bottles": 30,
    "n": 1
+  },
+  "wdba650d248": {
+   "again": true,
+   "bottles": 25,
+   "n": 2
   },
   "wdea0be5deb": {
    "again": false,
+   "bottles": 14,
+   "n": 3
+  },
+  "we5247f967f": {
+   "again": false,
+   "bottles": 12,
+   "n": 1
+  },
+  "wf75c720721": {
+   "again": false,
+   "bottles": 4,
    "n": 3
   }
  }
