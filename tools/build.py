@@ -1439,7 +1439,7 @@ def load_buys():
     fn=os.path.join(HERE,'wine_buys.json')
     if not os.path.exists(fn): return {}
     d=json.load(open(fn,encoding='utf-8'))['wines']
-    top=sorted((k for k,v in d.items() if v['n']>=3),key=lambda k:(-d[k]['n'],-d[k].get('bottles',0)))[:10]
+    top=sorted((k for k,v in d.items() if v.get('b90',0)>=12),key=lambda k:-d[k]['b90'])[:10]   # 최근 3개월 병 수
     for k in top: d[k]['top']=True
     return d
 BUYS=load_buys()
@@ -1448,7 +1448,7 @@ def buys_html(w,big=False):
     if not b: return ''
     tags=('<span class="hb">많이 팔린 와인</span>' if b.get('top') else '')+('<span class="hb">다시 찾는 와인</span>' if b.get('again') else '')
     n=(f'<span class="wbuy">손님 <b>{b["n"]}</b>명이 샀어요</span>' if b['n']>=3 else
-       f'<span class="wbuy">지금까지 <b>{b["bottles"]}</b>병 팔렸어요</span>' if b.get('bottles',0)>=12 else '')
+       f'<span class="wbuy">최근 3개월 <b>{b["b90"]}</b>병 팔렸어요</span>' if b.get('b90',0)>=12 else '')
     return f'<div class="wbuys{" big" if big else ""}">{n}{f"<span class=hbs>{tags}</span>" if tags else ""}</div>'
 def wine_card(rel,w):
     where=' '.join(x for x in (w['country'],w['region']) if x)
