@@ -1,11 +1,47 @@
 {
  "made": "2026-11-25",
  "wines": {
+  "w019133d43e": {
+   "again": false,
+   "b90": 5,
+   "bottles": 5,
+   "n": 1
+  },
   "w03f5b0b34f": {
    "again": false,
    "b90": 13,
    "bottles": 13,
    "n": 3
+  },
+  "w189c094ac2": {
+   "again": false,
+   "b90": 6,
+   "bottles": 6,
+   "n": 1
+  },
+  "w1944b5cb27": {
+   "again": false,
+   "b90": 1,
+   "bottles": 1,
+   "n": 1
+  },
+  "w1d3e05b491": {
+   "again": false,
+   "b90": 3,
+   "bottles": 3,
+   "n": 2
+  },
+  "w1f0d998e63": {
+   "again": false,
+   "b90": 4,
+   "bottles": 4,
+   "n": 1
+  },
+  "w24d462424c": {
+   "again": false,
+   "b90": 2,
+   "bottles": 2,
+   "n": 2
   },
   "w2b1353ced5": {
    "again": true,
@@ -13,11 +49,35 @@
    "bottles": 23,
    "n": 6
   },
+  "w2bc963fefe": {
+   "again": false,
+   "b90": 4,
+   "bottles": 4,
+   "n": 2
+  },
+  "w3648bef9d8": {
+   "again": false,
+   "b90": 1,
+   "bottles": 1,
+   "n": 1
+  },
   "w3bc08f207f": {
    "again": true,
    "b90": 0,
    "bottles": 10,
    "n": 7
+  },
+  "w41d575b37a": {
+   "again": false,
+   "b90": 2,
+   "bottles": 2,
+   "n": 2
+  },
+  "w43e8a03fd7": {
+   "again": false,
+   "b90": 3,
+   "bottles": 3,
+   "n": 1
   },
   "w4944de212e": {
    "again": true,
@@ -30,6 +90,12 @@
    "b90": 7,
    "bottles": 17,
    "n": 3
+  },
+  "w4d63dc0ade": {
+   "again": false,
+   "b90": 2,
+   "bottles": 2,
+   "n": 2
   },
   "w4fd5eb0863": {
    "again": true,
@@ -49,17 +115,47 @@
    "bottles": 13,
    "n": 3
   },
+  "w5ac154356a": {
+   "again": false,
+   "b90": 1,
+   "bottles": 1,
+   "n": 1
+  },
+  "w5cfea74a47": {
+   "again": false,
+   "b90": 2,
+   "bottles": 2,
+   "n": 1
+  },
+  "w61d773ed49": {
+   "again": false,
+   "b90": 3,
+   "bottles": 3,
+   "n": 1
+  },
   "w6435c5aa44": {
    "again": false,
    "b90": 2,
    "bottles": 4,
    "n": 4
   },
+  "w73cd654894": {
+   "again": false,
+   "b90": 1,
+   "bottles": 1,
+   "n": 1
+  },
   "w77597c1001": {
    "again": false,
    "b90": 5,
    "bottles": 5,
    "n": 4
+  },
+  "w7afcc08f38": {
+   "again": false,
+   "b90": 6,
+   "bottles": 6,
+   "n": 1
   },
   "w8cb13f4c92": {
    "again": false,
@@ -73,10 +169,22 @@
    "bottles": 36,
    "n": 4
   },
+  "w928aab6b82": {
+   "again": false,
+   "b90": 1,
+   "bottles": 1,
+   "n": 1
+  },
   "w98975940ac": {
    "again": true,
    "b90": 12,
    "bottles": 24,
+   "n": 2
+  },
+  "w9b21ad0a4d": {
+   "again": false,
+   "b90": 4,
+   "bottles": 4,
    "n": 2
   },
   "w9ddb6f43f1": {
@@ -91,10 +199,22 @@
    "bottles": 6,
    "n": 5
   },
+  "wa09f3e6a78": {
+   "again": false,
+   "b90": 4,
+   "bottles": 4,
+   "n": 1
+  },
   "wa6d150f35c": {
    "again": true,
    "b90": 6,
    "bottles": 12,
+   "n": 2
+  },
+  "wa8abd588ea": {
+   "again": false,
+   "b90": 5,
+   "bottles": 5,
    "n": 2
   },
   "wae8b32134c": {
@@ -121,6 +241,12 @@
    "bottles": 82,
    "n": 11
   },
+  "wbc2cadab37": {
+   "again": false,
+   "b90": 1,
+   "bottles": 1,
+   "n": 1
+  },
   "wc3a8ce6aea": {
    "again": false,
    "b90": 4,
@@ -132,6 +258,18 @@
    "b90": 0,
    "bottles": 30,
    "n": 3
+  },
+  "wc97b0a65dc": {
+   "again": false,
+   "b90": 2,
+   "bottles": 2,
+   "n": 1
+  },
+  "wd380947b4f": {
+   "again": false,
+   "b90": 2,
+   "bottles": 5,
+   "n": 2
   },
   "wdba650d248": {
    "again": true,
@@ -145,10 +283,28 @@
    "bottles": 14,
    "n": 3
   },
+  "wdfcf4934a6": {
+   "again": false,
+   "b90": 1,
+   "bottles": 1,
+   "n": 1
+  },
   "we5247f967f": {
    "again": false,
    "b90": 12,
    "bottles": 12,
+   "n": 1
+  },
+  "wef87ebdf44": {
+   "again": false,
+   "b90": 1,
+   "bottles": 1,
+   "n": 1
+  },
+  "wf5d8e65805": {
+   "again": false,
+   "b90": 1,
+   "bottles": 1,
    "n": 1
   },
   "wf75c720721": {
@@ -156,6 +312,12 @@
    "b90": 4,
    "bottles": 4,
    "n": 3
+  },
+  "wfb5170b6e3": {
+   "again": false,
+   "b90": 3,
+   "bottles": 3,
+   "n": 1
   }
  }
 }

@@ -1451,8 +1451,7 @@ def buys_html(w,big=False):
     b=BUYS.get(wine_key(w['ko']))
     if not b: return ''
     tags=('<span class="hb">많이 팔린 와인</span>' if b.get('top') else '')+('<span class="hb">다시 찾는 와인</span>' if b.get('again') else '')
-    n=(f'<span class="wbuy">손님 <b>{b["n"]}</b>명이 샀어요</span>' if b['n']>=3 else
-       f'<span class="wbuy">최근 3개월 <b>{b["b90"]}</b>병 팔렸어요</span>' if b.get('b90',0)>=12 else '')
+    n=f'<span class="wbuy">최근 3개월간 <b>{b["b90"]}</b>병 팔렸어요</span>' if b.get('b90',0)>0 else ''
     return f'<div class="wbuys{" big" if big else ""}">{n}{f"<span class=hbs>{tags}</span>" if tags else ""}</div>'
 def wine_card(rel,w):
     where=' '.join(x for x in (w['country'],w['region']) if x)
