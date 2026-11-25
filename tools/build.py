@@ -1432,6 +1432,10 @@ def load_wines():
     fn=os.path.join(HERE,'wines.json')
     if not os.path.exists(fn): return []
     W=json.load(open(fn,encoding='utf-8'))['wines']
+    for w in W:   # 사진을 바꾸면 주소 뒤 ?v= 가 바뀌어 브라우저·CDN 캐시(1일)를 건너뜀(11/25 로고 넣은 사진이 안 보이던 문제)
+        p=os.path.join(ROOT,w.get('img') or '')
+        if w.get('img') and os.path.isfile(p):
+            w['img']+='?v='+_hl.md5(open(p,'rb').read()).hexdigest()[:8]
     W.sort(key=lambda w:(not w['now'],w.get('rank') or 9999,bool(w.get('disc')),not w.get('order'),not w.get('img'),STYLE_ORDER.index(w['style']) if w['style'] in STYLE_ORDER else 99,w['ko']))
     return W
 # 실제 장부 구매 기록에서 뽑은 숫자(tools/wine_buys.py). 가짜 평점은 만들지 않아요.
