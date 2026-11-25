@@ -1657,8 +1657,8 @@ def page_admin(rel):
         <div class="ctas"><button class="btn line sm" type="button" data-admin-sync>연결된 회원 구매 내역 새로 반영</button><button class="btn line sm" type="button" data-admin-reload>새로고침</button></div>
       </div>
       <p class="adminstat" data-admin-status aria-live="polite"></p>
-      <h2>2. 연결 기다리는 회원</h2>
-      <p class="muted small">회원이 남긴 번호와 장부 번호가 같으면 미리 골라 둬요. 본인이 맞는지 보고 '연결'을 눌러 주세요.</p>
+      <h2>2. 검토할 회원 <span class="muted small" data-admin-count></span></h2>
+      <p class="muted small">가입한 회원의 번호를 장부와 대조해 둬요. 손님에게 보일 와인 목록을 먼저 보고 '확인하고 연결'을 눌러야 손님 화면에 나타나요. 장부에 기록이 없는 신규 손님은 '신규로 시작'을 누르면 그날 이후 구매부터 쌓이고, 첫 구매가 생기면 여기에 다시 떠요.</p>
       <div data-admin-pending></div>
       <h2 style="margin-top:32px">연결된 회원</h2>
       <div data-admin-linked></div>

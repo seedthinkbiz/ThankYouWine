@@ -453,6 +453,10 @@ footer .fname .wordmark .ko{font-size:.66rem}
 .linkrow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px}
 .linkrow select{max-width:100%;flex:1 1 220px}
 .okmark{color:#1f7a3a;font-weight:700;font-size:.9rem}
+.aprev{margin-top:10px;font-size:.9rem}
+.aprev summary{cursor:pointer;font-weight:600}
+.aprev ul{list-style:none;margin:6px 0 0;padding:0;max-height:240px;overflow:auto;border-top:1px solid #eee}
+.aprev li{display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid #f2efec}
 button.textlink{background:none;border:0;padding:0;cursor:pointer;font:inherit;color:var(--wine)}
 .mywine .bought{margin:0 0 2px;color:var(--muted)}
 .prepaid{margin:20px 0;padding:16px 18px;border:1px solid var(--line);border-radius:14px;background:var(--paper)}

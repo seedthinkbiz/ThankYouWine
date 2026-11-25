@@ -32,6 +32,9 @@ create table if not exists public.ty_links (
   ref text not null unique check (char_length(ref) <= 80),       -- 장부 members 문서 id
   linked_at timestamptz not null default now()
 );
+-- 장부 기록이 없던 신규 가입자: ref 를 'new-…' 로 두고, 첫 구매가 생기면 관리자가 확인해 장부 손님으로 바꿔요.
+-- since 가 있으면 그 날짜부터의 구매만 올려요(가입 이후 구매만 쌓기).
+alter table public.ty_links add column if not exists since date;
 alter table public.ty_links enable row level security;
 drop policy if exists ty_links_own_read on public.ty_links;
 create policy ty_links_own_read on public.ty_links for select to authenticated using (user_id = auth.uid());
