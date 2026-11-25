@@ -709,7 +709,7 @@ def page_about(rel):
         </ul>
         <h3>2027년 6월, 와이너리 크루즈</h3>
         <p>땡큐와인 멤버들과 크루즈를 타고 와이너리를 둘러보는 여행을 준비하고 있어요. 각자 예약하고 같이 떠나는 모임이에요. 궁금하시면 카톡으로 물어봐 주세요.</p>
-        <div class="ctas"><a class="btn wine" href="#contact" data-contact>문의하기</a><a class="btn line" href="{SITE['blog']}" target="_blank" rel="noopener">블로그</a><a class="btn line" href="{SITE['insta']}" target="_blank" rel="noopener">인스타그램</a></div>
+        <div class="ctas"><a class="btn wine" href="#contact" data-contact>문의하기</a><a class="btn line" href="{rel}p/121-fe658d91b7e590dc/">121 미팅 자료</a><a class="btn line" href="{SITE['blog']}" target="_blank" rel="noopener">블로그</a><a class="btn line" href="{SITE['insta']}" target="_blank" rel="noopener">인스타그램</a></div>
       </div>
     </div>
   </div>
