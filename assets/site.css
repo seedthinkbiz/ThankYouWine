@@ -511,3 +511,4 @@ button.textlink{background:none;border:0;padding:0;cursor:pointer;font:inherit;c
 .mesaved{margin-top:36px}
 .wlist{color:var(--muted);font-weight:400;font-size:.86em;margin-right:4px}
 .woff{color:#c0392b;margin-right:4px}
+.wbadge.disc{background:#eee;color:#777}
