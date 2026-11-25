@@ -1,4 +1,4 @@
-"""병 사진 → 사이트용 300x480 흰 배경 jpg + 왼쪽 위 땡큐와인 로고(도하 11/25: 에이와인처럼 로고 넣기).
+"""병 사진 → 사이트용 300x480 흰 배경 jpg + 병 아래쪽 가운데 작은 땡큐와인 글자(도하 11/25: 에이와인처럼 밑에 작게).
 사용: python3 tools/bottle_img.py <원본 이미지> "<wines.json ko 이름>" [--erase x0,y0,x1,y1]
 --erase: 원본에서 지울 영역(다른 사이트 배지 등)을 흰색으로 덮음."""
 import sys,json,hashlib,os
@@ -6,10 +6,14 @@ from PIL import Image,ImageChops
 HERE=os.path.dirname(os.path.abspath(__file__)); ROOT=os.path.dirname(HERE)
 W,H=300,480
 def stamp():
-    lg=Image.open(os.path.join(ROOT,'assets/logo-wide.png')).convert('RGB')
-    bb=ImageChops.invert(lg.convert('L')).point(lambda v:255 if v>10 else 0).getbbox()
-    lg=lg.crop(bb); s=150/lg.width
-    return lg.resize((150,int(lg.height*s)),Image.LANCZOS)
+    """'THANK YOU WINE' 글자 마스크(에이와인처럼 병 밑 가운데 회색 작은 글자)"""
+    from PIL import ImageFilter
+    lg=Image.open(os.path.join(ROOT,'assets/logo-wide.png')).convert('L')
+    t=lg.crop((290,100,1100,175))
+    m=ImageChops.invert(t).point(lambda v:min(255,v*2))
+    m=m.crop(m.point(lambda v:255 if v>30 else 0).getbbox())
+    w=100; m=m.resize((w,max(1,int(m.height*w/m.width))),Image.LANCZOS)
+    return m
 def make(src,ko,erase=None):
     im=Image.open(src).convert('RGBA')
     a=im.split()[3]
@@ -21,9 +25,10 @@ def make(src,ko,erase=None):
     m=im.convert('L').point(lambda v:255 if v>=236 else 0); im.paste((255,255,255),mask=m)
     g=ImageChops.invert(im.convert('L')).point(lambda v:255 if v>18 else 0)
     b=im.crop(g.getbbox())
-    s=min(250/b.width,430/b.height); b=b.resize((max(1,int(b.width*s)),int(b.height*s)),Image.LANCZOS)
-    out=Image.new('RGB',(W,H),'white'); out.paste(b,((W-b.width)//2,H-b.height-18))
-    out.paste(stamp(),(10,12))
+    s=min(250/b.width,422/b.height); b=b.resize((max(1,int(b.width*s)),int(b.height*s)),Image.LANCZOS)
+    out=Image.new('RGB',(W,H),'white'); out.paste(b,((W-b.width)//2,H-b.height-30))
+    m=stamp(); x=(W-m.width)//2; y=H-8-m.height   # 맨 아래 가운데, 회색 작은 글자
+    out.paste((110,110,110),(x,y),m)
     fn='assets/wines/w'+hashlib.md5(ko.encode()).hexdigest()[:8]+'.jpg'
     out.save(os.path.join(ROOT,fn),quality=88)
     p=os.path.join(HERE,'wines.json'); w=json.load(open(p))
