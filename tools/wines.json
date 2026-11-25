@@ -73,7 +73,8 @@
    "post": "posts/grand-barossa-cabernet-sauvignon-2020/",
    "tags": "f d M P",
    "push": 3,
-   "rank": 6
+   "rank": 6,
+   "img": "assets/wines/w2b1353ce.jpg"
   },
   {
    "ko": "네로페르소 아파시멘토",
@@ -338,12 +339,26 @@
    "region": "샹파뉴",
    "grape": "",
    "style": "스파클링",
-   "now": true,
+   "now": false,
    "post": "posts/n224201363630/",
    "img": "assets/wines/wa2899b53.jpg",
    "tags": "l d SC GP",
    "price": 61900,
    "list_price": 95000,
+   "order": true
+  },
+  {
+   "ko": "모엣 & 샹동 임페리얼 브뤼 레드 에디션",
+   "en": "Moët & Chandon Impérial Brut Red Edition",
+   "vintage": "",
+   "country": "프랑스",
+   "region": "샹파뉴",
+   "grape": "",
+   "style": "스파클링",
+   "now": true,
+   "post": "",
+   "img": "",
+   "tags": "l d SC GP",
    "rank": 2
   },
   {
@@ -909,7 +924,8 @@
    "style": "레드",
    "now": true,
    "post": "",
-   "tags": "f o MK"
+   "tags": "f o MK",
+   "img": "assets/wines/wdc042716.jpg"
   },
   {
    "ko": "에디찌오네 No.22",
