@@ -88,8 +88,18 @@
       $$('[id]',c).forEach(x=>x.removeAttribute('id'));
       if(li.dataset.page){ const a=document.createElement('a'); a.className='textlink'; a.href=li.dataset.page; a.textContent='가격·자세한 정보 보기 →'; const acts=$('.wacts',c); if(acts) acts.append(a); }
       wd.innerHTML='<button type="button" class="wclose" aria-label="닫기">×</button>'; wd.append(c);
+      lock();
       try{wd.showModal()}catch(_){wd.setAttribute('open','')}
+      const cb=$('.wclose',wd); if(cb) cb.focus({preventScroll:true});
     };
+    /* 카드가 열려 있는 동안 뒤 화면을 그 자리에 고정, 닫으면 원래 자리로(11/25 도하) */
+    let sy=null;
+    const lock=()=>{ if(sy!==null) return; sy=window.scrollY; const b=document.body.style;
+      b.position='fixed'; b.top=(-sy)+'px'; b.left='0'; b.right='0'; b.width='100%'; };
+    const unlock=()=>{ if(sy===null) return; const y=sy; sy=null; const b=document.body.style;
+      b.position=b.top=b.left=b.right=b.width='';
+      const h=document.documentElement, sb=h.style.scrollBehavior; h.style.scrollBehavior='auto'; window.scrollTo(0,y); h.style.scrollBehavior=sb; };
+    wd.addEventListener('close',unlock);
     document.addEventListener('click',e=>{
       if(wd.contains(e.target)) return;
       const t=e.target.closest('.wine [data-wcard], .wine .wimg'); if(!t) return;
