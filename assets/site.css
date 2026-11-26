@@ -540,3 +540,43 @@ dialog.wcard .wclose{position:absolute;top:8px;right:12px;z-index:2;border:0;bac
 .wviv b{color:#a8123e}
 .wviv .wvn{color:var(--muted);font-size:.82rem}
 #wlist .wine:not(.big) .wviv{display:none}
+
+/* 와인 심리테스트 (/taste/) */
+#taste .wrap{max-width:1140px}
+.tintro,.tbox,.tcard,.tmore{max-width:760px;margin-inline:auto}
+.tpicks{text-align:center}
+.tintro{display:grid;gap:14px;justify-items:start;margin-bottom:28px}
+.tintro h1{margin:0}
+.tintro p{color:var(--muted);margin:0}
+.tbox{border:1.5px solid var(--wine);border-radius:18px;padding:22px 22px 18px}
+.tbar{height:6px;border-radius:6px;background:var(--wine-soft);overflow:hidden;margin-bottom:22px}
+.tbar i{display:block;height:100%;width:0;background:var(--wine);transition:width .3s}
+.tqs{list-style:none;margin:0;padding:0}
+.tqn{font-weight:700;color:var(--wine);margin:0 0 4px;font-size:.9rem;letter-spacing:.06em}
+.tq h2{font-family:var(--sans);font-weight:700;font-size:1.35rem;margin:0 0 18px;line-height:1.45}
+.topts{display:grid;gap:10px}
+.topt{display:flex;align-items:center;gap:14px;width:100%;text-align:left;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);border-radius:14px;padding:16px 18px;font:500 1.02rem var(--sans);cursor:pointer;transition:border-color .15s,background .15s}
+@media(hover:hover){.topt:hover{border-color:var(--wine);background:var(--wine-soft)}}
+.topt:focus-visible{border-color:var(--wine);background:var(--wine-soft)}
+.topt .tab{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--wine);color:var(--on-wine);font-weight:700;font-size:.9rem}
+.tback{background:none;border:0;padding:0;margin-top:14px;font:inherit;font-size:.92rem;cursor:pointer}
+.tres{scroll-margin-top:90px}
+.tcard{border-radius:18px;background:var(--wine);color:var(--on-wine);padding:30px 26px 24px;display:grid;gap:10px}
+.tcard .tkick{margin:0;font-size:.9rem;opacity:.85}
+.tcard h2{margin:0;font-size:2rem;color:var(--on-wine)}
+.tcard .tline{margin:0;font-weight:700}
+.tcard p{margin:0;line-height:1.7}
+.tfacts{display:grid;gap:8px;margin:10px 0 4px;padding:14px 16px;border-radius:12px;background:rgba(255,255,255,.1)}
+.tfacts div{display:grid;grid-template-columns:8.5em 1fr;gap:10px}
+.tfacts dt{font-size:.88rem;opacity:.8}
+.tfacts dd{margin:0;font-weight:500}
+.tacts{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.tcard .btn.wine{background:var(--bg);color:var(--wine)}
+.tcard .btn.line{border-color:rgba(255,255,255,.7);color:var(--on-wine);background:transparent}
+.tpicks{font-family:var(--sans);font-size:1.15rem;font-weight:700;margin:30px 0 14px}
+.tres3{grid-template-columns:repeat(3,1fr)}
+.tmore{margin-top:26px;display:grid;gap:6px}
+.tmore p{margin:0}
+.wpicktaste{margin:10px 0 0;font-size:.95rem}
+@media(max-width:760px){.tres3{grid-template-columns:1fr}}
+@media(max-width:600px){.tbox{padding:18px 16px 14px}.tcard{padding:24px 18px 20px}.tcard h2{font-size:1.7rem}.tfacts div{grid-template-columns:1fr;gap:2px}}
