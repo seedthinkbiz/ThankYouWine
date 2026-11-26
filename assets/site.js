@@ -86,7 +86,11 @@
       src=li; const c=li.cloneNode(true); c.hidden=false; c.classList.add('big');
       $$('[data-wcard]',c).forEach(b=>{const h=document.createElement('span'); h.textContent=b.textContent; b.replaceWith(h);});
       $$('[id]',c).forEach(x=>x.removeAttribute('id'));
-      if(li.dataset.page){ const a=document.createElement('a'); a.className='textlink'; a.href=li.dataset.page; a.textContent='가격·자세한 정보 보기 →'; const acts=$('.wacts',c); if(acts) acts.append(a); }
+      if(li.dataset.page){ const acts=$('.wacts',c);
+        const sh=document.createElement('button'); sh.type='button'; sh.className='btn line sm wshare'; sh.textContent='링크 보내기';
+        sh.dataset.share=new URL(li.dataset.page,location.href).href; sh.dataset.title=(($('h3',c)||{}).textContent||'').trim();
+        const a=document.createElement('a'); a.className='textlink'; a.href=li.dataset.page; a.textContent='자세한 정보 보기 →';
+        if(acts){ const ct=$('[data-contact]',acts); ct?ct.after(sh):acts.prepend(sh); acts.append(a); } }
       wd.innerHTML='<button type="button" class="wclose" aria-label="닫기">×</button>'; wd.append(c);
       lock();
       try{wd.showModal()}catch(_){wd.setAttribute('open','')}
@@ -118,6 +122,16 @@
     if(k0){ const li=$('#wlist .wine[data-key="'+k0.replace(/[^\w]/g,'')+'"]'); if(li) setTimeout(()=>open(li),50); }
   }
 
+
+  /* ---------- 와인 링크 보내기: 휴대폰은 공유 창(카톡 등), PC는 주소 복사 (11/25 도하) ---------- */
+  document.addEventListener('click',async e=>{
+    const b=e.target.closest('[data-share]'); if(!b) return; e.preventDefault();
+    const url=b.dataset.share, title=(b.dataset.title||document.title)+' · 땡큐와인';
+    const done=t=>{ const o=b.textContent; b.textContent=t; b.disabled=true; setTimeout(()=>{b.textContent=o; b.disabled=false},1800); };
+    if(navigator.share && matchMedia('(pointer:coarse)').matches){ try{ await navigator.share({title,url}); return }catch(err){ if(err&&err.name==='AbortError') return } }
+    try{ await navigator.clipboard.writeText(url); done('주소를 복사했어요') }
+    catch(_){ window.prompt('이 주소를 복사해서 보내 주세요',url) }
+  });
 
   /* ---------- 와인 추천기: 자리·음식·맛 세 가지로 매장 와인 3병 고르기 ---------- */
   const wp=$('#wpick'), wlist=$('#wlist');
