@@ -58,7 +58,8 @@
     "r": 4.0,
     "n": 2070,
     "url": "https://www.vivino.com/w/1992789"
-   }
+   },
+   "img": "assets/wines/w802b7bcb.jpg"
   },
   {
    "ko": "게리 패럴 러시안 리버 밸리 셀렉션 피노 누아",
@@ -1118,7 +1119,8 @@
    "now": true,
    "post": "",
    "tags": "f o M G",
-   "push": 1
+   "push": 1,
+   "img": "assets/wines/w397809cb.jpg"
   },
   {
    "ko": "엠포리움 프리미티보 디 만두리아",
@@ -1250,7 +1252,8 @@
     "r": 3.9,
     "n": 1516,
     "url": "https://www.vivino.com/w/1647178"
-   }
+   },
+   "img": "assets/wines/w2aba9a69.jpg"
   },
   {
    "ko": "콜레프리시오 인앤아웃",
