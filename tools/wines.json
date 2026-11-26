@@ -25,7 +25,12 @@
    "post": "",
    "tags": "f d MK P",
    "push": 2,
-   "img": "assets/wines/wd7c2c040.jpg"
+   "img": "assets/wines/wd7c2c040.jpg",
+   "vivino": {
+    "r": 3.9,
+    "n": 9833,
+    "url": "https://www.vivino.com/w/6158938"
+   }
   },
   {
    "ko": "1865 셀렉티드 빈야드 소비뇽 블랑 (슈퍼픽션 에디션)",
@@ -48,7 +53,12 @@
    "style": "화이트",
    "now": true,
    "post": "",
-   "tags": "m d SC G"
+   "tags": "m d SC G",
+   "vivino": {
+    "r": 4.0,
+    "n": 2070,
+    "url": "https://www.vivino.com/w/1992789"
+   }
   },
   {
    "ko": "게리 패럴 러시안 리버 밸리 셀렉션 피노 누아",
@@ -90,7 +100,12 @@
    "now": true,
    "post": "posts/n224125888492/",
    "img": "assets/wines/w3ce9578c.jpg",
-   "tags": "f o MK"
+   "tags": "f o MK",
+   "vivino": {
+    "r": 4.2,
+    "n": 1498,
+    "url": "https://www.vivino.com/w/9808235"
+   }
   },
   {
    "ko": "트레드 소프틀리 피노 그리지오 (무알콜)",
@@ -137,7 +152,12 @@
    "style": "레드",
    "now": true,
    "post": "posts/n224276402778/",
-   "tags": "f d M G"
+   "tags": "f d M G",
+   "vivino": {
+    "r": 4.2,
+    "n": 15164,
+    "url": "https://www.vivino.com/w/85352"
+   }
   },
   {
    "ko": "도멘 그노 뚜헨 말벡 '르 꼬뜨'",
@@ -151,7 +171,12 @@
    "post": "posts/n224456701088/",
    "img": "assets/wines/wd9ab2aed.jpg",
    "tags": "m d MC",
-   "rank": 15
+   "rank": 15,
+   "vivino": {
+    "r": 3.7,
+    "n": 52,
+    "url": "https://www.vivino.com/w/12152443"
+   }
   },
   {
    "ko": "도멘 그노 뚜헨 소비뇽 블랑",
@@ -166,7 +191,12 @@
    "img": "assets/wines/wa8abd588.jpg",
    "tags": "l d SC",
    "push": 1,
-   "rank": 16
+   "rank": 16,
+   "vivino": {
+    "r": 3.8,
+    "n": 1597,
+    "url": "https://www.vivino.com/w/1401653"
+   }
   },
   {
    "ko": "드 보르톨리 노블 원",
@@ -180,7 +210,12 @@
    "post": "posts/n224473830226/",
    "img": "assets/wines/w3f7239a0.jpg",
    "tags": "m s DC G",
-   "rank": 27
+   "rank": 27,
+   "vivino": {
+    "r": 4.2,
+    "n": 5608,
+    "url": "https://www.vivino.com/w/19085"
+   }
   },
   {
    "ko": "라 클로즈리 드 말에스까스",
@@ -192,7 +227,12 @@
    "style": "레드",
    "now": true,
    "post": "posts/n224456564805/",
-   "tags": "m d MC"
+   "tags": "m d MC",
+   "vivino": {
+    "r": 3.9,
+    "n": 1701,
+    "url": "https://www.vivino.com/w/1810658"
+   }
   },
   {
    "ko": "르 물랭 로즈 드 말에스까스",
@@ -204,7 +244,12 @@
    "style": "레드",
    "now": true,
    "post": "",
-   "tags": "m d MC"
+   "tags": "m d MC",
+   "vivino": {
+    "r": 3.9,
+    "n": 1338,
+    "url": "https://www.vivino.com/w/5575062"
+   }
   },
   {
    "ko": "라스 쿠아트로 에스타시오네스 아이렌",
@@ -256,7 +301,12 @@
    "now": true,
    "post": "posts/n224204461448/",
    "img": "assets/wines/w4a6cbe8d.jpg",
-   "tags": "f d M G"
+   "tags": "f d M G",
+   "vivino": {
+    "r": 3.9,
+    "n": 977,
+    "url": "https://www.vivino.com/w/1470093"
+   }
   },
   {
    "ko": "도멘 루 프레조 샤토뇌프 뒤 파프 블랑",
@@ -281,7 +331,12 @@
    "now": true,
    "post": "",
    "tags": "f d M G",
-   "push": 1
+   "push": 1,
+   "vivino": {
+    "r": 3.8,
+    "n": 59736,
+    "url": "https://www.vivino.com/w/83358"
+   }
   },
   {
    "ko": "마리 드메 뀌베 19세기 브뤼",
@@ -323,7 +378,12 @@
    "now": true,
    "post": "",
    "tags": "f o MK P",
-   "rank": 26
+   "rank": 26,
+   "vivino": {
+    "r": 4.3,
+    "n": 11375,
+    "url": "https://www.vivino.com/w/5567158"
+   }
   },
   {
    "ko": "메이오미 피노 누아",
@@ -336,7 +396,12 @@
    "now": true,
    "post": "",
    "tags": "m o MKC",
-   "rank": 35
+   "rank": 35,
+   "vivino": {
+    "r": 4.1,
+    "n": 187446,
+    "url": "https://www.vivino.com/w/1136137"
+   }
   },
   {
    "ko": "모엣 & 샹동 임페리얼 브뤼 3L",
@@ -367,7 +432,12 @@
    "tags": "l d SC GP",
    "price": 61900,
    "list_price": 95000,
-   "order": true
+   "order": true,
+   "vivino": {
+    "r": 4.1,
+    "n": 143988,
+    "url": "https://www.vivino.com/w/1122095"
+   }
   },
   {
    "ko": "모엣 & 샹동 임페리얼 브뤼 레드 에디션",
@@ -429,7 +499,12 @@
    "style": "스파클링",
    "now": true,
    "post": "",
-   "tags": "l s DCK P"
+   "tags": "l s DCK P",
+   "vivino": {
+    "r": 3.7,
+    "n": 81,
+    "url": "https://www.vivino.com/w/8948583"
+   }
   },
   {
    "ko": "미라벤토 모스카토 핑크 로제",
@@ -465,7 +540,12 @@
    "style": "스위트",
    "now": true,
    "post": "",
-   "tags": "m s D"
+   "tags": "m s D",
+   "vivino": {
+    "r": 3.8,
+    "n": 514,
+    "url": "https://www.vivino.com/w/1749179"
+   }
   },
   {
    "ko": "바도사 핑크 포트",
@@ -502,7 +582,12 @@
    "now": true,
    "post": "posts/baron-dauvergne-fine-fleur-champagne/",
    "img": "assets/wines/w421310d4.jpg",
-   "tags": "m d SC GP"
+   "tags": "m d SC GP",
+   "vivino": {
+    "r": 4.1,
+    "n": 1630,
+    "url": "https://www.vivino.com/w/1751861"
+   }
   },
   {
    "ko": "바서만 요르단 다이데스하임 리슬링 파인헤르프",
@@ -578,7 +663,12 @@
    "style": "레드",
    "now": true,
    "post": "",
-   "tags": "m d MC"
+   "tags": "m d MC",
+   "vivino": {
+    "r": 4.0,
+    "n": 4315,
+    "url": "https://www.vivino.com/w/1145156"
+   }
   },
   {
    "ko": "뵈브 알반 블랑 드 블랑",
@@ -591,7 +681,12 @@
    "now": true,
    "post": "",
    "img": "assets/wines/wc02074d8.jpg",
-   "tags": "l d SC P"
+   "tags": "l d SC P",
+   "vivino": {
+    "r": 3.6,
+    "n": 1747,
+    "url": "https://www.vivino.com/w/1662860"
+   }
   },
   {
    "ko": "부 샤르무아 소비뇽 블랑-비오니에",
@@ -629,7 +724,12 @@
    "style": "로제",
    "now": true,
    "post": "posts/n224201833480/",
-   "tags": "l d SKC"
+   "tags": "l d SKC",
+   "vivino": {
+    "r": 3.7,
+    "n": 115,
+    "url": "https://www.vivino.com/w/9818515"
+   }
   },
   {
    "ko": "빌라 골프 블렌드 셀렉션",
@@ -699,7 +799,12 @@
    "style": "무알콜",
    "now": true,
    "post": "posts/n224201417558/",
-   "tags": "l s DC P"
+   "tags": "l s DC P",
+   "vivino": {
+    "r": 3.1,
+    "n": 57,
+    "url": "https://www.vivino.com/w/6681392"
+   }
   },
   {
    "ko": "샤또 꺄트르 리유",
@@ -733,7 +838,12 @@
    "style": "화이트",
    "now": true,
    "post": "posts/n224125882556/",
-   "tags": "l d S P"
+   "tags": "l d S P",
+   "vivino": {
+    "r": 3.9,
+    "n": 1573,
+    "url": "https://www.vivino.com/w/2410845"
+   }
   },
   {
    "ko": "샤또 라 피루엣뜨",
@@ -748,7 +858,12 @@
    "tags": "m d M",
    "push": 1,
    "rank": 23,
-   "img": "assets/wines/w5cfea74a.jpg"
+   "img": "assets/wines/w5cfea74a.jpg",
+   "vivino": {
+    "r": 3.7,
+    "n": 2292,
+    "url": "https://www.vivino.com/w/1158568"
+   }
   },
   {
    "ko": "샤또 르 종시에 블라이",
@@ -785,7 +900,12 @@
    "post": "posts/domaine-haut-brande-merlot-2022/",
    "tags": "m d MK",
    "push": 2,
-   "rank": 28
+   "rank": 28,
+   "vivino": {
+    "r": 3.2,
+    "n": 424,
+    "url": "https://www.vivino.com/w/5590579"
+   }
   },
   {
    "ko": "샤또 페이라솔 레드",
@@ -851,7 +971,12 @@
    "post": "posts/7-deadly-red/",
    "tags": "f o MK",
    "rank": 10,
-   "img": "assets/wines/w6435c5aa.jpg"
+   "img": "assets/wines/w6435c5aa.jpg",
+   "vivino": {
+    "r": 3.7,
+    "n": 3507,
+    "url": "https://www.vivino.com/w/5492434"
+   }
   },
   {
    "ko": "쉐 되브르 그로 망상",
@@ -865,7 +990,12 @@
    "post": "posts/n224471517380/",
    "img": "assets/wines/wd380947b.jpg",
    "tags": "l d SCK",
-   "rank": 13
+   "rank": 13,
+   "vivino": {
+    "r": 4.1,
+    "n": 40,
+    "url": "https://www.vivino.com/w/11942128"
+   }
   },
   {
    "ko": "쉐 되브르 까베르네 소비뇽",
@@ -877,7 +1007,12 @@
    "style": "레드",
    "now": true,
    "post": "posts/n224215312664/",
-   "tags": "m d MK P"
+   "tags": "m d MK P",
+   "vivino": {
+    "r": 4.2,
+    "n": 499,
+    "url": "https://www.vivino.com/w/10887722"
+   }
   },
   {
    "ko": "쉐 되브르 소비뇽 블랑",
@@ -920,7 +1055,12 @@
    "post": "posts/n224363978133/",
    "img": "assets/wines/wd9c61175.jpg",
    "tags": "m d MC",
-   "push": 1
+   "push": 1,
+   "vivino": {
+    "r": 4.0,
+    "n": 28712,
+    "url": "https://www.vivino.com/w/86683"
+   }
   },
   {
    "ko": "아케르만 뷸 로얄 크레망 드 루아르",
@@ -944,7 +1084,12 @@
    "style": "로제",
    "now": true,
    "post": "",
-   "tags": "l d SCK"
+   "tags": "l d SCK",
+   "vivino": {
+    "r": 3.7,
+    "n": 412,
+    "url": "https://www.vivino.com/w/2022819"
+   }
   },
   {
    "ko": "두카 디 사라냐노 알키미아 프리미티보",
@@ -985,7 +1130,12 @@
    "style": "레드",
    "now": true,
    "post": "",
-   "tags": "f o MK"
+   "tags": "f o MK",
+   "vivino": {
+    "r": 4.0,
+    "n": 3329,
+    "url": "https://www.vivino.com/w/7636401"
+   }
   },
   {
    "ko": "오린 스위프트 파피용",
@@ -999,7 +1149,12 @@
    "post": "posts/n224293634932/",
    "img": "assets/wines/wcfcb09ab.jpg",
    "tags": "f d M G",
-   "rank": 19
+   "rank": 19,
+   "vivino": {
+    "r": 4.5,
+    "n": 37146,
+    "url": "https://www.vivino.com/w/7073"
+   }
   },
   {
    "ko": "오베하 네그라 까베르네 소비뇽 그란 레세르바",
@@ -1013,7 +1168,12 @@
    "post": "posts/n224224809948/",
    "img": "assets/wines/w485ec406.jpg",
    "tags": "f d M P",
-   "rank": 39
+   "rank": 39,
+   "vivino": {
+    "r": 3.7,
+    "n": 224,
+    "url": "https://www.vivino.com/w/10051174"
+   }
   },
   {
    "ko": "이그나시오 마린 올드 바인 가르나차",
@@ -1028,7 +1188,12 @@
    "img": "assets/wines/w4944de21.jpg",
    "tags": "m d MC",
    "push": 2,
-   "rank": 5
+   "rank": 5,
+   "vivino": {
+    "r": 3.8,
+    "n": 403,
+    "url": "https://www.vivino.com/w/7285603"
+   }
   },
   {
    "ko": "월터 한셀 뀌베 알리스 샤도네이",
@@ -1040,7 +1205,12 @@
    "style": "화이트",
    "now": true,
    "post": "",
-   "tags": "m d SC G"
+   "tags": "m d SC G",
+   "vivino": {
+    "r": 4.2,
+    "n": 900,
+    "url": "https://www.vivino.com/w/2441161"
+   }
   },
   {
    "ko": "월터 한셀 노스 슬로프 피노 누아",
@@ -1075,7 +1245,12 @@
    "now": true,
    "post": "",
    "tags": "m d SC",
-   "rank": 38
+   "rank": 38,
+   "vivino": {
+    "r": 3.9,
+    "n": 1516,
+    "url": "https://www.vivino.com/w/1647178"
+   }
   },
   {
    "ko": "콜레프리시오 인앤아웃",
@@ -1089,7 +1264,12 @@
    "post": "posts/n224320071132/",
    "tags": "m d MKC",
    "rank": 8,
-   "img": "assets/wines/w3bc08f20.jpg"
+   "img": "assets/wines/w3bc08f20.jpg",
+   "vivino": {
+    "r": 4.3,
+    "n": 3137,
+    "url": "https://www.vivino.com/w/6262330"
+   }
   },
   {
    "ko": "잘레오 로사도",
@@ -1102,7 +1282,12 @@
    "now": true,
    "post": "posts/n224250027067/",
    "tags": "l d SKC",
-   "push": 2
+   "push": 2,
+   "vivino": {
+    "r": 3.5,
+    "n": 106,
+    "url": "https://www.vivino.com/w/1141171"
+   }
   },
   {
    "ko": "조나단 세갱 꼬뜨 드 쇼슈아 피노 누아 VV",
@@ -1146,7 +1331,12 @@
    "tags": "l s DC",
    "price": 15800,
    "list_price": 20000,
-   "rank": 40
+   "rank": 40,
+   "vivino": {
+    "r": 4.2,
+    "n": 1518,
+    "url": "https://www.vivino.com/w/2306754"
+   }
   },
   {
    "ko": "카르페 디엠 배드 보이즈",
@@ -1159,7 +1349,12 @@
    "now": true,
    "post": "",
    "img": "assets/wines/wcb8f899a.jpg",
-   "tags": "f d M"
+   "tags": "f d M",
+   "vivino": {
+    "r": 4.2,
+    "n": 1373,
+    "url": "https://www.vivino.com/w/5405144"
+   }
   },
   {
    "ko": "카르페 디엠 페테아스카 네아그라",
@@ -1171,7 +1366,12 @@
    "style": "레드",
    "now": true,
    "post": "",
-   "tags": "m d MK"
+   "tags": "m d MK",
+   "vivino": {
+    "r": 3.9,
+    "n": 440,
+    "url": "https://www.vivino.com/w/3648149"
+   }
   },
   {
    "ko": "카르페 디엠 페테아스카 알바",
@@ -1194,7 +1394,12 @@
    "style": "화이트",
    "now": true,
    "post": "posts/n224091527745/",
-   "tags": "l d SC"
+   "tags": "l d SC",
+   "vivino": {
+    "r": 4.0,
+    "n": 237,
+    "url": "https://www.vivino.com/w/11890610"
+   }
   },
   {
    "ko": "콘다도 데 오리사 그란 레세르바",
@@ -1207,7 +1412,12 @@
    "now": true,
    "post": "posts/n224204422819/",
    "tags": "f d M G",
-   "push": 1
+   "push": 1,
+   "vivino": {
+    "r": 4.0,
+    "n": 2169,
+    "url": "https://www.vivino.com/w/3177849"
+   }
   },
   {
    "ko": "콥케 10년 토니 포트 디캔터 에디션",
@@ -1220,7 +1430,12 @@
    "now": true,
    "post": "posts/n224136487142/",
    "tags": "m s DC G",
-   "rank": 30
+   "rank": 30,
+   "vivino": {
+    "r": 4.0,
+    "n": 5726,
+    "url": "https://www.vivino.com/w/1184916"
+   }
   },
   {
    "ko": "쾰러 루프레히트 칼슈타터 자우마겐 리슬링 카비네트 트로켄",
@@ -1232,7 +1447,12 @@
    "style": "화이트",
    "now": true,
    "post": "",
-   "tags": "l d SKC"
+   "tags": "l d SKC",
+   "vivino": {
+    "r": 4.0,
+    "n": 2955,
+    "url": "https://www.vivino.com/w/1875804"
+   }
   },
   {
    "ko": "크룹 브라더스 '더 체어맨' 까베르네 소비뇽",
@@ -1258,7 +1478,12 @@
    "style": "레드",
    "now": true,
    "post": "",
-   "tags": "f d M G"
+   "tags": "f d M G",
+   "vivino": {
+    "r": 4.3,
+    "n": 76,
+    "url": "https://www.vivino.com/w/1677714"
+   }
   },
   {
    "ko": "크룹 브라더스 '더 휠맨'",
@@ -1270,7 +1495,12 @@
    "style": "레드",
    "now": true,
    "post": "",
-   "tags": "f d M G"
+   "tags": "f d M G",
+   "vivino": {
+    "r": 4.3,
+    "n": 312,
+    "url": "https://www.vivino.com/w/6608072"
+   }
   },
   {
    "ko": "타라파카 그란 레세르바 까베르네 소비뇽",
@@ -1322,7 +1552,12 @@
    "style": "레드",
    "now": true,
    "post": "posts/n224224796620/",
-   "tags": "m d MC G"
+   "tags": "m d MC G",
+   "vivino": {
+    "r": 4.0,
+    "n": 332,
+    "url": "https://www.vivino.com/w/8740500"
+   }
   },
   {
    "ko": "테라사스 데 로스 안데스 레세르바 말벡",
@@ -1334,7 +1569,12 @@
    "style": "레드",
    "now": true,
    "post": "",
-   "tags": "f d M"
+   "tags": "f d M",
+   "vivino": {
+    "r": 3.8,
+    "n": 43372,
+    "url": "https://www.vivino.com/w/3482"
+   }
   },
   {
    "ko": "테라스 가우다 리아스 바이샤스",
@@ -1348,7 +1588,12 @@
    "post": "",
    "img": "assets/wines/w9b605264.jpg",
    "price": 41900,
-   "list_price": 59000
+   "list_price": 59000,
+   "vivino": {
+    "r": 4.1,
+    "n": 46419,
+    "url": "https://www.vivino.com/w/3704"
+   }
   },
   {
    "ko": "티오 페페 피노",
@@ -1374,7 +1619,12 @@
    "post": "posts/n224204498337/",
    "tags": "l o SKC",
    "rank": 9,
-   "img": "assets/wines/wfe4bc022.jpg"
+   "img": "assets/wines/wfe4bc022.jpg",
+   "vivino": {
+    "r": 4.2,
+    "n": 108,
+    "url": "https://www.vivino.com/w/9731414"
+   }
   },
   {
    "ko": "티키 싱글 빈야드 샤도네이",
@@ -1445,7 +1695,12 @@
    "post": "posts/n224201381948/",
    "img": "assets/wines/w4d63dc0a.jpg",
    "tags": "f d M",
-   "rank": 22
+   "rank": 22,
+   "vivino": {
+    "r": 4.1,
+    "n": 1663,
+    "url": "https://www.vivino.com/w/6897167"
+   }
   },
   {
    "ko": "페어히즈 앵커 리제르바",
@@ -1473,7 +1728,12 @@
    "style": "화이트",
    "now": true,
    "post": "posts/n224204536630/",
-   "tags": "l o SKC"
+   "tags": "l o SKC",
+   "vivino": {
+    "r": 3.9,
+    "n": 9782,
+    "url": "https://www.vivino.com/w/1210237"
+   }
   },
   {
    "ko": "폴 고르그 블랑 드 블랑",
@@ -1536,7 +1796,12 @@
    "now": true,
    "post": "posts/n224091537763/",
    "tags": "f d M G",
-   "push": 1
+   "push": 1,
+   "vivino": {
+    "r": 4.1,
+    "n": 60219,
+    "url": "https://www.vivino.com/w/19265"
+   }
   },
   {
    "ko": "푸카리 피노 누아",
@@ -1548,7 +1813,12 @@
    "style": "레드",
    "now": true,
    "post": "",
-   "tags": "l d MKC"
+   "tags": "l d MKC",
+   "vivino": {
+    "r": 3.9,
+    "n": 7277,
+    "url": "https://www.vivino.com/w/54504"
+   }
   },
   {
    "ko": "네그루 드 푸카리",
@@ -1586,7 +1856,12 @@
    "style": "포트·셰리",
    "now": true,
    "post": "posts/n224058170212/",
-   "tags": "m s DC"
+   "tags": "m s DC",
+   "vivino": {
+    "r": 4.3,
+    "n": 158,
+    "url": "https://www.vivino.com/w/4166322"
+   }
   },
   {
    "ko": "하셀그로브 캣린 쉬라즈 매그넘",
@@ -1611,7 +1886,12 @@
    "post": "https://blog.naver.com/middaynight109/224489117388",
    "img": "assets/wines/w15a650ee.jpg",
    "tags": "f d MK G",
-   "push": 2
+   "push": 2,
+   "vivino": {
+    "r": 4.1,
+    "n": 107,
+    "url": "https://www.vivino.com/w/1723559"
+   }
   },
   {
    "ko": "도멘 데 떼레 정띠에 부르고뉴 샤르도네",
@@ -1727,7 +2007,12 @@
    "post": "posts/n224204475836/",
    "img": "assets/wines/w98975940.jpg",
    "tags": "l d SKC",
-   "rank": 4
+   "rank": 4,
+   "vivino": {
+    "r": 4.1,
+    "n": 15917,
+    "url": "https://www.vivino.com/w/1182890"
+   }
   },
   {
    "ko": "나헤 리슬링 파인헤르브",
@@ -1927,7 +2212,12 @@
    "now": true,
    "post": "posts/n224478339902/",
    "img": "assets/wines/wf7316beb.jpg",
-   "tags": "l d SKC"
+   "tags": "l d SKC",
+   "vivino": {
+    "r": 3.7,
+    "n": 250,
+    "url": "https://www.vivino.com/w/2851473"
+   }
   },
   {
    "ko": "빔바젠 샤도네이",
@@ -1939,7 +2229,12 @@
    "style": "화이트",
    "now": true,
    "post": "",
-   "tags": "m d SC"
+   "tags": "m d SC",
+   "vivino": {
+    "r": 3.7,
+    "n": 112,
+    "url": "https://www.vivino.com/w/1639696"
+   }
   },
   {
    "ko": "빔바젠 세미용",
@@ -1951,7 +2246,12 @@
    "style": "화이트",
    "now": true,
    "post": "",
-   "tags": "l d SC"
+   "tags": "l d SC",
+   "vivino": {
+    "r": 3.6,
+    "n": 120,
+    "url": "https://www.vivino.com/w/1807936"
+   }
   },
   {
    "ko": "빔바젠 쉬라즈",
@@ -2010,7 +2310,12 @@
    "post": "posts/n224460008014/",
    "img": "assets/wines/w1f0d998e.jpg",
    "price": 31000,
-   "list_price": 43000
+   "list_price": 43000,
+   "vivino": {
+    "r": 3.8,
+    "n": 3109,
+    "url": "https://www.vivino.com/w/1214321"
+   }
   },
   {
    "ko": "샤또 퓌게로",
@@ -2079,7 +2384,12 @@
    "post": "posts/n224200136834/",
    "img": "assets/wines/w53430663.jpg",
    "tags": "l d SC",
-   "rank": 25
+   "rank": 25,
+   "vivino": {
+    "r": 3.5,
+    "n": 4290,
+    "url": "https://www.vivino.com/w/71214"
+   }
   },
   {
    "ko": "쿠수마노 샤도네이",
@@ -2116,7 +2426,12 @@
    "post": "posts/n224453393740/",
    "img": "assets/wines/w907729c0.jpg",
    "price": 47900,
-   "list_price": 59400
+   "list_price": 59400,
+   "vivino": {
+    "r": 4.2,
+    "n": 95493,
+    "url": "https://www.vivino.com/w/18978"
+   }
   },
   {
    "ko": "클라우디 베이 펠로루스",
@@ -2130,7 +2445,12 @@
    "post": "",
    "img": "assets/wines/w019133d4.jpg",
    "price": 40900,
-   "list_price": 58000
+   "list_price": 58000,
+   "vivino": {
+    "r": 3.9,
+    "n": 3208,
+    "url": "https://www.vivino.com/w/18981"
+   }
   },
   {
    "ko": "킴 크로포드 소비뇽 블랑",
@@ -2196,7 +2516,12 @@
    "now": true,
    "post": "posts/n224367213459/",
    "img": "assets/wines/w21800c49.jpg",
-   "tags": "l d SC GP"
+   "tags": "l d SC GP",
+   "vivino": {
+    "r": 4.0,
+    "n": 36880,
+    "url": "https://www.vivino.com/w/6234233"
+   }
   },
   {
    "ko": "페라리 로제",
@@ -2220,7 +2545,12 @@
    "now": false,
    "post": "posts/n224473827548/",
    "price": 37000,
-   "list_price": 53000
+   "list_price": 53000,
+   "vivino": {
+    "r": 4.0,
+    "n": 13386,
+    "url": "https://www.vivino.com/w/5778001"
+   }
   },
   {
    "ko": "피오 체사레 바롤로",
@@ -2304,7 +2634,12 @@
    "post": "posts/n224125902539/",
    "tags": "l d SKC",
    "rank": 20,
-   "img": "assets/wines/w2bc963fe.jpg"
+   "img": "assets/wines/w2bc963fe.jpg",
+   "vivino": {
+    "r": 4.2,
+    "n": 14310,
+    "url": "https://www.vivino.com/w/5952182"
+   }
   },
   {
    "ko": "앙리 르블랑 블랑 드 블랑",
@@ -2332,7 +2667,12 @@
    "push": 3,
    "price": 299000,
    "list_price": 399000,
-   "rank": 17
+   "rank": 17,
+   "vivino": {
+    "r": 4.6,
+    "n": 56406,
+    "url": "https://www.vivino.com/w/4086"
+   }
   },
   {
    "ko": "인도미타 그란 레세르바 까베르네 소비뇽",
@@ -2993,7 +3333,12 @@
    "post": "",
    "order": true,
    "price": 23000,
-   "list_price": 40000
+   "list_price": 40000,
+   "vivino": {
+    "r": 3.0,
+    "n": 187,
+    "url": "https://www.vivino.com/w/4187958"
+   }
   },
   {
    "ko": "1879 SC 샤도네이",
@@ -3007,7 +3352,12 @@
    "post": "",
    "order": true,
    "price": 20000,
-   "list_price": 40000
+   "list_price": 40000,
+   "vivino": {
+    "r": 3.2,
+    "n": 31,
+    "url": "https://www.vivino.com/w/7418352"
+   }
   },
   {
    "ko": "1879 G 모스카토",
@@ -3327,7 +3677,12 @@
    "post": "",
    "order": true,
    "price": 33000,
-   "list_price": 60000
+   "list_price": 60000,
+   "vivino": {
+    "r": 3.6,
+    "n": 3455,
+    "url": "https://www.vivino.com/w/8559285"
+   }
   },
   {
    "ko": "엘 미라클 No.3 화이트",
@@ -3737,7 +4092,12 @@
    "post": "",
    "order": true,
    "price": 25400,
-   "list_price": 45000
+   "list_price": 45000,
+   "vivino": {
+    "r": 3.3,
+    "n": 1721,
+    "url": "https://www.vivino.com/w/2098685"
+   }
   },
   {
    "ko": "샤또 오 사릭 보르도",
@@ -3775,7 +4135,12 @@
    "post": "",
    "order": true,
    "price": 38000,
-   "list_price": 55000
+   "list_price": 55000,
+   "vivino": {
+    "r": 3.8,
+    "n": 4145,
+    "url": "https://www.vivino.com/w/2360425"
+   }
   },
   {
    "ko": "듀오 데 메 레드",
@@ -6552,7 +6917,12 @@
    "order": true,
    "img": "assets/wines/w7f1fa95b.jpg",
    "price": 29000,
-   "list_price": 44000
+   "list_price": 44000,
+   "vivino": {
+    "r": 3.7,
+    "n": 277,
+    "url": "https://www.vivino.com/w/2432635"
+   }
   },
   {
    "ko": "페리에 주에 벨 에포크 로제",
@@ -6568,6 +6938,199 @@
    "price": 589000,
    "list_price": 629000,
    "img": "assets/wines/w0813b542.jpg"
+  },
+  {
+   "ko": "디디에 아미오 부르고뉴 알리고떼",
+   "en": "Didier Amiot Bourgogne Aligoté",
+   "vintage": "2024",
+   "country": "프랑스",
+   "region": "부르고뉴",
+   "grape": "알리고떼",
+   "style": "화이트",
+   "now": false,
+   "post": "",
+   "order": true
+  },
+  {
+   "ko": "디디에 아미오 부르고뉴 오뜨 꼬뜨 드 뉘 샤도네이",
+   "en": "Didier Amiot Bourgogne Hautes-Côtes de Nuits Chardonnay",
+   "vintage": "2024",
+   "country": "프랑스",
+   "region": "부르고뉴",
+   "grape": "샤도네이",
+   "style": "화이트",
+   "now": false,
+   "post": "",
+   "order": true
+  },
+  {
+   "ko": "디디에 아미오 꼬또 부르기뇽",
+   "en": "Didier Amiot Coteaux Bourguignons",
+   "vintage": "2024",
+   "country": "프랑스",
+   "region": "부르고뉴",
+   "grape": "피노 누아",
+   "style": "레드",
+   "now": false,
+   "post": "",
+   "order": true
+  },
+  {
+   "ko": "디디에 아미오 부르고뉴 레 몰리시에르 피노 누아",
+   "en": "Didier Amiot Bourgogne Les Mollissières Pinot Noir",
+   "vintage": "2024",
+   "country": "프랑스",
+   "region": "부르고뉴",
+   "grape": "피노 누아",
+   "style": "레드",
+   "now": false,
+   "post": "",
+   "order": true
+  },
+  {
+   "ko": "디디에 아미오 모레 생 드니",
+   "en": "Didier Amiot Morey-Saint-Denis",
+   "vintage": "2024",
+   "country": "프랑스",
+   "region": "부르고뉴",
+   "grape": "피노 누아",
+   "style": "레드",
+   "now": false,
+   "post": "",
+   "order": true
+  },
+  {
+   "ko": "디디에 아미오 모레 생 드니 1er 오 샤름",
+   "en": "Didier Amiot Morey-Saint-Denis 1er Cru Aux Charmes",
+   "vintage": "2024",
+   "country": "프랑스",
+   "region": "부르고뉴",
+   "grape": "피노 누아",
+   "style": "레드",
+   "now": false,
+   "post": "",
+   "order": true
+  },
+  {
+   "ko": "디디에 아미오 모레 생 드니 1er 레 슈네브리",
+   "en": "Didier Amiot Morey-Saint-Denis 1er Cru Les Chenevery",
+   "vintage": "2024",
+   "country": "프랑스",
+   "region": "부르고뉴",
+   "grape": "피노 누아",
+   "style": "레드",
+   "now": false,
+   "post": "",
+   "order": true
+  },
+  {
+   "ko": "디디에 아미오 제브레 샹베르탱 1er 오 꽁보트",
+   "en": "Didier Amiot Gevrey-Chambertin 1er Cru Aux Combottes",
+   "vintage": "2024",
+   "country": "프랑스",
+   "region": "부르고뉴",
+   "grape": "피노 누아",
+   "style": "레드",
+   "now": false,
+   "post": "",
+   "order": true
+  },
+  {
+   "ko": "디디에 아미오 끌로 드 라 로쉬 그랑 크뤼",
+   "en": "Didier Amiot Clos de la Roche Grand Cru",
+   "vintage": "2024",
+   "country": "프랑스",
+   "region": "부르고뉴",
+   "grape": "피노 누아",
+   "style": "레드",
+   "now": false,
+   "post": "",
+   "order": true
+  },
+  {
+   "ko": "디디에 아미오 끌로 드 라 로쉬 그랑 크뤼",
+   "en": "Didier Amiot Clos de la Roche Grand Cru",
+   "vintage": "2023",
+   "country": "프랑스",
+   "region": "부르고뉴",
+   "grape": "피노 누아",
+   "style": "레드",
+   "now": false,
+   "post": "",
+   "order": true
+  },
+  {
+   "ko": "오스틴 호프 까베르네 소비뇽",
+   "en": "Austin Hope Cabernet Sauvignon",
+   "vintage": "",
+   "country": "미국",
+   "region": "캘리포니아 파소 로블레스",
+   "grape": "까베르네 소비뇽",
+   "style": "레드",
+   "now": false,
+   "post": "",
+   "order": true
+  },
+  {
+   "ko": "트라피체 이스까이 말벡 까베르네 프랑",
+   "en": "Trapiche Iscay Malbec Cabernet Franc",
+   "vintage": "",
+   "country": "아르헨티나",
+   "region": "멘도사",
+   "grape": "말벡·까베르네 프랑",
+   "style": "레드",
+   "now": false,
+   "post": "",
+   "order": true
+  },
+  {
+   "ko": "파 니엔테 나파 밸리 샤도네이",
+   "en": "Far Niente Napa Valley Chardonnay",
+   "vintage": "",
+   "country": "미국",
+   "region": "캘리포니아 나파 밸리",
+   "grape": "샤도네이",
+   "style": "화이트",
+   "now": false,
+   "post": "",
+   "order": true
+  },
+  {
+   "ko": "더 롱 리틀 독 루즈 (크리스마스 에디션)",
+   "en": "The Long Little Dog Rouge (Christmas Edition)",
+   "vintage": "",
+   "country": "프랑스",
+   "region": "랑그독",
+   "grape": "그르나슈·시라·까리냥",
+   "style": "레드",
+   "now": false,
+   "post": "",
+   "order": true
+  },
+  {
+   "ko": "실버 쉽 소비뇽 블랑",
+   "en": "Silver Sheep Sauvignon Blanc",
+   "vintage": "2025",
+   "country": "뉴질랜드",
+   "region": "말보로",
+   "grape": "소비뇽 블랑",
+   "style": "화이트",
+   "now": false,
+   "post": "",
+   "order": true,
+   "eta": "12월 중순 입고"
+  },
+  {
+   "ko": "일 포지오네 브루넬로 디 몬탈치노",
+   "en": "Il Poggione Brunello di Montalcino",
+   "vintage": "2020",
+   "country": "이탈리아",
+   "region": "토스카나 몬탈치노",
+   "grape": "산지오베제",
+   "style": "레드",
+   "now": false,
+   "post": "",
+   "order": true
   }
  ],
  "price_date": "2026-11-24"
