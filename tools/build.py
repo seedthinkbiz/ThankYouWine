@@ -709,7 +709,7 @@ def page_about(rel):
         </ul>
         <h3>2027년 6월, 와이너리 크루즈</h3>
         <p>땡큐와인 멤버들과 크루즈를 타고 와이너리를 둘러보는 여행을 준비하고 있어요. 각자 예약하고 같이 떠나는 모임이에요. 궁금하시면 카톡으로 물어봐 주세요.</p>
-        <div class="ctas"><a class="btn wine" href="#contact" data-contact>문의하기</a><a class="btn line" href="{SITE['blog']}" target="_blank" rel="noopener">블로그</a><a class="btn line" href="{SITE['insta']}" target="_blank" rel="noopener">인스타그램</a></div>
+        <div class="ctas"><a class="btn wine" href="#contact" data-contact>문의하기</a><a class="btn line" href="{rel}p/121-fe658d91b7e590dc/">121 미팅 자료</a><a class="btn line" href="{SITE['blog']}" target="_blank" rel="noopener">블로그</a><a class="btn line" href="{SITE['insta']}" target="_blank" rel="noopener">인스타그램</a></div>
       </div>
     </div>
   </div>
@@ -1457,7 +1457,7 @@ def wine_card(rel,w):
     where=' '.join(x for x in (w['country'],w['region']) if x)
     meta=' · '.join(x for x in (w['vintage'],where,w['grape']) if x)
     hay=' '.join([w['ko'],w['en'],w['vintage'],w['country'],w['region'],w['grape'],w['style']]).lower()
-    status=('<span class="wbadge now">지금 매장에</span>' if w['now'] else '<span class="wbadge disc">수입사 단종</span>' if w.get('disc') else '<span class="wbadge order">주문 가능</span>' if w.get('order') else '<span class="wbadge">재입고 문의</span>')
+    status=('<span class="wbadge now">지금 매장에</span>' if w['now'] else '<span class="wbadge disc">수입사 단종</span>' if w.get('disc') else f'<span class="wbadge order">{esc(w["eta"])} · 예약 가능</span>' if w.get('eta') else '<span class="wbadge order">주문 가능</span>' if w.get('order') else '<span class="wbadge">재입고 문의</span>')
     purl=w.get('post') or ''
     post=(f'<a class="textlink" href="{purl}" target="_blank" rel="noopener">소개 글 →</a>' if purl.startswith('http')
           else f'<a class="textlink" href="{rel}{purl}">소개 글 →</a>' if purl else '')
@@ -1530,7 +1530,7 @@ def page_wine(rel,w):
     purl=w.get('post') or ''
     post=(f'<a class="textlink" href="{purl}" target="_blank" rel="noopener">소개 글 →</a>' if purl.startswith('http') else f'<a class="textlink" href="{rel}{purl}">소개 글 →</a>' if purl else '')
     pic=(f'<div class="wimg big"><img src="{rel}{w["img"]}" alt="{esc(w["ko"])} 바틀" width="300" height="480"></div>' if w.get('img') else f'<div class="wimg big none" aria-hidden="true">{HEART_SVG}</div>')
-    st=('<span class="wbadge now">지금 매장에</span>' if w['now'] else '<span class="wbadge disc">수입사 단종</span>' if w.get('disc') else '<span class="wbadge order">주문 가능</span>' if (w.get('order') or w.get('price')) else '<span class="wbadge">재입고 문의</span>')
+    st=('<span class="wbadge now">지금 매장에</span>' if w['now'] else '<span class="wbadge disc">수입사 단종</span>' if w.get('disc') else f'<span class="wbadge order">{esc(w["eta"])} · 예약 가능</span>' if w.get('eta') else '<span class="wbadge order">주문 가능</span>' if (w.get('order') or w.get('price')) else '<span class="wbadge">재입고 문의</span>')
     ask='주문 문의' if w.get('price') else '가격 문의'
     return f"""
 <section class="sec tight" id="wine">
