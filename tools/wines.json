@@ -1732,7 +1732,7 @@
    "region": "보졸레",
    "grape": "가메",
    "style": "레드",
-   "now": true,
+   "now": false,
    "post": "",
    "tags": "l d MCK"
   },
@@ -1744,7 +1744,7 @@
    "region": "소노마 코스트",
    "grape": "피노 누아",
    "style": "레드",
-   "now": true,
+   "now": false,
    "post": "posts/n224405140553/",
    "tags": "m d MSC"
   },

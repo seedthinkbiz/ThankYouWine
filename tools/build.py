@@ -64,6 +64,7 @@ PAGES={
  'gathering': dict(path='gathering/', title='모임·행사 와인 견적 · 땡큐와인', desc='송년회, 동호회, 회사 모임 와인. 인원과 예산에 맞춘 구성, 와인잔 대여와 배송·수거까지. 가입 없이 견적을 요청하세요.'),
  'gift':      dict(path='gift/',      title='기업·명절 선물 와인 · 땡큐와인', desc='거래처 명절 선물, 임직원 선물, 감사 인사 한 병. 보르도 5대 샤토부터 데일리 와인까지 예산에 맞춰 고르고 세금계산서를 발행해 드려요.'),
  'wines':     dict(path='wines/',     title='와인 목록 · 땡큐와인이 소개하고 판매한 와인 찾기', desc='땡큐와인에서 지금 만날 수 있는 와인과 지금까지 소개·판매한 와인 목록. 이름·나라·스타일로 찾고, 와인별 가격도 확인하세요.'),
+ 'taste':     dict(path='taste/',     title='와인 심리테스트 · 나와 닮은 와인 유형 찾기 | 땡큐와인', desc='둘 중 하나만 고르는 8가지 질문으로 알아보는 나의 와인 유형. 결과에 맞춰 땡큐와인이 엄선한 매장 와인 3병을 추천해 드려요.'),
  'shop':      dict(path='shop/',      title='매장 안내 · 땡큐와인', desc='서울 성동구 성덕정길 109 2층. 매장 픽업, 멤버 시음회·모임 안내.'),
  'about':     dict(path='about/',     title='소개 · 땡큐와인과 와인 컨설턴트 이도하', desc='땡큐와인은 모임·행사·기업 선물 와인부터 와인 강의·시음회까지 맡는 성수동의 와인 토탈 서비스예요. 운영하는 와인 컨설턴트 이도하 소개.'),
  'blog':      dict(path='blog/',      title='블로그 · 땡큐와인', desc='땡큐와인이 네이버 블로그에 올린 와인 소개·와인 이야기·모임·선물 글을 사이트에서 그대로 읽어요. 글마다 한 줄 요약부터.'),
@@ -312,6 +313,7 @@ def page_index(rel):
           <a class="btn wine" href="{rel}gathering/">모임 와인 견적 받기</a>
           <a class="btn line" href="{rel}gift/">기업·명절 선물 문의</a>
           <a class="textlink" href="{rel}blog/">블로그에서 와인 둘러보기 →</a>
+          <a class="textlink" href="#taste-teaser">1분 와인 심리테스트 →</a>
         </div>
         {eventbar_html()}
       </div>
@@ -322,7 +324,7 @@ def page_index(rel):
     </div>
   </div>
 </section>
-
+{taste_teaser(rel)}
 <section class="sec" id="services">
   <div class="wrap">
     <div class="head">
@@ -1595,6 +1597,7 @@ def page_wines(rel):
         <ul class="wines wpickres" id="wpickres"></ul>
         <p class="wpicknote">맛과 음식 궁합을 기준으로 고른 참고용 추천이에요. 예산이나 받는 분 취향을 알려 주시면 더 잘 맞춰 드려요. <button class="textlink" type="button" id="wpickagain">다시 고르기</button></p>
       </div>
+      <p class="wpicktaste">재미로 알아보는 내 취향, <a class="textlink" href="{rel}taste/">와인 심리테스트 해 보기 →</a></p>
     </div>
     <div class="wfind" role="search">
       <label class="wsearch"><span class="sr">와인 검색</span><input id="wq" type="search" placeholder="와인 이름, 품종, 지역으로 찾기 (예: 피노 누아, 보르도, Chablis)" autocomplete="off"></label>
@@ -1612,6 +1615,144 @@ def page_wines(rel):
   </div>
 </section>"""
 
+
+# ---------------- 와인 심리테스트 (2026-11-26 도하: 땡큐와인 홈페이지에 와인 심리테스트) ----------------
+# 둘 중 하나 고르는 8문항 → 8가지 유형. 결과마다 '지금 매장에' 와인 3병(push 높은 와인 먼저, 그다음 rank).
+# 점수 축: S 단맛, P 어울림(파티), A 모험, B 무게, R 따뜻함(레드). 유형 점수 = 축 점수 × 가중치, 가장 높은 유형.
+# 가중치는 256가지 응답 조합에서 유형이 고르게(30~34개씩) 나오도록 맞춘 값.
+TASTE_Q=[
+ ('금요일 저녁, 퇴근길에 더 끌리는 건?',('친구들 불러서 왁자지껄하게 한잔',{'P':2}),('집에서 조용히 나만의 시간',{'P':-1,'R':1})),
+ ('카페에서 주로 고르는 음료는?',('달콤한 바닐라 라떼',{'S':2}),('진한 아메리카노',{'S':-1,'B':1})),
+ ('훌쩍 떠난다면 어디로 갈까요?',('햇살 가득한 바닷가',{'R':-2}),('단풍 든 산속 오두막',{'R':2})),
+ ('오늘 저녁 메뉴를 고른다면?',('두툼하게 구운 스테이크',{'B':2,'R':1}),('싱싱한 회 한 접시',{'B':-2,'R':-1})),
+ ('처음 가 본 식당에서 주문할 때 나는?',('이 집 대표 메뉴로 안전하게',{'A':-1}),('처음 보는 메뉴에 도전',{'A':2})),
+ ('디저트 배는 따로 있다?',('당연하죠, 디저트는 필수',{'S':2}),('디저트보다 메인 한 입 더',{'S':-1,'B':1})),
+ ('좋은 일이 생기면 나는?',('일단 다 같이 축하 파티',{'P':2}),('조용히 의미 있는 저녁',{'B':1,'R':1})),
+ ('옷장을 열면 더 많은 건?',('오래 입는 기본 아이템',{'A':-1,'B':1}),('포인트가 되는 독특한 아이템',{'A':2})),
+]
+# key: (이름, 한 줄, 설명, 잘 맞는 와인, 잘 맞는 음식, 짝꿍 유형, 가중치, 와인 고르는 조건)
+TASTE_T={
+ 'sweet':('다정한 달콤파','곁에 있으면 기분이 좋아지는 사람',
+   '작은 일에도 잘 웃고, 주변 사람을 먼저 챙기는 다정한 타입이에요. 힘든 하루 끝에는 나를 위한 달콤한 보상을 아끼지 않아요.',
+   '모스카토, 아이스바인, 토카이처럼 달콤한 와인','케이크·과일·치즈, 매콤한 음식 뒤 입가심','든든한 리더',{'S':1.2},
+   lambda w,t:t[1]=='s' and w['style']!='무알콜'),
+ 'bubbly':('반짝이는 분위기 메이커','자리가 시작되면 제일 먼저 건배를 외치는 사람',
+   '사람들과 함께할 때 에너지가 차오르는 타입이에요. 평범한 날도 작은 이벤트로 만드는 재주가 있어요.',
+   '샴페인, 크레망, 스푸만테 같은 스파클링 와인','튀김·전, 회, 가벼운 안주','호기심 많은 탐험가',{'P':1.2,'B':-0.1},
+   lambda w,t:w['style']=='스파클링' and t[1]=='d'),
+ 'explorer':('호기심 많은 탐험가','“이건 뭐예요?”가 입버릇인 사람',
+   '익숙한 것보다 새로운 것에 먼저 손이 가는 타입이에요. 남들이 잘 모르는 맛을 찾아내고 알려 주는 걸 즐겨요.',
+   '로제, 오렌지 와인, 리슬링처럼 개성 있는 와인','한식·매운 음식, 아시아 요리','반짝이는 분위기 메이커',{'A':1.5,'B':-0.1,'R':-1.5},
+   lambda w,t:w['style'] in ('로제','기타') or (w['style']=='화이트' and ('리슬링' in w['ko'] or '리슬링' in (w.get('grape') or '')))),
+ 'leader':('든든한 리더','말보다 행동으로 보여 주는 사람',
+   '한번 정하면 끝까지 밀고 가는 묵직한 타입이에요. 겉으론 무뚝뚝해 보여도 사람들이 결국 기대는 건 늘 당신이에요.',
+   '까베르네 소비뇽, 쉬라즈처럼 진하고 묵직한 레드','스테이크, 갈비, 숯불구이','다정한 달콤파',{'B':0.7,'R':0.5,'A':-0.2},
+   lambda w,t:w['style']=='레드' and t[0]=='f' and t[1]=='d'),
+ 'romantic':('따뜻한 낭만파','분위기와 이야기를 사랑하는 사람',
+   '좋은 음악과 긴 대화가 있는 밤을 좋아하는 타입이에요. 감정 표현이 풍부하고, 한번 마음을 주면 오래 가요.',
+   '프리미티보, 아파시멘토처럼 진하고 과일 향이 풍부한 레드','바비큐, 양념 고기, 다크 초콜릿','섬세한 미식가',{'B':0.5,'R':0.5,'A':0.4,'S':0.4},
+   lambda w,t:w['style']=='레드' and t[1]=='o'),
+ 'elegant':('섬세한 미식가','작은 차이를 알아보는 사람',
+   '향 하나, 식감 하나에도 감탄할 줄 아는 감각파예요. 화려한 것보다 은은하고 오래 남는 것을 좋아해요.',
+   '피노 누아처럼 가볍고 향이 섬세한 레드','오리·닭 요리, 버섯, 연어','따뜻한 낭만파',{'R':1.1,'B':-0.5,'A':0.7},
+   lambda w,t:w['style']=='레드' and t[1]=='d' and (t[0]=='l' or '피노' in w['ko'] or '피노' in (w.get('grape') or ''))),
+ 'classic':('우아한 클래식파','기본이 가장 멋지다는 걸 아는 사람',
+   '유행보다 오래가는 것을 고르는 안목이 있어요. 차분하고 믿음직해서, 중요한 자리일수록 당신에게 조언을 구해요.',
+   '샤도네이처럼 부드럽고 풍성한 화이트','크림 파스타, 구운 생선, 닭 요리','상큼한 산책가',{'A':-0.7,'R':-0.1,'B':0.9},
+   lambda w,t:w['style']=='화이트' and t[0]=='m' and t[1]=='d'),
+ 'fresh':('상큼한 산책가','같이 있으면 공기가 맑아지는 사람',
+   '복잡한 것보다 가볍고 산뜻한 게 좋은 타입이에요. 계획 없이 나선 산책에서 좋은 곳을 찾아내는 데 일가견이 있어요.',
+   '소비뇽 블랑처럼 상큼하고 산뜻한 화이트','샐러드, 회·해산물, 가벼운 안주','우아한 클래식파',{'R':-2.7,'B':-0.3,'S':-0.4},
+   lambda w,t:w['style']=='화이트' and t[0]=='l' and t[1]=='d'),
+}
+TASTE_ORDER=list(TASTE_T)
+# 조건에 맞는 매장 와인이 3병이 안 되면 채우는 느슨한 조건 (11/26 파르동·파일라 품절로 섬세한 미식가가 2병이 됨)
+TASTE_FILL={'elegant':lambda w,t:w['style']=='레드' and t[0]=='m' and t[1]=='d'}
+def taste_picks(key,n=3):
+    def pool(ok):
+        c=[w for w in WINES if w['now'] and w.get('tags') and ok(w,w['tags'].split(' ')) and not _re.search(r'\d(\.\d)?L\b|\d+ml',w['ko'])]   # 3L·187ml 같은 특수 용량은 빼요
+        c.sort(key=lambda w:(-(w.get('push') or 0),w.get('rank') or 9999,not w.get('img'),w['ko']))
+        return c
+    cand=pool(TASTE_T[key][7])
+    if key in TASTE_FILL: cand+=[w for w in pool(TASTE_FILL[key]) if w not in cand]
+    out,seen=[],set()
+    for w in cand:
+        k=w['ko'].split(' ')[0]
+        if k in seen: continue
+        seen.add(k); out.append(w)
+        if len(out)==n: break
+    if len(out)<n: WARNINGS.append(f'심리테스트 {key}: 매장 와인 {len(out)}병뿐')
+    return out
+def page_taste(rel):
+    qs=''.join(f'<li class="tq" data-i="{i}" hidden><p class="tqn">Q{i+1}</p><h2>{esc(q)}</h2><div class="topts">'
+               +''.join(f'<button class="topt" type="button" data-w="{esc(json.dumps(v,separators=(",",":")))}"><span class="tab">{ab}</span>{esc(t)}</button>' for ab,(t,v) in zip('AB',opts))
+               +'</div></li>' for i,(q,*opts) in enumerate(TASTE_Q))
+    res=''
+    for k in TASTE_ORDER:
+        name,line,desc,wine,food,mate,wt,_=TASTE_T[k]
+        picks=taste_picks(k)
+        res+=f"""<article class="tres" id="t-{k}" data-t="{k}" data-wt="{esc(json.dumps(wt,separators=(',',':')))}" hidden>
+      <div class="tcard">
+        <p class="tkick">나와 닮은 와인 유형은</p>
+        <h2>{esc(name)}</h2>
+        <p class="tline">{esc(line)}</p>
+        <p>{esc(desc)}</p>
+        <dl class="tfacts"><div><dt>잘 맞는 와인</dt><dd>{esc(wine)}</dd></div><div><dt>함께 먹으면 좋은 음식</dt><dd>{esc(food)}</dd></div><div><dt>잘 맞는 짝꿍</dt><dd>{esc(mate)}</dd></div></dl>
+        <div class="tacts"><button class="btn wine sm" type="button" data-share="{BASE}/taste/?r={k}" data-title="나는 {esc(name)}! 와인 심리테스트">결과 공유하기</button><button class="btn line sm" type="button" data-tagain>다시 하기</button></div>
+      </div>
+      <h3 class="tpicks">{esc(name)}에게 추천하는 매장 와인</h3>
+      <ul class="wines tres3">{''.join(wine_card(rel,w) for w in picks)}</ul>
+    </article>"""
+    allt=''.join(f'<li><a class="textlink" href="?r={k}">{esc(TASTE_T[k][0])}</a> · {esc(TASTE_T[k][3])}</li>' for k in TASTE_ORDER)
+    return f"""
+<section class="sec tight" id="taste">
+  <div class="wrap">
+    <div class="tintro" id="tintro">
+      <span class="kicker">와인 심리테스트</span>
+      <h1>나와 닮은 와인은 무엇일까요?</h1>
+      <p>둘 중 하나만 고르는 질문 8개, 1분이면 끝나요. 결과에 맞춰 땡큐와인이 엄선한 매장 와인 3병을 골라 드려요.</p>
+      <button class="btn wine" type="button" id="tstart">테스트 시작하기</button>
+    </div>
+    <div class="tbox" id="tbox" hidden>
+      <div class="tbar" aria-hidden="true"><i id="tbarfill"></i></div>
+      <ol class="tqs" id="tqs">{qs}</ol>
+      <button class="textlink tback" type="button" id="tback" hidden>← 이전 질문</button>
+    </div>
+    <div id="tres">{res}</div>
+    <div class="tmore" id="tmore" hidden>
+      <p>입맛이나 예산, 함께할 자리를 알려 주시면 더 꼭 맞게 골라 드려요. <a class="textlink" href="#contact" data-contact>카톡으로 물어보기 →</a></p>
+      <p><a class="textlink" href="{rel}wines/">매장 와인 전체 보기 →</a></p>
+    </div>
+    <noscript><ul class="tall">{allt}</ul></noscript>
+  </div>
+</section>
+<script type="application/json" id="tdata">{json.dumps(TASTE_ORDER)}</script>"""
+
+
+def taste_teaser(rel):
+    """홈 첫 화면 아래 심리테스트 맛보기 (2026-11-26 도하: 랜딩페이지에서 재밌게 해 볼 수 있게). 첫 질문을 바로 누르면 /taste/에서 2번부터 이어져요."""
+    q,*opts=TASTE_Q[0]
+    btns=''.join(f'<a class="topt" href="{rel}taste/?a={i}"><span class="tab">{ab}</span>{esc(t)}</a>' for i,(ab,(t,_)) in enumerate(zip('AB',opts)))
+    chips=''.join(f'<span class="ttype">{esc(TASTE_T[k][0])}</span>' for k in TASTE_ORDER)
+    return f"""<section class="sec band tteaser" id="taste-teaser">
+  <div class="wrap wide">
+    <div class="ttgrid">
+      <div>
+        <span class="kicker">1분 와인 심리테스트</span>
+        <h2>나와 닮은 와인은<br>무엇일까요?</h2>
+        <p>둘 중 하나만 고르는 질문 8개로 알아보는 나의 와인 유형. 결과에 맞춰 땡큐와인이 엄선한 매장 와인 3병을 골라 드려요.</p>
+        <div class="ttypes" aria-label="8가지 유형">{chips}</div>
+      </div>
+      <div class="tbox ttq">
+        <div class="tbar" aria-hidden="true"><i style="width:0"></i></div>
+        <p class="tqn">Q1 / 8</p>
+        <h3>{esc(q)}</h3>
+        <div class="topts">{btns}</div>
+      </div>
+    </div>
+  </div>
+</section>
+"""
 
 # ---------------- 회원: 로그인 · 내 와인 · 관리자 연결 (2026-11-24 도하: 산 와인 모아 보기, 산 와인에만 별점·메모) ----------------
 # 회원은 코르크매치·비노나루와 같은 Supabase(카카오·구글). 구매 내역은 장부에서 관리자가 '연결'한 회원 것만 올라가요. 가격은 어디에도 없어요.
@@ -1825,7 +1966,7 @@ def push_admin_html():
         <script src="../assets/push-admin.js?v={ASSET_V}" defer></script>
       </div>"""
 
-BUILDERS={'app':page_app,'login':page_login,'me':page_me,'admin':page_admin,'index':page_index,'wines':page_wines,'gathering':page_gathering,'gift':page_gift,'shop':page_shop,'about':page_about,'blog':page_blog,'faq':page_faq,'occasions':page_occasions,'privacy':page_privacy,'404':page_404}
+BUILDERS={'app':page_app,'login':page_login,'me':page_me,'admin':page_admin,'index':page_index,'wines':page_wines,'taste':page_taste,'gathering':page_gathering,'gift':page_gift,'shop':page_shop,'about':page_about,'blog':page_blog,'faq':page_faq,'occasions':page_occasions,'privacy':page_privacy,'404':page_404}
 
 PREVIEW=False
 AI_BOTS=['GPTBot','OAI-SearchBot','ChatGPT-User','ClaudeBot','Claude-SearchBot','Claude-User','anthropic-ai','Google-Extended','Googlebot','Bingbot','PerplexityBot','Perplexity-User','Yeti','Applebot','Applebot-Extended','DuckAssistBot','meta-externalagent','Amazonbot','CCBot']
