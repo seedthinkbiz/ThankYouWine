@@ -282,7 +282,7 @@ def hours_html():
 
 # ---------------- 홈 ----------------
 # ── 다가오는 행사(홈 첫 화면·관련 글에 신청 링크. until이 지나면 다음 빌드에서 자동으로 빠짐. 11/19 도하: 와인 인문학 강의는 코르크매치 행사 페이지로) ──
-EVENTS=[dict(id='wine-humanities-1127',title='와인 인문학 강의 · 역사와 문화로 읽는 와인의 세계',when='11월 27일(금) 19:00~21:30',where='강남역 라임스퀘어',
+EVENTS=[dict(id='wine-humanities-1127',title='와인 인문학 - 삶을 품격있게 만들다',when='11월 27일(금) 19:00~21:30',where='강남역 라임스퀘어',
              who='박찬준 대표님(아시아 와인 트로피 아시아 디렉터)',url='https://corkmatch.com/events/wine-humanities-1127/',until='2026-11-27',
              posts=('224466864886','224479046305','tw20261126awt'),cta='코르크매치에서 보고 신청하기')]
 def live_events():
