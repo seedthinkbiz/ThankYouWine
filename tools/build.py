@@ -1653,10 +1653,15 @@ TASTE_T={
    lambda w,t:w['style']=='화이트' and t[0]=='l' and t[1]=='d'),
 }
 TASTE_ORDER=list(TASTE_T)
+# 조건에 맞는 매장 와인이 3병이 안 되면 채우는 느슨한 조건 (11/26 파르동·파일라 품절로 섬세한 미식가가 2병이 됨)
+TASTE_FILL={'elegant':lambda w,t:w['style']=='레드' and t[0]=='m' and t[1]=='d'}
 def taste_picks(key,n=3):
-    ok=TASTE_T[key][7]
-    cand=[w for w in WINES if w['now'] and w.get('tags') and ok(w,w['tags'].split(' ')) and not _re.search(r'\d(\.\d)?L\b|\d+ml',w['ko'])]   # 3L·187ml 같은 특수 용량은 빼요
-    cand.sort(key=lambda w:(-(w.get('push') or 0),w.get('rank') or 9999,not w.get('img'),w['ko']))
+    def pool(ok):
+        c=[w for w in WINES if w['now'] and w.get('tags') and ok(w,w['tags'].split(' ')) and not _re.search(r'\d(\.\d)?L\b|\d+ml',w['ko'])]   # 3L·187ml 같은 특수 용량은 빼요
+        c.sort(key=lambda w:(-(w.get('push') or 0),w.get('rank') or 9999,not w.get('img'),w['ko']))
+        return c
+    cand=pool(TASTE_T[key][7])
+    if key in TASTE_FILL: cand+=[w for w in pool(TASTE_FILL[key]) if w not in cand]
     out,seen=[],set()
     for w in cand:
         k=w['ko'].split(' ')[0]
