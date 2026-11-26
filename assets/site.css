@@ -592,3 +592,25 @@ dialog.wcard .wclose{position:absolute;top:8px;right:12px;z-index:2;border:0;bac
 a.topt{text-decoration:none}
 @media(max-width:860px){.ttgrid{grid-template-columns:1fr;gap:28px}}
 @media(max-width:600px){.ttypes{display:none}}
+
+/* 심리테스트 궁합 */
+.tmatch{max-width:760px;margin:26px auto 0}
+.tmatch h3{font-family:var(--sans);font-size:1.15rem;font-weight:700;margin:0 0 12px}
+.tmgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tm{display:grid;gap:4px;align-content:start;border:1.5px solid var(--line);border-radius:14px;padding:16px 18px;text-decoration:none;color:var(--ink);background:var(--bg)}
+.tm:hover{border-color:var(--wine)}
+.tm.good{border-color:var(--wine);background:var(--wine-soft)}
+.tml{font-size:.8rem;font-weight:700;letter-spacing:.04em;color:var(--wine)}
+.tm.bad .tml{color:var(--muted)}
+.tm b{font-size:1.15rem}
+.tsc{font-weight:700;color:var(--wine);font-size:.95rem}
+.tm p{margin:4px 0 0;font-size:.93rem;line-height:1.65;color:var(--ink)}
+.tmore2{font-size:.88rem;font-weight:700;color:var(--wine);margin-top:4px}
+.tfriend{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-top:12px;padding:14px 18px;border-radius:14px;background:var(--paper);border:1px solid var(--line)}
+.tfriend p{margin:0;font-size:.93rem;color:var(--muted);flex:1 1 260px}
+.tcompat{max-width:760px;margin:14px auto 0;border:2px solid var(--wine);border-radius:16px;padding:18px 20px;text-align:center;display:grid;gap:4px}
+.tcompat .tcl{margin:0;font-weight:700}
+.tcompat .tcn{font-size:2.2rem;color:var(--wine);font-family:var(--serif);line-height:1.2}
+.tcompat p{margin:0}
+.tfrom{margin:0;padding:12px 16px;border-radius:12px;background:var(--wine-soft);color:var(--wine)!important;font-weight:700}
+@media(max-width:600px){.tmgrid{grid-template-columns:1fr}}

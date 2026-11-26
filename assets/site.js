@@ -192,8 +192,20 @@
     const qs=$$('.tq',tq), intro=$('#tintro'), box=$('#tbox'), fill=$('#tbarfill'), back=$('#tback'), more=$('#tmore');
     const res=$$('.tres'), ans=[];
     const show=i=>{ qs.forEach((q,j)=>q.hidden=j!==i); fill.style.width=(i/qs.length*100)+'%'; back.hidden=i===0; };
+    let TD={}; try{ TD=JSON.parse($('#tdata').textContent) }catch(_){}
+    const from=((new URLSearchParams(location.search).get('from'))||'').replace(/[^\w]/g,'');
+    const compat=k=>{   // 친구 링크(?from=)로 와서 테스트한 경우: 둘의 궁합
+      $$('[data-compat]').forEach(el=>{ el.hidden=true; el.textContent=''; });
+      if(!from||!TD.names||!TD.names[from]) return;
+      const c=TD.compat[k+'|'+from], el=$('#t-'+k+' [data-compat]'); if(!c||!el) return;
+      const h=document.createElement('p'); h.className='tcl'; h.textContent='친구('+TD.names[from]+')와 나('+TD.names[k]+')의 궁합';
+      const n=document.createElement('b'); n.className='tcn'; n.textContent=c[0]+'점';
+      const t=document.createElement('p'); t.textContent=c[1];
+      el.append(h,n,t); el.hidden=false;
+    };
+    if(from&&TD.names&&TD.names[from]){ const f=$('#tfrom'); f.textContent='친구는 '+TD.names[from]+'예요. 나는 어떤 유형인지 테스트하고 둘의 궁합을 확인해 보세요.'; f.hidden=false; $('#tstart').textContent='테스트하고 궁합 보기'; }
     const result=k=>{
-      intro.hidden=true; box.hidden=true; more.hidden=false;
+      intro.hidden=true; box.hidden=true; more.hidden=false; compat(k);
       res.forEach(r=>r.hidden=r.dataset.t!==k);
       const r=$('#t-'+k); if(r) r.scrollIntoView({behavior:'smooth',block:'start'});
     };
@@ -201,7 +213,7 @@
       const d={}; ans.forEach(a=>Object.entries(a).forEach(([k,v])=>d[k]=(d[k]||0)+v));
       let best=null, bs=-1e9;
       res.forEach(r=>{ const w=JSON.parse(r.dataset.wt); let s=0; for(const k in w) s+=(d[k]||0)*w[k]; if(s>bs+1e-9){bs=s;best=r.dataset.t} });
-      try{ history.replaceState(null,'','?r='+best) }catch(_){}
+      try{ history.replaceState(null,'','?r='+best+(from?'&from='+from:'')) }catch(_){}
       result(best);
     };
     const start=()=>{ ans.length=0; res.forEach(r=>r.hidden=true); more.hidden=true; intro.hidden=true; box.hidden=false; show(0);
@@ -218,7 +230,7 @@
     const a0=new URLSearchParams(location.search).get('a');   // 홈에서 첫 질문을 누르고 온 경우 2번부터
     if(a0==='0'||a0==='1'){ start(); const b=$$('.topt',qs[0])[+a0]; if(b) b.click(); }
     const r0=(new URLSearchParams(location.search).get('r')||'').replace(/[^\w]/g,'');
-    if(r0&&$('#t-'+r0)){ result(r0); intro.hidden=false; $('#tstart').textContent='나도 해 보기'; }
+    if(r0&&$('#t-'+r0)){ result(r0); intro.hidden=false; if(!from) $('#tstart').textContent='나도 해 보기'; else { $('#tfrom').hidden=true; } }
   }
 
   /* ---------- 블로그 글 (목록은 HTML에 미리 들어 있어요. 여기서는 분류 필터와 네이버 새 글만) ---------- */
