@@ -64,7 +64,7 @@ PAGES={
  'gathering': dict(path='gathering/', title='모임·행사 와인 견적 · 땡큐와인', desc='송년회, 동호회, 회사 모임 와인. 인원과 예산에 맞춘 구성, 와인잔 대여와 배송·수거까지. 가입 없이 견적을 요청하세요.'),
  'gift':      dict(path='gift/',      title='기업·명절 선물 와인 · 땡큐와인', desc='거래처 명절 선물, 임직원 선물, 감사 인사 한 병. 보르도 5대 샤토부터 데일리 와인까지 예산에 맞춰 고르고 세금계산서를 발행해 드려요.'),
  'wines':     dict(path='wines/',     title='와인 목록 · 땡큐와인이 소개하고 판매한 와인 찾기', desc='땡큐와인에서 지금 만날 수 있는 와인과 지금까지 소개·판매한 와인 목록. 이름·나라·스타일로 찾고, 와인별 가격도 확인하세요.'),
- 'taste':     dict(path='taste/',     title='와인 심리테스트 · 나와 닮은 와인 유형 찾기 | 땡큐와인', desc='둘 중 하나만 고르는 8가지 질문으로 알아보는 나의 와인 유형. 결과에 맞춰 땡큐와인이 엄선한 매장 와인 3병을 추천해 드려요.'),
+ 'taste':     dict(path='taste/',     title='와인 심리테스트 · 나와 닮은 와인 유형 찾기 | 땡큐와인', desc='둘 중 하나만 고르는 8가지 질문으로 알아보는 나의 와인 유형. 결과에 맞춰 땡큐와인이 엄선한 추천 와인 3병을 알려 드려요.'),
  'shop':      dict(path='shop/',      title='매장 안내 · 땡큐와인', desc='서울 성동구 성덕정길 109 2층. 매장 픽업, 멤버 시음회·모임 안내.'),
  'about':     dict(path='about/',     title='소개 · 땡큐와인과 와인 컨설턴트 이도하', desc='땡큐와인은 모임·행사·기업 선물 와인부터 와인 강의·시음회까지 맡는 성수동의 와인 토탈 서비스예요. 운영하는 와인 컨설턴트 이도하 소개.'),
  'blog':      dict(path='blog/',      title='블로그 · 땡큐와인', desc='땡큐와인이 네이버 블로그에 올린 와인 소개·와인 이야기·모임·선물 글을 사이트에서 그대로 읽어요. 글마다 한 줄 요약부터.'),
@@ -1704,15 +1704,15 @@ def page_taste(rel):
         <p class="tline">{esc(line)}</p>
         <p>{esc(desc)}</p>
         <dl class="tfacts"><div><dt>잘 맞는 와인</dt><dd>{esc(wine)}</dd></div><div><dt>함께 먹으면 좋은 음식</dt><dd>{esc(food)}</dd></div></dl>
-        <div class="tacts"><button class="btn wine sm" type="button" data-share="{BASE}/taste/?r={k}" data-title="나는 {esc(name)}! 와인 심리테스트">결과 공유하기</button><button class="btn line sm" type="button" data-tagain>다시 하기</button></div>
+        <div class="tacts"><button class="btn wine sm" type="button" data-timg="{rel}assets/taste/{k}.jpg?v={ASSET_V}" data-name="{esc(name)}" data-url="{BASE}/taste/r/{k}/">이미지로 저장·공유</button><button class="btn line sm" type="button" data-share="{BASE}/taste/r/{k}/" data-title="나는 {esc(name)}! 와인 심리테스트">링크 공유</button><button class="btn line sm" type="button" data-tagain>다시 하기</button></div>
       </div>
       <div class="tcompat" data-compat hidden></div>
       <div class="tmatch">
         <h3>{esc(name)}의 와인 궁합</h3>
         <div class="tmgrid">{''.join(f'<a class="tm {cls}" href="?r={o}"><span class="tml">{lab}</span><b>{esc(TASTE_T[o][0])}</b><span class="tsc">궁합 {taste_compat(k,o)[0]}점</span><p>{esc(taste_compat(k,o)[1])}</p><span class="tmore2">이 유형 보기 →</span></a>' for cls,lab,o in (('good','찰떡궁합',TASTE_MATE[k]),('bad','티격태격',TASTE_RIVAL[k])))}</div>
-        <div class="tfriend"><p>친구는 어떤 유형일까요? 링크를 보내면 친구가 테스트한 뒤 둘의 궁합 점수가 나와요.</p><button class="btn wine sm" type="button" data-share="{BASE}/taste/?from={k}" data-title="나는 {esc(name)}! 너는 어떤 와인 유형? 우리 궁합 보기">친구와 궁합 보기</button></div>
+        <div class="tfriend"><p>친구는 어떤 유형일까요? 링크를 보내면 친구가 테스트한 뒤 둘의 궁합 점수가 나와요.</p><button class="btn wine sm" type="button" data-share="{BASE}/taste/f/{k}/" data-title="나는 {esc(name)}! 너는 어떤 와인 유형? 우리 궁합 보기">친구와 궁합 보기</button></div>
       </div>
-      <h3 class="tpicks">{esc(name)}에게 추천하는 매장 와인</h3>
+      <h3 class="tpicks">{esc(name)} 추천 와인</h3>
       <ul class="wines tres3">{''.join(wine_card(rel,w) for w in picks)}</ul>
     </article>"""
     allt=''.join(f'<li><a class="textlink" href="?r={k}">{esc(TASTE_T[k][0])}</a> · {esc(TASTE_T[k][3])}</li>' for k in TASTE_ORDER)
@@ -1722,7 +1722,7 @@ def page_taste(rel):
     <div class="tintro" id="tintro">
       <span class="kicker">와인 심리테스트</span>
       <h1>나와 닮은 와인은 무엇일까요?</h1>
-      <p>둘 중 하나만 고르는 질문 8개, 1분이면 끝나요. 결과에 맞춰 땡큐와인이 엄선한 매장 와인 3병을 골라 드려요.</p>
+      <p>둘 중 하나만 고르는 질문 8개, 1분이면 끝나요. 결과에 맞춰 땡큐와인이 엄선한 추천 와인 3병을 골라 드려요.</p>
       <p class="tfrom" id="tfrom" hidden></p>
       <button class="btn wine" type="button" id="tstart">테스트 시작하기</button>
     </div>
@@ -1734,7 +1734,7 @@ def page_taste(rel):
     <div id="tres">{res}</div>
     <div class="tmore" id="tmore" hidden>
       <p>입맛이나 예산, 함께할 자리를 알려 주시면 더 꼭 맞게 골라 드려요. <a class="textlink" href="#contact" data-contact>카톡으로 물어보기 →</a></p>
-      <p><a class="textlink" href="{rel}wines/">매장 와인 전체 보기 →</a></p>
+      <p><a class="textlink" href="{rel}wines/">와인 목록 전체 보기 →</a></p>
     </div>
     <noscript><ul class="tall">{allt}</ul></noscript>
   </div>
@@ -1753,7 +1753,7 @@ def taste_teaser(rel):
       <div>
         <span class="kicker">1분 와인 심리테스트</span>
         <h2>나와 닮은 와인은<br>무엇일까요?</h2>
-        <p>둘 중 하나만 고르는 질문 8개로 알아보는 나의 와인 유형. 결과에 맞춰 땡큐와인이 엄선한 매장 와인 3병을 골라 드려요.</p>
+        <p>둘 중 하나만 고르는 질문 8개로 알아보는 나의 와인 유형. 결과에 맞춰 땡큐와인이 엄선한 추천 와인 3병을 골라 드려요.</p>
         <div class="ttypes" aria-label="8가지 유형">{chips}</div>
       </div>
       <div class="tbox ttq">
@@ -1766,6 +1766,21 @@ def taste_teaser(rel):
   </div>
 </section>
 """
+
+def write_taste_share():
+    """카톡·문자 미리보기용 얇은 페이지. 들어오면 /taste/?r= 또는 ?from= 으로 넘어가요(검색엔 안 나오게 noindex)."""
+    for k in TASTE_ORDER:
+        name=TASTE_T[k][0]; img=f'{BASE}/assets/taste/{k}.jpg?v={ASSET_V}'
+        for sub,title,desc,to in (('r',f'나는 {name}! 나와 닮은 와인 유형은?',TASTE_T[k][1]+'. 1분 와인 심리테스트로 나의 와인 유형과 궁합을 알아보세요.',f'?r={k}'),
+                                  ('f',f'{name} 친구가 와인 궁합을 보자고 해요',f'친구는 {name}. 1분 와인 심리테스트를 하고 둘의 와인 궁합을 확인해 보세요.',f'?from={k}')):
+            url=f'{BASE}/taste/{sub}/{k}/'
+            h=f"""<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{esc(title)} · 땡큐와인</title><meta name="robots" content="noindex,follow"><link rel="canonical" href="{BASE}/taste/">
+<meta property="og:type" content="website"><meta property="og:site_name" content="땡큐와인"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}">
+<meta property="og:url" content="{url}"><meta property="og:image" content="{img}"><meta property="og:image:width" content="1080"><meta property="og:image:height" content="1350"><meta name="twitter:card" content="summary_large_image">
+<meta http-equiv="refresh" content="0;url=../../{to}"><script>location.replace('../../{to}')</script></head>
+<body><p><a href="../../{to}">와인 심리테스트로 이동</a></p></body></html>"""
+            out=os.path.join(ROOT,'taste',sub,k,'index.html'); os.makedirs(os.path.dirname(out),exist_ok=True); write_text(out,h)
 
 # ---------------- 회원: 로그인 · 내 와인 · 관리자 연결 (2026-11-24 도하: 산 와인 모아 보기, 산 와인에만 별점·메모) ----------------
 # 회원은 코르크매치·비노나루와 같은 Supabase(카카오·구글). 구매 내역은 장부에서 관리자가 '연결'한 회원 것만 올라가요. 가격은 어디에도 없어요.
@@ -1985,6 +2000,7 @@ def build(preview=False):
         page=dict(path=path,title=(f"{w['ko']} 가격 {w['price']:,}원 · 성수 땡큐와인" if w.get('price') else f"{w['ko']} · 성수 땡큐와인"),desc=short(wine_desc(w),150))
         html=head('wine',rel,page=page,ld=ld_wine(w),og=dict(image=(BASE+'/'+w['img']) if w.get('img') else None))+header(rel,'wines')+'<main>'+page_wine(rel,w)+'</main>\n'+footer(rel)
         emit(out,html,'wine')
+    write_taste_share()
     print(f'pages {len(PAGES)} + posts {len(POSTS)} → {os.path.relpath(ROOT,SITEDIR) or "(루트)"}/')
     with open(os.path.join(ROOT,'favicon.svg'),'w',encoding='utf-8') as f:
         f.write('<svg xmlns="http://www.w3.org/2000/svg" viewBox="-16 4 182 182"><rect x="-16" y="4" width="182" height="182" rx="40" fill="#fff"/>'+HEART_PATHS+'</svg>')

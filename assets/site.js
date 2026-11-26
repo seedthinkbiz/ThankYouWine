@@ -186,6 +186,26 @@
   }
 
 
+  /* ---------- 심리테스트 결과 카드 이미지: 휴대폰은 공유 창(사진으로 카톡·인스타), 안 되면 저장 (11/26 도하) ---------- */
+  document.addEventListener('click',async e=>{
+    const b=e.target.closest('[data-timg]'); if(!b) return; e.preventDefault();
+    const fname='thankyouwine-'+(b.dataset.timg.match(/taste\/(\w+)\.jpg/)||[,'wine'])[1]+'.jpg';
+    const old=b.textContent; b.disabled=true; b.textContent='이미지 준비 중…';
+    const save=()=>{ const a=document.createElement('a'); a.href=b.dataset.timg; a.download=fname; document.body.appendChild(a); a.click(); a.remove(); };
+    try{
+      const blob=await (await fetch(b.dataset.timg)).blob();
+      const file=new File([blob],fname,{type:'image/jpeg'});
+      if(navigator.canShare&&navigator.canShare({files:[file]})){
+        try{ await navigator.share({files:[file],title:'나는 '+b.dataset.name+'!',text:'나와 닮은 와인 유형은? '+b.dataset.url}); }
+        catch(err){ if(!(err&&err.name==='AbortError')) save(); }
+      } else {
+        const u=URL.createObjectURL(blob), a=document.createElement('a'); a.href=u; a.download=fname; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(u),4000);
+        b.textContent='이미지를 저장했어요'; setTimeout(()=>{b.textContent=old},1800); b.disabled=false; return;
+      }
+    }catch(_){ save(); }
+    b.textContent=old; b.disabled=false;
+  });
+
   /* ---------- 와인 심리테스트 (/taste/): 8문항 → 8유형, 결과는 ?r=유형 주소로 공유 ---------- */
   const tq=$('#tqs');
   if(tq){
