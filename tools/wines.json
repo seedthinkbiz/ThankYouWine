@@ -1354,7 +1354,8 @@
     "r": 4.2,
     "n": 1373,
     "url": "https://www.vivino.com/w/5405144"
-   }
+   },
+   "order": true
   },
   {
    "ko": "카르페 디엠 페테아스카 네아그라",
@@ -1371,7 +1372,8 @@
     "r": 3.9,
     "n": 440,
     "url": "https://www.vivino.com/w/3648149"
-   }
+   },
+   "order": true
   },
   {
    "ko": "카르페 디엠 페테아스카 알바",
@@ -1382,7 +1384,80 @@
    "grape": "페테아스카 알바",
    "style": "화이트",
    "now": false,
-   "post": ""
+   "post": "",
+   "order": true
+  },
+  {
+   "ko": "카르페 디엠 팜므 파탈",
+   "en": "Carpe Diem Femme Fatale",
+   "vintage": "2023",
+   "country": "몰도바",
+   "region": "",
+   "grape": "",
+   "style": "화이트",
+   "now": false,
+   "post": "",
+   "order": true
+  },
+  {
+   "ko": "카르페 디엠 비오리카",
+   "en": "Carpe Diem Viorica",
+   "vintage": "2023",
+   "country": "몰도바",
+   "region": "",
+   "grape": "비오리카",
+   "style": "화이트",
+   "now": false,
+   "post": "",
+   "order": true
+  },
+  {
+   "ko": "카르페 디엠 팜므 인크레더블",
+   "en": "Carpe Diem Femme Incredible",
+   "vintage": "2021",
+   "country": "몰도바",
+   "region": "",
+   "grape": "",
+   "style": "화이트",
+   "now": false,
+   "post": "",
+   "order": true
+  },
+  {
+   "ko": "카르페 디엠 소비뇽 블랑",
+   "en": "Carpe Diem Sauvignon Blanc",
+   "vintage": "2023",
+   "country": "몰도바",
+   "region": "",
+   "grape": "소비뇽 블랑",
+   "style": "화이트",
+   "now": false,
+   "post": "",
+   "order": true
+  },
+  {
+   "ko": "카르페 디엠 까베르네 소비뇽",
+   "en": "Carpe Diem Cabernet Sauvignon",
+   "vintage": "2019",
+   "country": "몰도바",
+   "region": "",
+   "grape": "까베르네 소비뇽",
+   "style": "레드",
+   "now": false,
+   "post": "",
+   "order": true
+  },
+  {
+   "ko": "카르페 디엠 퀴베 19/11",
+   "en": "Carpe Diem Cuvée 19/11",
+   "vintage": "2019",
+   "country": "몰도바",
+   "region": "",
+   "grape": "",
+   "style": "레드",
+   "now": false,
+   "post": "",
+   "order": true
   },
   {
    "ko": "캄피 데안테라 아레 피아노",
