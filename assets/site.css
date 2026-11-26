@@ -580,3 +580,15 @@ dialog.wcard .wclose{position:absolute;top:8px;right:12px;z-index:2;border:0;bac
 .wpicktaste{margin:10px 0 0;font-size:.95rem}
 @media(max-width:760px){.tres3{grid-template-columns:1fr}}
 @media(max-width:600px){.tbox{padding:18px 16px 14px}.tcard{padding:24px 18px 20px}.tcard h2{font-size:1.7rem}.tfacts div{grid-template-columns:1fr;gap:2px}}
+
+/* 홈 심리테스트 맛보기 */
+.ttgrid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.tteaser h2{margin:0 0 14px}
+.tteaser p{color:var(--muted);margin:0}
+.ttypes{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.ttype{border:1px solid var(--rule);border-radius:999px;padding:6px 13px;font-size:.88rem;background:var(--bg);color:var(--wine);font-weight:500}
+.ttq{background:var(--bg);box-shadow:0 10px 30px rgba(122,31,51,.08)}
+.ttq h3{font-family:var(--sans);font-weight:700;font-size:1.3rem;margin:0 0 18px;line-height:1.45}
+a.topt{text-decoration:none}
+@media(max-width:860px){.ttgrid{grid-template-columns:1fr;gap:28px}}
+@media(max-width:600px){.ttypes{display:none}}

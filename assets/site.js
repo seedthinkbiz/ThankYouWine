@@ -215,6 +215,8 @@
     });
     back.addEventListener('click',()=>{ const i=qs.findIndex(q=>!q.hidden); if(i>0) show(i-1); });
     document.addEventListener('click',e=>{ if(e.target.closest('[data-tagain]')){ e.preventDefault(); start(); } });
+    const a0=new URLSearchParams(location.search).get('a');   // 홈에서 첫 질문을 누르고 온 경우 2번부터
+    if(a0==='0'||a0==='1'){ start(); const b=$$('.topt',qs[0])[+a0]; if(b) b.click(); }
     const r0=(new URLSearchParams(location.search).get('r')||'').replace(/[^\w]/g,'');
     if(r0&&$('#t-'+r0)){ result(r0); intro.hidden=false; $('#tstart').textContent='나도 해 보기'; }
   }

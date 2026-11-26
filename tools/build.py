@@ -305,6 +305,7 @@ def page_index(rel):
           <a class="btn wine" href="{rel}gathering/">모임 와인 견적 받기</a>
           <a class="btn line" href="{rel}gift/">기업·명절 선물 문의</a>
           <a class="textlink" href="{rel}blog/">블로그에서 와인 둘러보기 →</a>
+          <a class="textlink" href="#taste-teaser">1분 와인 심리테스트 →</a>
         </div>
         {eventbar_html()}
       </div>
@@ -315,7 +316,7 @@ def page_index(rel):
     </div>
   </div>
 </section>
-
+{taste_teaser(rel)}
 <section class="sec" id="services">
   <div class="wrap">
     <div class="head">
@@ -1715,6 +1716,31 @@ def page_taste(rel):
 </section>
 <script type="application/json" id="tdata">{json.dumps(TASTE_ORDER)}</script>"""
 
+
+def taste_teaser(rel):
+    """홈 첫 화면 아래 심리테스트 맛보기 (2026-11-26 도하: 랜딩페이지에서 재밌게 해 볼 수 있게). 첫 질문을 바로 누르면 /taste/에서 2번부터 이어져요."""
+    q,*opts=TASTE_Q[0]
+    btns=''.join(f'<a class="topt" href="{rel}taste/?a={i}"><span class="tab">{ab}</span>{esc(t)}</a>' for i,(ab,(t,_)) in enumerate(zip('AB',opts)))
+    chips=''.join(f'<span class="ttype">{esc(TASTE_T[k][0])}</span>' for k in TASTE_ORDER)
+    return f"""<section class="sec band tteaser" id="taste-teaser">
+  <div class="wrap wide">
+    <div class="ttgrid">
+      <div>
+        <span class="kicker">1분 와인 심리테스트</span>
+        <h2>나와 닮은 와인은<br>무엇일까요?</h2>
+        <p>둘 중 하나만 고르는 질문 8개로 알아보는 나의 와인 유형. 결과에 맞춰 땡큐와인이 엄선한 매장 와인 3병을 골라 드려요.</p>
+        <div class="ttypes" aria-label="8가지 유형">{chips}</div>
+      </div>
+      <div class="tbox ttq">
+        <div class="tbar" aria-hidden="true"><i style="width:0"></i></div>
+        <p class="tqn">Q1 / 8</p>
+        <h3>{esc(q)}</h3>
+        <div class="topts">{btns}</div>
+      </div>
+    </div>
+  </div>
+</section>
+"""
 
 # ---------------- 회원: 로그인 · 내 와인 · 관리자 연결 (2026-11-24 도하: 산 와인 모아 보기, 산 와인에만 별점·메모) ----------------
 # 회원은 코르크매치·비노나루와 같은 Supabase(카카오·구글). 구매 내역은 장부에서 관리자가 '연결'한 회원 것만 올라가요. 가격은 어디에도 없어요.
