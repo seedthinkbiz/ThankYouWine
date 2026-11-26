@@ -186,6 +186,32 @@
   }
 
 
+  /* ---------- 심리테스트 결과 카드 이미지 + 링크 (11/26 도하: 이미지만 말고 링크도 같이)
+     카톡은 사진과 함께 보낸 글을 빼 버리는 경우가 있어서, 누르는 순간 링크를 복사해 두고 사진 공유 뒤 붙여넣기 안내.
+     iOS는 누른 직후에만 공유 창을 열 수 있어서 결과가 나오면 이미지를 미리 받아 둬요. ---------- */
+  const timgCache={};
+  const tPrefetch=src=>timgCache[src]||(timgCache[src]=fetch(src).then(r=>{ if(!r.ok) throw 0; return r.blob(); }));
+  const tNote=(b,msg)=>{ let n=b.closest('.tcard').querySelector('.tsharenote'); if(!n){ n=document.createElement('p'); n.className='tsharenote'; n.setAttribute('aria-live','polite'); b.closest('.tacts').after(n); } n.textContent=msg; n.hidden=false; };
+  document.addEventListener('click',async e=>{
+    const b=e.target.closest('[data-timg]'); if(!b) return; e.preventDefault();
+    const url=b.dataset.url, src=b.dataset.timg;
+    const fname='thankyouwine-'+(src.match(/taste\/(\w+)\.jpg/)||[,'wine'])[1]+'.jpg';
+    let copied=false;
+    try{ navigator.clipboard.writeText(url).then(()=>{copied=true},()=>{}); }catch(_){}
+    const msg='나는 '+b.dataset.name+'! 너는 어떤 와인 유형이야? 테스트하고 우리 궁합 보기 👉 '+url;
+    const after=()=>tNote(b,'링크도 복사해 뒀어요. 사진을 보낸 뒤 대화창에 붙여넣기 하면 친구가 바로 테스트하고 궁합을 볼 수 있어요.');
+    let blob=null; try{ blob=await tPrefetch(src); }catch(_){}
+    if(blob){
+      const file=new File([blob],fname,{type:'image/jpeg'});
+      if(navigator.canShare&&navigator.canShare({files:[file]})){
+        try{ await navigator.share({files:[file],text:msg}); after(); return; }
+        catch(err){ if(err&&err.name==='AbortError'){ after(); return; } }
+      }
+      const u=URL.createObjectURL(blob), a=document.createElement('a'); a.href=u; a.download=fname; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(u),4000);
+    } else { const a=document.createElement('a'); a.href=src; a.download=fname; document.body.appendChild(a); a.click(); a.remove(); }
+    setTimeout(()=>tNote(b,copied?'이미지를 저장하고 링크도 복사해 뒀어요. 이미지와 함께 링크를 붙여넣기 해서 보내 주세요.':'이미지를 저장했어요. 이 링크도 함께 보내 주세요: '+url),60);
+  });
+
   /* ---------- 와인 심리테스트 (/taste/): 8문항 → 8유형, 결과는 ?r=유형 주소로 공유 ---------- */
   const tq=$('#tqs');
   if(tq){
@@ -206,6 +232,7 @@
     if(from&&TD.names&&TD.names[from]){ const f=$('#tfrom'); f.textContent='친구는 '+TD.names[from]+'예요. 나는 어떤 유형인지 테스트하고 둘의 궁합을 확인해 보세요.'; f.hidden=false; $('#tstart').textContent='테스트하고 궁합 보기'; }
     const result=k=>{
       intro.hidden=true; box.hidden=true; more.hidden=false; compat(k);
+      const ib=$('#t-'+k+' [data-timg]'); if(ib) tPrefetch(ib.dataset.timg).catch(()=>{});
       res.forEach(r=>r.hidden=r.dataset.t!==k);
       const r=$('#t-'+k); if(r) r.scrollIntoView({behavior:'smooth',block:'start'});
     };
