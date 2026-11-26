@@ -185,6 +185,42 @@
     });
   }
 
+
+  /* ---------- 와인 심리테스트 (/taste/): 8문항 → 8유형, 결과는 ?r=유형 주소로 공유 ---------- */
+  const tq=$('#tqs');
+  if(tq){
+    const qs=$$('.tq',tq), intro=$('#tintro'), box=$('#tbox'), fill=$('#tbarfill'), back=$('#tback'), more=$('#tmore');
+    const res=$$('.tres'), ans=[];
+    const show=i=>{ qs.forEach((q,j)=>q.hidden=j!==i); fill.style.width=(i/qs.length*100)+'%'; back.hidden=i===0; };
+    const result=k=>{
+      intro.hidden=true; box.hidden=true; more.hidden=false;
+      res.forEach(r=>r.hidden=r.dataset.t!==k);
+      const r=$('#t-'+k); if(r) r.scrollIntoView({behavior:'smooth',block:'start'});
+    };
+    const finish=()=>{
+      const d={}; ans.forEach(a=>Object.entries(a).forEach(([k,v])=>d[k]=(d[k]||0)+v));
+      let best=null, bs=-1e9;
+      res.forEach(r=>{ const w=JSON.parse(r.dataset.wt); let s=0; for(const k in w) s+=(d[k]||0)*w[k]; if(s>bs+1e-9){bs=s;best=r.dataset.t} });
+      try{ history.replaceState(null,'','?r='+best) }catch(_){}
+      result(best);
+    };
+    const start=()=>{ ans.length=0; res.forEach(r=>r.hidden=true); more.hidden=true; intro.hidden=true; box.hidden=false; show(0);
+      try{ history.replaceState(null,'',location.pathname) }catch(_){}
+      box.scrollIntoView({behavior:'smooth',block:'start'}); };
+    $('#tstart').addEventListener('click',start);
+    tq.addEventListener('click',e=>{
+      const b=e.target.closest('.topt'); if(!b) return;
+      const i=+b.closest('.tq').dataset.i; ans[i]=JSON.parse(b.dataset.w); ans.length=i+1;
+      if(i+1<qs.length) show(i+1); else { fill.style.width='100%'; finish(); }
+    });
+    back.addEventListener('click',()=>{ const i=qs.findIndex(q=>!q.hidden); if(i>0) show(i-1); });
+    document.addEventListener('click',e=>{ if(e.target.closest('[data-tagain]')){ e.preventDefault(); start(); } });
+    const a0=new URLSearchParams(location.search).get('a');   // 홈에서 첫 질문을 누르고 온 경우 2번부터
+    if(a0==='0'||a0==='1'){ start(); const b=$$('.topt',qs[0])[+a0]; if(b) b.click(); }
+    const r0=(new URLSearchParams(location.search).get('r')||'').replace(/[^\w]/g,'');
+    if(r0&&$('#t-'+r0)){ result(r0); intro.hidden=false; $('#tstart').textContent='나도 해 보기'; }
+  }
+
   /* ---------- 블로그 글 (목록은 HTML에 미리 들어 있어요. 여기서는 분류 필터와 네이버 새 글만) ---------- */
   const splitTitle=t=>{const s=String(t||'');const i=s.indexOf('｜');return i>0?[s.slice(0,i).trim(),s.slice(i+1).trim()]:[s,'']};
   const all=$('#posts-all'), chips=$('#post-chips');
