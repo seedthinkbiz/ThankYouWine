@@ -1666,6 +1666,24 @@ TASTE_T={
    lambda w,t:w['style']=='화이트' and t[0]=='l' and t[1]=='d'),
 }
 TASTE_ORDER=list(TASTE_T)
+# 궁합 (2026-11-26 도하: 결과 아래에 궁합 잘 맞는 사람도). 짝꿍·티격태격은 서로 짝. 친구 링크(?from=유형)로 들어와 테스트하면 둘의 궁합 점수.
+TASTE_PAIR={
+ frozenset(('sweet','leader')):(98,'묵직한 리더 곁에서 분위기를 풀어 주는 달콤파. 스테이크 다음 디저트 와인으로 마무리하면 완벽한 코스가 돼요.'),
+ frozenset(('bubbly','explorer')):(97,'판을 벌이는 분위기 메이커와 새로운 걸 찾아내는 탐험가. 둘이 만나면 평범한 모임도 축제가 돼요.'),
+ frozenset(('romantic','elegant')):(98,'감정이 풍부한 낭만파와 작은 차이를 알아보는 미식가. 저녁 식사와 대화가 끝나지 않는 조합이에요.'),
+ frozenset(('classic','fresh')):(96,'차분한 클래식파와 산뜻한 산책가. 함께 있으면 편안하고, 해산물 한 상에 화이트 두 병이면 충분해요.'),
+ frozenset(('sweet','elegant')):(61,'달콤함이 최고인 달콤파와 은은한 맛을 찾는 미식가. 디저트 고를 때마다 의견이 갈려요. 그래도 서로 한 잔씩 바꿔 마시면 새로운 세계가 열려요.'),
+ frozenset(('bubbly','leader')):(63,'일단 건배부터 외치는 분위기 메이커와 천천히 묵직하게 가는 리더. 속도는 달라도 결국 테이블 끝까지 남는 사이예요.'),
+ frozenset(('explorer','classic')):(62,'처음 보는 와인부터 따는 탐험가와 검증된 한 병을 고르는 클래식파. 와인 고르다 시간이 다 가는 사이예요.'),
+ frozenset(('romantic','fresh')):(64,'진한 레드와 긴 밤을 원하는 낭만파, 가볍게 한잔하고 산책 가고 싶은 산책가. 서로 맞춰 가는 재미가 있어요.'),
+}
+TASTE_MATE={k:next(o for p in TASTE_PAIR for o in p if k in p and o!=k and TASTE_PAIR[p][0]>90) for k in TASTE_T}
+TASTE_RIVAL={k:next(o for p in TASTE_PAIR for o in p if k in p and o!=k and TASTE_PAIR[p][0]<90) for k in TASTE_T}
+def taste_compat(a,b):
+    if a==b: return 90,'같은 유형끼리는 말하지 않아도 통해요. 와인 고를 때 고민할 필요가 없는 사이예요.'
+    if frozenset((a,b)) in TASTE_PAIR: return TASTE_PAIR[frozenset((a,b))]
+    i,j=sorted((TASTE_ORDER.index(a),TASTE_ORDER.index(b)))
+    return 74+(i*5+j*3)%15,'취향은 조금 달라도, 서로 한 병씩 골라 오면 테이블이 풍성해지는 사이예요.'
 # 조건에 맞는 매장 와인이 3병이 안 되면 채우는 느슨한 조건 (11/26 파르동·파일라 품절로 섬세한 미식가가 2병이 됨)
 TASTE_FILL={'elegant':lambda w,t:w['style']=='레드' and t[0]=='m' and t[1]=='d'}
 def taste_picks(key,n=3):
@@ -1697,8 +1715,14 @@ def page_taste(rel):
         <h2>{esc(name)}</h2>
         <p class="tline">{esc(line)}</p>
         <p>{esc(desc)}</p>
-        <dl class="tfacts"><div><dt>잘 맞는 와인</dt><dd>{esc(wine)}</dd></div><div><dt>함께 먹으면 좋은 음식</dt><dd>{esc(food)}</dd></div><div><dt>잘 맞는 짝꿍</dt><dd>{esc(mate)}</dd></div></dl>
+        <dl class="tfacts"><div><dt>잘 맞는 와인</dt><dd>{esc(wine)}</dd></div><div><dt>함께 먹으면 좋은 음식</dt><dd>{esc(food)}</dd></div></dl>
         <div class="tacts"><button class="btn wine sm" type="button" data-share="{BASE}/taste/?r={k}" data-title="나는 {esc(name)}! 와인 심리테스트">결과 공유하기</button><button class="btn line sm" type="button" data-tagain>다시 하기</button></div>
+      </div>
+      <div class="tcompat" data-compat hidden></div>
+      <div class="tmatch">
+        <h3>{esc(name)}의 와인 궁합</h3>
+        <div class="tmgrid">{''.join(f'<a class="tm {cls}" href="?r={o}"><span class="tml">{lab}</span><b>{esc(TASTE_T[o][0])}</b><span class="tsc">궁합 {taste_compat(k,o)[0]}점</span><p>{esc(taste_compat(k,o)[1])}</p><span class="tmore2">이 유형 보기 →</span></a>' for cls,lab,o in (('good','찰떡궁합',TASTE_MATE[k]),('bad','티격태격',TASTE_RIVAL[k])))}</div>
+        <div class="tfriend"><p>친구는 어떤 유형일까요? 링크를 보내면 친구가 테스트한 뒤 둘의 궁합 점수가 나와요.</p><button class="btn wine sm" type="button" data-share="{BASE}/taste/?from={k}" data-title="나는 {esc(name)}! 너는 어떤 와인 유형? 우리 궁합 보기">친구와 궁합 보기</button></div>
       </div>
       <h3 class="tpicks">{esc(name)}에게 추천하는 매장 와인</h3>
       <ul class="wines tres3">{''.join(wine_card(rel,w) for w in picks)}</ul>
@@ -1711,6 +1735,7 @@ def page_taste(rel):
       <span class="kicker">와인 심리테스트</span>
       <h1>나와 닮은 와인은 무엇일까요?</h1>
       <p>둘 중 하나만 고르는 질문 8개, 1분이면 끝나요. 결과에 맞춰 땡큐와인이 엄선한 매장 와인 3병을 골라 드려요.</p>
+      <p class="tfrom" id="tfrom" hidden></p>
       <button class="btn wine" type="button" id="tstart">테스트 시작하기</button>
     </div>
     <div class="tbox" id="tbox" hidden>
@@ -1726,7 +1751,7 @@ def page_taste(rel):
     <noscript><ul class="tall">{allt}</ul></noscript>
   </div>
 </section>
-<script type="application/json" id="tdata">{json.dumps(TASTE_ORDER)}</script>"""
+<script type="application/json" id="tdata">{json.dumps({'names':{k:TASTE_T[k][0] for k in TASTE_ORDER},'compat':{a+'|'+b:taste_compat(a,b) for a in TASTE_ORDER for b in TASTE_ORDER}},ensure_ascii=False).replace('</','<\\/')}</script>"""
 
 
 def taste_teaser(rel):
