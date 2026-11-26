@@ -1704,7 +1704,7 @@ def page_taste(rel):
         <p class="tline">{esc(line)}</p>
         <p>{esc(desc)}</p>
         <dl class="tfacts"><div><dt>잘 맞는 와인</dt><dd>{esc(wine)}</dd></div><div><dt>함께 먹으면 좋은 음식</dt><dd>{esc(food)}</dd></div></dl>
-        <div class="tacts"><button class="btn wine sm" type="button" data-timg="{rel}assets/taste/{k}.jpg?v={ASSET_V}" data-name="{esc(name)}" data-url="{BASE}/taste/r/{k}/">이미지로 저장·공유</button><button class="btn line sm" type="button" data-share="{BASE}/taste/r/{k}/" data-title="나는 {esc(name)}! 와인 심리테스트">링크 공유</button><button class="btn line sm" type="button" data-tagain>다시 하기</button></div>
+        <div class="tacts"><button class="btn wine sm" type="button" data-timg="{rel}assets/taste/{k}.jpg?v={ASSET_V}" data-name="{esc(name)}" data-url="{BASE}/taste/f/{k}/">이미지+링크 공유</button><button class="btn line sm" type="button" data-share="{BASE}/taste/r/{k}/" data-title="나는 {esc(name)}! 와인 심리테스트">링크 공유</button><button class="btn line sm" type="button" data-tagain>다시 하기</button></div>
       </div>
       <div class="tcompat" data-compat hidden></div>
       <div class="tmatch">
