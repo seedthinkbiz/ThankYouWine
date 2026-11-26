@@ -284,7 +284,7 @@ def hours_html():
 # ── 다가오는 행사(홈 첫 화면·관련 글에 신청 링크. until이 지나면 다음 빌드에서 자동으로 빠짐. 11/19 도하: 와인 인문학 강의는 코르크매치 행사 페이지로) ──
 EVENTS=[dict(id='wine-humanities-1127',title='와인 인문학 강의 · 역사와 문화로 읽는 와인의 세계',when='11월 27일(금) 19:00~21:30',where='강남역 라임스퀘어',
              who='박찬준 대표님(아시아 와인 트로피 아시아 디렉터)',url='https://corkmatch.com/events/wine-humanities-1127/',until='2026-11-27',
-             posts=('224466864886','224479046305'),cta='코르크매치에서 보고 신청하기')]
+             posts=('224466864886','224479046305','tw20261126awt'),cta='코르크매치에서 보고 신청하기')]
 def live_events():
     t=datetime.date.today()
     return [e for e in EVENTS if datetime.date.fromisoformat(e['until'])>=t]
@@ -709,7 +709,7 @@ def page_about(rel):
         </ul>
         <h3>2027년 6월, 와이너리 크루즈</h3>
         <p>땡큐와인 멤버들과 크루즈를 타고 와이너리를 둘러보는 여행을 준비하고 있어요. 각자 예약하고 같이 떠나는 모임이에요. 궁금하시면 카톡으로 물어봐 주세요.</p>
-        <div class="ctas"><a class="btn wine" href="#contact" data-contact>문의하기</a><a class="btn line" href="{SITE['blog']}" target="_blank" rel="noopener">블로그</a><a class="btn line" href="{SITE['insta']}" target="_blank" rel="noopener">인스타그램</a></div>
+        <div class="ctas"><a class="btn wine" href="#contact" data-contact>문의하기</a><a class="btn line" href="{rel}p/121-fe658d91b7e590dc/">121 미팅 자료</a><a class="btn line" href="{SITE['blog']}" target="_blank" rel="noopener">블로그</a><a class="btn line" href="{SITE['insta']}" target="_blank" rel="noopener">인스타그램</a></div>
       </div>
     </div>
   </div>
@@ -992,7 +992,7 @@ def load_posts():
                date=parse_date(d.get('date') or it.get('date') or d.get('addDate')) or TODAY.isoformat(),
                category=m.get('category') or ncat or guess_category(main,title),
                tags=(ntags or htags)[:12],blocks=blocks,slug=slug,path='posts/'+slug+'/',
-               summary=sanitize_text(m.get('summary') or '') or pointsum or desc or first,service=m.get('service') or 'shop',standin=bool(d.get('standin')),words=words)
+               summary=sanitize_text(m.get('summary') or '') or pointsum or desc or first,service=m.get('service') or 'shop',standin=bool(d.get('standin')),words=words,buy=(m.get('buy') or ''))
         for b in ([] if pmode else blocks):
             if b['type'] in ('p','quote'):
                 for hit in PRICE_RE.findall(strip_md(b['text'])): WARNINGS.append(f"가격 표현 확인: {p['slug']} → '{hit}'")
@@ -1081,7 +1081,8 @@ def render_body(p,rel):
                 if m and m.group(1) in by_logno:
                     x=by_logno[m.group(1)]; out.append(f'<p class="plink"><a href="{rel}{x["path"]}">→ {esc(x["main"])}</a></p>')
                 else:
-                    out.append(f'<p class="plink"><a href="{esc(href)}" target="_blank" rel="noopener">{esc(href)}</a></p>')
+                    lab=sanitize_text(b.get('label') or '')
+                    out.append(f'<p class="plink"><a href="{esc(href)}" target="_blank" rel="noopener">{("→ "+esc(lab)) if lab else esc(href)}</a></p>')
     return ''.join(out),facts,faq
 
 def ld_post(p,faq):
@@ -1117,11 +1118,14 @@ def wine_name(p):
     return n or p['main']
 def buyable(p):
     """특정 와인 한 종류를 소개한 글인가(구매 상자·FAQ·Product 데이터 대상)"""
+    if p.get('buy') in ('ask','none'): return False   # posts_meta에서 지정한 글은 구매 상자 대신 문의 상자
     m=p['main']
     return (p['category']=='와인 소개' and bool(_WINE_WORD.search(m)) and not _GENERIC.search(m)
             and not any(x in m for x in BUY_EXCLUDE))
 def askable(p):
     """와인 한 종류는 아니지만 와인 글이라 '이런 와인 문의하기' 상자를 붙일 글"""
+    if p.get('buy')=='ask': return True
+    if p.get('buy')=='none': return False
     return (not buyable(p)) and p['category'] in ('와인 소개','모임·선물','와인 이야기') and not any(x in p['main'] for x in BUY_EXCLUDE) and not _NOTICE.search(p['main'])
 _NOTICE=_re.compile(r'강의|시음회|대관|예약|행사|안내|서비스|이용|멤버십|Membership|제로페이|주소|인문학|클래스|모집|오픈|마감')
 def askbox_html(rel,p):
@@ -1457,7 +1461,7 @@ def wine_card(rel,w):
     where=' '.join(x for x in (w['country'],w['region']) if x)
     meta=' · '.join(x for x in (w['vintage'],where,w['grape']) if x)
     hay=' '.join([w['ko'],w['en'],w['vintage'],w['country'],w['region'],w['grape'],w['style']]).lower()
-    status=('<span class="wbadge now">지금 매장에</span>' if w['now'] else '<span class="wbadge disc">수입사 단종</span>' if w.get('disc') else '<span class="wbadge order">주문 가능</span>' if w.get('order') else '<span class="wbadge">재입고 문의</span>')
+    status=('<span class="wbadge now">지금 매장에</span>' if w['now'] else '<span class="wbadge disc">수입사 단종</span>' if w.get('disc') else f'<span class="wbadge order">{esc(w["eta"])} · 예약 가능</span>' if w.get('eta') else '<span class="wbadge order">주문 가능</span>' if w.get('order') else '<span class="wbadge">재입고 문의</span>')
     purl=w.get('post') or ''
     post=(f'<a class="textlink" href="{purl}" target="_blank" rel="noopener">소개 글 →</a>' if purl.startswith('http')
           else f'<a class="textlink" href="{rel}{purl}">소개 글 →</a>' if purl else '')
@@ -1530,7 +1534,7 @@ def page_wine(rel,w):
     purl=w.get('post') or ''
     post=(f'<a class="textlink" href="{purl}" target="_blank" rel="noopener">소개 글 →</a>' if purl.startswith('http') else f'<a class="textlink" href="{rel}{purl}">소개 글 →</a>' if purl else '')
     pic=(f'<div class="wimg big"><img src="{rel}{w["img"]}" alt="{esc(w["ko"])} 바틀" width="300" height="480"></div>' if w.get('img') else f'<div class="wimg big none" aria-hidden="true">{HEART_SVG}</div>')
-    st=('<span class="wbadge now">지금 매장에</span>' if w['now'] else '<span class="wbadge disc">수입사 단종</span>' if w.get('disc') else '<span class="wbadge order">주문 가능</span>' if (w.get('order') or w.get('price')) else '<span class="wbadge">재입고 문의</span>')
+    st=('<span class="wbadge now">지금 매장에</span>' if w['now'] else '<span class="wbadge disc">수입사 단종</span>' if w.get('disc') else f'<span class="wbadge order">{esc(w["eta"])} · 예약 가능</span>' if w.get('eta') else '<span class="wbadge order">주문 가능</span>' if (w.get('order') or w.get('price')) else '<span class="wbadge">재입고 문의</span>')
     ask='주문 문의' if w.get('price') else '가격 문의'
     return f"""
 <section class="sec tight" id="wine">
