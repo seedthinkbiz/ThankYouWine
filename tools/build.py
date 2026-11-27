@@ -674,7 +674,7 @@ def page_shop(rel):
     </div>
     <div class="steps">
       <div class="step"><span class="n">1</span><h3>카톡·문자로 주문</h3><p>와인 이름만 보내 주시면 준비해 둘게요.</p></div>
-      <div class="step"><span class="n">2</span><h3>매장에서 결제</h3><p>와인은 온라인이나 전화로 결제할 수 없어요.</p></div>
+      <div class="step"><span class="n">2</span><h3>방문 예약 후 매장에서 결제</h3><p>땡큐와인은 방문 전 예약이 꼭 필요해요. 오실 시간을 카톡으로 정해 주세요. 와인은 온라인이나 전화로 결제할 수 없어요.</p></div>
       <div class="step"><span class="n">3</span><h3>픽업 또는 퀵</h3><p>바로 가져가시거나, 원하시는 곳으로 퀵으로 보내 드려요. 배송비는 따로 안내드려요.</p></div>
     </div>
   </div>
