@@ -1571,7 +1571,7 @@ def page_wine(rel,w):
         {f'<div class="wsocial big" data-stats="{wine_key(w["ko"])}" hidden></div>' if MEMBERS_OPEN else ''}
         {price_html(w,cls='wprice big') if w.get('price') else ''}
         <table class="wfacts">{rows}</table>
-        <p>{esc(wine_desc(w))} <a class="textlink" href="{rel}shop/#order">픽업·배송 안내 →</a></p>
+        <p>{esc(wine_desc(w))} <a class="textlink" href="{rel}shop/#order">픽업·배송 안내 →</a> <a class="textlink" href="{rel}shop/#members">멤버 혜택 →</a></p>
         <div class="wacts"><a class="btn sm" href="#contact" data-contact data-wine="{esc(w['ko'])}" data-ask="{wine_key(w['ko'])}">{ask}</a><button class="btn line sm wshare" type="button" data-share="{BASE}/{wine_path(w)}" data-title="{esc(w['ko'])}">링크 보내기</button>{(f'<button class="wsave" type="button" data-save="{wine_key(w["ko"])}" aria-pressed="false" aria-label="찜하기"><svg viewBox="10 8 130 120" aria-hidden="true"><path d="M75 118 C 30 88 14 62 22 38 C 30 14 62 12 75 36 C 88 12 120 14 128 38 C 136 62 120 88 75 118 Z"/></svg><span data-save-label>찜하기</span></button>' if MEMBERS_OPEN else '')}{post}</div>
         <p class="savenote" data-save-note hidden></p>
         {f'<p class="note">가격은 {price_date().month}월 {price_date().day}일 기준이에요. 수입사 가격이 바뀌면 달라질 수 있어요.</p>' if w.get('price') else ''}
