@@ -8821,6 +8821,30 @@
    "now": false,
    "post": "",
    "order": true
+  },
+  {
+   "ko": "바지수바니 쓰리 크베브리",
+   "en": "Vazisubani Estate 3 Qvevri",
+   "vintage": "2023",
+   "grape": "므츠바네·키시·키크비",
+   "style": "화이트",
+   "country": "조지아",
+   "region": "카헤티",
+   "now": false,
+   "post": "",
+   "order": true
+  },
+  {
+   "ko": "바지수바니 사페라비 크베브리",
+   "en": "Vazisubani Estate Saperavi Qvevri",
+   "vintage": "2023",
+   "grape": "사페라비",
+   "style": "레드",
+   "country": "조지아",
+   "region": "카헤티",
+   "now": false,
+   "post": "",
+   "order": true
   }
  ],
  "price_date": "2026-11-24"
