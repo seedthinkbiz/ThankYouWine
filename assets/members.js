@@ -416,6 +416,9 @@
       return `<li class="wine mywine">${pic}<div class="wbody"><div class="wtop"><span class="wstyle">${esc([w.s,w.c].filter(Boolean).join(' · '))}</span></div><h3><a href="${REL}wines/?w=${esc(k)}">${esc(w.k)}</a></h3><div class="wacts"><a class="btn line sm" href="${REL}wines/?w=${esc(k)}">와인 카드 보기</a><button class="wsave" type="button" data-save="${esc(k)}" aria-pressed="true" aria-label="찜 해제">${HEART}<span data-save-label>찜했어요</span></button></div></div></li>`}).join('')
       :`<p class="muted">아직 찜한 와인이 없어요. <a class="textlink" href="${REL}wines/">와인 목록</a>에서 하트를 눌러 보세요.</p>`;
   }
+  /* 관리자 '앱 알림 보내기'(assets/push-admin.js)가 같은 로그인을 써요 */
+  window.TYMembers={get client(){return client}, get user(){return user}, onAuth};
+
   if(hasSocial()){
     paintSaves(); saveNote(); paintStats();
     if(client) onAuth(async()=>{ await loadServerSaves(); paintSaves(); saveNote(); });
